@@ -1,8 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include_once (dirname(__FILE__) . "/DatabaseController.php");
 
 class Welcome extends CI_Controller {
-
+    
+    function Welcome(){
+        parent::Controller();
+        $this->load->model('UserAccountModel');
+    }
+    
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,15 +24,16 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function connectDB()
-	{
-		$db = $this->load->database();
-		$query = $db->select('first_name, last_name')->get('person');
-  		var_dump($query);
-	}
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $query = $this->UserAccountModel->getUserAccounts();
+        $data['USERACCOUNTS'] = null;
+        
+        if($query){
+            $data['USERACCOUNTS'] = $query;
+        }
+        
+		$this->load->view('welcome_message', $data);
 	}
 }
