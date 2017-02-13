@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include_once (dirname(__FILE__) . "/DatabaseController.php");
 
 class Welcome extends CI_Controller {
     
