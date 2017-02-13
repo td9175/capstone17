@@ -79,37 +79,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>The corresponding controller for this page is found at:</p>
 		<code>application/controllers/Welcome.php</code>
 
-        <p>All Extensions</p>
-        <code><?php 
-                foreach (get_loaded_extensions() as $extension) {
-                    if (substr($extension, 0, 4) == 'pdo_') {
-                        echo $extension . PHP_EOL;
-                    }
-                }
-            ?></code>
+        <p>PHP Info:</p>
+        <code><?php phpinfo(); ?></code>
         
 		<p>Database Connection:</p>
 		<code>TODO: Show status of connection to mySQL database here.</code>
-        
-        <table id="userAccountsTable">
-            <tr>
-                <td>User Id</td>
-                <td>Email</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Enabled</td>
-            </tr>
-            <?php foreach($USERACCOUNTS as $useraccount){?>
-            <tr>
-                <td><?=$useraccount->user_id;?></td>
-                <td><?=$useraccount->email;?></td>
-                <td><?=$useraccount->first_name;?></td>
-                <td><?=$useraccount->last_name;?></td>
-                <td><?=$useraccount->enabled;?></td>
-            </tr>
-            <?php }?>
-        </table>
-			
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
