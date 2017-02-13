@@ -1,8 +1,8 @@
 <?php
-class UserAccountModel extends Model {
+class UserAccountModel extends CI_Model {
   
-    function UserAccountModel(){
-        parent::Model();
+    public function __construct(){
+        $CI =& get_instance();
     }
     
     function getUserAccounts(){
