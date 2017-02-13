@@ -79,6 +79,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>The corresponding controller for this page is found at:</p>
 		<code>application/controllers/Welcome.php</code>
 
+        <p>All Extensions</p>
+        <code><?php 
+                foreach (get_loaded_extensions() as $extension) {
+                    if (substr($extension, 0, 4) == 'pdo_') {
+                        echo $extension . PHP_EOL;
+                    }
+                }
+            ?></code>
+        
 		<p>Database Connection:</p>
 		<code>TODO: Show status of connection to mySQL database here.</code>
         

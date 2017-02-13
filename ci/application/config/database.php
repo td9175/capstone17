@@ -79,7 +79,7 @@ $db['default'] = array(
 	'username' => 'zach',
 	'password' => 'Capstone17!',
 	'database' => 'umb',
-	'dbdriver' => 'mysqli',
+	'dbdriver' => 'mysql',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
