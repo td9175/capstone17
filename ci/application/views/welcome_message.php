@@ -1,10 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+//defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Team 12 Bit - Home</title>
+	<title>Team 12 Bit - Home Test</title>
 
 	<style type="text/css">
 
@@ -83,7 +83,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <code><?php phpinfo(); ?></code>
         
 		<p>Database Connection:</p>
-		<code>TODO: Show status of connection to mySQL database here.</code>
+		<code>TODO: Show status of connection to mySQL database here.
+		<?php print $user_id; ?>
+</code>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 	</div>
@@ -93,3 +95,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </body>
 </html>
+

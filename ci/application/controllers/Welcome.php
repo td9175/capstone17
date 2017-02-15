@@ -21,15 +21,19 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-        #$this->load->model('UserAccountModel');
-        #$query = $this->UserAccountModel->getUserAccounts();
+        $this->load->model('UserAccountModel');
+        $query = $this->UserAccountModel->getUserAccounts();
+        $data['user_id'] = $query['user_id'];
         
         #$data['USERACCOUNTS'] = null;
         
         #if($query){
-            #$data['USERACCOUNTS'] = $query;
+         
+         #   $data['USERACCOUNTS'] = $query;
         #}
         
-		$this->load->view('welcome_message');
+
+        
+		$this->load->view('welcome_message', $data);
 	}
 }
