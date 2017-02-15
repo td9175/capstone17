@@ -6,29 +6,28 @@ function base64url_encode($data) {
 // Report all errors
 error_reporting(E_ALL);
 
-$my_api_key = "e6f0409f1e";
-$s_key = "7MsNWulBajxleiqMWO64TQ==";
-$searchName = "Hyrdocodone";
-$ndc = "00088250205";
+$myApiKey = "e6f0409f1e";
+$secretKey = "7MsNWulBajxleiqMWO64TQ==";
+$searchQuery = "Viagra";
 
 // Initialize the CURL package. This is the thing that sends HTTP requests
 $ch = curl_init();
 
 // Create the URL and the hash
-$url = "https://api.goodrx.com/compare-price?";
+$url = "https://api.goodrx.com/drug-search?";
 
-$query_string="ndc=" . $ndc . "&api_key=" . $my_api_key;
+$queryString="query=" . $searchQuery . "&api_key=" . $myApiKey;
 
-$tmp_sig = hash_hmac('sha256', $query_string, $s_key, true);
-$sig = base64url_encode( $tmp_sig );
+$tempSig = hash_hmac('sha256', $queryString, $secretKey, true);
+$sig = base64url_encode( $tempSig );
 
-$url = $url . $query_string . "&sig=" . $sig;
+$url = $url . $queryString . "&sig=" . $sig;
 
 // set some curl options
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
-curl_setopt($ch, CURLOPT_VERBOSE, true);
+curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
 
 // run the query
 $response = curl_exec($ch);
