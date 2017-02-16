@@ -11,8 +11,8 @@ class UserAccountModel extends CI_Model {
         
         $query = $this->db->query('SELECT user_id FROM UserAccount LIMIT 1');
 		$row = $query->row();
-		echo $row->name;
-		return $row->name;
+		echo $row->user_id;
+		return $row->user_id;
         
         
         #$this->db->select("user_id, email, first_name, last_name, enabled");

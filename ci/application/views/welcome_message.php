@@ -84,7 +84,7 @@
         
 		<p>Database Connection:</p>
 		<code>TODO: Show status of connection to mySQL database here.
-		<?php print $user_id; ?>
+		<?php print $result; ?>
 </code>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
