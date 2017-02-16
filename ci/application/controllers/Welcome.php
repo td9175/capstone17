@@ -23,22 +23,10 @@ class Welcome extends CI_Controller {
 	{
         $this->load->model('UserAccountModel');
         $result = $this->UserAccountModel->getUserAccounts();
+        //put results in array so it can be passed to view 
         $data['user_id'] = $result;
-        echo "poop";
-        echo $result;
         
-        
-        #$data['user_id'] = $query['user_id'];
-        
-        #$data['USERACCOUNTS'] = null;
-        
-        #if($query){
-         
-         #   $data['USERACCOUNTS'] = $query;
-        #}
-        
-
-        
+		//load view and send it data array 
 		$this->load->view('welcome_message', $data);
 	}
 }
