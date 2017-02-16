@@ -22,13 +22,9 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
         $this->load->model('UserAccountModel');
-        $query = $this->UserAccountModel->getUserAccounts();
+        $result = $this->UserAccountModel->getUserAccounts();
         
-        foreach ($query->result() as $row)
-		{
-        echo $row->user_id;
-        
-		}
+        echo "poop" 
 
         
         
@@ -43,6 +39,6 @@ class Welcome extends CI_Controller {
         
 
         
-		$this->load->view('welcome_message', $data);
+		$this->load->view('welcome_message', $result);
 	}
 }
