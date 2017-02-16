@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
 	{
         $this->load->model('UserAccountModel');
         $result = $this->UserAccountModel->getUserAccounts();
-        
+        $data['user_id'] = $result;
         echo "poop";
         echo $result;
         
@@ -39,6 +39,6 @@ class Welcome extends CI_Controller {
         
 
         
-		$this->load->view('welcome_message', $result);
+		$this->load->view('welcome_message', $data);
 	}
 }
