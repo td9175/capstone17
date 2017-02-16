@@ -24,8 +24,7 @@ class Welcome extends CI_Controller {
         $this->load->model('UserAccountModel');
         $result = $this->UserAccountModel->getUserAccounts();
         
-        echo "poop" 
-
+        echo "poop";
         
         
         #$data['user_id'] = $query['user_id'];
