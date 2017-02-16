@@ -23,7 +23,16 @@ class Welcome extends CI_Controller {
 	{
         $this->load->model('UserAccountModel');
         $query = $this->UserAccountModel->getUserAccounts();
-        $data['user_id'] = $query['user_id'];
+        
+        foreach ($query->result() as $row)
+		{
+        echo $row->user_id;
+        
+		}
+
+        
+        
+        #$data['user_id'] = $query['user_id'];
         
         #$data['USERACCOUNTS'] = null;
         
