@@ -7,11 +7,16 @@ class DrugSearch extends CI_Controller {
 	 * Index Page for this controller.
 	 *
 	 */
+	 
+	 public function __construct() {
+        parent::__construct();
+        $this->load->helper('url');
+		$this->load->helper('form'); 
+    }
+
 
 	public function index()
 	{
-		$this->load->helper('url');
-		$this->load->helper('form');        
 		$this->load->view('drug_search');
 	}
 	
@@ -29,32 +34,34 @@ class DrugSearch extends CI_Controller {
       echo "$searchQuery";
       
       // Report all errors
-      //error_reporting(E_ALL);
+      error_reporting(E_ALL);
       
       // Initialize the CURL package. This is the thing that sends HTTP requests
-      //$ch = curl_init();
+      $ch = curl_init();
       
       // Create the URL and the hash
-      //$url = "https://api.goodrx.com/drug-search?";
+      $url = "https://api.goodrx.com/drug-search?";
       
-      //$queryString="query=" . $searchQuery . "&api_key=" . $myApiKey;
+      $queryString="query=" . $searchQuery . "&api_key=" . $myApiKey;
       
-      //$tempSig = hash_hmac('sha256', $queryString, $secretKey, true);
+      $tempSig = hash_hmac('sha256', $queryString, $secretKey, true);
       
-      //$sig = base64url_encode($tempSig);
+      $sig = base64url_encode($tempSig);
       
-      //$url = $url . $queryString . "&sig=" . $sig;
+      $url = $url . $queryString . "&sig=" . $sig;
       
       // set some curl options
-      //curl_setopt($ch, CURLOPT_URL, $url);
-      //curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-      //curl_setopt($ch, CURLOPT_HEADER, FALSE);
-      //curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_HEADER, FALSE);
+      curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
       
       // run the query
-      //$response = curl_exec($ch);
+      $response = curl_exec($ch);
       
-      //echo($response);
+      $data['response'] = $response;
+      
+      $this->load->view('drug_search.php', $data);
     }
 }
 
