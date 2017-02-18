@@ -37,11 +37,11 @@ class DrugSearch extends CI_Controller {
       // Create the URL and the hash
       $url = "https://api.goodrx.com/drug-search?";
       
-      $queryString="query=" . $searchQuery . "&api_key=" . $myApiKey;
+      $queryString="query=" . $searchQuery . "&api_key=" . $apiKey;
       
       $tempSig = hash_hmac('sha256', $queryString, $secretKey, true);
       
-      $sig = base64url_encode($tempSig);
+      $sig = self::base64url_encode($tempSig);
       
       $url = $url . $queryString . "&sig=" . $sig;
       
