@@ -16,10 +16,10 @@ class DrugSearch extends CI_Controller {
 		$this->load->view('drug_search');
 	}
 	
-	public function base64url_encode($data) 
-	{ 
-    	return strtr(base64_encode($data), '+/', '__'); 
-	} 
+	//public function base64url_encode($data) 
+	//{ 
+    //	return strtr(base64_encode($data), '+/', '__'); 
+	//} 
 
 	public function search_for_drug()
 	{

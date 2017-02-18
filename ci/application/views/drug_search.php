@@ -1,9 +1,12 @@
-<?php
 
-echo form_open('DrugSearch/search_for_drug');
-echo form_input('searchQuery');
-echo form_submit('drugSearchSubmit', 'Search!');
-echo form_close();
+<?php echo form_open('drugsearch/search_for_drug'); ?>
+	<label for='searchQuery'>Enter a drug name to search: </label>
+	<input type='text' name='searchQuery'>
+	<input type='submit' name='submit' value='Search!'>
+	</form>
+	
+	
+<?php
 
 if (isset($response)){
 	print $response;
