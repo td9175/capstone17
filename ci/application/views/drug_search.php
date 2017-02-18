@@ -7,7 +7,7 @@ echo form_close();
 
 if (isset($response)){
 	print $response;
-	echo "Test";
+	print "\n Hello World!";
 }
 
 ?>
