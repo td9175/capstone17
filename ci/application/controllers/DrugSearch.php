@@ -55,7 +55,7 @@ class DrugSearch extends CI_Controller {
       $jsonResponse = curl_exec($ch);
 
       //Encode JSON response to UTF-8and decode the JSON response
-      $response = json_decode(utf8_encode($jsonResponse));
+      $response = json_decode($jsonResponse);
       
       //Insert the response variable into the data array and pass it to the view    
       $data['response'] = $response;
