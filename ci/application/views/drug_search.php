@@ -1,6 +1,6 @@
 
 <?php echo form_open('DrugSearch/search_for_drug'); ?>
-	<label for='searchQuery'>Enter a drug to search: </label>
+	<label for='searchQuery'>Enter a drug to search for: </label>
 	<input type='text' name='searchQuery'>
 	<input type='submit' name='submit' value='Search!'>
 	</form>

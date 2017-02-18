@@ -51,11 +51,14 @@ class DrugSearch extends CI_Controller {
       curl_setopt($ch, CURLOPT_HEADER, FALSE);
       curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
       
-      // run the query
-      $response = curl_exec($ch);
+      //Run the query
+      $jsonResponse = curl_exec($ch);
       
+      //Decode the JSON response
+      $response = json_decode($jsonResponse);
+      
+      //Insert the response variable into the data array and pass it to the view    
       $data['response'] = $response;
-      //$data['response'] = "Hello world!";
       
       $this->load->view('drug_search', $data);
     }
