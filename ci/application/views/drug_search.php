@@ -9,7 +9,8 @@
 <?php
 
 if (isset($response)){
-	print $response, "\n";
+	print $response;
+	print "\n";
 	
 }
 
