@@ -25,9 +25,11 @@ if (isset($response)){
 	for($x=0;$x<$arrlength;$x++)
   	{
   		echo $response[$x];
+  		print "test2\n";
   		echo "<br>";
   	}
-		
+	
+	print "test3\n";	
 }
 
 ?>
