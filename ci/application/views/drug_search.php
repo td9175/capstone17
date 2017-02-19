@@ -9,16 +9,17 @@
 <?php
 
 if (isset($response)){
-	print $response;
-	print "\n";
-	
-	$response = json_decode($response);
-
 	
 	foreach ($response->data->candidates as $candidate){
 		print "Candidate: " . $candidate . "<br>";
+		echo "<a href='DrugSearch/price_comparison/$candidate' >$candidate</a>";
 	}
 	
 }
 
+if (isset($priceData)){
+	var_dump($priceData);
+}
+
 ?>
+

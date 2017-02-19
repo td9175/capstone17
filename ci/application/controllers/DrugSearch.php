@@ -52,16 +52,53 @@ class DrugSearch extends CI_Controller {
       curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
       
       //Run the query
-      $jsonResponse = curl_exec($ch);
-
-      //Encode JSON response to UTF-8and decode the JSON response
-      //$response = json_decode($jsonResponse);
+      $response = curl_exec($ch);
       
-      $response = $jsonResponse;
-      //  {"errors": [], "data": {"candidates": ["ibuprofen", "ibuprofen non-prescription", "ibuprofen junior strength", "ibudone", "ibuprofen lysine", "dibucaine", "imbruvica", "rifabutin"]}, "success": true} 
+      $response = json_decode($response);
 
       //Insert the response variable into the data array and pass it to the view    
       $data['response'] = $response;
+      
+      $this->load->view('drug_search', $data);
+    }
+    
+    public function price_comparison($name)
+	{
+      //$searchQuery = $this->input->post("searchQuery");
+      $apiKey = $this->config->item('apiKey');
+      $secretKey = $this->config->item('secretKey');
+      
+            
+      // Report all errors
+      error_reporting(E_ALL);
+      
+      // Initialize the CURL package. This is the thing that sends HTTP requests
+      $ch = curl_init();
+      
+      // Create the URL and the hash
+      $url = "https://api.goodrx.com/compare-price?";
+      
+      $queryString="name=" . $name . "&api_key=" . $apiKey;
+      
+      $tempSig = hash_hmac('sha256', $queryString, $secretKey, true);
+      
+      $sig = self::base64url_encode($tempSig);
+      
+      $url = $url . $queryString . "&sig=" . $sig;
+      
+      // set some curl options
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_HEADER, FALSE);
+      curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
+      
+      //Run the query
+      $response = curl_exec($ch);
+      
+      $response = json_decode($response);
+      
+      //Insert the response variable into the data array and pass it to the view    
+      $data['priceData'] = $response;
       
       $this->load->view('drug_search', $data);
     }
