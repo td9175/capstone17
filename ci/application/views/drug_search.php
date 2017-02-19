@@ -12,28 +12,14 @@ if (isset($response)){
 	print $response;
 	print "\n";
 	
-	$decodedResponse = json_decode($response);
+	$candidates = json_decode($response);
 	
-	var_dump($decodedResponse);
+	var_dump($candidates);
 	
-	if (isset($response['candidates'])){
-		print $response['candidates'];
-	} else {
-		print "Not set.\n";
+	foreach ($candidates as $candidate){
+		print "Candidate: " . $candidate . "\n";
 	}
 	
-	print "test\n";
-	
-	$arrlength=count($response);
-
-	for($x=0;$x<$arrlength;$x++)
-  	{
-  		echo $response[$x];
-  		print "test2\n";
-  		echo "<br>";
-  	}
-	
-	print "test3\n";	
 }
 
 ?>
