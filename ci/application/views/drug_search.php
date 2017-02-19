@@ -20,9 +20,9 @@ if (isset($response)){
 	
 	var_dump($candidates);
 	
-	//foreach ($candidates as $candidate){
-	//	print "Candidate: " . $candidate . "\n";
-	//}
+	foreach ($dResponse->data->candidates as $candidate){
+		print "Candidate: " . $candidate . "\n";
+	}
 	
 }
 
