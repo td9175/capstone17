@@ -20,7 +20,7 @@ if (isset($priceData)){
 }
 
 ?>
-	
+	<hr>
 	<a href='http://GoodRx.com'>Powered by GoodRx</a>
 	
 
