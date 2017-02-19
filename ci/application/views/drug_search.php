@@ -11,7 +11,7 @@
 if (isset($response)){
 	
 	foreach ($response->data->candidates as $candidate){
-		echo "<a href='price_comparison/$candidate' >$candidate</a>";
+		echo "<a href='price_comparison/$candidate' >$candidate</a><br>";
 	}
 	
 }
