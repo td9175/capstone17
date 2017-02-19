@@ -15,7 +15,8 @@ if (isset($response)){
 	$dResponse = json_decode($response);
 	
 	print "Count: " . count($dResponse->candidates) . "\n";
-	print "Count2: " . count($dResponse['candidates']) . "\n";
+	print "data: " . $dResponse->data . "\n";
+	print "data->candidates: " . $dResponse->data->candidates . "\n";
 	
 	var_dump($candidates);
 	
