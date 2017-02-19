@@ -4,9 +4,7 @@
 	<input type='text' name='searchQuery'>
 	<input type='submit' name='submit' value='Search!'>
 	</form>
-	
-	<a href='http://GoodRx.com'>Powered by GoodRx</a>
-	
+
 <?php
 
 if (isset($response)){
@@ -22,4 +20,8 @@ if (isset($priceData)){
 }
 
 ?>
+	
+	<a href='http://GoodRx.com'>Powered by GoodRx</a>
+	
+
 
