@@ -21,13 +21,13 @@ if (isset($priceData)){
 	$pharmacies = $priceData->data->price_detail->pharmacy;
 	$allPricesUrl = $priceData->data->mobile_url;
 	
-	for($i=0; i<count($prices); $i++){
-		if (i==0){
-			echo "Cheapest price available is " . $prices[$i] . " at " . $pharmacies[$i];
-		} else {
-		echo "Price #" . $i+1 . " is " . $prices[$i] . " at " . $pharmacies[$i];
-		}
-	}
+	//for($i=0; i<count($prices); $i++){
+	//	if (i==0){
+	//		echo "Cheapest price available is " . $prices[$i] . " at " . $pharmacies[$i];
+	//	} else {
+	//		echo "Price #" . $i+1 . " is " . $prices[$i] . " at " . $pharmacies[$i];
+	//	}
+	//}
 	
 	echo "<a href='$allPricesUrl'>View all prices on GoodRx.com</a>";
 
