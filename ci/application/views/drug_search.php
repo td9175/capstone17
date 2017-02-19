@@ -12,7 +12,9 @@ if (isset($response)){
 	print $response;
 	print "\n";
 	
-	echo mb_detect_encoding($response); 
+	$decodedResponse = json_decode($response);
+	
+	var_dump($decodedResponse);
 	
 	if (isset($response['candidates'])){
 		print $response['candidates'];
