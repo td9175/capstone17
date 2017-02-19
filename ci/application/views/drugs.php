@@ -29,6 +29,12 @@ if (isset($priceData)){
 	//	}
 	//}
 	
+	if (isset($prices){
+		echo "prices set";
+	} else {
+		echo "prices not set\n";
+	}
+	
 	foreach ($prices as $price){
 		echo $price . "<br>";
 	}
