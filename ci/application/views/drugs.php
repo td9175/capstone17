@@ -1,5 +1,5 @@
 
-<?php echo form_open('DrugSearch/search_for_drug'); ?>
+<?php echo form_open('Drugs/search_for_drug'); ?>
 	<label for='searchQuery'>Enter a drug to search for: </label>
 	<input type='text' name='searchQuery'>
 	<input type='submit' name='submit' value='Search!'>
@@ -7,9 +7,9 @@
 
 <?php
 
-if (isset($response)){
+if (isset($searchData)){
 	
-	foreach ($response->data->candidates as $candidate){
+	foreach ($searchData->data->candidates as $candidate){
 		echo "<a href='price_comparison/$candidate' >$candidate</a><br>";
 	}
 	
