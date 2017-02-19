@@ -11,8 +11,22 @@
 if (isset($response)){
 	print $response;
 	print "\n";
-	print $response['data'];
+	
+	if (isset($response['data'])){
+		print $response['data'];
+	} else {
+		print "Not set.\n";
+	}
+	
 	print "test\n";
+	
+	$arrlength=count($response);
+
+	for($x=0;$x<$arrlength;$x++)
+  	{
+  		echo $response[$x];
+  		echo "<br>";
+  	}
 		
 }
 
