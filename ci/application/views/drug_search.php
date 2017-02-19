@@ -11,7 +11,7 @@
 if (isset($response)){
 	print $response;
 	print "\n";
-	print $response->data;
+	print $response['candidates'];
 	print "test\n";
 		
 }
