@@ -25,16 +25,14 @@ if (isset($priceData)){
 	
 	for ($i=0; $i<$countOfPrices; $i++){
 		if ($i==0){
-			echo "Cheapest price available is " . $prices[$i] . " at " . $pharmacies[$i] . "\n";
+			echo "Cheapest price available is " . $prices[$i] . " at " . $pharmacies[$i] . "<br>";
 		} else {
-			echo "Price #" . $i+1 . " is " . $prices[$i] . " at " . $pharmacies[$i] . "\n";
+			echo "Price #" . $i+1 . " is " . $prices[$i] . " at " . $pharmacies[$i] . "<br>";
 		}
 	}
 
-	echo "<a href='$allPricesUrl'>View all prices on GoodRx.com</a>";
+	echo "<a href='$allPricesUrl'>View all prices on GoodRx.com</a><br>";
 
-	echo "<hr>";
-	var_dump($priceData);
 }
 
 ?>
