@@ -12,9 +12,10 @@ if (isset($response)){
 	print $response;
 	print "\n";
 	
-	$candidates = json_decode($response);
+	$dResponse = json_decode($response);
 	
-	print "Count: " . count($candidates) . "\n";
+	print "Count: " . count($dResponse->candidates) . "\n";
+	print "Count2: " . count($dResponse['candidates') . "\n";
 	
 	var_dump($candidates);
 	
