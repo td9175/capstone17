@@ -29,6 +29,14 @@ if (isset($priceData)){
 	//	}
 	//}
 	
+	foreach ($prices as $price){
+		echo $price . "<br>";
+	}
+	
+	foreach ($pharmacies as $pharmacy){
+		echo $pharmacy . "<br>";
+	}
+	
 	echo "<a href='$allPricesUrl'>View all prices on GoodRx.com</a>";
 
 	echo "<hr>";
