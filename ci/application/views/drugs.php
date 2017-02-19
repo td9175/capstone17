@@ -20,8 +20,8 @@ if (isset($priceData)){
 	$prices = $priceData->data->price;
 	$pharmacies = $priceData->data->pharmacy;
 	
-	for($i=0; i<count($prices); ++i){
-		echo "Price is " . $prices[i] . "at " . $pharmacies[i];
+	for($i=0; i<count($prices); $i++){
+		echo "Price is " . $prices[$i] . "at " . $pharmacies[$i];
 	}
 
 	echo "<hr>";
