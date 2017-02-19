@@ -56,8 +56,10 @@ class DrugSearch extends CI_Controller {
 
       //Encode JSON response to UTF-8and decode the JSON response
       $response = json_decode($jsonResponse);
-      //$response = $jsonResponse;
       
+      //$response = $jsonResponse;
+      //  {"errors": [], "data": {"candidates": ["ibuprofen", "ibuprofen non-prescription", "ibuprofen junior strength", "ibudone", "ibuprofen lysine", "dibucaine", "imbruvica", "rifabutin"]}, "success": true} 
+
       //Insert the response variable into the data array and pass it to the view    
       $data['response'] = $response;
       
