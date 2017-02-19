@@ -12,7 +12,7 @@ if (isset($response)){
 	print $response;
 	print "\n";
 	print $response->data;
-	print "test\n"
+	print "test\n";
 		
 }
 
