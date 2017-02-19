@@ -14,6 +14,8 @@ if (isset($response)){
 	
 	$candidates = json_decode($response);
 	
+	print "Count: " . count($candidates);
+	
 	var_dump($candidates);
 	
 	//foreach ($candidates as $candidate){
