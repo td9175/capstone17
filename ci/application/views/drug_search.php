@@ -12,6 +12,8 @@ if (isset($response)){
 	print $response;
 	print "\n";
 	
+	echo mb_detect_encoding($response); 
+	
 	if (isset($response['candidates'])){
 		print $response['candidates'];
 	} else {
