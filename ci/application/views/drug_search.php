@@ -12,16 +12,11 @@ if (isset($response)){
 	print $response;
 	print "\n";
 	
-	$dResponse = json_decode($response);
+	$response = json_decode($response);
+
 	
-	print "Count: " . count($dResponse->candidates) . "\n";
-	print "data: " . $dResponse->data . "\n";
-	print "data->candidates: " . $dResponse->data->candidates . "\n";
-	
-	var_dump($candidates);
-	
-	foreach ($dResponse->data->candidates as $candidate){
-		print "Candidate: " . $candidate . "\n";
+	foreach ($response->data->candidates as $candidate){
+		print "Candidate: " . $candidate . "<br>";
 	}
 	
 }
