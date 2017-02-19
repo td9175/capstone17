@@ -29,7 +29,7 @@ if (isset($priceData)){
 	//	}
 	//}
 	
-	if (isset($prices){
+	if (isset($prices)){
 		echo "prices set";
 	} else {
 		echo "prices not set\n";
