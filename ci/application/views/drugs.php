@@ -24,7 +24,7 @@ if (isset($priceData)){
 	$countOfPrices = count($prices);
 	
 	for ($i=0; $i<$countOfPrices; $i++){
-		echo "Price #" . ($i+1) . " is " . $prices[$i] . " at " . $pharmacies[$i] . "<br>";
+		echo "Price #" . ($i+1) . " is $" . $prices[$i] . " at " . $pharmacies[$i] . "<br>";
 	}
 
 	echo "<a href='$allPricesUrl'>View all prices on GoodRx.com</a><br>";
