@@ -9,14 +9,14 @@ class UserAccountModel extends CI_Model {
         $query = $this->db->query('SELECT * from UserAccount');
         
         
-        foreach ($query->result_array() as $row){
+        /*foreach ($query->result_array() as $row){
         echo $row['user_id'];
         echo $row['email'];
         echo $row['hash_pass'];
         echo $row['first_name'];
         echo $row['last_name'];
         echo $row['enabled'];
-		}
+		}*/
         
         
         
