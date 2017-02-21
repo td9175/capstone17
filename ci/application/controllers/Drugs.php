@@ -24,12 +24,12 @@ class Drugs extends CI_Controller {
 	} 
 
 
-	public function search_for_drug()
+	public function search_for_drug($searchQuery)
 	{
 	
       // Get user input from the form on drugs.php
       // Load GoodRx API key and secret key
-      $searchQuery = $this->input->post("searchQuery");
+      //$searchQuery = $this->input->post("searchQuery");
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
             
@@ -73,7 +73,6 @@ class Drugs extends CI_Controller {
     
     public function price_comparison($name)
 	{
-      //$searchQuery = $this->input->post("searchQuery");
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
       
@@ -112,6 +111,7 @@ class Drugs extends CI_Controller {
       
       // Load the drugs view and pass the data array along with it
       //$this->load->view('drugs', $data);
+      
       echo $response;
     
     }
