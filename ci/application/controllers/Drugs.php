@@ -89,9 +89,6 @@ class Drugs extends CI_Controller {
       // Build the query string
       $queryString = "name=" . $name . "&api_key=" . $apiKey;
       
-      //$tempSig = hash_hmac('sha256', $queryString, $secretKey, true);
-      //$sig = self::base64url_encode($tempSig);
-      
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
       
@@ -108,14 +105,13 @@ class Drugs extends CI_Controller {
       $response = curl_exec($ch);
       
       // Decode the JSON string into a PHP object of stdClass
-      //$response = json_decode($response);
+      $response = json_decode($response);
       
       // Insert the response object into the data array 
-      //$data['priceData'] = $response;
+      $data['priceData'] = $response;
       
       // Load the drugs view and pass the data array along with it
-      //$this->load->view('drugs', $data);
-      return $response;
+      $this->load->view('drugs', $data);
     }
 }
 
