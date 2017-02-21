@@ -64,10 +64,10 @@ class Drugs extends CI_Controller {
       $response = json_decode($response);
 
       // Insert the response object into the data array    
-      $data['searchData'] = $response;
+      //$data['searchData'] = $response;
       
       // Load the drugs view and pass the data array along with it
-      $this->load->view('drugs', $data);
+      //$this->load->view('drugs', $data);
     }
     
     
