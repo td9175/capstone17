@@ -87,10 +87,11 @@
 		
 		<?php 
 		//accessing data array passed from controller
+
 		echo "User ID: ". $data['user_id']; 
 		
 		
-		
+
 		
 		?>
 </code>
