@@ -88,7 +88,8 @@
 		<?php 
 		//accessing data array passed from controller
 		echo "User ID: ". $data['user_id']; 
-		//echo "Email:" . $email;
+		echo "<br>Email:" . $email['email'];
+		
 		
 		
 		?>
