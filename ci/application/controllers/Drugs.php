@@ -61,13 +61,15 @@ class Drugs extends CI_Controller {
       $response = curl_exec($ch);
       
       // Decode the JSON string into a PHP object of stdClass
-      $response = json_decode($response);
+      //$response = json_decode($response);
 
       // Insert the response object into the data array    
       //$data['searchData'] = $response;
       
       // Load the drugs view and pass the data array along with it
       //$this->load->view('drugs', $data);
+      
+      echo $response;
     }
     
     
