@@ -12,7 +12,7 @@ if (isset($searchData)){
 	foreach ($searchData->data->candidates as $candidate){
 		echo "<a href='price_comparison/$candidate' >$candidate</a><br>";
 	}
-	var_dump($searchData)
+	var_dump($searchData);
 }
 
 if (isset($priceData)){
