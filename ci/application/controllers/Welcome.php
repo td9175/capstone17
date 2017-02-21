@@ -25,6 +25,7 @@ class Welcome extends CI_Controller {
         $result = $this->UserAccountModel->getUserAccounts();
         //put results in array so it can be passed to view 
         $data['user_id'] = $result;
+        $data['email'] = $result;
         
 		//load view and send it data array 
 		$this->load->view('welcome_message', $data);
