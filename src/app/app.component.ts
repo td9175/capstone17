@@ -1,5 +1,15 @@
-//import { BackandService } from '@backand/angular2-sdk'
+//import { importBackandService } from '@backand/angular2-sdk';
 //import { Backand } from './../providers/backand';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
+
+// Backand import
+import { BackandService } from '@backand/angular2-sdk';
+
+// Pages Import 
+// Page1 and Page2 are test and placeholder pages.
+
 import { HomePage } from './../pages/home/home';
 import { LoginPage } from './../pages/login/login';
 import { UserSettingsPage } from './../pages/user-settings/user-settings';
@@ -8,12 +18,6 @@ import { TaxInfoPage } from './../pages/tax-info/tax-info';
 import { AccountsPage } from './../pages/accounts/accounts';
 import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-// Test Pages + Placeholders
-// All the pages need to be imported into this app.ts;
-// however, we can use the pages.ts to help import them, but I've manually done this already.
 //import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 
@@ -31,7 +35,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, private backand:BackandService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -56,16 +60,15 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      
       // Okay, here is the backand init file; however, didn't work earlier.
-      /*
-      backand.init({
-        appName: 'todo33353',
-        signUpToken: '215e5812-5789-4475-8ccb-42f3232da176',
-        anonymousToken: '43a174e6-1a88-46dd-9081-99d3d22131a6',
-        runSocket: true,
-        mobilePlatform: 'ionic'
-      });
-      */
+        this.backand.init({
+          appName: 'todo33353',
+          signUpToken: '215e5812-5789-4475-8ccb-42f3232da176',
+          anonymousToken: '43a174e6-1a88-46dd-9081-99d3d22131a6',
+          runSocket: true,
+          mobilePlatform: 'ionic'
+        });
     });
   }
   // commented out, we wont need it since, manually adjusting the navbar
@@ -96,4 +99,4 @@ export class MyApp {
   goToUserSettings() {
     this.nav.push(UserSettingsPage);
   }
-}
+} // end myapp
