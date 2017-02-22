@@ -5,7 +5,7 @@ class Ocr extends CI_Controller {
   
 	public function index()
 	{
-		$this->load->view('drugs');
+		$this->load->view('ocr');
 	}
 	
 	
