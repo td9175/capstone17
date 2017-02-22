@@ -7,7 +7,7 @@
 	</form>
 
 
-
+<?php
 if (isset($searchData)){
 	
 	foreach ($searchData->data->candidates as $candidate){
