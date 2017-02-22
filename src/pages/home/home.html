@@ -1,0 +1,20 @@
+<ion-header>
+  <!-- Reminder: ion-navbar primary should be the color must be in header-->
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>UMB Healthcare</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<!--<ion-tabs tabsPlacement="top">-->
+<ion-tabs color="primary">
+  <ion-tab tabTitle="Accounts" [root]="accountsTab" tabIcon="card"></ion-tab>
+  <ion-tab tabTitle="Vault" [root]="vaultTab" tabIcon="paper"></ion-tab>
+  <ion-tab tabTitle="Products" [root]="productsTab" tabIcon="cart"></ion-tab>
+  <ion-tab tabTitle="Services" [root]="servicesTab" tabIcon="medical"></ion-tab>
+</ion-tabs>
+
+<!--[rootParams] attribute will allow us to pass a piece of data through the tabs-->
+<!-- ion content doesn't need to be here cause we're going to use Tabs for the home -->
