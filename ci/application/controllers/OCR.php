@@ -3,44 +3,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ocr extends CI_Controller {
   
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
-require_once 'HTTP_Request2-2.3.0/HTTP/Request2.php';
+	public function index()
+	{
+		$this->load->view('drugs');
+	}
+	
+	
+	public function getImage($img){
+	
+	
+			//extract data from the post
+		//set POST variables
+		$url = 'https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr?language=en&detectOrientation =true';
+		$body = array(
+			'lname' => urlencode($_POST['last_name']),
+			'fname' => urlencode($_POST['first_name']),
+			'title' => urlencode($_POST['title']),
+			'company' => urlencode($_POST['institution']),
+			'age' => urlencode($_POST['age']),
+			'email' => urlencode($_POST['email']),
+			'phone' => urlencode($_POST['phone'])
+		);
 
-$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
-$url = $request->getUrl();
+		//url-ify the data for the POST
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string, '&');
 
-$headers = array(
-    // Request headers
-    'Content-Type' => 'application/json',
-    'Ocp-Apim-Subscription-Key' => '16eb25ebbaeb430695f63f2b23f22606',
-);
+		//open connection
+		$ch = curl_init();
 
-$request->setHeader($headers);
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL, $url);
+		curl_setopt($ch,CURLOPT_POST, count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
 
-$parameters = array(
-    // Request parameters
-    'language' => 'en',
-    'detectOrientation ' => 'true',
-);
+		//execute post
+		$result = curl_exec($ch);
 
-$url->setQueryVariables($parameters);
-
-$request->setMethod(HTTP_Request2::METHOD_POST);
-
-// Request body
-$request->setBody("{"url":'http://www.mattimus.net/work/receipt/img/old-big.png'}");
-
-try
-{
-    $response = $request->send();
-    echo $response->getBody();
-}
-catch (HttpException $ex)
-{
-    echo $ex;
-}
-
-  
-}
+		//close connection
+		curl_close($ch);
+	
+	}
+	
+	
 
 ?>

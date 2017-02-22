@@ -6,7 +6,7 @@
 	<input type='submit' name='submit' value='Search!'>
 	</form>
 
-<?php
+
 
 if (isset($searchData)){
 	
