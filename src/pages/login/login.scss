@@ -1,0 +1,23 @@
+page-login {
+
+    .scroll-content {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .login-box {
+        margin: 0 auto;
+        
+    }
+    
+    ion-row {
+        align-items: center;
+        text-align: center;
+    }
+
+    ion-item{
+        font-size: 0.9em;
+    }
+
+}
