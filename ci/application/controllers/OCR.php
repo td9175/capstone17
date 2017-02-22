@@ -1,76 +1,46 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Drugs extends CI_Controller {
-     
-	public function __construct() 
-	{
-        parent::__construct();
-        $this->config->load('goodRx');
-        $this->load->helper('url');
-		$this->load->helper('form'); 
-    }
+class Ocr extends CI_Controller {
+  
+// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)
+require_once 'HTTP_Request2-2.3.0/HTTP/Request2.php';
 
+$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
+$url = $request->getUrl();
 
-	public function index()
-	{
-		$this->load->view('drugs');
-	}
-	
-	
-	public function base64url_encode($data) 
-	{ 
-    	return strtr(base64_encode($data), '+/', '__'); 
-	} 
+$headers = array(
+    // Request headers
+    'Content-Type' => 'application/json',
+    'Ocp-Apim-Subscription-Key' => '16eb25ebbaeb430695f63f2b23f22606',
+);
 
+$request->setHeader($headers);
 
-	public function search_for_drug($searchQuery)
-	{
-	
-      // Get user input from the form on drugs.php
-      // Load GoodRx API key and secret key
-      //$searchQuery = $this->input->post("searchQuery");
-      $apiKey = $this->config->item('apiKey');
-      $secretKey = $this->config->item('secretKey');
-            
-      // Report all errors
-      error_reporting(E_ALL);
-      
-      // Initialize the CURL package. This is the thing that sends HTTP requests
-      $ch = curl_init();
-      
-      // Create the URL
-      $url = "https://api.goodrx.com/drug-search?";
-      
-      // Build the query string
-      $queryString = "query=" . $searchQuery . "&api_key=" . $apiKey;      
-      
-      // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
-      $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
-      
-      //Build the URL string with the query string and keyed hash signature
-      $url = $url . $queryString . "&sig=" . $sig;
-      
-      // Set some curl options
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-      curl_setopt($ch, CURLOPT_HEADER, FALSE);
-      curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
-      
-      // Execute a curl request on the GoodRx API and get a JSON response
-      $response = curl_exec($ch);
-      
-      // Decode the JSON string into a PHP object of stdClass
-      //$response = json_decode($response);
+$parameters = array(
+    // Request parameters
+    'language' => 'en',
+    'detectOrientation ' => 'true',
+);
 
-      // Insert the response object into the data array    
-      //$data['searchData'] = $response;
-      
-      // Load the drugs view and pass the data array along with it
-      //$this->load->view('drugs', $data);
-      
-      echo $response;
-    }
-     
+$url->setQueryVariables($parameters);
+
+$request->setMethod(HTTP_Request2::METHOD_POST);
+
+// Request body
+$request->setBody("{"url":'http://www.mattimus.net/work/receipt/img/old-big.png'}");
+
+try
+{
+    $response = $request->send();
+    echo $response->getBody();
 }
+catch (HttpException $ex)
+{
+    echo $ex;
+}
+
+  
+}
+
 ?>
