@@ -8,6 +8,13 @@ class Ocr extends CI_Controller {
 		$this->load->view('ocr');
 	}
 	
+	public function __construct() 
+	{
+        parent::__construct();
+        //$this->config->load('goodRx');
+        //$this->load->helper('url');
+		$this->load->helper('form'); 
+    }
 	
 	public function getImage($img){
 	
