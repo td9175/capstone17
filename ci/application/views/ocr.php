@@ -1,6 +1,7 @@
 <?php 
 	
-	echo form_open('OCR/getImage', array('method'=>'get')); ?>
+	//echo form_open('OCR/getImage', array('method'=>'get')); ?>
+	<form action='OCR.php' method='POST'>
 	<label for='searchQuery'>Enter a drug to search for: </label>
 	<input type='text' name='searchQuery'>
 	<input type='submit' name='submit' value='Search!'>

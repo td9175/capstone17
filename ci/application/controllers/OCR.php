@@ -54,7 +54,7 @@ class Ocr extends CI_Controller {
 		//close connection
 		curl_close($ch);
 	
-	}
+		}
 	
 	}
 
