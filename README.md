@@ -42,7 +42,7 @@ $ ionic serve
 - Want to customize data model or change authorization?
 - Change the app's parameters (/src/app/app.component.ts) in the init function with your new app parameters:
 ```javascript
-backand.init({
+this.backand.init({
   appName: 'your app name',
   signUpToken: 'your signup token',
   anonymousToken: 'your anonymousToken token',
