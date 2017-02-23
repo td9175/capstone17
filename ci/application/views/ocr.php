@@ -9,7 +9,7 @@
 
 
 <?php
-if (isset($searchData)){
+/*if (isset($searchData)){
 	
 	foreach ($searchData->data->candidates as $candidate){
 		echo "<a href='price_comparison/$candidate' >$candidate</a><br>";
@@ -32,7 +32,7 @@ if (isset($priceData)){
 	echo "<a href='$allPricesUrl'>View all prices on GoodRx.com</a><br>";
 
 }
-
+*/
 ?>
 	<hr>
 	<a href='http://GoodRx.com'>Powered by GoodRx</a>
