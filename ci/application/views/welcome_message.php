@@ -83,7 +83,8 @@
         <code><?php phpinfo(); ?></code> -->
         
 		<p>Database Connection:</p>
-		<code>TODO: Show status of connection to mySQL database here.
+		<code>TODO: Show status of connection to mySQL database here. Testing
+		
 		
 		<?php 
 		//accessing data array passed from controller
