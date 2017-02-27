@@ -20,6 +20,7 @@ class Example_api extends REST_Controller {
         {
             $this->response($user, 200); // 200 being the HTTP response code
             $this->load->view('welcome_message.php', $user);
+            echo "success";
         }
  
         else

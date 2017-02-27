@@ -90,7 +90,8 @@
 		//accessing data array passed from controller
 
 		echo "User ID: ". $user; 
-		echo "test";
+		echo "<br>test</br>";
+		
 		
 		
 
