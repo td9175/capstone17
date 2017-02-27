@@ -14,11 +14,12 @@ class Example_api extends REST_Controller {
             $this->response(NULL, 400);
         }
  		//not sure if this is right? not sure how to get to the model function to get ID 
-        $user = $this->UserAccountModel->get( $this->get('id') );
+        $user = $this->UserAccountModel->get_user_id();
          
         if($user)
         {
             $this->response($user, 200); // 200 being the HTTP response code
+            $this->load->view('welcome_message.php', $user);
         }
  
         else
