@@ -89,6 +89,7 @@
 		//accessing data array passed from controller
 
 		echo "User ID: ". $user_id; 
+		echo "test";
 		
 		
 
