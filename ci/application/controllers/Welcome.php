@@ -21,6 +21,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
+		echo "in controller";
         $this->load->model('UserAccountModel');
         $result = $this->UserAccountModel->getUserAccounts();
         //put results in array so it can be passed to view 
