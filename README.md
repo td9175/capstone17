@@ -22,6 +22,8 @@ $ npm install -g ionic cordova
 $ npm i -S @backand/angular2-sdk socket.io-client @types/node @types/socket.io-client
 ```
 
+- Note: You may need to use sudo.
+
 - Install Cordova Plugins
 ```bash
 $ ionic plugin add cordova-plugin-inappbrowser
