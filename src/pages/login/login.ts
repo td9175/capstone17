@@ -20,6 +20,7 @@ export class LoginPage {
   //Test console log below, should be deleted in further versions.
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+    console.log('sami is here');
   }
 
   goToHome(){
