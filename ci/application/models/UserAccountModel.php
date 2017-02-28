@@ -21,9 +21,9 @@ class UserAccountModel extends CI_Model {
         	//$row['first_name'] = $return_arr['first_name'];
         	
         	$data[] = array(
-				'user_id' => $row['user_id'];
+				'user_id' => $row['user_id']
 				
-				) 
+				);
         	
         	
         	
