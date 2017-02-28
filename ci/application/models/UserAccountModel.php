@@ -23,7 +23,7 @@ class UserAccountModel extends CI_Model {
         	$data[] = array(
 				'user_id' => $row['user_id'];
 				
-				) ;
+				) 
         	
         	
         	
