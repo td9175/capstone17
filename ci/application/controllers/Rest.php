@@ -1,7 +1,7 @@
 <?php
-require(APPPATH'.libraries/REST_Controller.php');
+require('application/libraries/REST_Controller.php');
  
-class Example_api extends REST_Controller {
+class Rest extends REST_Controller {
 
 
  	function user_get()
