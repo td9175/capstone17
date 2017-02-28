@@ -31,6 +31,7 @@ class Welcome extends Rest_Controller {
         $data = array('returned: '. $this->get('id'));
         $this->response($data);
         */
+        $this->load->model('UserAccountModel');
         if(!$this->get('id'))
         {
             $this->response(NULL, 400);
