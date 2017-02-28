@@ -1,5 +1,5 @@
 <?php
-namespace application\Libraries;
+namespace Restserver\Libraries;
 
 use Exception;
 use stdClass;
