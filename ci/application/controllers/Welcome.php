@@ -24,7 +24,7 @@ class Welcome extends Rest_Controller {
 		$this->load->view('welcome_message');
 	}
 	
-	public function user_get()
+	public function index_get()
     {
     	echo "user get()";
     	//call would be = index.php/Welcome/user?id=1
