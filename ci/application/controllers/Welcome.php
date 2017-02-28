@@ -30,6 +30,7 @@ class Welcome extends Rest_Controller {
     	//call would be = index.php/Welcome/user?id=1
         $data = array('returned: '. $this->get('id'));
         $this->response($data);
+        
     }
 }
 
