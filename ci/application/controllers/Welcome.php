@@ -19,14 +19,28 @@ class Welcome extends Rest_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index() {
-		$this->load->view('welcome_message');
-	}
-	
-	public function index_get() {
+
+	public function index_get($method) {
     	//call would be = index.php/Welcome/user?id=1
     	//load the model
         $this->load->model('UserAccountModel');
+        echo "Method: " . $method;
+        
+        
+        /*switch statement?
+        switch (n) {
+		case label1:
+		  code to be executed if n=label1;
+		  break;
+		case label2:
+		  code to be executed if n=label2;
+		  break;
+		default:
+		  code to be executed if n is different from both label1 and label2;
+		}*/
+		
+        
+        
         
         if(!$this->get('id')) {
             $this->response(NULL, 400);
