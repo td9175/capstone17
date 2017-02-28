@@ -35,7 +35,7 @@ class Welcome extends Rest_Controller {
  		//go to right function
         $result = $this->UserAccountModel->get_user_id();
          
-        if($user){
+        if($result){
         	//somehow this is printing the result
             $this->response($result, 200); // 200 being the HTTP response code
         }
