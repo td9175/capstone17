@@ -26,28 +26,12 @@ class Welcome extends Rest_Controller {
 	
 	public function index_get()
     {
-    	/*echo "user get()";
+    	echo "user get()";
     	//call would be = index.php/Welcome/user?id=1
         $data = array('returned: '. $this->get('id'));
         $this->response($data);
-        */
-        $this->load->model('UserAccountModel');
-        if(!$this->get('id'))
-        {
-            $this->response(NULL, 400);
-        }
- 		echo "here i am"; 
-        $user = $this->UserAccountModel->get_user_id();
-         
-        if($user)
-        {
-            $this->response($user, 200); // 200 being the HTTP response code
-        }
- 
-        else
-        {
-            $this->response(NULL, 404);
-        }
+        
+       
         
     }
 }
