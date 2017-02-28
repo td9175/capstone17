@@ -45,6 +45,12 @@ class Welcome extends Rest_Controller {
         }
         
     }
+    
+    public function index_post() {
+    
+    	echo "in index_post()";
+    
+    }
 }
 
 ?>
