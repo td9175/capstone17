@@ -51,6 +51,36 @@ class Welcome extends Rest_Controller {
     	echo "in index_post()";
     
     }
+    
+    function ci_curl() {
+    	//need to add arguments for image 
+		
+	 
+		$this->load->library('curl');
+	 
+		$this->curl->create('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr?language=en&detectOrientation =true');
+	 
+ 
+		$this->curl->post(array(
+			'url' => 'receipts/test.png'
+			//'email' => $new_email
+		));
+	 
+		$result = json_decode($this->curl->execute());
+ 
+		if(isset($result->status) && $result->status == 'success')
+		{
+			echo 'User has been updated.';
+		}
+	 
+		else
+		{
+			echo 'Something has gone wrong';
+		}
+	}
+	
+	
 }
+
 
 ?>
