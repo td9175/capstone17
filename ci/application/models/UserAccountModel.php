@@ -5,7 +5,7 @@ class UserAccountModel extends CI_Model {
     
     function get_user_id() {
     	$this->load->database();
-        
+        echo "no here i am";
         $return_arr = array();
 
 		//$fetch = mysql_query("SELECT * FROM table");

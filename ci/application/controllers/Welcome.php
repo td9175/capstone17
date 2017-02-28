@@ -35,7 +35,7 @@ class Welcome extends Rest_Controller {
         {
             $this->response(NULL, 400);
         }
- 
+ 		echo "here i am"; 
         $user = $this->UserAccountModel->get( $this->get('id') );
          
         if($user)
