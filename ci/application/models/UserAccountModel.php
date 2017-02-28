@@ -7,6 +7,7 @@ class UserAccountModel extends CI_Model {
     	$this->load->database();
         $return_arr = array();
 
+		 $query = $this->db->query('SELECT * from UserAccount');
 		 
 		 foreach ($query->result_array() as $row)
 		{
@@ -14,19 +15,16 @@ class UserAccountModel extends CI_Model {
         	//echo $row['email'];
         	//echo $row['first_name'];
         	
+        	
         	$data[] = array(
 				'user_id' => $row['user_id'],
 				'email' => $row['email'],
 				'first_name' => $row['first_name']
 				);
-        	
-        	
-        	
-        	
+        		
 		}
 		 
-		 //$row = $query->row();
-		 //return $row->user_id;
+		
     		return $data;
     
     
