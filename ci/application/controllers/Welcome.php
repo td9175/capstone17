@@ -42,6 +42,7 @@ class Welcome extends Rest_Controller {
         if($user)
         {
             $this->response($user, 200); // 200 being the HTTP response code
+            echo "success";
         }
  
         else
