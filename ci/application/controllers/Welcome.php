@@ -52,7 +52,7 @@ class Welcome extends Rest_Controller {
     
     }
     
-    function ci_curl() {
+    public function ci_curl() {
     	//need to add arguments for image 
 		
 	 

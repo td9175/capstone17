@@ -8,6 +8,7 @@ class UserAccountModel extends CI_Model {
         //$return_arr = array();
 
 		 $query = $this->db->query('SELECT * from UserAccount');
+		 console.log($query);
 		 
 		 foreach ($query->result_array() as $row) {
 
