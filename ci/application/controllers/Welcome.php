@@ -32,3 +32,5 @@ class Welcome extends Rest_Controller {
         $this->response($data);
     }
 }
+
+?>
