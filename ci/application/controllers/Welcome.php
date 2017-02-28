@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require(APPPATH. 'libraries/Rest_Controller.php');
+require('/application/libraries/Rest_Controller.php');
 
 class Welcome extends Rest_Controller {
 
