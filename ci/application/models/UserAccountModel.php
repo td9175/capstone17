@@ -16,14 +16,23 @@ class UserAccountModel extends CI_Model {
         	echo $row['user_id'];
         	echo $row['email'];
         	echo $row['first_name'];
-        	$row['user_id'] = $return_arr['user_id'];
-        	$row['email'] = $return_arr['email'];
-        	$row['first_name'] = $return_arr['first_name'];
+        	//$row['user_id'] = $return_arr['user_id'];
+        	//$row['email'] = $return_arr['email'];
+        	//$row['first_name'] = $return_arr['first_name'];
+        	
+        	$data[] = array(
+				'user_id' => $row['user_id'];
+				
+				) ;
+        	
+        	
+        	
+        	
 		}
 		 
 		 //$row = $query->row();
 		 //return $row->user_id;
-    		return $result_arr;
+    		return $data;
     
     
     }
