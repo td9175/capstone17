@@ -19,34 +19,28 @@ class Welcome extends Rest_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
+	public function index() {
 		$this->load->view('welcome_message');
 	}
 	
-	public function index_get()
-    {
+	public function index_get() {
     	//call would be = index.php/Welcome/user?id=1
-    
     	//load the model
         $this->load->model('UserAccountModel');
-        if(!$this->get('id'))
-        {
+        
+        if(!$this->get('id')) {
             $this->response(NULL, 400);
         }
- 		echo "here i am"; 
+ 		echo "here i am in the Welcome.php controller function index_get()<br></br>"; 
  		//go to right function
-        $user = $this->UserAccountModel->get_user_id();
+        $result = $this->UserAccountModel->get_user_id();
          
-        if($user)
-        {
+        if($user){
         	//somehow this is printing the result
-            $this->response($user, 200); // 200 being the HTTP response code
-            
+            $this->response($result, 200); // 200 being the HTTP response code
         }
  
-        else
-        {
+        else {
             $this->response(NULL, 404);
         }
         
