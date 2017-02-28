@@ -20,10 +20,10 @@ class Welcome extends REST_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function index()
-	{
-		function user_get()
-    {
+	public function index(){
+	
+		function user_get(){
+    
         
         
         
@@ -55,5 +55,5 @@ class Welcome extends REST_Controller {
  
 	}
 	}
-}
+
 ?>
