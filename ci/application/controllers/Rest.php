@@ -6,7 +6,7 @@ class Rest extends REST_Controller {
 
  	function user_get()
     {
-        
+        echo "in user_get()";
         
         
         if(!$this->get('id'))
