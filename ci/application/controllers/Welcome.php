@@ -31,7 +31,7 @@ class Welcome extends Rest_Controller {
         if(!$this->get('id')) {
             $this->response(NULL, 400);
         }
- 		echo "here i am in the Welcome.php controller function index_get()<br></br>"; 
+ 		echo "here i am in the Welcome.php controller function index_get()<br><Br>"; 
  		//go to right function
         $result = $this->UserAccountModel->get_user_id();
          
