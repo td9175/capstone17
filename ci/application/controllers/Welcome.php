@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require 'libraries/REST_Controller.php';
+require '/Users/samiholder/Desktop/capstone/gitHub/capstone17/ci/application/libraries/REST_Controller.php';
+
+
 
 class Welcome extends REST_Controller {
     
