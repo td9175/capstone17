@@ -19,8 +19,16 @@ class Welcome extends Rest_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	/*public function index()
 	{
 		$this->load->view('welcome_message');
-	}
+	}*/
+	
+	function user_get()
+    {
+    	echo "user get()";
+    	//call would be = index.php/Welcome/user?id=1
+        $data = array('returned: '. $this->get('id'));
+        $this->response($data);
+    }
 }
