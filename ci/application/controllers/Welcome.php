@@ -20,26 +20,10 @@ class Welcome extends Rest_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function index_get() {
+	public function user_get() {
     	//call would be = index.php/Welcome/user?id=1
     	//load the model
         $this->load->model('UserAccountModel');
-        echo "Method: " . $method;
-        
-        
-        /*switch statement?
-        switch (n) {
-		case label1:
-		  code to be executed if n=label1;
-		  break;
-		case label2:
-		  code to be executed if n=label2;
-		  break;
-		default:
-		  code to be executed if n is different from both label1 and label2;
-		}*/
-		
-        
         
         
         if(!$this->get('id')) {
@@ -59,12 +43,8 @@ class Welcome extends Rest_Controller {
         }
         
     }
-    
-    public function index_post() {
-    
-    	echo "in index_post()";
-    
-    }
+
+
     
     public function ci_curl() {
     	//need to add arguments for image 
