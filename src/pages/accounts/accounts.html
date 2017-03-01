@@ -7,8 +7,62 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Accounts</h3>
-  <h3>Michael's Code in Here</h3>
+  <h3 align = "center">Hello "User's Name"</h3>
+
+  <ion-list inset>
+    <ion-item-group>
+      <ion-item-divider color="light">HSA Accounts</ion-item-divider>
+      <ion-item-sliding>
+        <ion-item>
+          <h2>"Account Name" - "Account Number"</h2>
+          <p>"Balance"</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="information-circle"></ion-icon>
+            Details
+          </button>
+          <button ion-button color="secondary">
+            <ion-icon name="remove-circle"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      
+      <ion-item>
+        Add HSA Account
+        <ion-icon name="add-circle" item-right></ion-icon>
+      </ion-item>
+    </ion-item-group>
+
+      <br>
+      <br>
+
+    <ion-item-group>
+      <ion-item-divider color="light">FSA Accounts</ion-item-divider>
+      <ion-item-sliding>
+        <ion-item>
+          <h2>"Account Name" - "Account Number"</h2>
+          <p>"Balance"</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="information-circle"></ion-icon>
+            Details
+          </button>
+          <button ion-button color="secondary">
+            <ion-icon name="remove-circle"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      
+      <ion-item>
+        Add FSA Account
+        <ion-icon name="add-circle" item-right></ion-icon>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 
   <button ion-button (click)="helloTest()">Hello World Test</button>
   <button ion-button (click)="fsaTest()">FSA Test</button>
