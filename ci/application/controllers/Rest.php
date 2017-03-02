@@ -11,17 +11,13 @@ require('application/libraries/REST_Controller.php');
 		}
 		
 		
-		public function iget() {
+		public function index() {
 			echo "index_get()";
 			
 		
 		}
 	
-		public function index_post() {
 		
-			echo "index_post()";
-		
-		}
  
 	}
 	
