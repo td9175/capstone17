@@ -3,7 +3,7 @@ class UserAccountModel extends CI_Model {
     
   
     
-    function get_user_id() {
+    function get_users() {
     	$this->load->database();
         //$return_arr = array();
 
@@ -25,6 +25,20 @@ class UserAccountModel extends CI_Model {
     
     
     }
+    
+    function get_user_id($id) {
+    	$this->load->database();
+    	echo "in get_user_id()";
+    	
+    	$data = 'yes'
+    	return $data;
+    
+    
+    
+    
+    }
+    
+    
     
 }
 ?>
