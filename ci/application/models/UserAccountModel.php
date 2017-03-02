@@ -27,14 +27,18 @@ class UserAccountModel extends CI_Model {
     }
     
     function get_user_id($id) {
+    	//http://capstone.td9175.com/ci/index.php/rest/user/id/1
+    	//request for a specfic id 
+    
+    
     	$this->load->database();
     	echo "in get_user_id()";
     	
     	$query = "SELECT * FROM UserAccount WHERE id = ?";
-    	echo "Query: " . $query;
-		//$this->db->query($query, $id);
     	
-    	$data = 'yes';
+		$data = $this->db->query($query, $id);
+		
+    	
     	return $data;
     
     
