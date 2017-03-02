@@ -30,9 +30,7 @@ class UserAccountModel extends CI_Model {
     	//http://capstone.td9175.com/ci/index.php/rest/user/id/1
     	//request for a specfic id 
     
-    
     	$this->load->database();
-    	echo "in get_user_id()";
     	
     	$query = "SELECT * FROM UserAccount WHERE user_id = ?";
     	
@@ -43,16 +41,9 @@ class UserAccountModel extends CI_Model {
 				'email' => $row['email'],
 				'first_name' => $row['first_name']
 			);
-				
-		
-		
 		}
     	
     	return $data;
-    
-    
-    
-    
     }
     
     
