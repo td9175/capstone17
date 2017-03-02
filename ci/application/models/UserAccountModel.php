@@ -30,6 +30,10 @@ class UserAccountModel extends CI_Model {
     	$this->load->database();
     	echo "in get_user_id()";
     	
+    	$query = "SELECT * FROM UserAccount WHERE id = ?";
+    	echo "Query: " . $query;
+		//$this->db->query($query, $id);
+    	
     	$data = 'yes'
     	return $data;
     

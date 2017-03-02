@@ -18,7 +18,7 @@ require('application/libraries/REST_Controller.php');
 				$this->response(NULL, 400);
 			}
  			
-			$user = $this->UserAccountModel->get_user_id($this->'id');
+			$user = $this->UserAccountModel->get_user_id($this->get('id') );
 		 
 			if($user)
 			{
