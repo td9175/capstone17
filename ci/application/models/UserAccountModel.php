@@ -34,7 +34,7 @@ class UserAccountModel extends CI_Model {
     	echo "Query: " . $query;
 		//$this->db->query($query, $id);
     	
-    	$data = 'yes'
+    	$data = 'yes';
     	return $data;
     
     
