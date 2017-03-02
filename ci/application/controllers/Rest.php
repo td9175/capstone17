@@ -12,7 +12,7 @@ require('application/libraries/REST_Controller.php');
 		
 		
 		public function index() {
-			echo "index_get()";
+			echo "index";
 			
 		
 		}
