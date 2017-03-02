@@ -20,7 +20,8 @@ class Welcome extends Rest_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	public function user_get() {
+	public function index_get() {
+		//get all users 
     	//call would be = index.php/Welcome/user?id=1
     	//load the model
         $this->load->model('UserAccountModel');
