@@ -62,7 +62,10 @@ require('application/libraries/REST_Controller.php');
         
         
     	}
+		function test() {
+			echo "test";
 		
+		}
  
 	}
 	
