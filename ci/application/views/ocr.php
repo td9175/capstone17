@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Codeigniter Form Submit Using Post and Get Method</title>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+
 </head>
 <body>
 <div class="main">
@@ -18,7 +18,6 @@ echo form_label('User Name :', 'u_name');
 $data= array(
 'name' => 'u_name',
 'placeholder' => 'Please Enter User Name',
-'class' => 'input_box'
 );
 echo form_input($data);
 
