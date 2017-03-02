@@ -36,8 +36,17 @@ class UserAccountModel extends CI_Model {
     	
     	$query = "SELECT * FROM UserAccount WHERE user_id = ?";
     	
-		$data = $this->db->query($query, $id);
+		 $result = $this->db->query($query, $id);
+		foreach ($result->result_array() as $row) {
+			$data[] = array( 
+				'user_id' => $row['user_id'],
+				'email' => $row['email'],
+				'first_name' => $row['first_name']
+			);
+				
 		
+		
+		}
     	
     	return $data;
     
