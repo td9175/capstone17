@@ -847,7 +847,7 @@ abstract class REST_Controller extends \CI_Controller {
     }
 
     /**
-     * Get the input format e.g. json or xml
+     * Get the ge format e.g. json or xml
      *
      * @access protected
      * @return string|NULL Supported input format; otherwise, NULL

@@ -11,7 +11,7 @@ require('application/libraries/REST_Controller.php');
 		}
 		
 		
-		public function index_get() {
+		public function iget() {
 			echo "index_get()";
 			
 		
