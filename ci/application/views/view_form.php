@@ -6,6 +6,11 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         -->
     </head>
+    
+    	<?php echo form_open('form/data_submitted');
+    			echo form_label('User Name :', 'u_name');
+    			?>
+    	
     <body> 
         <div class="main">
             <div id="content">
