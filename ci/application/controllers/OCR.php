@@ -2,25 +2,40 @@
 //defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ocr extends CI_Controller {
-  
-  
-  
-  
-  	public function __construct() 
+
+
+
+
+  	public function __construct()
 	{
         parent::__construct();
         //$this->config->load('goodRx');
         //$this->load->helper('url');
-		$this->load->helper('form'); 
+		$this->load->helper('form');
     }
 	public function index() {
 		$this->load->view('ocr');
 	}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+
+
+	public function getImage($img){
+
+
+=======
+>>>>>>> Stashed changes
 	
 	
 	public function getImage(){
 	
 		echo "here i am";
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/master
+>>>>>>> Stashed changes
 			//extract data from the post
 		//set POST variables
 		$url = 'https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr?language=en&detectOrientation =true';
@@ -47,11 +62,18 @@ class Ocr extends CI_Controller {
 
 		//close connection
 		curl_close($ch);
-	
+
 		}
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> Stashed changes
 		
 		
 	
+>>>>>>> origin/master
 	}
 
 ?>
