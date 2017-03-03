@@ -1,7 +1,7 @@
 <html>
     <head>		
         <title>Codeigniter Form Submit</title>
-        <!--<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
+        <!--
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="<?php echo base_url(); ?>script/script.js"></script>-->
