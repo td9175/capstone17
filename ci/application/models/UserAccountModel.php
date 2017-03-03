@@ -60,8 +60,8 @@ class UserAccountModel extends CI_Model {
       // Build the query to create a user account
       $query = "INSERT INTO UserAccount (email, hash_pass, first_name, last_name) VALUES (?,?,?,?)";
 
-      //Paramater binding
-      $params = array('$email', '$hash_pass', '$first_name', '$last_name');
+      //Create an array of the parameters for paramater binding
+      $params = array($email, $hash_pass, $first_name, $last_name);
 
       // Execute the query
       if ($this->db->query($query, $params)){
