@@ -13,40 +13,32 @@ class Ocr extends CI_Controller {
         //$this->load->helper('url');
 		$this->load->helper('form'); 
     }
-	public function index()
-	{
-		$this->load->view('ocr');
-	}
 	
 	
 	
-	public function getImage($img){
+	public function getImage(){
 	
-	
+		echo "here i am";
 			//extract data from the post
 		//set POST variables
 		$url = 'https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr?language=en&detectOrientation =true';
-		$body = array(
-			'lname' => urlencode($_POST['last_name']),
-			'fname' => urlencode($_POST['first_name']),
-			'title' => urlencode($_POST['title']),
-			'company' => urlencode($_POST['institution']),
-			'age' => urlencode($_POST['age']),
-			'email' => urlencode($_POST['email']),
-			'phone' => urlencode($_POST['phone'])
-		);
+		$this->headers[] = 'Content-type: application/json';
+		$this->headers[] = 'Ocp-Apim-Subscription-Key: 16eb25ebbaeb430695f63f2b23f22606'; 
+		$this->headers[] = 'Host: westus.api.cognitive.microsoft.com'; 
+		 
+		
+		$body = '{"url":"http://example.com/images/test.jpg"}';
 
-		//url-ify the data for the POST
-		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-		rtrim($fields_string, '&');
+		
 
 		//open connection
 		$ch = curl_init();
 
 		//set the url, number of POST vars, POST data
 		curl_setopt($ch,CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers); 
 		curl_setopt($ch,CURLOPT_POST, count($fields));
-		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $body);
 
 		//execute post
 		$result = curl_exec($ch);
@@ -55,6 +47,8 @@ class Ocr extends CI_Controller {
 		curl_close($ch);
 	
 		}
+		
+		$this->load->view('ocr', $result);
 	
 	}
 
