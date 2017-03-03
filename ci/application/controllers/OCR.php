@@ -13,7 +13,9 @@ class Ocr extends CI_Controller {
         //$this->load->helper('url');
 		$this->load->helper('form'); 
     }
-	
+	public function index() {
+		$this->load->view('ocr');
+	}
 	
 	
 	public function getImage(){
@@ -48,7 +50,7 @@ class Ocr extends CI_Controller {
 	
 		}
 		
-		$this->load->view('ocr', $result);
+		
 	
 	}
 
