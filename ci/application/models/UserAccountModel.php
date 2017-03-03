@@ -45,7 +45,6 @@ class UserAccountModel extends CI_Model {
 
     	return $data;
     }
-<<<<<<< HEAD
 
     function post_user($email, $hash_pass, $first_name, $last_name){
 
@@ -74,15 +73,5 @@ class UserAccountModel extends CI_Model {
     }
 
 
-
-=======
-    
-
-    
-
-    
-    
-    
->>>>>>> origin/master
-}
+  }
 ?>
