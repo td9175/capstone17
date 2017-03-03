@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+//defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ocr extends CI_Controller {
   
@@ -17,7 +17,7 @@ class Ocr extends CI_Controller {
 		$this->load->view('ocr');
 	}
 	
-	/*
+	
 	public function getImage(){
 	
 		echo "here i am";
@@ -48,7 +48,7 @@ class Ocr extends CI_Controller {
 		//close connection
 		curl_close($ch);
 	
-		}*/
+		}
 		
 		
 	
