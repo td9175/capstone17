@@ -16,6 +16,7 @@ import { HelpPage } from './../pages/help/help';
 import { ReportsPage } from './../pages/reports/reports';
 import { AboutPage } from './../pages/about/about';
 import { AccountsPage } from './../pages/accounts/accounts';
+import { MyVaultPage } from './../pages/my-vault/my-vault'; 
 
 import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
@@ -41,7 +42,8 @@ import { BackandService } from '@backand/angular2-sdk';
     TaxInfoPage,
     VaultPage,
     UserSettingsPage,
-    Page2
+    Page2,
+    MyVaultPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -64,6 +66,7 @@ import { BackandService } from '@backand/angular2-sdk';
     VaultPage,
     UserSettingsPage,
     Page2,
+    MyVaultPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, BackandService ]
 })

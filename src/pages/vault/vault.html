@@ -15,11 +15,11 @@
 <ion-content padding>
   <h3 align = "center">"User's Name" Receipt Vault</h3>
 
-  <ion-list inset no-lines>
+  <ion-list no-lines>
     <ion-item-sliding>
       <ion-item>
         <h2>New Receipt</h2>
-        <p>"Take picture of any new receipt."</p>
+        <p>Take picture of any new receipt.</p>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary">
@@ -34,7 +34,7 @@
     <ion-item-sliding>
       <ion-item>
         <h2>Upload</h2>
-        <p>"Add any recent receipts that haven't been add to your cloud yet."</p>
+        <p>Add any recent receipts that haven't been add to your cloud yet.</p>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary">
@@ -49,10 +49,10 @@
     <ion-item-sliding>
       <ion-item>
         <h2>My Vault</h2>
-        <p>"View any receipt you have saved locally and/or to the cloud."</p>
+        <p>View any receipt you have saved locally and/or to the cloud.</p>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="loadMyVaultPage()">
           <ion-icon name="unlock"></ion-icon>
         </button>
       </ion-item-options>

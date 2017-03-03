@@ -1,3 +1,4 @@
+import { MyVaultPage } from './../my-vault/my-vault';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -17,6 +18,10 @@ export class VaultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
+  }
+
+  loadMyVaultPage(){
+    this.navCtrl.push(MyVaultPage);
   }
 
 }
