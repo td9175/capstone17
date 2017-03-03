@@ -17,7 +17,7 @@ class Ocr extends CI_Controller {
 		$this->load->view('ocr');
 	}
 	
-	
+	/*
 	public function getImage(){
 	
 		echo "here i am";
@@ -48,7 +48,7 @@ class Ocr extends CI_Controller {
 		//close connection
 		curl_close($ch);
 	
-		}
+		}*/
 		
 		
 	
