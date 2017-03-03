@@ -11,9 +11,10 @@ class Ocr extends CI_Controller {
         parent::__construct();
         //$this->config->load('goodRx');
         //$this->load->helper('url');
-		$this->load->helper('form');
+		
     }
 	public function index() {
+		$this->load->helper('form');
 		$this->load->view('ocr');
 	}
 <<<<<<< Updated upstream
