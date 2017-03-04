@@ -13,49 +13,32 @@
 </ion-header>
 
 <ion-content padding>
+
   <h3 align = "center">"User's Name" Receipt Vault</h3>
 
   <ion-list no-lines>
-    <ion-item-sliding>
-      <ion-item>
-        <h2>New Receipt</h2>
-        <p>Take picture of any new receipt.</p>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="primary">
-          <ion-icon name="camera"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <button ion-item item-left>
+      <h2>New Receipt</h2>
+      <p>Take picture of any new receipt.</p>
+      <ion-icon name="camera" item-right></ion-icon>
+    </button>
 
     <br>
     <br>
 
-    <ion-item-sliding>
-      <ion-item>
-        <h2>Upload</h2>
-        <p>Add any recent receipts that haven't been add to your cloud yet.</p>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="primary">
-          <ion-icon name="cloud-upload"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <button ion-item item-left>
+      <h2>Upload</h2>
+      <p>Add any recent receipts that haven't<br>been add to your cloud yet.</p>
+      <ion-icon name="cloud-upload" item-right></ion-icon>
+    </button>
     
     <br>
     <br>
 
-    <ion-item-sliding>
-      <ion-item>
-        <h2>My Vault</h2>
-        <p>View any receipt you have saved locally and/or to the cloud.</p>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="primary" (click)="loadMyVaultPage()">
-          <ion-icon name="unlock"></ion-icon>
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+    <button ion-item item-left>
+      <h2>My Vault</h2>
+      <p>View any receipt you have saved locally<br>and/or to the cloud.</p>
+      <ion-icon name="unlock" item-right></ion-icon>
+    </button>
   </ion-list>
 </ion-content>
