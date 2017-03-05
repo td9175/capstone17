@@ -6,10 +6,7 @@ require('application/libraries/REST_Controller.php');
 		function user_get() {
 		//index.php/rest/user/id/1/format/json
 		//"id/1" is the parameter
-        // respond with information about a user
-
-    	//this could be used for login?
-
+    // respond with information about a user
 
     	$this->load->model('UserAccountModel');
 
@@ -30,64 +27,58 @@ require('application/libraries/REST_Controller.php');
 				$this->response(NULL, 404);
 			}
 
-
-
-    	}
+  	}
 
     	function users_get() {
         // respond with information about several users
-
-        //index.php/rest/users
+        // index.php/rest/users
 
         $this->load->model('UserAccountModel');
 
-			if(!$this->get('id'))
-			{
-				$this->response(NULL, 400);
-			}
+  			if(!$this->get('id'))
+  			{
+  				$this->response(NULL, 400);
+  			}
 
-			$users = $this->UserAccountModel->get_users();
+  			$users = $this->UserAccountModel->get_users();
 
-			if($users)
-			{
-				$this->response($users, 200); // 200 being the HTTP response code
-			}
+  			if($users)
+  			{
+  				$this->response($users, 200); // 200 being the HTTP response code
+  			}
 
-			else
-			{
-				$this->response(NULL, 404);
-			}
-
-
+  			else
+  			{
+  				$this->response(NULL, 404);
+  			}
 
     	}
 
-      function user_post(){
-        // load the model
+
+      // RESTful API to register a user
+      function registration_post(){
+
+        // Load the model
         $this->load->model('UserAccountModel');
 
-        // get user information for registration
+        // Get user information for registration
         $email = $this->get('email');
         $hash_pass = $this->get('hash_pass');
         $first_name = $this->get('first_name');
         $last_name = $this->get('last_name');
 
-        //send the user information to the model and create the user account
-        $user = $this->UserAccountModel->post_user($email, $hash_pass, $first_name, $last_name);
+        // Send the user information to the model and try to register the user account
+        $registration_response = $this->UserAccountModel->post_registration($email, $hash_pass, $first_name, $last_name);
 
-        if($user){
-  				$this->response($user, 200); // 200 being the HTTP response code
+        // If registration_response has data respond with it, or 404
+        if($registration_response){
+  				$this->response($registration_response, 200); // 200 being the HTTP response code
   			} else {
   				$this->response(NULL, 404);
   			}
 
       }
 
-
-		function test() {
-			echo "test";
-
-		}
 
 	}
 

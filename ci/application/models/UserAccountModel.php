@@ -46,8 +46,8 @@ class UserAccountModel extends CI_Model {
     	return $data;
     }
 
-    function post_user($email, $hash_pass, $first_name, $last_name){
-    //function post_user($email){
+    function post_registration($email, $hash_pass, $first_name, $last_name){
+    // Send a post request to http://capstone.td9175.com/ci/index.php/Rest/registration/email/value/hash_pass/value/first_name/value/last_name/value
 
       // Load the database
       $this->load->database();
@@ -60,11 +60,6 @@ class UserAccountModel extends CI_Model {
 
       // Build the query to create a user account
       $query = "INSERT INTO UserAccount (email, hash_pass, first_name, last_name) VALUES (?,?,?,?)";
-
-      // testing variables - make sure to delete this
-      // $hash_pass = "password";
-      // $first_name = "bobby";
-      // $last_name = "fink";
 
       // Create an array of the parameters for paramater binding
       $params = array($email, $hash_pass, $first_name, $last_name);
