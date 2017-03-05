@@ -47,7 +47,7 @@ class UserAccountModel extends CI_Model {
     }
 
     //function post_user($email, $hash_pass, $first_name, $last_name){
-    function post_user($email){
+    function post_user_email($email){
       // Load the database
       $this->load->database();
 
