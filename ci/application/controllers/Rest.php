@@ -73,7 +73,7 @@ require('application/libraries/REST_Controller.php');
         $last_name = $this->get('last_name');
 
         //send the user information to the model and create the user account
-        $user = $this->UserAccountModel->post_user($email, $hash_pass, $first_name, $last_name);
+        $user = $this->UserAccountModel->post_user_email($email, $hash_pass, $first_name, $last_name);
 
         if($user){
   				$this->response($user, 200); // 200 being the HTTP response code
