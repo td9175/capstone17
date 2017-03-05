@@ -32,11 +32,11 @@
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("demo").innerHTML =
-        this.responseText;
+        document.getElementById("demo").innerHTML = this.responseText;
       }
     };
-    xhttp.open("POST", "Rest/registration/" + "email/" + email + "/hash_pass/" + password + "/first_name/" + first_name + "/last_name/" + last_name, true);
-    xhttp.send();
+    xhttp.open("POST", "Rest/registration/" + , true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("email/" + email + "/hash_pass/" + password + "/first_name/" + first_name + "/last_name/" + last_name);
   }
 </script>
