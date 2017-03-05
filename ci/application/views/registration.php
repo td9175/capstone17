@@ -20,7 +20,6 @@
 
 </html>
 
-
 <script>
   function register_account() {
 
@@ -37,7 +36,7 @@
         this.responseText;
       }
     };
-    xhttp.open("POST", "http://capstone.td9175.com/ci/index.php/Rest/registration/" + "email/" + email + "/hash_pass/" + password + "/first_name/" + first_name + "/last_name/" + last_name, true);
+    xhttp.open("POST", "Rest/registration/" + "email/" + email + "/hash_pass/" + password + "/first_name/" + first_name + "/last_name/" + last_name, true);
     xhttp.send();
   }
 </script>
