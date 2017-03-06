@@ -13,12 +13,12 @@
   <h1>Register for UMB Health Spending App</h1>
 
   <form>
-    <input type='text' id='email' placeholder='Email address'><br>
-    <input type='password' id='password' placeholder='Password'><br>
-    <input type='password' id='password_check' placeholder='Password again'><br>
-    <input type='text' id='first_name' placeholder='First name'><br>
-    <input type='text' id='last_name' placeholder='Last name'><br>
-    <button id='submit_registration'>Register now!</button<br>
+    <input type='text' id='email' placeholder='Email address'><br><br>
+    <input type='password' id='password' placeholder='Password'><br><br>
+    <input type='password' id='password_check' placeholder='Password again'><br><br>
+    <input type='text' id='first_name' placeholder='First name'><br><br>
+    <input type='text' id='last_name' placeholder='Last name'><br><br>
+    <button id='submit_registration'>Register now!</button>
 
     <label id='response'></label>
   </form>
