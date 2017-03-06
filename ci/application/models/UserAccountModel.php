@@ -76,6 +76,35 @@ class UserAccountModel extends CI_Model {
 
     }
 
+    function post_login($email){
+    // Send a post request to http://capstone.td9175.com/ci/index.php/Rest/registration/email/value/hash_pass/value/first_name/value/last_name/value
+
+      // Load the database
+      $this->load->database();
+
+      // Sanitize the user input
+      $email = $this->db->escape($email);
+
+      // Build the query to check for account with an email provided by the user
+      $query = "SELECT hash_pass FROM UserAccount WHERE email=?)";
+
+      // Execute the query
+      if ($result = $this->db->query($query, $email)){
+
+        $data['hash_pass'] = $result->hash_pass;
+
+      } else {
+
+        // $data['login'] = "Email or password incorrect.";
+        $data['login'] = "Email not found";
+
+      }
+
+      // Pass back the data
+      return $data;
+
+    }
+
 
   }
 ?>

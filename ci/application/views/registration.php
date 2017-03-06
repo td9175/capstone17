@@ -1,7 +1,7 @@
 <html>
 <head>
 
-  <title>UMB Health Spending App Registration</title>
+  <title>Registration UMB Health Spending App</title>
 
   <!-- Load jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -17,8 +17,6 @@
         var password_check = $('#password_check').val();
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
-
-        console.log("Password: " + password);
 
         var url = "https://capstone.td9175.com/ci/index.php/Rest/registration";
 

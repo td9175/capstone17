@@ -6,7 +6,7 @@ require('application/libraries/REST_Controller.php');
 		function user_get() {
 		//index.php/rest/user/id/1/format/json
 		//"id/1" is the parameter
-		
+
     	$this->load->model('UserAccountModel');
 
 			if(!$this->get('id'))
@@ -83,6 +83,40 @@ require('application/libraries/REST_Controller.php');
   			}
 
       }
+
+			// RESTful API to login a user
+			// Author: Robert Fink
+      function login_post(){
+
+        // Load the model
+        $this->load->model('UserAccountModel');
+
+				// Get user information for registration
+        $email = $this->post('email');
+        $password = $this->post('password');
+
+				// Send the user information to the model to check for the email
+        $login_response = $this->UserAccountModel->post_login($email);
+
+				console.log("Rest controller login response: " . $login_response);
+
+				$hash_pass = $login_response->hash_pass;
+
+				// Check if the password matches the hashed password in the database
+				if (password_verify($password, $hash_pass)){
+
+					// Log in, redirect to landing page
+					$this->load->view('landing_page');
+
+				} else {
+
+					// Error
+					$error_response = "Email or password incorrect";
+  				$this->load->view('login', $error_response);
+  			}
+
+      }
+
 
 
 	}
