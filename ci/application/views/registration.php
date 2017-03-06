@@ -18,7 +18,7 @@
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
 
-        var url = "http://capstone.td9175.com/ci/index.php/Rest/registration";
+        var url = "https://capstone.td9175.com/ci/index.php/Rest/registration";
 
           $.post(url,
           {
