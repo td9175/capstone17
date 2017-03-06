@@ -1,10 +1,44 @@
 <html>
 <head>
 
-  <title>Register for UMB Health Spending App</title>
+  <title>Register for UMB Health Spending App Now</title>
 
   <!-- Load jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script>
+  $(document).ready(function(){
+      $("#submit_registration").click(function(){
+
+        $("#submit_registration").value = "Loading";
+
+        // var email= $('#email').val();
+        // var password = $('#password').val();
+        // var password_check = $('#password_check').val();
+        // var first_name = $('#first_name').val();
+        // var last_name = $('#last_name').val();
+
+        console.log($('#email').val());
+        console.log($('#password').val());
+        console.log($('#first_name').val());
+        console.log($('#last_name').val());
+
+        var url = "http://capstone.td9175.com/ci/index.php/Rest/registration";
+
+          $.post(url,
+          {
+            email: $('#email').val(),
+            password: $('#password').val(),
+            first_name: $('#first_name').val(),
+            last_name: $('#last_name').val()
+          },
+          function(data, status){
+              $("response").text = "Data: " + data + "\nStatus: " + status;
+          });
+
+      });
+  });
+  </script>
 
 </head>
 
@@ -26,39 +60,7 @@
 
 </html>
 
-<script>
-$(document).ready(function(){
-    $("submit_registration").click(function(){
 
-      $("submit_registration").value = "Loading";
-
-      // var email= $('#email').val();
-      // var password = $('#password').val();
-      // var password_check = $('#password_check').val();
-      // var first_name = $('#first_name').val();
-      // var last_name = $('#last_name').val();
-
-      console.log($('#email').val());
-      console.log($('#password').val());
-      console.log($('#first_name').val());
-      console.log($('#last_name').val());
-
-      var url = "http://capstone.td9175.com/ci/index.php/Rest/registration";
-
-        $.post(url,
-        {
-          email: $('#email').val(),
-          password: $('#password').val(),
-          first_name: $('#first_name').val(),
-          last_name: $('#last_name').val()
-        },
-        function(data, status){
-            $("response").text = "Data: " + data + "\nStatus: " + status;
-        });
-
-    });
-});
-</script>
 
 
 
