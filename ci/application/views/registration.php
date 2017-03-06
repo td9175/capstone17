@@ -18,7 +18,9 @@
     <input type='password' id='password_check' placeholder='Password again'><br>
     <input type='text' id='first_name' placeholder='First name'><br>
     <input type='text' id='last_name' placeholder='Last name'><br>
-    <button id='submit_registration'>Register now!></button<br>
+    <button id='submit_registration'>Register now!</button<br>
+
+    <label id='response'></label>
   </form>
 
 </body>
@@ -29,13 +31,17 @@
 $(document).ready(function(){
     $("submit_registration").click(function(){
 
-      var email = $('#email').val();
+      $("submit_registration").innerHTML = "Loading";
+
+      var email= $('#email').val();
       var password = $('#password').val();
       var password_check = $('#password_check').val();
       var first_name = $('#first_name').val();
       var last_name = $('#last_name').val();
 
-        $.post("Rest/registration",
+      var url = "http://capstone.td9175.com/ci/index.php/Rest/registration";
+
+        $.post(url,
         {
           email: email,
           password: password,
@@ -43,8 +49,10 @@ $(document).ready(function(){
           last_name: last_name
         },
         function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
+            $("response").innerHTML = "Data: " + data + "\nStatus: " + status;
         });
+
+        // $("submit_registration").innerHTML = "Register now!";
     });
 });
 </script>
