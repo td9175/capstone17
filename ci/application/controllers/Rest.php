@@ -62,10 +62,16 @@ require('application/libraries/REST_Controller.php');
         $this->load->model('UserAccountModel');
 
         // Get user information for registration
-        $email = $this->get('email');
-        $hash_pass = $this->get('hash_pass');
-        $first_name = $this->get('first_name');
-        $last_name = $this->get('last_name');
+        // $email = $this->get('email');
+        // $hash_pass = $this->get('hash_pass');
+        // $first_name = $this->get('first_name');
+        // $last_name = $this->get('last_name');
+
+				// Get user information for registration
+        $email = $this->post('email');
+        $hash_pass = $this->post('hash_pass');
+        $first_name = $this->post('first_name');
+        $last_name = $this->post('last_name');
 
         // Send the user information to the model and try to register the user account
         $registration_response = $this->UserAccountModel->post_registration($email, $hash_pass, $first_name, $last_name);
