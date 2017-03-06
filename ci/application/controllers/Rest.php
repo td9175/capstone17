@@ -6,8 +6,7 @@ require('application/libraries/REST_Controller.php');
 		function user_get() {
 		//index.php/rest/user/id/1/format/json
 		//"id/1" is the parameter
-    // respond with information about a user
-
+		
     	$this->load->model('UserAccountModel');
 
 			if(!$this->get('id'))
@@ -56,31 +55,31 @@ require('application/libraries/REST_Controller.php');
 
 
       // RESTful API to register a user
+			// Author: Robert Fink
       function registration_post(){
 
         // Load the model
         $this->load->model('UserAccountModel');
 
-        // Get user information for registration
-        // $email = $this->get('email');
-        // $hash_pass = $this->get('hash_pass');
-        // $first_name = $this->get('first_name');
-        // $last_name = $this->get('last_name');
-
 				// Get user information for registration
         $email = $this->post('email');
-        $hash_pass = $this->post('hash_pass');
+        $password = $this->post('password');
         $first_name = $this->post('first_name');
         $last_name = $this->post('last_name');
+
+				// Hash the password for security
+				// Beware that DEFAULT may change over time, so you would want to prepare
+				// By allowing your storage to expand past 60 characters (255 would be good)
+				$hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
         // Send the user information to the model and try to register the user account
         $registration_response = $this->UserAccountModel->post_registration($email, $hash_pass, $first_name, $last_name);
 
-        // If registration_response has data respond with it, or 404
+        // If registration_response has data respond with data and success, or 404
         if($registration_response){
-  				$this->response($registration_response, 200); // 200 being the HTTP response code
+  				$this->response($registration_response, 200); // 200 Success
   			} else {
-  				$this->response(NULL, 404);
+  				$this->response(NULL, 404); // 404 Not found
   			}
 
       }

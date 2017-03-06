@@ -66,9 +66,9 @@ class UserAccountModel extends CI_Model {
 
       // Execute the query
       if ($this->db->query($query, $params)){
-        $data['registration'] = "Much success! User created.\n";
+        $data['registration'] = "Much success! Account created. Go login.\n";
       } else {
-        $data['registration'] = "Error! User registration failed.\n";
+        $data['registration'] = "Error! Account registration failed.\n";
       }
 
       // Pass back the data
