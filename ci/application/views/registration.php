@@ -10,18 +10,17 @@
 
 <body>
 
-  <h1>Register for UMB Health Spending App</h1>
+  <h1>Register for UMB Health Spending App Now</h1>
 
-  <form>
-    <input type='text' id='email' placeholder='Email address'><br><br>
-    <input type='password' id='password' placeholder='Password'><br><br>
-    <input type='password' id='password_check' placeholder='Password again'><br><br>
-    <input type='text' id='first_name' placeholder='First name'><br><br>
-    <input type='text' id='last_name' placeholder='Last name'><br><br>
-    <button id='submit_registration'>Register now!</button>
+  <input type='text' id='email' placeholder='Email address'><br><br>
+  <input type='password' id='password' placeholder='Password'><br><br>
+  <input type='password' id='password_check' placeholder='Password again'><br><br>
+  <input type='text' id='first_name' placeholder='First name'><br><br>
+  <input type='text' id='last_name' placeholder='Last name'><br><br>
+  <button id='submit_registration'>Register now!</button>
 
-    <label id='response'></label>
-  </form>
+  <label id='response'></label>
+
 
 </body>
 
@@ -31,28 +30,32 @@
 $(document).ready(function(){
     $("submit_registration").click(function(){
 
-      $("submit_registration").innerHTML = "Loading";
+      $("submit_registration").value = "Loading";
 
-      var email= $('#email').val();
-      var password = $('#password').val();
-      var password_check = $('#password_check').val();
-      var first_name = $('#first_name').val();
-      var last_name = $('#last_name').val();
+      // var email= $('#email').val();
+      // var password = $('#password').val();
+      // var password_check = $('#password_check').val();
+      // var first_name = $('#first_name').val();
+      // var last_name = $('#last_name').val();
+
+      console.log($('#email').val());
+      console.log($('#password').val());
+      console.log($('#first_name').val());
+      console.log($('#last_name').val());
 
       var url = "http://capstone.td9175.com/ci/index.php/Rest/registration";
 
         $.post(url,
         {
-          email: email,
-          password: password,
-          first_name: first_name,
-          last_name: last_name
+          email: $('#email').val(),
+          password: $('#password').val(),
+          first_name: $('#first_name').val(),
+          last_name: $('#last_name').val()
         },
         function(data, status){
-            $("response").innerHTML = "Data: " + data + "\nStatus: " + status;
+            $("response").text = "Data: " + data + "\nStatus: " + status;
         });
 
-        // $("submit_registration").innerHTML = "Register now!";
     });
 });
 </script>
