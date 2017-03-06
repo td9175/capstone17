@@ -10,13 +10,15 @@
   $(document).ready(function(){
       $("#submit_registration").click(function(){
 
-        $("#submit_registration").value = "Loading";
+        $("#submit_registration").text = "Loading";
 
         var email= $('#email').val();
         var password = $('#password').val();
         var password_check = $('#password_check').val();
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
+
+        console.log("Password: " + password);
 
         var url = "https://capstone.td9175.com/ci/index.php/Rest/registration";
 
@@ -39,7 +41,7 @@
 
 <body>
 
-  <h1>Register for UMB Health Spending App</h1>
+  <h1>Register for UMB Health Spending App Now!</h1>
 
   <input type='text' id='email' placeholder='Email address'><br><br>
   <input type='password' id='password' placeholder='Password'><br><br>
@@ -48,7 +50,7 @@
   <input type='text' id='last_name' placeholder='Last name'><br><br>
   <button id='submit_registration'>Register now!</button><br><br>
 
-  <label id='response'></label>
+  <p id='response'></p>
 
 </body>
 
