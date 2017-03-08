@@ -14,7 +14,7 @@
 
 <ion-content padding>
 
-  <h3 align = "center">"User's Name" Receipt Vault</h3>
+  <h2 align = "center">"User's Name" Receipt Vault</h2>
 
   <ion-list no-lines>
     <button ion-item item-left>
@@ -35,7 +35,7 @@
     <br>
     <br>
 
-    <button ion-item item-left>
+    <button ion-item item-left (click)="loadMyVaultPage()">
       <h2>My Vault</h2>
       <p>View any receipt you have saved locally<br>and/or to the cloud.</p>
       <ion-icon name="unlock" item-right></ion-icon>
