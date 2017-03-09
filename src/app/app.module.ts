@@ -1,3 +1,4 @@
+import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import io from 'socket.io-client';
@@ -43,7 +44,8 @@ import { BackandService } from '@backand/angular2-sdk';
     VaultPage,
     UserSettingsPage,
     Page2,
-    MyVaultPage
+    MyVaultPage,
+    AddReceiptPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -67,6 +69,7 @@ import { BackandService } from '@backand/angular2-sdk';
     UserSettingsPage,
     Page2,
     MyVaultPage,
+    AddReceiptPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, BackandService ]
 })
