@@ -17,7 +17,7 @@
   <h2 align = "center">"User's Name" Receipt Vault</h2>
 
   <ion-list no-lines>
-    <button ion-item item-left>
+    <button ion-item item-left (click)="loadAddRecieptPage()">
       <h2>New Receipt</h2>
       <p>Take picture of any new receipt.</p>
       <ion-icon name="camera" item-right></ion-icon>
@@ -26,7 +26,7 @@
     <br>
     <br>
 
-    <button ion-item item-left>
+    <button ion-item item-left (click)="loadUploadPage()">
       <h2>Upload</h2>
       <p>Add any recent receipts that haven't<br>been add to your cloud yet.</p>
       <ion-icon name="cloud-upload" item-right></ion-icon>

@@ -1,3 +1,4 @@
+import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 //import { importBackandService } from '@backand/angular2-sdk';
 //import { Backand } from './../providers/backand';
 import { Component, ViewChild } from '@angular/core';
