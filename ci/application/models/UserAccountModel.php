@@ -90,10 +90,10 @@ class UserAccountModel extends CI_Model {
 
       echo "<script>console.log('Query = ' + $query)</script>";
       echo "<script>console.log('Email = ' + $email)</script>";
-
+      echo "<script>console.log('Checkpoint 1')</script>";
+      
       // Execute the query
       if ($result = $this->db->query($query, $email)){
-        echo "<script>console.log('Result = ' + $result)</script>";
 
         $data['login_result'] = $result;
 
