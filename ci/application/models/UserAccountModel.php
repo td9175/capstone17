@@ -91,12 +91,12 @@ class UserAccountModel extends CI_Model {
       // Execute the query
       if ($result = $this->db->query($query, $email)){
 
-        $data['hash_pass'] = $result->hash_pass;
+        $data['login_result'] = $result;
 
       } else {
 
         // $data['login'] = "Email or password incorrect.";
-        $data['login'] = "Email not found";
+        $data['login_result'] = "Email not found";
 
       }
 

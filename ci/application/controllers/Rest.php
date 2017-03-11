@@ -95,24 +95,31 @@ require('application/libraries/REST_Controller.php');
         $email = $this->post('email');
         $password = $this->post('password');
 
-				// Send the user information to the model to check for the email - response is hash_pass if the email exists
-        $response = $this->UserAccountModel->post_login($email);
+				// Send the user information to the model to check for the email
+        $login_response = $this->UserAccountModel->post_login($email);
 
-				console.log("Rest controller login response: " . $response);
-				console.log("checkpoint 1");
-
-				// Check if the password matches the hashed password in the database
-				if (password_verify($password, $response->hash_pass)){
-
-					// Log in, redirect to landing page
-					$this->load->view('landing_page');
-
-				} else {
-
-					// Error
-					$error_response = "Email or password incorrect";
-  				$this->load->view('login', $error_response);
+				// If registration_response has data respond with data and success, or 404
+        if($login_response){
+  				$this->response($login_response, 200); // 200 Success
+  			} else {
+  				$this->response(NULL, 404); // 404 Not found
   			}
+				// 
+				// console.log("Rest controller login response: " . $response);
+				// console.log("checkpoint 1");
+				//
+				// // Check if the password matches the hashed password in the database
+				// if (password_verify($password, $response->hash_pass)){
+				//
+				// 	// Log in, redirect to landing page
+				// 	$this->load->view('landing_page');
+				//
+				// } else {
+				//
+				// 	// Error
+				// 	$error_response = "Email or password incorrect";
+  			// 	$this->load->view('login', $error_response);
+  			// }
 
       }
 
