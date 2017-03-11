@@ -98,13 +98,16 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
+
+				var_dump($login_response);
+
 				// If registration_response has data respond with data and success, or 404
-        if($login_response){
-  				$this->response($login_response, 200); // 200 Success
-  			} else {
-  				$this->response(NULL, 404); // 404 Not found
-  			}
-				// 
+        // if($login_response){
+  			// 	$this->response($login_response, 200); // 200 Success
+  			// } else {
+  			// 	$this->response(NULL, 404); // 404 Not found
+  			// }
+				//
 				// console.log("Rest controller login response: " . $response);
 				// console.log("checkpoint 1");
 				//

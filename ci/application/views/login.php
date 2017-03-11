@@ -1,7 +1,7 @@
 <html>
 <head>
 
-  <title>Login to UMB Health Spending App</title>
+  <title>Login to UMB Health Spending App Now</title>
 
   <!-- Load jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
