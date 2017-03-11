@@ -95,15 +95,13 @@ require('application/libraries/REST_Controller.php');
         $email = $this->post('email');
         $password = $this->post('password');
 
-				// Send the user information to the model to check for the email
-        $login_response = $this->UserAccountModel->post_login($email);
+				// Send the user information to the model to check for the email - response is hash_pass if the email exists
+        $response = $this->UserAccountModel->post_login($email);
 
-				console.log("Rest controller login response: " . $login_response);
-
-				$hash_pass = $login_response->hash_pass;
+				console.log("Rest controller login response: " . $response);
 
 				// Check if the password matches the hashed password in the database
-				if (password_verify($password, $hash_pass)){
+				if (password_verify($password, $response->hash_pass)){
 
 					// Log in, redirect to landing page
 					$this->load->view('landing_page');

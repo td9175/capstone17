@@ -10,7 +10,7 @@
   $(document).ready(function(){
       $("#submit_login").click(function(){
 
-        $("#submit_login").text = "Loading";
+        // $("#submit_login").text = "Loading";
 
         var email= $('#email').val();
         var password = $('#password').val();
@@ -48,7 +48,7 @@
 
    ?>
 
-  <!-- <p id='response'></p> -->
+  <p id='response'></p>
 
 
 
