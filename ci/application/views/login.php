@@ -11,6 +11,7 @@
       $("#submit_login").click(function(){
 
         // $("#submit_login").text = "Loading";
+        $("#response").innerHTML = "The submit login button has been clicked";
 
         var email= $('#email').val();
         var password = $('#password').val();
@@ -23,7 +24,7 @@
             password: $('#password').val()
           },
           function(data, status){
-              $("#response").text = "Data: " + data + "\nStatus: " + status;
+              $("#response").innerHTML = "Data: " + data + "\nStatus: " + status;
           });
 
       });
@@ -34,7 +35,7 @@
 
 <body>
 
-  <h1>Login to UMB Health Spending App Now</h1>
+  <h1>Login to UMB Health Spending App</h1>
 
   <input type='text' id='email' placeholder='Email address'><br><br>
   <input type='password' id='password' placeholder='Password'><br><br>
