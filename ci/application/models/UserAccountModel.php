@@ -93,12 +93,12 @@ class UserAccountModel extends CI_Model {
 
         // Insert the associated hash_pass into the data array
         foreach ($result->result_array() as $row) {
-    			$data['login_result'] = $row['hash_pass'];
+    			$data['hash_pass'] = $row['hash_pass'];
     		}
 
       } else {
         // Email not found
-        $data['login_result'] = "Email address not found.";
+        $data['hash_pass'] = "Email address not found.";
 
       }
 
