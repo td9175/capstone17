@@ -86,12 +86,12 @@ class UserAccountModel extends CI_Model {
       // $email = $this->db->escape($email);
 
       // Build the query to check for account with an email provided by the user
-      $query = "SELECT * FROM UserAccount WHERE email=?";
+      $query = "SELECT * FROM UserAccount WHERE email='?'";
 
       echo "<script>console.log('Query = ' + $query)</script>";
       echo "<script>console.log('Email = ' + $email)</script>";
       echo "<script>console.log('Checkpoint 1')</script>";
-      
+
       // Execute the query
       if ($result = $this->db->query($query, $email)){
 
