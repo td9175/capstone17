@@ -53,10 +53,10 @@ class UserAccountModel extends CI_Model {
       $this->load->database();
 
       // Sanitize the user input
-      $email = $this->db->escape($email);
-      $hash_pass = $this->db->escape($hash_pass);
-      $first_name = $this->db->escape($first_name);
-      $last_name = $this->db->escape($last_name);
+      // $email = $this->db->escape($email);
+      // $hash_pass = $this->db->escape($hash_pass);
+      // $first_name = $this->db->escape($first_name);
+      // $last_name = $this->db->escape($last_name);
 
       // Build the query to create a user account
       $query = "INSERT INTO UserAccount (email, hash_pass, first_name, last_name) VALUES (?,?,?,?)";
@@ -83,7 +83,7 @@ class UserAccountModel extends CI_Model {
       $this->load->database();
 
       // Sanitize the user input
-      $email = $this->db->escape($email);
+      // $email = $this->db->escape($email);
 
       // Build the query to check for account with an email provided by the user
       $query = "SELECT hash_pass FROM UserAccount WHERE email=?)";

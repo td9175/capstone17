@@ -99,6 +99,7 @@ require('application/libraries/REST_Controller.php');
         $response = $this->UserAccountModel->post_login($email);
 
 				console.log("Rest controller login response: " . $response);
+				console.log("checkpoint 1");
 
 				// Check if the password matches the hashed password in the database
 				if (password_verify($password, $response->hash_pass)){
