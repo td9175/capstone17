@@ -111,18 +111,19 @@ require('application/libraries/REST_Controller.php');
 				// console.log("Rest controller login response: " . $response);
 				// console.log("checkpoint 1");
 				//
-				// // Check if the password matches the hashed password in the database
-				// if (password_verify($password, $response->hash_pass)){
-				//
-				// 	// Log in, redirect to landing page
-				// 	$this->load->view('landing_page');
-				//
-				// } else {
-				//
-				// 	// Error
-				// 	$error_response = "Email or password incorrect";
-  			// 	$this->load->view('login', $error_response);
-  			// }
+
+				// Check if the password matches the hashed password in the database
+				if (password_verify($password, $login_response['hash_pass'])){
+					echo '<script>console.log("login success!")</script>';
+					// Log in, redirect to landing page
+					$this->load->view('landing_page');
+
+				} else {
+					echo '<script>console.log("login failure")</script>';
+					// Error
+					$error_response = "Email or password incorrect";
+  				$this->load->view('login', $error_response);
+  			}
 
       }
 
