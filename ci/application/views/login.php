@@ -1,7 +1,7 @@
 <html>
 <head>
 
-  <title>Login to UMB Health Spending App Now</title>
+  <title>Login to UMB Health Spending App</title>
 
   <!-- Load jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -34,7 +34,7 @@
 
 <body>
 
-  <h1>Login to UMB Health Spending App</h1>
+  <h1>Login to UMB Health Spending App Now</h1>
 
   <input type='text' id='email' placeholder='Email address'><br><br>
   <input type='password' id='password' placeholder='Password'><br><br>
