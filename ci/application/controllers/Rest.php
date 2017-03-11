@@ -99,7 +99,7 @@ require('application/libraries/REST_Controller.php');
         $login_response = $this->UserAccountModel->post_login($email);
 
 
-				var_dump($login_response);
+				// var_dump($login_response);
 
 				// If registration_response has data respond with data and success, or 404
         // if($login_response){
@@ -114,7 +114,7 @@ require('application/libraries/REST_Controller.php');
 
 				// Check if the password matches the hashed password in the database
 				if (password_verify($password, $login_response['hash_pass'])){
-					echo '<script>console.log("login success!")</script>';
+					header("Location: landing_page.php");
 					// Log in, redirect to landing page
 					$this->load->view('landing_page');
 
