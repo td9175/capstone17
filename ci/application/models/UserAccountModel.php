@@ -86,7 +86,7 @@ class UserAccountModel extends CI_Model {
       // $email = $this->db->escape($email);
 
       // Build the query to check for account with an email provided by the user
-      $query = "SELECT hash_pass FROM UserAccount WHERE email=?)";
+      $query = "SELECT hash_pass FROM UserAccount WHERE email=?";
 
       // Execute the query
       if ($result = $this->db->query($query, $email)){
