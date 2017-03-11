@@ -114,9 +114,9 @@ require('application/libraries/REST_Controller.php');
 
 				// Check if the password matches the hashed password in the database
 				if (password_verify($password, $login_response['hash_pass'])){
-					header("Location: landing_page.php");
+					header("Location: https://capstone.td9175.com/ci/index.php/LandingPage");
 					// Log in, redirect to landing page
-					$this->load->view('landing_page');
+					// $this->load->view('landing_page');
 
 				} else {
 					echo '<script>console.log("login failure")</script>';
