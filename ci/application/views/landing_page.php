@@ -1,5 +1,5 @@
 <?php
 
-  echo "You are logged in!";
+  echo "You are logged in! Much success!";
 
  ?>
