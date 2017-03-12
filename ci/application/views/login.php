@@ -43,7 +43,7 @@
 
 <body>
 
-  <h1>Login to UMB Health Spending App</h1>
+  <h1>Login to UMB Health Spending App!</h1>
 
   <input type='text' id='email' placeholder='Email address'><br><br>
   <input type='password' id='password' placeholder='Password'><br><br>
