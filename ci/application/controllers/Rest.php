@@ -88,6 +88,9 @@ require('application/libraries/REST_Controller.php');
 			// Author: Robert Fink
       function login_post(){
 
+				// Set the initial logged_in flag to FALSE
+				$logged_in = "FALSE";
+
         // Load the model
         $this->load->model('UserAccountModel');
 
@@ -98,8 +101,10 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				// Set the initial logged_in flag to FALSE
-				$logged_in = "FALSE";
+				if (!isset($login_response)){
+					// Email not found, pass back a response with $logged_in = FALSE, 200 Success
+					$this->response($login_response, 200);
+				}
 
 				// Check if the password hashes match
 				if (password_verify($password, $login_response['hash_pass'])){
@@ -110,12 +115,12 @@ require('application/libraries/REST_Controller.php');
 					// Set the session variable
 					$_SESSION['email'] = $email;
 
-					// Send back a response with $logged_in = TRUE, 200 Success
+					// Email and password match, send back a response with $logged_in = TRUE, 200 Success
   				$this->response($logged_in, 200);
 
 	  			} else {
 
-						// Send back a response with $logged_in = FALSE, 200 Success
+						// Password does not match, send back a response with $logged_in = FALSE, 200 Success
 	  				$this->response($logged_in, 200);
 	  			}
       }
