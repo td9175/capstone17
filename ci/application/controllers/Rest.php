@@ -99,13 +99,13 @@ require('application/libraries/REST_Controller.php');
         $login_response = $this->UserAccountModel->post_login($email);
 
 				// Set the initial logged_in flag to FALSE
-				$logged_in = FALSE;
+				$logged_in = "FALSE";
 
 				// Check if the password hashes match
 				if (password_verify($password, $login_response['hash_pass'])){
 
 					// Set the login_message flag to TRUE
-					$logged_in = TRUE;
+					$logged_in = "TRUE";
 
 					// Set the session variable
 					$_SESSION['email'] = $email;
