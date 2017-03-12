@@ -23,13 +23,13 @@
             console.log("Data: " + data);
             console.log("Status: " + status);
 
-            if (data == "TRUE"){
+            if (data == "true"){
 
               // Redirect to the landing page
               var landingPage = "https://capstone.td9175.com/ci/index.php/LandingPage";
               window.location.replace(landingPage);
 
-            } else if (data == "FALSE") {
+            } else if (data == "false") {
 
               $("#response").html("Incorrect email or password.");
             }
@@ -43,7 +43,7 @@
 
 <body>
 
-  <h1>Login to UMB Health Spending App</h1>
+  <h1>Login to UMB Health Spending App!</h1>
 
   <input type='text' id='email' placeholder='Email address'><br><br>
   <input type='password' id='password' placeholder='Password'><br><br>
