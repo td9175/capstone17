@@ -23,7 +23,7 @@
             console.log("Data: " + data);
             console.log("Status: " + status);
 
-            if (data == "true"){
+            if (data == "Success"){
 
               // Redirect to the landing page
               var landingPage = "https://capstone.td9175.com/ci/index.php/LandingPage";
@@ -43,7 +43,7 @@
 
 <body>
 
-  <h1>Login to UMB Health Spending App!</h1>
+  <h1>Login to UMB Health Spending App</h1>
 
   <input type='text' id='email' placeholder='Email address'><br><br>
   <input type='password' id='password' placeholder='Password'><br><br>
