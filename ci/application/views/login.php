@@ -25,6 +25,7 @@
           },
           function(data, status){
               $("#response").html("Data: " + data + "\nStatus: " + status);
+              console.log("Data: " + data + "\nStatus: " + status);
           });
 
       });

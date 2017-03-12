@@ -107,9 +107,6 @@ require('application/libraries/REST_Controller.php');
 					// Set the login_success flag to true
 					$login_success = true;
 
-					// Start the session
-					session_start();
-
 					// Set the session variable
 					$_SESSION['email'] = $email;
 
