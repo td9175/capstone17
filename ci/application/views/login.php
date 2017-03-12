@@ -26,8 +26,8 @@
             if (data === "TRUE"){
 
               // Redirect to the landing page
-              var landingPage = "https://capstone.td9175.com/ci/index.php/LandingPage";
-              window.location.replace(landingPage);
+              var landingPageUrl = "https://capstone.td9175.com/ci/index.php/LandingPage";
+              window.location.replace(landingPageUrl);
 
             } else if (data === "FALSE") {
 
