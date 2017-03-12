@@ -23,13 +23,13 @@
             console.log("Data: " + data);
             console.log("Status: " + status);
 
-            if (data == "Success"){
+            if (data == "TRUE"){
 
               // Redirect to the landing page
               var landingPage = "https://capstone.td9175.com/ci/index.php/LandingPage";
               window.location.replace(landingPage);
 
-            } else if (data == "false") {
+            } else if (data == "FALSE") {
 
               $("#response").html("Incorrect email or password.");
             }

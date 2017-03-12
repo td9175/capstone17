@@ -91,32 +91,32 @@ require('application/libraries/REST_Controller.php');
         // Load the model
         $this->load->model('UserAccountModel');
 
-				// Get user information for registration
+				// Get user information for login
         $email = $this->post('email');
         $password = $this->post('password');
 
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				// Set the initial login_message flag to "Incorrect email or password"
-				$login_message = "Incorrect email or password";
+				// Set the initial logged_in flag to FALSE
+				$logged_in = FALSE;
 
 				// Check if the password hashes match
 				if (password_verify($password, $login_response['hash_pass'])){
 
-					// Set the login_message flag to "Success"
-					$login_message = "Success";
+					// Set the login_message flag to TRUE
+					$logged_in = TRUE;
 
 					// Set the session variable
 					$_SESSION['email'] = $email;
 
-					// Send back a response with $login_message = Success, 200 OK
-  				$this->response($login_message, 200);
+					// Send back a response with $logged_in = TRUE, 200 Success
+  				$this->response($logged_in, 200);
 
 	  			} else {
 
-						// Send back a response with $login_message = Incorrect email or password, 401 Unauthorized
-	  				$this->response($login_message, 401);
+						// Send back a response with $logged_in = FALSE, 200 Success
+	  				$this->response($logged_in, 200);
 	  			}
       }
 
