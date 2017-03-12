@@ -20,17 +20,16 @@
             password: $('#password').val()
           },
           function(data, status){
-            console.log("checkpoint1");
             console.log("Data: " + data);
-            console.log("Status :" + status);
-            
-            if (status == 200){
+            console.log("Status: " + status);
+
+            if (data == "true"){
 
               // Redirect to the landing page
               var landingPage = "https://capstone.td9175.com/ci/index.php/LandingPage";
               window.location.replace(landingPage);
 
-            } else if (status == 401) {
+            } else if (data == "false") {
 
               $("#response").html("Incorrect email or password.");
             }
