@@ -110,13 +110,13 @@ require('application/libraries/REST_Controller.php');
 					// Set the session variable
 					$_SESSION['email'] = $email;
 
-					// Send back a response with login_success = true, 200 Success
+					// Send back a response with login_success = true, 200 OK
   				$this->response($login_success, 200);
 
 	  			} else {
 
-						// Send back a response with login_success = false, 200 Success
-	  				$this->response($login_success, 200);
+						// Send back a response with login_success = false, 401 Unauthorized
+	  				$this->response($login_success, 401);
 	  			}
       }
 
