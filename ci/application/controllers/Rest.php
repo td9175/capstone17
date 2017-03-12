@@ -98,33 +98,29 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
+				// Set the initial login_success flag to false
+				$login_success = false;
 
-				// var_dump($login_response);
-
-				// If registration_response has data respond with data and success, or 404
-        // if($login_response){
-  			// 	$this->response($login_response, 200); // 200 Success
-  			// } else {
-  			// 	$this->response(NULL, 404); // 404 Not found
-  			// }
-				//
-				// console.log("Rest controller login response: " . $response);
-				// console.log("checkpoint 1");
-				//
-
-				// Check if the password matches the hashed password in the database
+				// Check if the password hashes match
 				if (password_verify($password, $login_response['hash_pass'])){
-					header("Location: https://capstone.td9175.com/ci/index.php/LandingPage");
-					// Log in, redirect to landing page
-					// $this->load->view('landing_page');
 
-				} else {
-					echo '<script>console.log("login failure")</script>';
-					// Error
-					$error_response = "Email or password incorrect";
-  				$this->load->view('login', $error_response);
-  			}
+					// Set the login_success flag to true
+					$login_success = true;
 
+					// Start the session
+					session_start();
+
+					// Set the session variable
+					$_SESSION['email'] = $email;
+
+					// Send back a response with login_success = true, 200 Success
+  				$this->response($login_success, 200);
+
+	  			} else {
+
+						// Send back a response with login_success = false, 200 Success
+	  				$this->response($login_success, 200);
+	  			}
       }
 
 
