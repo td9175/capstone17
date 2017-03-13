@@ -100,9 +100,10 @@ require('application/libraries/REST_Controller.php');
 
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
-
+				echo '<script>console.log("Login_response: " + $login_response)</script>';
+				
 				// Check if the email exists
-				if ($login_response['hash_pass'] == "Email address not found."){
+				if ($login_response['hash_pass'] == NULL){
 
 					// Email not found, send back a response with $logged_in = FALSE, 200 Success
   				$this->response($logged_in, 200);

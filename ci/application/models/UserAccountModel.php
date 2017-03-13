@@ -98,7 +98,7 @@ class UserAccountModel extends CI_Model {
 
       } else {
         // Email not found
-        $data['hash_pass'] = "Email address not found.";
+        $data['hash_pass'] = NULL;
 
       }
 
