@@ -101,10 +101,7 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				if (!isset($login_response)){
-					// Email not found, pass back a response with $logged_in = FALSE, 200 Success
-					$this->response($login_response, 200);
-				}
+				echo '<script>console.log("login_response: " + $login_response)</script>';
 
 				// Check if the password hashes match
 				if (password_verify($password, $login_response['hash_pass'])){
