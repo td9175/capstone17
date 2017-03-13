@@ -91,6 +91,8 @@ class UserAccountModel extends CI_Model {
       // Execute the query
       $result = $this->db->query($query, $email);
 
+      var_dump($result);
+
         // Check to see if query returned results
         if ($result->num_rows() > 0) {
 
@@ -100,7 +102,7 @@ class UserAccountModel extends CI_Model {
       		}
 
         } else {
-          
+
           // Email not found
           $data['hash_pass'] = NULL;
         }

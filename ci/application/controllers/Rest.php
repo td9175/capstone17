@@ -101,6 +101,8 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
+				var_dump($login_response);
+
 				// Check if the email exists
 				if ($login_response['hash_pass'] == NULL){
 
