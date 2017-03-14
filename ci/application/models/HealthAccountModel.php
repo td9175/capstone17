@@ -7,7 +7,9 @@
 	function get_hsa_info($id) {
     	$this->load->database();
 
-		 $query = $this->db->query("SELECT * from HealthAccount WHERE user_id = ?");
+		 $query = "SELECT * FROM HealthAccount WHERE user_id = ?";
+
+		 $result = $this->db->query($query, $id);
 
 
 		 foreach ($query->result_array() as $row) {
