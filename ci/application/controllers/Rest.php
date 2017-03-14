@@ -148,10 +148,12 @@ require('application/libraries/REST_Controller.php');
 			));
 			// Send the request & save response to $resp
 			$resp = curl_exec($curl);
-
+			$data = array(
+				'resp' => $resp
+				);
 			echo "response: " . json_encode($resp);
 			// Close request to clear up some resources
-
+			$this->load->view('test.php', $data);
 			curl_close($curl);
 
 	  
