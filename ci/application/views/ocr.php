@@ -1,13 +1,7 @@
 <?php 
 	
-	echo form_open('OCR/getImage', array('method'=>'post')); ?>
-	<html>
-	<label for='searchQuery'>Enter a drug to search for: </label>
+	echo form_open('OCR/getImage', array('method'=>'get')); ?>
+	<label for='searchQuery'>Select Image</label>
 	<input type='text' name='searchQuery'>
 	<input type='submit' name='submit' value='Search!'>
 	</form>
-
-
-	<hr>
-	<a href='http://GoodRx.com'>Powered by GoodRx</a>
-</html>
