@@ -88,38 +88,45 @@ require('application/libraries/REST_Controller.php');
 			// Author: Robert Fink
       function login_post(){
 
+				// Set the initial logged_in flag to FALSE
+				$logged_in = "FALSE";
+
         // Load the model
         $this->load->model('UserAccountModel');
 
-				// Get user information for registration
+				// Get user information for login
         $email = $this->post('email');
         $password = $this->post('password');
 
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				console.log("Rest controller login response: " . $login_response);
+				// // Check if the email exists
+				// if ($login_response['hash_pass'] == NULL){
+				//
+				// 	// Email not found, send back a response with $logged_in = FALSE, 200 Success
+  			// 	$this->response($logged_in, 200);
+				// }
 
-				$hash_pass = $login_response->hash_pass;
+				// Check if the password hashes match
+				if (password_verify($password, $login_response['hash_pass'])){
 
-				// Check if the password matches the hashed password in the database
-				if (password_verify($password, $hash_pass)){
+					// Set the login_message flag to TRUE
+					$logged_in = "TRUE";
 
-					// Log in, redirect to landing page
-					$this->load->view('landing_page');
+					// Set the session variable
+					$_SESSION['email'] = $email;
 
-				} else {
+					// Email and password match, send back a response with $logged_in = TRUE, 200 Success
+  				$this->response($logged_in, 200);
 
-					// Error
-					$error_response = "Email or password incorrect";
-  				$this->load->view('login', $error_response);
-  			}
+	  			} else {
 
+						// Password does not match, send back a response with $logged_in = FALSE, 200 Success
+	  				$this->response($logged_in, 200);
+	  			}
       }
 
 
 
 	}
-
-
-?>

@@ -10,10 +10,7 @@
   $(document).ready(function(){
       $("#submit_login").click(function(){
 
-        $("#submit_login").text = "Loading";
-
-        var email= $('#email').val();
-        var password = $('#password').val();
+        $("#response").html("Loading...");
 
         var url = "https://capstone.td9175.com/ci/index.php/Rest/login";
 
@@ -23,9 +20,19 @@
             password: $('#password').val()
           },
           function(data, status){
-              $("#response").text = "Data: " + data + "\nStatus: " + status;
-          });
 
+            if (data === "TRUE"){
+
+              // Redirect to the landing page
+              var landingPageUrl = "https://capstone.td9175.com/ci/index.php/LandingPage";
+              window.location.replace(landingPageUrl);
+
+            } else if (data === "FALSE") {
+
+              $("#response").html("Incorrect email or password.");
+            }
+
+          });
       });
   });
   </script>
@@ -40,17 +47,7 @@
   <input type='password' id='password' placeholder='Password'><br><br>
   <button id='submit_login'>Login</button><br><br>
 
-  <?php
-
-    if (isset($error_response)){
-      echo $error_response;
-    }
-
-   ?>
-
-  <!-- <p id='response'></p> -->
-
-
+  <div id='response'></div>
 
 </body>
 
