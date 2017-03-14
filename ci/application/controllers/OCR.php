@@ -4,9 +4,9 @@
 class Ocr extends CI_Controller {
 	    
 	    public function index() {
-$this->load->view('ocr.php');
+			$this->load->view('ocr.php');
 
-	}
+		}
 	
 	public function getImage() {
         // Get cURL resource
@@ -29,7 +29,7 @@ $this->load->view('ocr.php');
 		// Close request to clear up some resources
 		return $resp;
 		curl_close($curl);
-}
+		}
 
 }
 
