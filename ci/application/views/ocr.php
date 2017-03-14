@@ -37,7 +37,7 @@
 
   <h1>Upload Receipt</h1>
 
-  <input type='file' id='image' placeholder='Image'><br><br>
+  <input type='text' id='image' placeholder='Image'><br><br>
   <button id='submit_image'>Upload</button><br><br>
 
   <p id='response'></p>
