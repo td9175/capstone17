@@ -9,11 +9,11 @@
 		 $query = "SELECT * FROM AccountTransaction WHERE account_number = ?";
 
 		 $result = $this->db->query($query, $acct_num);
-
+$data = array();
 
 		 foreach ($result->result_array() as $row) {
-
-        	$res[] = array(
+			
+        	$data[] = array(
 				'transaction_id' => $row['transaction_id'],
 				'account_number' => $row['account_number'],
 				'amount' => $row['amount'],
