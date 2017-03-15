@@ -49,10 +49,11 @@ class HealthServices extends CI_Controller {
 	);
 
 		// URL-ify the data for the POST
+		$postString = "";
 		foreach($params as $key=>$value){
-			$postString .= $key.'='.$value.'&';
+			$postString .= $key . '=' . $value . '&';
 		}
-		rtrim($fields_string, '&');
+		rtrim($postString, '&');
 
 		// Initialize curl and set options
     $curl = curl_init();
