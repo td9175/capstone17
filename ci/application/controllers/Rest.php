@@ -141,9 +141,9 @@ require('application/libraries/REST_Controller.php');
 				CURLOPT_URL => 'https://api.ocr.space/Parse/Image',
 				CURLOPT_POST => 1,
 				CURLOPT_POSTFIELDS => array(
-					apikey => '26be4c08a388957',
-					language => 'eng',
-					url => $image
+					'apikey' => '26be4c08a388957',
+					'language' => 'eng',
+					'url' => $image
 				)
 			));
 			// Send the request & save response to $resp
