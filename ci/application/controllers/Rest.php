@@ -194,7 +194,7 @@ require('application/libraries/REST_Controller.php');
 				$this->response(NULL, 400);
 			}
 
-			$user = $this->HealthAccountModel->get_fsa_info($this->get('id') );
+			$user = $this->HealthAccountModel->get_fsa_info($this->get('id'));
 
 			if($user)
 			{
@@ -206,6 +206,23 @@ require('application/libraries/REST_Controller.php');
 				$this->response(NULL, 404);
 			}
       
+      
+      }
+      
+      function transaction_get($acct_num) {
+      	$this->load->model('AccountTransactionModel');
+      	
+      	if(!$this->get('acct_num')) {
+      		$this->response(NULL, 400);
+      	} 
+      	$trans_info = $this->AccountTransaction->get_transaction_info($this->get('acct_num'));
+      	
+      	if($trans_info) {
+      		$this->response($trans_info, 200);
+      	} else {
+      		$this->response(NULL, 404);
+      	}
+      	
       
       }
 
