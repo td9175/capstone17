@@ -215,7 +215,7 @@ require('application/libraries/REST_Controller.php');
       	if(!$this->get('acct_num')) {
       		$this->response(NULL, 400);
       	} 
-      	$trans_info = $this->AccountTransaction->get_transaction_info($this->get('acct_num'));
+      	$trans_info = $this->AccountTransactionModel->get_transaction_info($this->get('acct_num'));
       	
       	if($trans_info) {
       		$this->response($trans_info, 200);
