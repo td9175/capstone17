@@ -131,7 +131,9 @@ require('application/libraries/REST_Controller.php');
 			
 			echo "ocr_post()";
 			
-	
+			$image = $this->get('image');
+			echo "Image: " . $image;
+			echo "<br><Br>";
 			
 			// Get cURL resource
 			$curl = curl_init();
@@ -148,6 +150,7 @@ require('application/libraries/REST_Controller.php');
 			));
 			// Send the request & save response to $resp
 			echo "Request: " . $curl;
+			echo "<br>";
 			$resp = curl_exec($curl);
 			$data = array(
 				'resp' => $resp
