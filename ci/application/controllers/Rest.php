@@ -147,6 +147,7 @@ require('application/libraries/REST_Controller.php');
 				)
 			));
 			// Send the request & save response to $resp
+			echo "Request: " . $curl;
 			$resp = curl_exec($curl);
 			$data = array(
 				'resp' => $resp
