@@ -12,7 +12,7 @@
 		 $result = $this->db->query($query, $id);
 
 
-		 foreach ($query->result_array() as $row) {
+		 foreach ($result->result_array() as $row) {
 
         	$data[] = array(
 				'user_id' => $row['user_id'],
