@@ -16,8 +16,8 @@
 
         	$data[] = array(
 				'user_id' => $row['user_id'],
-				'account_number' => $row['email'],
-				'account_type' => $row['first_name'],
+				'account_number' => $row['account_number'],
+				'account_type' => $row['account_type'],
 				'balance' => $row['balance']
 				);
 
