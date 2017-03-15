@@ -10,11 +10,10 @@ class HealthServices extends CI_Controller {
 
   }
 
-
-	public function index()
-	{
-		$this->load->view('drugs');
-	}
+	// public function index()
+	// {
+	//
+	// }
 
   public function health_services_search(){
 
