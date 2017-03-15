@@ -127,11 +127,11 @@ require('application/libraries/REST_Controller.php');
 	  			}
       }
       
-      function ocr_post() {
+      function ocr_get($image) {
 			
 			echo "ocr_post()";
 			
-			$image = $this->post('image');
+	
 			
 			// Get cURL resource
 			$curl = curl_init();
@@ -153,7 +153,6 @@ require('application/libraries/REST_Controller.php');
 				);
 			echo "response: " . json_encode($resp);
 			// Close request to clear up some resources
-			$this->load->view('test.php', $data);
 			curl_close($curl);
 
 	  
