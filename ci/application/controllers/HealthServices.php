@@ -79,6 +79,8 @@ class HealthServices extends CI_Controller {
 		// Close curl
     curl_close($curl);
 
+		echo "$json_response";
+
 		// Send back the JSON response
     return $json_response;
   }
