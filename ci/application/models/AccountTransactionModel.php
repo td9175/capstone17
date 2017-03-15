@@ -13,7 +13,7 @@
 
 		 foreach ($result->result_array() as $row) {
 
-        	$data[] = array(
+        	$res[] = array(
 				'transaction_id' => $row['transaction_id'],
 				'account_number' => $row['account_number'],
 				'amount' => $row['amount'],
@@ -23,12 +23,14 @@
 			}
 
 
-    		return $data;
+    		return $res;
 	
 	
 	
 	
 	}
+	
+
 
 
 }
