@@ -145,7 +145,7 @@ require('application/libraries/REST_Controller.php');
 				CURLOPT_POSTFIELDS => array(
 					'apikey' => '26be4c08a388957',
 					'language' => 'eng',
-					'url' => $image
+					'base64Image' => $image
 				)
 			));
 			// Send the request & save response to $resp
