@@ -10,13 +10,14 @@
   $(document).ready(function(){
       $("#submit_image").click(function(){
       
-
+		console.log("Testing");
         $("#submit_image").text = "Loading";
 
         var image= $('#image').val();
         
 
         var url = "https://capstone.td9175.com/ci/index.php/Rest/ocr";
+        console.log(url);
 
           $.post(url,
           {
@@ -40,7 +41,7 @@
   <input type='text' id='image' placeholder='Image'><br><br>
   <button id='submit_image'>Upload</button><br><br>
 
-  <p id='response'></p>
+  <p id='response'>Ello</p>
 
 </body>
 
