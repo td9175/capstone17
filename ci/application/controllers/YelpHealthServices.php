@@ -52,7 +52,7 @@ class YelpHealthServices extends CI_Controller {
    *
    * @return   OAuth bearer token, obtained using clientId and clientSecret.
    */
-  function obtain_bearer_token() {
+  static function obtain_bearer_token() {
 
       try {
           # Using the built-in cURL library for easiest installation.
