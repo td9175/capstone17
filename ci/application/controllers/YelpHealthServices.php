@@ -19,16 +19,18 @@ class YelpHealthServices extends CI_Controller {
 	{
         parent::__construct();
         $this->config->load('yelpFusion');
+
+        // API secret stuff
+        public static $clientId = $this->config->item("clientId");
+        public static $clientSecret = $this->config->item('clientSecret');
+        public static $grantType = $this->config->item('grantType');
   }
 
 
 
 
 
-  // API secret stuff
-  public static $clientId = $this->config->item("clientId");
-  public static $clientSecret = $this->config->item('clientSecret');
-  public static $grantType = $this->config->item('grantType');
+
 
   // API constants, you shouldn't have to change these.
   public static $apiHost = "https://api.yelp.com";
