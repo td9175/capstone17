@@ -21,23 +21,25 @@ class YelpHealthServices extends CI_Controller {
         $this->config->load('yelpFusion');
   }
 
+
+  // API secret stuff
   $clientId = $this->config->item('clientId');
   $clientSecret = $this->config->item('clientSecret');
   $grantType = $this->config->item('grantType');
 
-
   // API constants, you shouldn't have to change these.
-  $apiHost = "https://api.yelp.com";
-  $searchPath = "/v3/businesses/search";
-  $businessPath = "/v3/businesses/";  // Business ID will come after slash.
-  $tokenPath = "/oauth2/token";
+  public $apiHost = "https://api.yelp.com";
+  public $searchPath = "/v3/businesses/search";
+  public $businessPath = "/v3/businesses/";  // Business ID will come after slash.
+  public $tokenPath = "/oauth2/token";
 
 
   // Defaults for our simple example.
-  $defaultCategory = "health";
-  $defaultTerm = "health";
-  $defaultLocation = "65201";
-  $searchLimit = 10;
+  public $categories = "health";
+  public $defaultCategory = "health";
+  public $defaultTerm = "health";
+  public $defaultLocation = "65201";
+  public $searchLimit = 10;
 
   /**
    * Given a bearer token, send a GET request to the API.
@@ -45,15 +47,16 @@ class YelpHealthServices extends CI_Controller {
    * @return   OAuth bearer token, obtained using clientId and clientSecret.
    */
   function obtain_bearer_token() {
+
       try {
           # Using the built-in cURL library for easiest installation.
           # Extension library HttpRequest would also work here.
           $curl = curl_init();
           if (FALSE === $curl)
               throw new Exception('Failed to initialize');
-              $postfields = "clientId=" . $clientId . "&clientSecret=" . $clientSecret . "&grantType=" . $grantType;
+              $postfields = "clientId=" . $this->clientId . "&clientSecret=" . $this->clientSecret . "&grantType=" . $this->grantType;
               curl_setopt_array($curl, array(
-              CURLOPT_URL => $apiHost . $tokenPath,
+              CURLOPT_URL => $this->apiHost . $this->tokenPath,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
               CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
               CURLOPT_MAXREDIRS => 10,
@@ -146,7 +149,7 @@ class YelpHealthServices extends CI_Controller {
       $url_params['limit'] = $searchLimit;
       $url_params['categories'] = $categories;
 
-      return request($bearer_token, $apiHost, $searchPath, $url_params);
+      return request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
   }
 
 
@@ -176,9 +179,12 @@ class YelpHealthServices extends CI_Controller {
    * @param    $location    The location of the business to query
    * @param    $categories  The category to filter by
    */
-  function query_api($term, $location, $categories) {
+  function query_api() {
+      $term = $this->input->post('term');
+      $location = $this->input->post('location');
+      // $radius = $this->input->post('radius');
       $bearer_token = obtain_bearer_token();
-      $response = json_decode(search($bearer_token, $term, $location, $categories));
+      $response = json_decode(search($bearer_token, $term, $location, $this->categories));
 
       print "$response\n";
       // $business_id = $response->businesses[0]->id;
