@@ -21,8 +21,9 @@ class YelpHealthServices extends CI_Controller {
         $this->config->load('yelpFusion');
   }
 
+
   // API secret stuff
-  public $clientId = $this->config->item('clientId');
+  public $clientId = $this->config->item("clientId");
   public $clientSecret = $this->config->item('clientSecret');
   public $grantType = $this->config->item('grantType');
 
