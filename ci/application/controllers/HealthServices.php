@@ -53,13 +53,16 @@ class HealthServices extends CI_Controller {
 		foreach($params as $key=>$value){
 			$postString .= $key . '=' . $value . '&';
 		}
+
+		echo "Before rtrim: $postString \n";
+
 		rtrim($postString, '&');
 
+		echo "After rtrim: $postString \n";
 		// Initialize curl and set options
     $curl = curl_init();
 		curl_setopt($curl, CURLOPT_URL, $endpoint);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_HEADER, true);
+    // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_HEADER,'Content-Type: application/x-www-form-urlencoded');
 		curl_setopt($curl, CURLOPT_HEADER,'Authorization: Bearer ' . $accessToken);
 		curl_setopt($curl, CURLOPT_POST, count($params));
