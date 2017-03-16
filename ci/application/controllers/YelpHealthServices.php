@@ -21,18 +21,16 @@ class YelpHealthServices extends CI_Controller {
         $this->config->load('yelpFusion');
   }
 
-
   // API secret stuff
-  $clientId = $this->config->item('clientId');
-  $clientSecret = $this->config->item('clientSecret');
-  $grantType = $this->config->item('grantType');
+  public $clientId = $this->config->item('clientId');
+  public $clientSecret = $this->config->item('clientSecret');
+  public $grantType = $this->config->item('grantType');
 
   // API constants, you shouldn't have to change these.
   public $apiHost = "https://api.yelp.com";
   public $searchPath = "/v3/businesses/search";
   public $businessPath = "/v3/businesses/";  // Business ID will come after slash.
   public $tokenPath = "/oauth2/token";
-
 
   // Defaults for our simple example.
   public $categories = "health";
