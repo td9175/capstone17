@@ -22,23 +22,26 @@ class YelpHealthServices extends CI_Controller {
   }
 
 
+
+
+
   // API secret stuff
-  public $clientId = $this->config->item("clientId");
-  public $clientSecret = $this->config->item('clientSecret');
-  public $grantType = $this->config->item('grantType');
+  public static $clientId = $this->config->item("clientId");
+  public static $clientSecret = $this->config->item('clientSecret');
+  public static $grantType = $this->config->item('grantType');
 
   // API constants, you shouldn't have to change these.
-  public $apiHost = "https://api.yelp.com";
-  public $searchPath = "/v3/businesses/search";
-  public $businessPath = "/v3/businesses/";  // Business ID will come after slash.
-  public $tokenPath = "/oauth2/token";
+  public static $apiHost = "https://api.yelp.com";
+  public static $searchPath = "/v3/businesses/search";
+  public static $businessPath = "/v3/businesses/";  // Business ID will come after slash.
+  public static $tokenPath = "/oauth2/token";
 
   // Defaults for our simple example.
-  public $categories = "health";
-  public $defaultCategory = "health";
-  public $defaultTerm = "health";
-  public $defaultLocation = "65201";
-  public $searchLimit = 10;
+  public static $categories = "health";
+  public static $defaultCategory = "health";
+  public static $defaultTerm = "health";
+  public static $defaultLocation = "65201";
+  public static $searchLimit = 10;
 
   /**
    * Given a bearer token, send a GET request to the API.
