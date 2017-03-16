@@ -185,7 +185,7 @@ class YelpHealthServices extends CI_Controller {
    * @param    $location    The location of the business to query
    * @param    $categories  The category to filter by
    */
-  function query_api() {
+  static function query_api() {
       $term = $this->input->post('term');
       $location = $this->input->post('location');
       // $radius = $this->input->post('radius');
