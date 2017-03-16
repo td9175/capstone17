@@ -15,35 +15,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 class YelpHealthServices extends CI_Controller {
 
+  // API secret stuff
+  private static $clientId;
+  private static $clientSecret;
+  private static $grantType;
+
 	public function __construct()
 	{
         parent::__construct();
         $this->config->load('yelpFusion');
+        self::$clientId = $this->config->item("clientId");
+        self::$clientSecret = $this->config->item('clientSecret');
+        self::$grantType = $this->config->item('grantType');
 
-        // API secret stuff
-        public static $clientId = $this->config->item("clientId");
-        public static $clientSecret = $this->config->item('clientSecret');
-        public static $grantType = $this->config->item('grantType');
   }
 
 
 
 
 
-
-
   // API constants, you shouldn't have to change these.
-  public static $apiHost = "https://api.yelp.com";
-  public static $searchPath = "/v3/businesses/search";
-  public static $businessPath = "/v3/businesses/";  // Business ID will come after slash.
-  public static $tokenPath = "/oauth2/token";
+  private static $apiHost = "https://api.yelp.com";
+  private static $searchPath = "/v3/businesses/search";
+  private static $businessPath = "/v3/businesses/";  // Business ID will come after slash.
+  private static $tokenPath = "/oauth2/token";
 
   // Defaults for our simple example.
-  public static $categories = "health";
-  public static $defaultCategory = "health";
-  public static $defaultTerm = "health";
-  public static $defaultLocation = "65201";
-  public static $searchLimit = 10;
+  private static $categories = "health";
+  private static $defaultCategory = "health";
+  private static $defaultTerm = "health";
+  private static $defaultLocation = "65201";
+  private static $searchLimit = 10;
 
   /**
    * Given a bearer token, send a GET request to the API.
