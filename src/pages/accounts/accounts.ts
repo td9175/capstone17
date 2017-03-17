@@ -5,19 +5,34 @@ import { LoginPage } from '../login/login';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
+import { UserApi } from './../shared/user-api.service';
 
 @Component({
   selector: 'page-accounts',
-  templateUrl: 'accounts.html'
+  templateUrl: 'accounts.html'//,
+  //providers: [UserApi]
 })
 export class AccountsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController) {}
+  users: any;
 
-  // all of these console logs are just tests, delete in later versions please.
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { }
+
+  /*
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter AccountsPage')
+  }
+  */
+ 
+  ionViewDidLoad() {
+    this.userApi.getUserData().then(data => this.users = data);
+  }
+
+  /*
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountsPage');
   }
+  */
 
   helloTest() {
     console.log('Hello, World!');
@@ -39,7 +54,7 @@ export class AccountsPage {
 
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Modify your album',
+      title: 'Test Action Sheet',
       buttons: [
         {
           text: 'FSA Page',

@@ -3,9 +3,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
-// Backand import
-import { BackandService } from '@backand/angular2-sdk';
+import { HttpModule } from '@angular/http';
 
 // Pages Import 
 // Page1 and Page2 are test and placeholder pages.
@@ -20,11 +18,16 @@ import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
 //import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
+import { UserApi } from '../pages/shared/shared';
 
 
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [
+    UserApi,
+    HttpModule
+  ]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -35,7 +38,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, private backand:BackandService) {
+  constructor(public platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -60,15 +63,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
-      
-      // Okay, here is the backand init file; however, didn't work earlier.
-        this.backand.init({
-          appName: 'todo33353',
-          signUpToken: '215e5812-5789-4475-8ccb-42f3232da176',
-          anonymousToken: '43a174e6-1a88-46dd-9081-99d3d22131a6',
-          runSocket: true,
-          mobilePlatform: 'ionic'
-        });
+
     });
   }
   // commented out, we wont need it since, manually adjusting the navbar

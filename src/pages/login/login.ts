@@ -17,14 +17,16 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  //Test console log below, should be deleted in further versions.
+  // Test console log below, should be deleted in further versions.
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     console.log('sami is here');
+    // added cheeky response here.
+    console.log('interesting use of console logs sami')
   }
 
   goToHome(){
-    //this.navCtrl.push(AccountsPage);
+    // this.navCtrl.push(AccountsPage);
     this.navCtrl.popToRoot();
   }
 
