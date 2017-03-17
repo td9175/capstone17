@@ -1,35 +1,70 @@
 <?php
 //defined('BASEPATH') OR exit('No direct script access allowed');
+require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 class Ocr extends CI_Controller {
 	    
-	    public function index() {
-			$this->load->view('ocr.php');
+function ocr {
+    $request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
+    $url = $request->getUrl();
+    
+    $request->setConfig(array(
+        'ssl_verify_peer'   => FALSE,
+        'ssl_verify_host'   => FALSE
+    ));
 
-		}
-	
-	public function getImage() {
-        // Get cURL resource
-		$curl = curl_init();
-		// Set some options - we are passing in a useragent too here
-	curl_setopt_array($curl, array(
-    CURLOPT_RETURNTRANSFER => 1,
-    CURLOPT_URL => 'https://api.ocr.space/Parse/Image',
-    CURLOPT_POST => 1,
-    CURLOPT_POSTFIELDS => array(
-        apikey => '26be4c08a388957',
-        language => 'eng',
-        url => 'https://c1.staticflickr.com/6/5309/5639277711_aac21b0e02_b.jpg'
-    		)
-		));
-		// Send the request & save response to $resp
-		$resp = curl_exec($curl);
+    $headers = array(
+    // Request headers
+        'Content-Type' => 'application/json',
+        'Ocp-Apim-Subscription-Key' => '16eb25ebbaeb430695f63f2b23f22606 ',
+    );
 
-		echo "response: " . json_encode($resp);
-		// Close request to clear up some resources
-		return $resp;
-		curl_close($curl);
-		}
+    $request->setHeader($headers);
+
+    $parameters = array(
+    // Request parameters
+        'language' => 'en',
+        'detectOrientation ' => 'true',
+    );
+
+    $url->setQueryVariables($parameters);
+
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+
+    // Request body
+    $newurl = "{'url': '";
+    $newurl .= $image;
+    $newurl = "'}";
+    echo "url: "  . $newurl;
+    echo "<br><Br>";
+    $request->setBody("{'url':'http://i1008.photobucket.com/albums/af202/CompSyn/Walmart_QS_zpsw3uk1oeh.png'}");
+
+    try {
+        $response = $request->send();
+        echo $response->getBody();
+        $newanswer = $response->getBody();
+        echo "<br><Br>";
+        
+       $jsonIterator = new RecursiveIteratorIterator(
+    new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
+    RecursiveIteratorIterator::SELF_FIRST);
+
+foreach ($jsonIterator as $key => $val) {
+    if(is_array($val)) {
+        echo "$key:";
+        echo "<br>";
+    } else {
+        echo "$key => $val";
+        echo "<br>";
+    }
+}
+        
+    }
+    catch (HttpException $ex) {
+        echo $ex;
+    }
+
+}
 
 }
 
