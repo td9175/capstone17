@@ -1,3 +1,4 @@
+import { UserApi } from './../shared/user-api.service';
 //import { ReportsPage } from './../reports/reports';
 import { HSAPage } from '../hsa/hsa';
 import { FSAPage } from './../fsa/fsa';
@@ -28,6 +29,12 @@ export class AccountsPage {
     this.userApi.getUserData().then(data => this.users = data);
   }
 
+<<<<<<< HEAD
+  
+  // all of these console logs are just tests, delete in later versions please.
+  // using ionViewDidLoad for userData
+=======
+>>>>>>> master
   /*
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountsPage');
