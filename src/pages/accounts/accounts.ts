@@ -29,12 +29,9 @@ export class AccountsPage {
     this.userApi.getUserData().then(data => this.users = data);
   }
 
-<<<<<<< HEAD
-  
   // all of these console logs are just tests, delete in later versions please.
   // using ionViewDidLoad for userData
-=======
->>>>>>> master
+
   /*
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountsPage');
