@@ -9,12 +9,22 @@
 <ion-content padding>
   <h3 align = "center">Hello "User's Name"</h3>
 
+  <h4>Test json array from sami</h4>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+        <h2>User ID = {{user.user_id}}</h2>
+        <h2>Account # = {{user.account_number}}</h2>
+        <h2>Account Type = {{user.account_type}}</h2>
+        <h2>Balance = {{user.balance}}</h2>
+    </ion-item>
+  </ion-list>
+
   <ion-list inset>
     <ion-item-group>
       <ion-item-divider color="light">HSA Accounts</ion-item-divider>
       <ion-item-sliding>
         <ion-item>
-          <h2>{{users?.first_name}} test </h2>
+          <!--<h2>{{users?.balance}} test </h2>-->
           <p>"Balance"</p>
         </ion-item>
         <ion-item-options side="right">
