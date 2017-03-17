@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
 	class Rest extends REST_Controller {
