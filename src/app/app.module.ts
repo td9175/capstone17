@@ -21,9 +21,6 @@ import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 
-// Backand import
-import { BackandService } from '@backand/angular2-sdk';
-
 @NgModule({
   declarations: [
     HomePage,
@@ -65,6 +62,6 @@ import { BackandService } from '@backand/angular2-sdk';
     UserSettingsPage,
     Page2,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, BackandService ]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
