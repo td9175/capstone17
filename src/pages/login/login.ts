@@ -21,12 +21,10 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     console.log('sami is here');
+    
     // added cheeky response here.
-<<<<<<< HEAD
     console.log('interesting use of console logs sami');
-=======
-    console.log('interesting use of console logs sami')
->>>>>>> master
+
   }
 
   goToHome(){
