@@ -6,3 +6,14 @@
 !*/cache/.htaccess
 /ci/nbproject/private/
 .DS_Store
+node_modules
+www
+.tmp
+.sass-cache
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
