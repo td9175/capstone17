@@ -6,12 +6,10 @@ import { LoginPage } from '../login/login';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
-import { UserApi } from './../shared/user-api.service';
 
 @Component({
   selector: 'page-accounts',
-  templateUrl: 'accounts.html'//,
-  //providers: [UserApi]
+  templateUrl: 'accounts.html'
 })
 export class AccountsPage {
 
@@ -29,9 +27,9 @@ export class AccountsPage {
     this.userApi.getUserData().then(data => this.users = data);
   }
 
+  
   // all of these console logs are just tests, delete in later versions please.
   // using ionViewDidLoad for userData
-
   /*
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountsPage');

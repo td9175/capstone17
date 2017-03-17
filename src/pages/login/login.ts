@@ -21,14 +21,12 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
     console.log('sami is here');
-    
     // added cheeky response here.
     console.log('interesting use of console logs sami');
-
   }
 
   goToHome(){
-    // this.navCtrl.push(AccountsPage);
+    //this.navCtrl.push(AccountsPage);
     this.navCtrl.popToRoot();
   }
 

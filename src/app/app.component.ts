@@ -17,7 +17,6 @@ import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
 // import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
-import { UserApi } from '../pages/shared/shared';
 
 // API Imports
 import { UserApi } from '../pages/shared/shared';
