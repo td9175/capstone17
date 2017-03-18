@@ -196,7 +196,8 @@ class YelpHealthServiceRequest extends CI_Controller {
       // $response = json_decode(search($bearer_token, $term, $location, $this->categories));
      $response = json_decode($this->search($bearer_token, $term, $location, $categories, $searchLimit));
 
-     print "$response\n";
+     var_dump($response);
+    //  print "$response\n";
       // $business_id = $response->businesses[0]->id;
       //
       // print sprintf(
