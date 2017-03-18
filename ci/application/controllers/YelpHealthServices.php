@@ -102,7 +102,7 @@ class YelpHealthServices extends CI_Controller {
    * @param    $url_params    Array of query-string parameters.
    * @return   The JSON response from the request
    */
-  function request($bearer_token, $host, $path, $url_params = array()) {
+  static function request($bearer_token, $host, $path, $url_params = array()) {
       // Send Yelp API Call
       try {
           $curl = curl_init();
@@ -147,7 +147,7 @@ class YelpHealthServices extends CI_Controller {
    * @param    $categories  The category to filter by
    * @return   The JSON response from the request
    */
-  function search($bearer_token, $term, $location, $categories) {
+  static function search($bearer_token, $term, $location, $categories) {
       $url_params = array();
 
       $url_params['term'] = $term;
@@ -155,7 +155,8 @@ class YelpHealthServices extends CI_Controller {
       $url_params['limit'] = $searchLimit;
       $url_params['categories'] = $categories;
 
-      return request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+      // return request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+      return YelpHealthServices->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
   }
 
 
@@ -189,8 +190,10 @@ class YelpHealthServices extends CI_Controller {
       $term = $this->input->post('term');
       $location = $this->input->post('location');
       // $radius = $this->input->post('radius');
-      $bearer_token = obtain_bearer_token();
-      $response = json_decode(search($bearer_token, $term, $location, $this->categories));
+      $bearer_token = YelpHealthServices->obtain_bearer_token();
+      // $bearer_token = obtain_bearer_token();
+      // $response = json_decode(search($bearer_token, $term, $location, $this->categories));
+      $response = json_decode(YelpHealthServices->search($bearer_token, $term, $location, $this->categories))
 
       print "$response\n";
       // $business_id = $response->businesses[0]->id;
