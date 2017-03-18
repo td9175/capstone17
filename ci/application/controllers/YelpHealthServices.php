@@ -16,9 +16,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class YelpHealthServices extends CI_Controller {
 
   // API secret stuff
-  private static $clientId = $this->config->item("clientId");
-  private static $clientSecret = $this->config->item('clientSecret');
-  private static $grantType = $this->config->item('grantType');
+  private static $clientId;
+  private static $clientSecret;
+  private static $grantType;
 
 	public function __construct()
 	{
@@ -53,6 +53,9 @@ class YelpHealthServices extends CI_Controller {
    * @return   OAuth bearer token, obtained using clientId and clientSecret.
    */
   static function obtain_bearer_token() {
+    self::$clientId = $this->config->item("clientId");
+    self::$clientSecret = $this->config->item('clientSecret');
+    self::$grantType = $this->config->item('grantType');
 
       try {
           # Using the built-in cURL library for easiest installation.
@@ -60,7 +63,7 @@ class YelpHealthServices extends CI_Controller {
           $curl = curl_init();
           if (FALSE === $curl)
               throw new Exception('Failed to initialize');
-              $postfields = "clientId=" . YelpHealthServices::clientId . "&clientSecret=" . YelpHealthServices::clientSecret . "&grantType=" . YelpHealthServices::grantType;
+              $postfields = "clientId=" . self::clientId . "&clientSecret=" . self::clientSecret . "&grantType=" . self::grantType;
               curl_setopt_array($curl, array(
               CURLOPT_URL => $this->apiHost . $this->tokenPath,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
