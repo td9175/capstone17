@@ -16,17 +16,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class YelpHealthServices extends CI_Controller {
 
   // API secret stuff
-  private static $clientId;
-  private static $clientSecret;
-  private static $grantType;
+  private static $clientId = $this->config->item("clientId");
+  private static $clientSecret = $this->config->item('clientSecret');
+  private static $grantType = $this->config->item('grantType');
 
 	public function __construct()
 	{
         parent::__construct();
         $this->config->load('yelpFusion');
-        self::$clientId = $this->config->item("clientId");
-        self::$clientSecret = $this->config->item('clientSecret');
-        self::$grantType = $this->config->item('grantType');
+        // self::$clientId = $this->config->item("clientId");
+        // self::$clientSecret = $this->config->item('clientSecret');
+        // self::$grantType = $this->config->item('grantType');
 
   }
 
