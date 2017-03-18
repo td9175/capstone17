@@ -24,11 +24,8 @@ class YelpHealthServiceRequest extends CI_Controller {
 
         // API secret stuff
         $clientId = $this->config->item("clientId");
-        echo "$this->config->item('clientId')\n";
         $clientSecret = $this->config->item('clientSecret');
-        echo "$this->config->item('clientSecret')\n";
         $grantType = $this->config->item('grantType');
-        echo "$this->config->item('grantType')\n";
 
         // self::$clientId = $this->config->item("clientId");
         // self::$clientSecret = $this->config->item('clientSecret');
@@ -67,9 +64,9 @@ class YelpHealthServiceRequest extends CI_Controller {
           $curl = curl_init();
           if (FALSE === $curl)
               throw new Exception('Failed to initialize');
-              $postfields = "clientId=" . $this->clientId . "&clientSecret=" . $this->clientSecret . "&grantType=" . $this->grantType;
+              $postfields = "clientId=" . $clientId . "&clientSecret=" . $clientSecret . "&grantType=" . $grantType;
               curl_setopt_array($curl, array(
-              CURLOPT_URL => $this->apiHost . $this->tokenPath,
+              CURLOPT_URL => $apiHost . $tokenPath,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
               CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
               CURLOPT_MAXREDIRS => 10,
