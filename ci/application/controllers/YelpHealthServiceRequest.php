@@ -27,13 +27,10 @@ class YelpHealthServiceRequest extends CI_Controller {
         $clientSecret = $this->config->item('clientSecret');
         $grantType = $this->config->item('grantType');
 
-        // self::$clientId = $this->config->item("clientId");
-        // self::$clientSecret = $this->config->item('clientSecret');
-        // self::$grantType = $this->config->item('grantType');
         // API constants, you shouldn't have to change these.
         $apiHost = "https://api.yelp.com";
         $searchPath = "/v3/businesses/search";
-        $businessPath = "/v3/businesses/";  // Business ID will come after slash.
+        // $businessPath = "/v3/businesses/";  // Business ID will come after slash.
         $tokenPath = "/oauth2/token";
 
         // Defaults for our simple example.
@@ -64,9 +61,9 @@ class YelpHealthServiceRequest extends CI_Controller {
           $curl = curl_init();
           if (FALSE === $curl)
               throw new Exception('Failed to initialize');
-              $postfields = "clientId=" . $clientId . "&clientSecret=" . $clientSecret . "&grantType=" . $grantType;
+              $postfields = "clientId=" . self::$clientId . "&clientSecret=" . self::$$clientSecret . "&grantType=" . self::$$grantType;
               curl_setopt_array($curl, array(
-              CURLOPT_URL => $apiHost . $tokenPath,
+              CURLOPT_URL => self::$$apiHost . self::$$tokenPath,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
               CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
               CURLOPT_MAXREDIRS => 10,
