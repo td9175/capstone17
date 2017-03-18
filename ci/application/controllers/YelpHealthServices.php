@@ -13,20 +13,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Please refer to http://www.yelp.com/developers/v3/documentation
  * for the API documentation.
  */
-class YelpHealthServices extends CI_Controller {
+class YelpHealthServiceRequest extends CI_Controller {
 
-  // API secret stuff
-  private static $clientId;
-  private static $clientSecret;
-  private static $grantType;
+
 
 	public function __construct()
 	{
         parent::__construct();
         $this->config->load('yelpFusion');
+
+        // API secret stuff
+        private $clientId = $this->config->item("clientId");
+        private $clientSecret = $this->config->item('clientSecret');
+        private $grantType = $this->config->item('grantType');
+
         // self::$clientId = $this->config->item("clientId");
         // self::$clientSecret = $this->config->item('clientSecret');
         // self::$grantType = $this->config->item('grantType');
+        // API constants, you shouldn't have to change these.
+        private  $apiHost = "https://api.yelp.com";
+        private  $searchPath = "/v3/businesses/search";
+        private  $businessPath = "/v3/businesses/";  // Business ID will come after slash.
+        private  $tokenPath = "/oauth2/token";
+
+        // Defaults for our simple example.
+        private  $categories = "health";
+        private  $defaultCategory = "health";
+        private  $defaultTerm = "health";
+        private  $defaultLocation = "65201";
+        private  $searchLimit = 10;
 
   }
 
@@ -34,28 +49,14 @@ class YelpHealthServices extends CI_Controller {
 
 
 
-  // API constants, you shouldn't have to change these.
-  private static $apiHost = "https://api.yelp.com";
-  private static $searchPath = "/v3/businesses/search";
-  private static $businessPath = "/v3/businesses/";  // Business ID will come after slash.
-  private static $tokenPath = "/oauth2/token";
 
-  // Defaults for our simple example.
-  private static $categories = "health";
-  private static $defaultCategory = "health";
-  private static $defaultTerm = "health";
-  private static $defaultLocation = "65201";
-  private static $searchLimit = 10;
 
   /**
    * Given a bearer token, send a GET request to the API.
    *
    * @return   OAuth bearer token, obtained using clientId and clientSecret.
    */
-  static function obtain_bearer_token() {
-    self::$clientId = $this->config->item("clientId");
-    self::$clientSecret = $this->config->item('clientSecret');
-    self::$grantType = $this->config->item('grantType');
+   function obtain_bearer_token() {
 
       try {
           # Using the built-in cURL library for easiest installation.
@@ -63,7 +64,7 @@ class YelpHealthServices extends CI_Controller {
           $curl = curl_init();
           if (FALSE === $curl)
               throw new Exception('Failed to initialize');
-              $postfields = "clientId=" . self::clientId . "&clientSecret=" . self::clientSecret . "&grantType=" . self::grantType;
+              $postfields = "clientId=" . $this->clientId . "&clientSecret=" . $this->clientSecret . "&grantType=" . $this->grantType;
               curl_setopt_array($curl, array(
               CURLOPT_URL => $this->apiHost . $this->tokenPath,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
@@ -105,7 +106,7 @@ class YelpHealthServices extends CI_Controller {
    * @param    $url_params    Array of query-string parameters.
    * @return   The JSON response from the request
    */
-  static function request($bearer_token, $host, $path, $url_params = array()) {
+   function request($bearer_token, $host, $path, $url_params = array()) {
       // Send Yelp API Call
       try {
           $curl = curl_init();
@@ -150,7 +151,7 @@ class YelpHealthServices extends CI_Controller {
    * @param    $categories  The category to filter by
    * @return   The JSON response from the request
    */
-  static function search($bearer_token, $term, $location, $categories) {
+   function search($bearer_token, $term, $location, $categories) {
       $url_params = array();
 
       $url_params['term'] = $term;
@@ -159,7 +160,7 @@ class YelpHealthServices extends CI_Controller {
       $url_params['categories'] = $categories;
 
       // $response = YelpHealthServices->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
-      $response = YelpHealthServices::request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+      $response = $this->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
 
       return $response;
       // return request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
@@ -193,14 +194,15 @@ class YelpHealthServices extends CI_Controller {
    * @param    $location    The location of the business to query
    * @param    $categories  The category to filter by
    */
-  static function query_api() {
+   function query_api() {
       $term = $this->input->post('term');
       $location = $this->input->post('location');
+      $apiRequest = new YelpHealthServiceRequest;
       // $radius = $this->input->post('radius');
-      $bearer_token = YelpHealthServices::obtain_bearer_token();
+      $bearer_token = $apiRequest->obtain_bearer_token();
       // $bearer_token = obtain_bearer_token();
       // $response = json_decode(search($bearer_token, $term, $location, $this->categories));
-      $response = json_decode(YelpHealthServices::search($bearer_token, $term, $location, $this->categories));
+      $response = json_decode($apiRequest->search($bearer_token, $term, $location, $this->categories));
 
       print "$response\n";
       // $business_id = $response->businesses[0]->id;
