@@ -23,25 +23,25 @@ class YelpHealthServiceRequest extends CI_Controller {
         $this->config->load('yelpFusion');
 
         // API secret stuff
-        public $clientId = $this->config->item("clientId");
-        public $clientSecret = $this->config->item('clientSecret');
-        public $grantType = $this->config->item('grantType');
+        $clientId = $this->config->item("clientId");
+        $clientSecret = $this->config->item('clientSecret');
+        $grantType = $this->config->item('grantType');
 
         // self::$clientId = $this->config->item("clientId");
         // self::$clientSecret = $this->config->item('clientSecret');
         // self::$grantType = $this->config->item('grantType');
         // API constants, you shouldn't have to change these.
-        public  $apiHost = "https://api.yelp.com";
-        public  $searchPath = "/v3/businesses/search";
-        public  $businessPath = "/v3/businesses/";  // Business ID will come after slash.
-        public  $tokenPath = "/oauth2/token";
+        $apiHost = "https://api.yelp.com";
+        $searchPath = "/v3/businesses/search";
+        $businessPath = "/v3/businesses/";  // Business ID will come after slash.
+        $tokenPath = "/oauth2/token";
 
         // Defaults for our simple example.
-        public  $categories = "health";
-        public  $defaultCategory = "health";
-        public  $defaultTerm = "health";
-        public  $defaultLocation = "65201";
-        public  $searchLimit = 10;
+        $categories = "health";
+        $defaultCategory = "health";
+        $defaultTerm = "health";
+        $defaultLocation = "65201";
+        $searchLimit = 10;
 
   }
 
