@@ -60,7 +60,7 @@ class YelpHealthServices extends CI_Controller {
           $curl = curl_init();
           if (FALSE === $curl)
               throw new Exception('Failed to initialize');
-              $postfields = "clientId=" . $this->clientId . "&clientSecret=" . $this->clientSecret . "&grantType=" . $this->grantType;
+              $postfields = "clientId=" . YelpHealthServices::clientId . "&clientSecret=" . YelpHealthServices::clientSecret . "&grantType=" . YelpHealthServices::grantType;
               curl_setopt_array($curl, array(
               CURLOPT_URL => $this->apiHost . $this->tokenPath,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
