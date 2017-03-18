@@ -24,8 +24,11 @@ class YelpHealthServiceRequest extends CI_Controller {
 
         // API secret stuff
         $clientId = $this->config->item("clientId");
+        echo "$this->config->item('clientId')\n";
         $clientSecret = $this->config->item('clientSecret');
+        echo "$this->config->item('clientSecret')\n";
         $grantType = $this->config->item('grantType');
+        echo "$this->config->item('grantType')\n";
 
         // self::$clientId = $this->config->item("clientId");
         // self::$clientSecret = $this->config->item('clientSecret');
