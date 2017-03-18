@@ -19,23 +19,6 @@ class YelpHealthServiceRequest extends CI_Controller {
 	{
         parent::__construct();
         $this->config->load('yelpFusion');
-
-				// API secret stuff
-	      $clientId = $this->config->item("clientId");
-	      $clientSecret = $this->config->item('clientSecret');
-	      $grantType = $this->config->item('grantType');
-
-				// Yelp Fusion API constants
-				$tokenPath = "/oauth2/token";
-	      $apiHost = "https://api.yelp.com";
-	      $searchPath = "/v3/businesses/search";
-	      $categories = "health";
-	      $searchLimit = 10;
-
-				// Get user input
-	      $term = $this->input->post('term');
-	      $location = $this->input->post('location');
-
         // $businessPath = "/v3/businesses/";  // Business ID will come after slash.
         // Defaults for our simple example.
         // $defaultCategory = "health";
@@ -51,7 +34,14 @@ class YelpHealthServiceRequest extends CI_Controller {
    */
    function obtain_bearer_token() {
 
+     // API secret stuff
+     $clientId = $this->config->item("clientId");
+     $clientSecret = $this->config->item('clientSecret');
+     $grantType = $this->config->item('grantType');
 
+     // API constants
+     $apiHost = "https://api.yelp.com";
+     $tokenPath = "/oauth2/token";
 
       try {
           # Using the built-in cURL library for easiest installation.
@@ -63,10 +53,10 @@ class YelpHealthServiceRequest extends CI_Controller {
           }
 
               // Buid the post fields string for authentication
-              $postfields = "client_id=" . $this->clientId . "&client_secret=" . $this->clientSecret . "&grant_type=" . $this->grantType;
+              $postfields = "client_id=" . $clientId . "&client_secret=" . $clientSecret . "&grant_type=" . $grantType;
 
               curl_setopt_array($curl, array(
-                CURLOPT_URL => $this->apiHost . $this->tokenPath,
+                CURLOPT_URL => $apiHost . $tokenPath,
                 CURLOPT_RETURNTRANSFER => true,  // Capture response.
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,
@@ -168,7 +158,9 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @return   The JSON response from the request
    */
    function search($bearer_token, $term, $location, $categories, $searchLimit) {
-
+     // Yelp Fusion API constants
+     $apiHost = "https://api.yelp.com";
+     $searchPath = "/v3/businesses/search";
 
      // Build the paramater array
      $url_params = array();
@@ -178,7 +170,7 @@ class YelpHealthServiceRequest extends CI_Controller {
       $url_params['limit'] = $searchLimit;
 
       // Call the API request method
-      $response = $this->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+      $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
 
       return $response;
 
@@ -207,12 +199,19 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @param    $categories  The category to filter by
    */
    function query_api() {
+     // Constants
+     $categories = "health";
+     $searchLimit = 10;
+
+     // Get user input
+     $term = $this->input->post('term');
+     $location = $this->input->post('location');
 
      // Get the bearer token
      $bearer_token = $this->obtain_bearer_token();
 
      // Send a request to the search method
-     $response = json_decode($this->search($bearer_token, $this->term, $this->location, $this->categories, $this->searchLimit));
+     $response = json_decode($this->search($bearer_token, $term, $location, $categories, $searchLimit));
 
      var_dump($response);
 
