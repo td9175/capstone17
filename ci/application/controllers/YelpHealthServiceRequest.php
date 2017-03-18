@@ -7,29 +7,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  * This program demonstrates the capability of the Yelp Fusion API
  * by using the Business Search API to query for businesses by a
- * search term and location, and the Business API to query additional
- * information about the top result from the search query.
+ * search term, location, and radius. Then using the Yelp Business API to query additional
+ * information about the results from the search query.
  *
  * Please refer to http://www.yelp.com/developers/v3/documentation
  * for the API documentation.
  */
 class YelpHealthServiceRequest extends CI_Controller {
 
-
-
 	public function __construct()
 	{
         parent::__construct();
         $this->config->load('yelpFusion');
-
         // $businessPath = "/v3/businesses/";  // Business ID will come after slash.
         // Defaults for our simple example.
-
-        $defaultCategory = "health";
-        $defaultTerm = "health";
-        $defaultLocation = "65201";
-
-
+        // $defaultCategory = "health";
+        // $defaultTerm = "health";
+        // $defaultLocation = "65201";
   }
 
 
@@ -53,38 +47,51 @@ class YelpHealthServiceRequest extends CI_Controller {
           # Using the built-in cURL library for easiest installation.
           # Extension library HttpRequest would also work here.
           $curl = curl_init();
-          if (FALSE === $curl)
-              throw new Exception('Failed to initialize');
+
+          if (FALSE === $curl){
+            throw new Exception('Failed to initialize');
+          }
+
+              // Buid the post fields string for authentication
               $postfields = "client_id=" . $clientId . "&client_secret=" . $clientSecret . "&grant_type=" . $grantType;
+
               curl_setopt_array($curl, array(
-              CURLOPT_URL => $apiHost . $tokenPath,
-              CURLOPT_RETURNTRANSFER => true,  // Capture response.
-              CURLOPT_ENCODING => "",  // Accept gzip/deflate/whatever.
-              CURLOPT_MAXREDIRS => 10,
-              CURLOPT_TIMEOUT => 30,
-              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-              CURLOPT_CUSTOMREQUEST => "POST",
-              CURLOPT_POSTFIELDS => $postfields,
-              CURLOPT_HTTPHEADER => array(
-                  "cache-control: no-cache",
-                  "content-type: application/x-www-form-urlencoded",
-              ),
-          ));
+                CURLOPT_URL => $apiHost . $tokenPath,
+                CURLOPT_RETURNTRANSFER => true,  // Capture response.
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => $postfields,
+                CURLOPT_HTTPHEADER => array(
+                    "cache-control: no-cache",
+                    "content-type: application/x-www-form-urlencoded",
+                ),
+              ));
+
           $response = curl_exec($curl);
-          if (FALSE === $response)
-              throw new Exception(curl_error($curl), curl_errno($curl));
+
+          if (FALSE === $response){
+            throw new Exception(curl_error($curl), curl_errno($curl));
+          }
+
           $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-          if (200 != $http_status)
-              throw new Exception($response, $http_status);
+
+          if (200 != $http_status){
+            throw new Exception($response, $http_status);
+          }
+
           curl_close($curl);
+
       } catch(Exception $e) {
-          trigger_error(sprintf(
-              'Curl failed with error #%d: %s',
-              $e->getCode(), $e->getMessage()),
-              E_USER_ERROR);
+          trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
       }
+
+      // Extract the bearer token from the response
       $body = json_decode($response);
       $bearer_token = $body->access_token;
+
       return $bearer_token;
   }
 
@@ -101,9 +108,13 @@ class YelpHealthServiceRequest extends CI_Controller {
       // Send Yelp API Call
       try {
           $curl = curl_init();
-          if (FALSE === $curl)
-              throw new Exception('Failed to initialize');
+
+          if (FALSE === $curl){
+            throw new Exception('Failed to initialize');
+          }
+
           $url = $host . $path . "?" . http_build_query($url_params);
+
           curl_setopt_array($curl, array(
               CURLOPT_URL => $url,
               CURLOPT_RETURNTRANSFER => true,  // Capture response.
@@ -117,19 +128,23 @@ class YelpHealthServiceRequest extends CI_Controller {
                   "cache-control: no-cache",
               ),
           ));
+
           $response = curl_exec($curl);
-          if (FALSE === $response)
-              throw new Exception(curl_error($curl), curl_errno($curl));
+          if (FALSE === $response){
+            throw new Exception(curl_error($curl), curl_errno($curl));
+          }
+
           $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-          if (200 != $http_status)
-              throw new Exception($response, $http_status);
+          if (200 != $http_status){
+            throw new Exception($response, $http_status);
+          }
+
           curl_close($curl);
+
       } catch(Exception $e) {
-          trigger_error(sprintf(
-              'Curl failed with error #%d: %s',
-              $e->getCode(), $e->getMessage()),
-              E_USER_ERROR);
+          trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
       }
+
       return $response;
   }
 
@@ -147,18 +162,18 @@ class YelpHealthServiceRequest extends CI_Controller {
      $apiHost = "https://api.yelp.com";
      $searchPath = "/v3/businesses/search";
 
+     // Build the paramater array
      $url_params = array();
       $url_params['term'] = $term;
       $url_params['location'] = $location;
       $url_params['categories'] = $categories;
       $url_params['limit'] = $searchLimit;
 
-      // $response = YelpHealthServices->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+      // Call the API request method
       $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
 
       return $response;
-      // return request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
-      // return YelpHealthServices->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+
   }
 
 
@@ -184,20 +199,24 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @param    $categories  The category to filter by
    */
    function query_api() {
+     // Constants
      $categories = "health";
      $searchLimit = 10;
 
+     // Get user input
      $term = $this->input->post('term');
      $location = $this->input->post('location');
-      // $apiRequest = new YelpHealthServiceRequest;
-      // $radius = $this->input->post('radius');
+
+     // Get the bearer token
      $bearer_token = $this->obtain_bearer_token();
-      // $bearer_token = obtain_bearer_token();
-      // $response = json_decode(search($bearer_token, $term, $location, $this->categories));
+
+     // Send a request to the search method
      $response = json_decode($this->search($bearer_token, $term, $location, $categories, $searchLimit));
 
      var_dump($response);
-    //  print "$response\n";
+
+
+      //  print "$response\n";
       // $business_id = $response->businesses[0]->id;
       //
       // print sprintf(
@@ -212,21 +231,6 @@ class YelpHealthServiceRequest extends CI_Controller {
       // $pretty_response = json_encode(json_decode($response), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
       // print "$pretty_response\n";
   }
-
-
-  // /**
-  //  * User input is handled here
-  //  */
-  // $longopts  = array(
-  //     "term::",
-  //     "location::",
-  // );
-  //
-  // $options = getopt("", $longopts);
-  // $term = $options['term'] ?: $GLOBALS['defaultTerm'];
-  // $location = $options['location'] ?: $GLOBALS['defaultLocation'];
-  // query_api($term, $location);
-
 
 }
 
