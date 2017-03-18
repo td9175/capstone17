@@ -142,17 +142,16 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @param    $categories  The category to filter by
    * @return   The JSON response from the request
    */
-   function search($bearer_token, $term, $location, $categories) {
+   function search($bearer_token, $term, $location, $categories, $searchLimit) {
+     // Yelp Fusion API constants
      $apiHost = "https://api.yelp.com";
      $searchPath = "/v3/businesses/search";
-     $categories = "health";
-     $searchLimit = 10;
-     
+
      $url_params = array();
       $url_params['term'] = $term;
       $url_params['location'] = $location;
-      $url_params['limit'] = $searchLimit;
       $url_params['categories'] = $categories;
+      $url_params['limit'] = $searchLimit;
 
       // $response = YelpHealthServices->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
       $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
@@ -185,16 +184,19 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @param    $categories  The category to filter by
    */
    function query_api() {
-      $term = $this->input->post('term');
-      $location = $this->input->post('location');
+     $categories = "health";
+     $searchLimit = 10;
+
+     $term = $this->input->post('term');
+     $location = $this->input->post('location');
       // $apiRequest = new YelpHealthServiceRequest;
       // $radius = $this->input->post('radius');
-      $bearer_token = $this->obtain_bearer_token();
+     $bearer_token = $this->obtain_bearer_token();
       // $bearer_token = obtain_bearer_token();
       // $response = json_decode(search($bearer_token, $term, $location, $this->categories));
-      $response = json_decode($this->search($bearer_token, $term, $location, $this->categories));
+     $response = json_decode($this->search($bearer_token, $term, $location, $categories, $searchLimit));
 
-      print "$response\n";
+     print "$response\n";
       // $business_id = $response->businesses[0]->id;
       //
       // print sprintf(
