@@ -24,11 +24,11 @@ class YelpHealthServiceRequest extends CI_Controller {
 
         // $businessPath = "/v3/businesses/";  // Business ID will come after slash.
         // Defaults for our simple example.
-        $categories = "health";
+
         $defaultCategory = "health";
         $defaultTerm = "health";
         $defaultLocation = "65201";
-        $searchLimit = 10;
+
 
   }
 
@@ -143,7 +143,11 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @return   The JSON response from the request
    */
    function search($bearer_token, $term, $location, $categories) {
+     $apiHost = "https://api.yelp.com";
      $searchPath = "/v3/businesses/search";
+     $categories = "health";
+     $searchLimit = 10;
+     
      $url_params = array();
       $url_params['term'] = $term;
       $url_params['location'] = $location;
@@ -151,7 +155,7 @@ class YelpHealthServiceRequest extends CI_Controller {
       $url_params['categories'] = $categories;
 
       // $response = YelpHealthServices->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
-      $response = $this->request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
+      $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
 
       return $response;
       // return request($bearer_token, $this->apiHost, $this->searchPath, $url_params);
