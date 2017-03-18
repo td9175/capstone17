@@ -22,17 +22,7 @@ class YelpHealthServiceRequest extends CI_Controller {
         parent::__construct();
         $this->config->load('yelpFusion');
 
-        // API secret stuff
-        $clientId = $this->config->item("clientId");
-        $clientSecret = $this->config->item('clientSecret');
-        $grantType = $this->config->item('grantType');
-
-        // API constants, you shouldn't have to change these.
-        $apiHost = "https://api.yelp.com";
-        $searchPath = "/v3/businesses/search";
         // $businessPath = "/v3/businesses/";  // Business ID will come after slash.
-        $tokenPath = "/oauth2/token";
-
         // Defaults for our simple example.
         $categories = "health";
         $defaultCategory = "health";
@@ -43,17 +33,21 @@ class YelpHealthServiceRequest extends CI_Controller {
   }
 
 
-
-
-
-
-
   /**
    * Given a bearer token, send a GET request to the API.
    *
    * @return   OAuth bearer token, obtained using clientId and clientSecret.
    */
    function obtain_bearer_token() {
+
+     // API secret stuff
+     $clientId = $this->config->item("clientId");
+     $clientSecret = $this->config->item('clientSecret');
+     $grantType = $this->config->item('grantType');
+
+     // API constants
+     $apiHost = "https://api.yelp.com";
+     $tokenPath = "/oauth2/token";
 
       try {
           # Using the built-in cURL library for easiest installation.
@@ -149,8 +143,8 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @return   The JSON response from the request
    */
    function search($bearer_token, $term, $location, $categories) {
-      $url_params = array();
-
+     $searchPath = "/v3/businesses/search";
+     $url_params = array();
       $url_params['term'] = $term;
       $url_params['location'] = $location;
       $url_params['limit'] = $searchLimit;
@@ -165,8 +159,6 @@ class YelpHealthServiceRequest extends CI_Controller {
   }
 
 
-
-
   // /**
   //  * Query the Business API by business_id
   //  *
@@ -179,9 +171,6 @@ class YelpHealthServiceRequest extends CI_Controller {
   //
   //     return request($bearer_token, $GLOBALS['apiHost'], $businessPath);
   // }
-
-
-
 
 
   /**
@@ -218,7 +207,6 @@ class YelpHealthServiceRequest extends CI_Controller {
   }
 
 
-
   // /**
   //  * User input is handled here
   //  */
@@ -234,10 +222,6 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
 }
-
-
-
-
 
 
 ?>
