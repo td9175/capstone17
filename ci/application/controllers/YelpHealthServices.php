@@ -197,12 +197,12 @@ class YelpHealthServiceRequest extends CI_Controller {
    function query_api() {
       $term = $this->input->post('term');
       $location = $this->input->post('location');
-      $apiRequest = new YelpHealthServiceRequest;
+      // $apiRequest = new YelpHealthServiceRequest;
       // $radius = $this->input->post('radius');
-      $bearer_token = $apiRequest->obtain_bearer_token();
+      $bearer_token = $this->obtain_bearer_token();
       // $bearer_token = obtain_bearer_token();
       // $response = json_decode(search($bearer_token, $term, $location, $this->categories));
-      $response = json_decode($apiRequest->search($bearer_token, $term, $location, $this->categories));
+      $response = json_decode($this->search($bearer_token, $term, $location, $this->categories));
 
       print "$response\n";
       // $business_id = $response->businesses[0]->id;
