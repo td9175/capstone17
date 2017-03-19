@@ -277,7 +277,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 	function business_reviews(){
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
-		$businessPath = $this->config->item('reviewsPath');
+		$reviewsPath = $this->config->item('reviewsPath');
 
 		// Get user input for the selected business id
 		$id = $this->input->post('id');
