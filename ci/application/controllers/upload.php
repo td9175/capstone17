@@ -10,7 +10,7 @@ class Upload extends CI_Controller {
 
 	function index()
 	{
-		$this->load->view('ocr', array('error' => ' ' ));
+		$this->load->view('ocr');
 	}
 
 	function do_upload()
