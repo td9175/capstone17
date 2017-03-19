@@ -169,7 +169,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 * @param    $limit 			The number to limit search results by
    * @return   The JSON response from the request
    */
-   function search($bearer_token, $term, $location, $categories, $radius, $limit) {
+   function search($bearer_token, $term, $location, $latitude, $longitude, $categories, $radius, $limit) {
 
      // Yelp Fusion API constants
      $apiHost = $this->config->item('apiHost');
@@ -179,6 +179,8 @@ class YelpHealthServiceRequest extends CI_Controller {
      $url_params = array();
     	$url_params['term'] = $term;
       $url_params['location'] = $location;
+			$url_params['latitude'] = $latitude;
+			$url_params['longitude'] = $longitude;
 			$url_params['categories'] = $categories;
 			$url_params['radius'] = $radius;
 			$url_params['limit'] = $limit;
@@ -206,6 +208,8 @@ class YelpHealthServiceRequest extends CI_Controller {
      // Get user input
      $term = $this->input->post('term');
      $location = $this->input->post('location');
+		 $latitude = $this->input->post('latitude');
+		 $longitude = $this->input->post('longitude');
 		 $radius = $this->input->post('radius');
 		 $limit = $this->input->post('limit');
 
@@ -213,7 +217,7 @@ class YelpHealthServiceRequest extends CI_Controller {
      $bearer_token = $this->obtain_bearer_token();
 
      // Send a request to the search method
-     $response = json_decode($this->search($bearer_token, $term, $location, $categories, $radius, $limit));
+     $response = json_decode($this->search($bearer_token, $term, $location, $latitude, $longitude, $categories, $radius, $limit));
 
      var_dump($response);
   }
