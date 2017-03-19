@@ -169,7 +169,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 		// Get user input
 		$text = $this->input->post('text');
-		$latitude = $this->input->post('latitude ');
+		$latitude = $this->input->post('latitude');
 		$longitude = $this->input->post('longitude');
 
 		// Build the paramater array
