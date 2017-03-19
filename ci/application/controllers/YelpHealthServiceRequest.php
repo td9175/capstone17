@@ -115,7 +115,12 @@ class YelpHealthServiceRequest extends CI_Controller {
           }
 
 					// Generate URL-encoded query string
-          $url = $host . $path . "?" . http_build_query($url_params);
+					if (strcmp($path, "/v3/businesses/") == 0){ // The strings are a match, request for business info
+						$url = $host . $path . $url_params;
+					} else {
+						$url = $host . $path . "?" . http_build_query($url_params);
+					}
+
 
 					// Set an array of curl options
           curl_setopt_array($curl, array(
@@ -250,15 +255,11 @@ class YelpHealthServiceRequest extends CI_Controller {
 		// Get user input for the selected business id
 		$id = $this->input->post('id');
 
-		// Build the paramater array
-		$url_params = array();
-		$url_params['id'] = $id;
-
 		// Get the bearer token
 		$bearer_token = $this->obtain_bearer_token();
 
 		// Call the API request method
-		$response = $this->request($bearer_token, $apiHost, $businessPath, $url_params);
+		$response = $this->request($bearer_token, $apiHost, $businessPath, $id);
 
 		// Print out the JSON response
 		echo "$response";
