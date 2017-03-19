@@ -105,7 +105,6 @@ class YelpHealthServiceRequest extends CI_Controller {
    * @return   The JSON response from the request
   ************************************************************************/
    function request($bearer_token, $host, $path, $url_params = array()) {
-
       // Try to send a Yelp API Call
       try {
 
@@ -178,7 +177,6 @@ class YelpHealthServiceRequest extends CI_Controller {
 		$url_params['text'] = $text;
 		$url_params['latitude'] = $latitude;
 		$url_params['longitude'] = $longitude;
-		$url_params['locale'] = "English_en_US";
 
 		// Get the bearer token
 		$bearer_token = $this->obtain_bearer_token();
