@@ -15,7 +15,7 @@
         var image= $('#image').val();
      	console.log("Image");
      	console.log(image);
-        var url = "https://capstone.td9175.com/ci/index.php/OCR/upload";
+        var url = "https://capstone.td9175.com/ci/index.php/Rest/upload";
         console.log(url);
 
           $.post(url,
