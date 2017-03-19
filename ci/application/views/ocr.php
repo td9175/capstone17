@@ -16,6 +16,7 @@
      	console.log("Image");
      	console.log(image);
         var url = "https://capstone.td9175.com/ci/index.php/OCR/upload";
+        console.log(url);
 
           $.post(url,
           {
