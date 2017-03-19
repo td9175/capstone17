@@ -220,8 +220,12 @@ class YelpHealthServiceRequest extends CI_Controller {
      // Get the bearer token
      $bearer_token = $this->obtain_bearer_token();
 
-     // Send a request to the search method
-     $response = json_decode($this->search($bearer_token, $term, $location, $latitude, $longitude, $radius, $categories, $limit));
+		 // Send a request to the search method using latitude/longitude or location
+		 if (isset($latitude) && !empty($latitude) && isset($longitude) && !empty($longitude)){
+			 $response = json_decode($this->search($bearer_token, $term, $latitude, $longitude, $radius, $categories, $limit));
+		 } else {
+			 $response = json_decode($this->search($bearer_token, $term, $location, $radius, $categories, $limit));
+		 }
 
      var_dump($response);
   }
