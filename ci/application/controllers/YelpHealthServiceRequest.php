@@ -179,23 +179,16 @@ class YelpHealthServiceRequest extends CI_Controller {
      $apiHost = $this->config->item('apiHost');
      $searchPath = $this->config->item('searchPath');
 
-
-
      // Build the paramater array
      $url_params = array();
 
     	$url_params['term'] = $term;
-
-			if (isset($latitude) && !empty($latitude) && isset($longitude) && !empty($longitude)){
-				$url_params['latitude'] = $latitude;
-				$url_params['longitude'] = $longitude;
-			} else {
-				$url_params['location'] = $location;
-			}
-
-			$url_params['radius'] = $radius;
+			$url_params['latitude'] = floatval($latitude);
+			$url_params['longitude'] = floatval($longitude);
+			$url_params['location'] = $location;
+			$url_params['radius'] = intval($radius);
 			$url_params['categories'] = $categories;
-			$url_params['limit'] = $limit;
+			$url_params['limit'] = intval($limit);
 
       // Call the API request method
       $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
