@@ -1,11 +1,10 @@
 <?php
 /*
 
-@Author: Robert Fink
-12bit - UMB Bank Health Spending App
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
 
 */
-
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -20,8 +19,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Please refer to http://www.yelp.com/developers/v3/documentation
  * for the API documentation.
  */
-class YelpHealthServiceRequest extends CI_Controller {
 
+class YelpHealthServiceRequest extends CI_Controller {
 	public function __construct()
 	{
         parent::__construct();
@@ -53,24 +52,24 @@ class YelpHealthServiceRequest extends CI_Controller {
             throw new Exception('Failed to initialize');
           }
 
-              // Build the post fields string for authentication
-              $postfields = "client_id=" . $clientId . "&client_secret=" . $clientSecret . "&grant_type=" . $grantType;
+          // Build the post fields string for authentication
+          $postfields = "client_id=" . $clientId . "&client_secret=" . $clientSecret . "&grant_type=" . $grantType;
 
-							// Set an array of curl options
-              curl_setopt_array($curl, array(
-                CURLOPT_URL => $apiHost . $tokenPath,
-                CURLOPT_RETURNTRANSFER => true,  // Capture response.
-                CURLOPT_ENCODING => "",
-                CURLOPT_MAXREDIRS => 10,
-                CURLOPT_TIMEOUT => 30,
-                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                CURLOPT_CUSTOMREQUEST => "POST",
-                CURLOPT_POSTFIELDS => $postfields,
-                CURLOPT_HTTPHEADER => array(
-                    "cache-control: no-cache",
-                    "content-type: application/x-www-form-urlencoded",
-                ),
-              ));
+					// Set an array of curl options
+          curl_setopt_array($curl, array(
+            CURLOPT_URL => $apiHost . $tokenPath,
+            CURLOPT_RETURNTRANSFER => true,  // Capture response.
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $postfields,
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "content-type: application/x-www-form-urlencoded",
+            ),
+          ));
 
 					// Execute a curl request and make sure curl did not fail
           $response = curl_exec($curl);
@@ -94,7 +93,6 @@ class YelpHealthServiceRequest extends CI_Controller {
       // Extract the bearer token from the response
       $body = json_decode($response);
       $bearer_token = $body->access_token;
-
       return $bearer_token;
   }
 
@@ -164,16 +162,14 @@ class YelpHealthServiceRequest extends CI_Controller {
    * Query the Search API by a search term and location
    *
    * @param    $bearer_token   API bearer token from obtain_bearer_token
-   * @param    $term        The search term passed to the API (optional)
-   * @param    $location    The search location passed to the API (required if latitude/longitude not provided)
-	 * @param    $latitude    The search location passed to the API
-	 * @param    $longitude    The search location passed to the API
-	 * @param    $radius      The radius to search within the location (optional)
-	 * @param    $categories  The category to filter by (CONSTANT)
-	 * @param    $searchLimit The number to limit search results by (optional)
+   * @param    $term        The search term passed to the API
+   * @param    $location    The search location passed to the API
+	 * @param    $categories  The category to filter by
+	 * @param    $radius      The radius to search within the location
+	 * @param    $limit 			The number to limit search results by
    * @return   The JSON response from the request
    */
-   function search($bearer_token, $term, $location, $latitude, $longitude, $radius, $categories, $limit) {
+   function search($bearer_token, $term, $location, $categories, $radius, $limit) {
 
      // Yelp Fusion API constants
      $apiHost = $this->config->item('apiHost');
@@ -181,18 +177,14 @@ class YelpHealthServiceRequest extends CI_Controller {
 
      // Build the paramater array
      $url_params = array();
-
     	$url_params['term'] = $term;
-			$url_params['location'] = $location;
-			$url_params['latitude'] = floatval($latitude);
-			$url_params['longitude'] = floatval($longitude);
-			$url_params['radius'] = intval($radius);
+      $url_params['location'] = $location;
 			$url_params['categories'] = $categories;
-			$url_params['limit'] = intval($limit);
+			$url_params['radius'] = $radius;
+			$url_params['limit'] = $searchLimit;
 
       // Call the API request method
       $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
-
       return $response;
   }
 
@@ -200,34 +192,32 @@ class YelpHealthServiceRequest extends CI_Controller {
   /**
    * Queries the API by the input values from the user
    *
-	 * @param    $categories  The category to filter by (constant HEALTH)
    * @param    $term        The search term to query
    * @param    $location    The location of the business to query
+	 * @param    $categories  The category to filter by (constant HEALTH)
 	 * @param    $radius      The radius to search within the location
-	 * @param    $searchLimit The number to limit search results by
+	 * @param    $limit 			The number to limit search results by
    */
    function query_api() {
+
+     // Constant
+     $categories = $this->config->item('categories');
 
      // Get user input
      $term = $this->input->post('term');
      $location = $this->input->post('location');
-		 $latitude = $this->input->post('latitude');
-		 $longitude = $this->input->post('longitude');
 		 $radius = $this->input->post('radius');
-		 $categories = $this->config->item('categories'); // CONSTANT
 		 $limit = $this->input->post('limit');
 
      // Get the bearer token
      $bearer_token = $this->obtain_bearer_token();
 
      // Send a request to the search method
-     $response = json_decode($this->search($bearer_token, $term, $location, $latitude, $longitude, $radius, $categories, $limit));
+     $response = json_decode($this->search($bearer_token, $term, $location, $categories, $radius, $limit));
 
      var_dump($response);
   }
-
 }
-
 
 // /**
 //  * Query the Business API by business_id
@@ -241,8 +231,6 @@ class YelpHealthServiceRequest extends CI_Controller {
 //
 //     return request($bearer_token, $GLOBALS['apiHost'], $businessPath);
 // }
-
-
 //  print "$response\n";
 // $business_id = $response->businesses[0]->id;
 //

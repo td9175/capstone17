@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * Please refer to http://www.yelp.com/developers/v3/documentation
  * for the API documentation.
  */
-class YelpHealthServiceRequest extends CI_Controller {
+class YelpHealthServiceRequest2 extends CI_Controller {
 	public function __construct()
 	{
         parent::__construct();
