@@ -105,16 +105,16 @@ function ocr_request($image) {
 			RecursiveIteratorIterator::SELF_FIRST);
 
 		foreach ($jsonIterator as $key => $val) {
-			if(is_array($val)) {
-				echo "$key:";
-				echo "<br>";
-			} else {
+				if(is_array($val)) {
+					echo "$key:";
+					echo "<br>";
+				} else {
 				echo "$key => $val";
 				echo "<br>";
-			}
+				}
 			}
 		
-			}
+				}
 			catch (HttpException $ex) {
 				echo $ex;
 			}
