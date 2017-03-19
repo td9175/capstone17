@@ -29,7 +29,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
   /************************************************************************
-   * Send a GET request to the Yelp API
+   * Send a GET request to the Yelp API for the authentication token
    *
    * @return   OAuth bearer token, obtained using clientId and clientSecret.
   ************************************************************************/
@@ -96,7 +96,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
   /************************************************************************
-   * Makes a request to the Yelp API and returns the response
+   * Makes a request to one of the Yelp API's and returns a response
    *
    * @param    $bearer_token   API bearer token from obtain_bearer_token
    * @param    $host    The domain host of the API
@@ -164,7 +164,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
 	/************************************************************************
-   * Queries the Yelp autocomplete API by the input values from the user
+   * Queries the Yelp autocomplete API with the input values from the user
    *
    * @param    $text        The search term to query
 	 * @param    $latitude    The location of the business to query (Required)
@@ -198,7 +198,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
 	/************************************************************************
-   * Queries the Yelp business search API by the input values from the user
+   * Queries the Yelp search API with the input values from the user
    *
    * @param    $text        The search term to query (optional)
    * @param    $location    The location of the business to query (Required if latitude and longitude are not provided.)
@@ -246,7 +246,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
 	/************************************************************************
-   * Queries the Yelp autocomplete API by the input values from the user
+   * Queries the Yelp business API with the input values from the user
    *
    * @param    $id        	The selected business id to query (Required)
    ************************************************************************/
@@ -270,7 +270,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 
 	/************************************************************************
-	 * Queries the Yelp business reviews API for a business
+	 * Queries the Yelp reviews API for a business
 	 *
 	 * @param    $id        	The selected business id to query (Required)
 	 ************************************************************************/

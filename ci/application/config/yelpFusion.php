@@ -11,7 +11,4 @@ $config['categories'] = "health";
 $config['autoCompletePath'] = "/v3/autocomplete";
 $config['reviewsPath'] = "/v3/businesses/{id}/reviews";
 
-
-
-
 ?>
