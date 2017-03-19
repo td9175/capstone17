@@ -8,18 +8,21 @@ class Ocr extends CI_Controller {
 	    //upload that image file to server
 	    //pull that image file from server and send to API
 	    //send back JSON data to front end
-function upload_image() {
+function upload_post() {
 		$target_dir = "uploads/";
+		
+		
+		$image = $this->post('image');
 		
 		echo "in upload_image";
 		//fileToUpload is post variable from form
 		
-		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+		$target_file = $target_dir . basename($_FILES[$image]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		// Check if image file is a actual image or fake image
 		if(isset($_POST["submit"])) {
-			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+			$check = getimagesize($_FILES[$image]["tmp_name"]);
 			if($check !== false) {
 				echo "File is an image - " . $check["mime"] . ".";
 				$uploadOk = 1;
@@ -34,7 +37,7 @@ function upload_image() {
 			$uploadOk = 0;
 		}
 		// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
+		if ($_FILES[$image]["size"] > 500000) {
 			echo "Sorry, your file is too large.";
 			$uploadOk = 0;
 		}
@@ -49,8 +52,8 @@ function upload_image() {
 			echo "Sorry, your file was not uploaded.";
 		// if everything is ok, try to upload file
 		} else {
-			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-				echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+			if (move_uploaded_file($_FILES[$image]["tmp_name"], $target_file)) {
+				echo "The file ". basename( $_FILES[$image]["name"]). " has been uploaded.";
 			} else {
 				echo "Sorry, there was an error uploading your file.";
 			}
