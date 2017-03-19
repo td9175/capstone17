@@ -236,6 +236,34 @@ class YelpHealthServiceRequest extends CI_Controller {
 		 echo "$response";
   }
 
+
+	/************************************************************************
+   * Queries the Yelp autocomplete API by the input values from the user
+   *
+   * @param    $id        	The selected business id to query (Required)
+   ************************************************************************/
+	function business_info(){
+		// Yelp Fusion API constants
+		$apiHost = $this->config->item('apiHost');
+		$businessPath = $this->config->item('businessPath');
+
+		// Get user input for the selected business id
+		$id = $this->input->post('id');
+
+		// Build the paramater array
+		$url_params = array();
+		$url_params['id'] = $id;
+
+		// Get the bearer token
+		$bearer_token = $this->obtain_bearer_token();
+
+		// Call the API request method
+		$response = $this->request($bearer_token, $apiHost, $businessPath, $url_params);
+
+		// Print out the JSON response
+		echo "$response";
+	}
+
 }
 
 
