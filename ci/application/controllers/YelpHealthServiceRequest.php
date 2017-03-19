@@ -1,12 +1,11 @@
-<!--
+<?php
+/*
 
 @Author: Robert Fink
 12bit - UMB Bank Health Spending App
 
--->
+*/
 
-
-<?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
