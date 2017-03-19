@@ -8,6 +8,7 @@ $config['tokenPath'] = "/oauth2/token";
 $config['searchPath'] = "/v3/businesses/search";
 $config['businessPath'] = "/v3/businesses/";
 $config['categories'] = "health";
+$config['autoCompletePath'] = "/v3/autocomplete";
 
 
 

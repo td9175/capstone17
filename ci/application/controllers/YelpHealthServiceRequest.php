@@ -177,8 +177,8 @@ class YelpHealthServiceRequest extends CI_Controller {
 
      // Build the paramater array
      $url_params = array();
-    	$url_params['term'] = $term;
-      $url_params['location'] = $location;
+	  	$url_params['term'] = $term;
+	    $url_params['location'] = $location;
 			$url_params['latitude'] = $latitude;
 			$url_params['longitude'] = $longitude;
 			$url_params['categories'] = $categories;
@@ -190,6 +190,23 @@ class YelpHealthServiceRequest extends CI_Controller {
       return $response;
   }
 
+	function auto_complete(){
+		// Yelp Fusion API constants
+		$apiHost = $this->config->item('apiHost');
+		$autoCompletePath = $this->config->item('autoCompletePath');
+
+		// Build the paramater array
+		$url_params = array();
+		$url_params['text'] = $text;
+		$url_params['latitude'] = $latitude;
+		$url_params['longitude'] = $longitude;
+		$url_params['locale'] = "English_en_US";
+
+		// Call the API request method
+		$response = $this->request($bearer_token, $apiHost, $autoCompletePath, $url_params);
+		return $response;
+	}
+
 
   /**
    * Queries the API by the input values from the user
@@ -200,7 +217,11 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 * @param    $radius      The radius to search within the location
 	 * @param    $limit 			The number to limit search results by
    */
-   function query_api() {
+   function search_query() {
+
+		 // Yelp Fusion API constants
+     $apiHost = $this->config->item('apiHost');
+     $searchPath = $this->config->item('searchPath');
 
      // Constant
      $categories = $this->config->item('categories');
@@ -213,13 +234,27 @@ class YelpHealthServiceRequest extends CI_Controller {
 		 $radius = $this->input->post('radius');
 		 $limit = $this->input->post('limit');
 
+		 // Build the paramater array
+     $url_params = array();
+	  	$url_params['term'] = $term;
+	    $url_params['location'] = $location;
+			$url_params['latitude'] = $latitude;
+			$url_params['longitude'] = $longitude;
+			$url_params['categories'] = $categories;
+			$url_params['radius'] = $radius;
+			$url_params['limit'] = $limit;
+
      // Get the bearer token
      $bearer_token = $this->obtain_bearer_token();
 
-     // Send a request to the search method
-     $response = json_decode($this->search($bearer_token, $term, $location, $latitude, $longitude, $categories, $radius, $limit));
+		 // Call the API request method
+		 $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
+		//  return $response;
 
-     var_dump($response);
+     // Send a request to the search method
+    //  $response = json_decode($this->search($bearer_token, $term, $location, $latitude, $longitude, $categories, $radius, $limit));
+		 echo "$response";
+    //  var_dump($response);
   }
 }
 
