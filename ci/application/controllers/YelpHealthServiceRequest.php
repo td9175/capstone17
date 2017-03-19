@@ -183,9 +183,9 @@ class YelpHealthServiceRequest extends CI_Controller {
      $url_params = array();
 
     	$url_params['term'] = $term;
+			$url_params['location'] = $location;
 			$url_params['latitude'] = floatval($latitude);
 			$url_params['longitude'] = floatval($longitude);
-			$url_params['location'] = $location;
 			$url_params['radius'] = intval($radius);
 			$url_params['categories'] = $categories;
 			$url_params['limit'] = intval($limit);
