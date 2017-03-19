@@ -215,7 +215,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 		 $longitude = $this->input->post('longitude');
 		 $radius = $this->input->post('radius');
 		 $categories = $this->config->item('categories'); // CONSTANT
-		 $limit = $this->input->post('searchLimit');
+		 $limit = $this->input->post('limit');
 
      // Get the bearer token
      $bearer_token = $this->obtain_bearer_token();
