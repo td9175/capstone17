@@ -181,7 +181,7 @@ class YelpHealthServiceRequest extends CI_Controller {
       $url_params['location'] = $location;
 			$url_params['categories'] = $categories;
 			$url_params['radius'] = $radius;
-			$url_params['limit'] = $searchLimit;
+			$url_params['limit'] = $limit;
 
       // Call the API request method
       $response = $this->request($bearer_token, $apiHost, $searchPath, $url_params);
