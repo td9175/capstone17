@@ -9,6 +9,7 @@ $config['searchPath'] = "/v3/businesses/search";
 $config['businessPath'] = "/v3/businesses/";
 $config['categories'] = "health";
 $config['autoCompletePath'] = "/v3/autocomplete";
+$config['reviewsPath'] = "/v3/businesses/{id}/reviews";
 
 
 

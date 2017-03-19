@@ -117,10 +117,13 @@ class YelpHealthServiceRequest extends CI_Controller {
 					// Generate URL-encoded query string
 					if (strcmp($path, "/v3/businesses/") == 0){ // The strings are a match, request for business info
 						$url = $host . $path . $url_params;
-					} else {
+					}
+					elseif (strcmp($path, "/v3/businesses/{id}/reviews") == 0){ // The strings are a match, request for business reviews
+						$url = $host . "/v3/businesses/" . $url_params . "/reviews";
+					}
+					else {
 						$url = $host . $path . "?" . http_build_query($url_params);
 					}
-
 
 					// Set an array of curl options
           curl_setopt_array($curl, array(
@@ -260,6 +263,30 @@ class YelpHealthServiceRequest extends CI_Controller {
 
 		// Call the API request method
 		$response = $this->request($bearer_token, $apiHost, $businessPath, $id);
+
+		// Print out the JSON response
+		echo "$response";
+	}
+
+
+	/************************************************************************
+	 * Queries the Yelp business reviews API for a business
+	 *
+	 * @param    $id        	The selected business id to query (Required)
+	 ************************************************************************/
+	function business_reviews(){
+		// Yelp Fusion API constants
+		$apiHost = $this->config->item('apiHost');
+		$businessPath = $this->config->item('reviewsPath');
+
+		// Get user input for the selected business id
+		$id = $this->input->post('id');
+
+		// Get the bearer token
+		$bearer_token = $this->obtain_bearer_token();
+
+		// Call the API request method
+		$response = $this->request($bearer_token, $apiHost, $reviewsPath, $id);
 
 		// Print out the JSON response
 		echo "$response";
