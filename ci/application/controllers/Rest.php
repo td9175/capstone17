@@ -251,7 +251,6 @@ function upload_post() {
       function do_upload()
 	{
 		$this->load->helper(array('form', 'url'));
-		$this->load->view('ocr');
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
@@ -269,8 +268,8 @@ function upload_post() {
 		else
 		{
 			$data = array('upload_data' => $this->upload->data());
-
-			$this->load->view('upload_success', $data);
+			echo "success";
+			//$this->load->view('registration', $data);
 		}
 	}
 
