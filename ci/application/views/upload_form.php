@@ -1,20 +1,9 @@
-<html>
- 
-   <head> 
-      <title>Upload Form</title> 
-   </head>
+
+
+<?php 
 	
-   <body> 
-      <?php echo $error;
-      include: 'applications/helpers/form_helper.php';?> 
-      <?php echo form_open('upload/do_upload');?> 
-		
-      <form action = "" method = "">
-         <input type = "file" name = "userfile" size = "20" /> 
-         <br /><br /> 
-         <input type = "submit" value = "upload" /> 
-      </form> 
-		
-   </body>
-	
-</html>
+	echo form_open('Drugs/search_for_drug', array('method'=>'get')); ?>
+	<label for='searchQuery'>Enter a drug to search for: </label>
+	<input type='text' name='searchQuery'>
+	<input type='submit' name='submit' value='Search!'>
+	</form>
