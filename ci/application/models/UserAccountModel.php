@@ -92,6 +92,11 @@ class UserAccountModel extends CI_Model {
 
       if (count($result->result_array()) == 0){
         $data['response'] = "Incorrect email or password.";
+      } else {
+        // Insert the associated hash_pass into the data array
+        foreach ($result->result_array() as $row) {
+          $data['response'] = $row['hash_pass'];
+        }
       }
 
 
