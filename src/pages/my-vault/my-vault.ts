@@ -1,3 +1,4 @@
+import { AccountsPage } from './../accounts/accounts';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -21,6 +22,10 @@ export class MyVaultPage {
 
   goBack() {
     this.navCtrl.pop();
+  }
+
+  loadReciept(){
+    this.navCtrl.push(AccountsPage);
   }
 
 }

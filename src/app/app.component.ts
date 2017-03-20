@@ -24,7 +24,6 @@ import { Page2 } from '../pages/page2/page2';
 import { MyVaultPage } from './../pages/my-vault/my-vault'; 
 
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -100,5 +99,9 @@ export class MyApp {
 
   goToUserSettings() {
     this.nav.push(UserSettingsPage);
+  }
+
+  signOut(){
+    this.nav.push(LoginPage)
   }
 } // end myapp

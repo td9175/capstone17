@@ -21,6 +21,18 @@
 
 
 <ion-content padding>
-  <h1>Hello</h1>
-  <p>This is a test</p>
+  <h1>Your Reciept Data</h1>
+
+  <ion-list>
+    <button ion-item item-left (click)="loadReciept()">
+      <h2 id = "recieptDate">"Receipt date"</h2>
+      <p id = "detailNotes">"Notes about reciept"</p>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </button>
+    <button ion-item item-left (click)="loadReciept()">
+      <h2>"Receipt date 2"</h2>
+      <p>"Notes about reciept 2"</p>
+      <ion-icon name="arrow-forward" item-right></ion-icon>
+    </button>
+  </ion-list>
 </ion-content>
