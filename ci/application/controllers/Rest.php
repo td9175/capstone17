@@ -145,7 +145,7 @@ require('application/libraries/REST_Controller.php');
 
 			if($user)
 			{
-				$this->response($user, 200); // 200 being the HTTP response code
+				echo $this->response($user, 200); // 200 being the HTTP response code
 			}
 
 			else
