@@ -2,9 +2,7 @@
   defined('BASEPATH') OR exit('No direct script access allowed');
 
    class Upload extends CI_Controller {
-	
-	echo "<input type='file'>";
-	echo "Input file";
+
 	
       public function __construct() { 
          parent::__construct(); 
