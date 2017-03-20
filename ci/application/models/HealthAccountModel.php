@@ -24,7 +24,7 @@
 				);
 				
 				
-			return $result;
+			return json_encode($result);
 
 			}
 
