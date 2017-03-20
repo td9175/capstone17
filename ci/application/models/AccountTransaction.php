@@ -21,7 +21,8 @@
 				);
 
 			}
-
+			json_encode($data);
+		
 
     		return $data;
 	

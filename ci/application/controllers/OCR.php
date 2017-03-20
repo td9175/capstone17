@@ -62,7 +62,7 @@ function upload_post() {
 
 }
 	    
-function ocr_request($image) {
+function ocr_request() {
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
 	
