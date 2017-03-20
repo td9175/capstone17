@@ -62,7 +62,7 @@ function upload_post() {
 
 }
 	    
-function ocr_request($image) {
+function ocr_request() {
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
 	
@@ -89,6 +89,7 @@ function ocr_request($image) {
 
 			$request->setMethod(HTTP_Request2::METHOD_POST);
 
+			$image = 'http://i1008.photobucket.com/albums/af202/CompSyn/Walmart_QS_zpsw3uk1oeh.png';
 			// Request body
 			$newurl = "{'url': '";
 			$newurl .= $image;
@@ -102,7 +103,8 @@ function ocr_request($image) {
 				//echo $response->getBody();
 				$newanswer = $response->getBody();
 				echo "<br><Br>";
-		
+				json_encode($newanswer);
+				echo "New: " . $newanswer;
 			   $jsonIterator = new RecursiveIteratorIterator(
 			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
 			RecursiveIteratorIterator::SELF_FIRST);
