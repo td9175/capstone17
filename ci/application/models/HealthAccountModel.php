@@ -12,19 +12,19 @@
 		 $result = $this->db->query($query, $id);
 
 
-		 foreach ($result->result_array() as $row) {
+		 //foreach ($result->result_array() as $row) {
 
-        	$data[] = array(
+        	/*$data[] = array(
 				'user_id' => $row['user_id'],
 				'account_number' => $row['account_number'],
 				'account_type' => $row['account_type'],
 				'balance' => $row['balance']
 				);
 
-			}
+			}*/
 
 
-    		return json_encode($data);
+    		return json_encode($result);
 
 	}
 
