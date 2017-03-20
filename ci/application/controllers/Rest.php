@@ -102,6 +102,10 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
+				echo '<script>console.log("login response: $login_response")</script>';
+
+
+
 				// // Check if the email exists
 				// if ($login_response['hash_pass'] == NULL){
 				//
@@ -219,6 +223,97 @@ require('application/libraries/REST_Controller.php');
 	}
 
 	
+
+
+
+
+      function hsa_get($id) {
+
+    	$this->load->model('HealthAccountModel');
+
+			if(!$this->get('id'))
+			{
+				$this->response(NULL, 400);
+			}
+
+			$user = $this->HealthAccountModel->get_hsa_info($this->get('id') );
+
+			if($user)
+			{
+			
+				$this->response($user, 200); // 200 being the HTTP response code
+			}
+
+			else
+			{
+				$this->response(NULL, 404);
+			}
+
+
+
+      }
+      function fsa_get($id) {
+      	$this->load->model('HealthAccountModel');
+
+			if(!$this->get('id'))
+			{
+				$this->response(NULL, 400);
+			}
+
+			$user = $this->HealthAccountModel->get_fsa_info($this->get('id'));
+
+			if($user)
+			{
+				$this->response($user, 200); // 200 being the HTTP response code
+			}
+
+			else
+			{
+				$this->response(NULL, 404);
+			}
+
+
+      }
+
+      function transaction_get($acct_num) {
+      	$this->load->model('AccountTransactionModel');
+
+      	if(!$this->get('acct_num')) {
+      		$this->response(NULL, 400);
+      	}
+      	$trans_info = $this->AccountTransactionModel->get_trans_info($this->get('acct_num'));
+
+      	if($trans_info) {
+      		$this->response($trans_info, 200);
+      	} else {
+      		$this->response(NULL, 404);
+      	}
+
+
+      }
+
+      function upload_post()
+	{
+		echo "in upload_post()";
+        // Load the model
+        //$this->load->model('UserAccountModel');
+
+				// Get user information for registration
+        $image = $this->post('image');
+
+
+
+        // If registration_response has data respond with data and success, or 404
+        if($image){
+        		echo "success";
+  				$this->response($image, 200); // 200 Success
+  			} else {
+  				echo "fail";
+  				$this->response(NULL, 404); // 404 Not found
+  			}
+	}
+
+
 
 
 	}
