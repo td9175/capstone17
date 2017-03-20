@@ -11,6 +11,42 @@
 
   <br>
   <br>
+  <h4>Test json array from sami</h4>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+        <h2>User ID = {{user.user_id}}</h2>
+        <h2>Account # = {{user.account_number}}</h2>
+        <h2>Account Type = {{user.account_type}}</h2>
+        <h2>Balance = {{user.balance}}</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list inset>
+    <ion-item-group>
+      <ion-item-divider color="light">HSA Accounts</ion-item-divider>
+      <ion-item-sliding>
+        <ion-item>
+          <h2>"Account Name" - "Account Number"</h2>
+          <!--<h2>{{users?.balance}} test </h2>-->
+          <p>"Balance"</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="information-circle"></ion-icon>
+            Details
+          </button>
+          <button ion-button color="secondary">
+            <ion-icon name="remove-circle"></ion-icon>
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+      
+      <ion-item>
+        Add HSA Account
+        <ion-icon name="add-circle" item-right></ion-icon>
+      </ion-item>
+    </ion-item-group>
 
   <ion-list no-lines>
     <h4>HSA Accounts</h4>
