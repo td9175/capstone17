@@ -3,7 +3,7 @@
 
 ## Current Dev Readme
 
-Ionic and backand setup: [ionic](http://www.ionicframework.com) and [backand](http://www.backand.com).
+Ionic setup: [ionic](http://www.ionicframework.com)
 **NOTE: Ionic current development using version ^2.2.1**
 
 ### For the team:
@@ -22,11 +22,6 @@ $ npm install -g ionic cordova
 ```
 
 - Make sure to navigate into the root folder of the app. 
-
-- Install dependencies for backand
-```bash
-$ npm i -S @backand/angular2-sdk socket.io-client @types/node @types/socket.io-client
-```
 
 - Note: You may need to use sudo.
 
