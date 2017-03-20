@@ -24,7 +24,7 @@
 			}
 
 
-    		return $data;
+    		return json_encode($data);
 
 	}
 
