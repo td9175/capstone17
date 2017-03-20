@@ -90,7 +90,12 @@ class UserAccountModel extends CI_Model {
 
       $result = $this->db->query($query, $email);
 
-      $data['response'] = $result;
+      $row = $result->result_array();
+
+      if (count($row['hash_pass']) == 0){
+        $data['response'] = "Incorrect email or password.";
+      }
+
 
 
       // // Execute the query
