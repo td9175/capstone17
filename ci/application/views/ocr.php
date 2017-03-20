@@ -1,13 +1,19 @@
-<?php 
-	
-	echo form_open('OCR/getImage', array('method'=>'post')); ?>
-	<html>
-	<label for='searchQuery'>Enter a drug to search for: </label>
-	<input type='text' name='searchQuery'>
-	<input type='submit' name='submit' value='Search!'>
-	</form>
+<html>
+<head>
+<title>Upload Form</title>
+</head>
+<body>
 
 
-	<hr>
-	<a href='http://GoodRx.com'>Powered by GoodRx</a>
+<?php echo form_open_multipart('upload/do_upload');?>
+
+<input type="file" name="userfile" size="20" />
+
+<br /><br />
+
+<input type="submit" value="upload" />
+
+</form>
+
+</body>
 </html>
