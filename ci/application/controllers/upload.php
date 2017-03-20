@@ -15,6 +15,8 @@ class Upload extends CI_Controller {
 
 	function do_upload()
 	{
+		$this->load->helper(array('form', 'url'));
+		$this->load->view('ocr');
 		$config['upload_path'] = './uploads/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '100';
