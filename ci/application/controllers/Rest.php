@@ -91,7 +91,7 @@ require('application/libraries/REST_Controller.php');
 
 				// Set the initial logged_in flag to FALSE
 				$logged_in = "FALSE";
-				$error_message = "Incorrect email or password."
+				$error_message = "Incorrect email or password.";
 
         // Load the model
         $this->load->model('UserAccountModel');
@@ -103,12 +103,12 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				// $this->response($login_response, 200);
+				$this->response($login_response, 200);
 
 				if (strcmp($login_response, $error_message) == 0){ // The strings are a match.
 					// Email not found, send back a response with $logged_in = FALSE, 200 Success
   				$this->response($logged_in, 200);
-				} 
+				}
 
 				// } elseif (password_verify($password, $login_response['hash_pass'])) {
 				// 	// Email and password match
