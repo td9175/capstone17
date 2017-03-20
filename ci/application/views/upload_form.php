@@ -1,7 +1,7 @@
 <?php 
 	
 	
-$this->load->helper('form');
+
 
 	echo form_open('Drugs/search_for_drug', array('method'=>'get')); ?>
 	<label for='searchQuery'>Enter a drug to search for: </label>
