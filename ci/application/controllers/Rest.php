@@ -102,8 +102,7 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				echo '<script>console.log("login response: $login_response")</script>';
-
+				$this->response($login_response, 200);
 
 
 				// // Check if the email exists
@@ -113,23 +112,24 @@ require('application/libraries/REST_Controller.php');
   			// 	$this->response($logged_in, 200);
 				// }
 
-				// Check if the password hashes match
-				if (password_verify($password, $login_response['hash_pass'])){
+				// // Check if the password hashes match
+				// if (password_verify($password, $login_response['hash_pass'])){
+				//
+				// 	// Set the login_message flag to TRUE
+				// 	$logged_in = "TRUE";
+				//
+				// 	// Set the session variable
+				// 	$_SESSION['email'] = $email;
+				//
+				// 	// Email and password match, send back a response with $logged_in = TRUE, 200 Success
+  			// 	$this->response($logged_in, 200);
+				//
+	  		// 	} else {
+				//
+				// 		// Password does not match, send back a response with $logged_in = FALSE, 200 Success
+	  		// 		$this->response($logged_in, 200);
+	  		// 	}
 
-					// Set the login_message flag to TRUE
-					$logged_in = "TRUE";
-
-					// Set the session variable
-					$_SESSION['email'] = $email;
-
-					// Email and password match, send back a response with $logged_in = TRUE, 200 Success
-  				$this->response($logged_in, 200);
-
-	  			} else {
-
-						// Password does not match, send back a response with $logged_in = FALSE, 200 Success
-	  				$this->response($logged_in, 200);
-	  			}
       }
 
 
