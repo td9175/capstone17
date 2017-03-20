@@ -93,10 +93,12 @@ class UserAccountModel extends CI_Model {
         echo '<script>console.log("checkpoint1\n")</script>';
         echo '<script>console.log("Result: $result")</script>';
 
-        // Insert the associated hash_pass into the data array
-        foreach ($result->result_array() as $row) {
-          $data['hash_pass'] = $row['hash_pass'];
-        }
+        $data['hash_pass'] = $result;
+
+        // // Insert the associated hash_pass into the data array
+        // foreach ($result->result_array() as $row) {
+        //   $data['hash_pass'] = $row['hash_pass'];
+        // }
 
       } else {
 
