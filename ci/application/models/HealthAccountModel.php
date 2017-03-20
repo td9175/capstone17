@@ -12,21 +12,25 @@
 		 $result = $this->db->query($query, $id);
 
 		echo"updated";
-		 //foreach ($result->result_array() as $row) {
+		 foreach ($result->result_array() as $row) {
 
-        	/*$data[] = array(
+        	$data[] = array(
+        	'item' => array(
 				'user_id' => $row['user_id'],
 				'account_number' => $row['account_number'],
 				'account_type' => $row['account_type'],
 				'balance' => $row['balance']
+				)
 				);
+				
+				echo json_encode($post_data);
+	
 
-			}*/
+			}
 
-
-    		return $result;
-
-	}
+			//move this inside the function
+    		//return $result;
+    		
 
 
 	function get_fsa_info($id) {
