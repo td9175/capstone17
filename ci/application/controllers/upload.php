@@ -9,6 +9,7 @@
       public function __construct() { 
          parent::__construct(); 
          $this->load->helper(array('form', 'url')); 
+         $this->load->helper("sami_helper");	
       }
 		
       public function index() { 

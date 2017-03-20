@@ -23,11 +23,11 @@
 				);
 				
 				
-			return $data;
+			
 
 			}
-
-			//move this inside the function
+			return $data;
+			
     		
     		
 }
