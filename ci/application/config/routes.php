@@ -51,5 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'rest';
 //$route['(:any)'] = 'rest/index';
+$route['upload'] = 'Upload';
 $route['404_override'] = 'errors/error_404';
 $route['translate_uri_dashes'] = FALSE;
