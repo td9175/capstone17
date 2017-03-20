@@ -23,7 +23,7 @@
 				)
 				);
 				
-				echo json_encode($post_data);
+				echo json_encode($data);
 	
 
 			}
