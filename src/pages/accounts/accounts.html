@@ -1,13 +1,25 @@
 <ion-header>
   <ion-navbar>
   </ion-navbar>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="secondary" hide-on-scroll="true">
     <ion-title>Accounts</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h3 align = "center">Hello "User's Name"</h3>
+  <h2 align = "center">Hello "User's Name"</h2>
+
+  <br>
+  <br>
+  <h4>Test json array from sami</h4>
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+        <h2>User ID = {{user.user_id}}</h2>
+        <h2>Account # = {{user.account_number}}</h2>
+        <h2>Account Type = {{user.account_type}}</h2>
+        <h2>Balance = {{user.balance}}</h2>
+    </ion-item>
+  </ion-list>
 
   <h4>Test json array from sami</h4>
   <ion-list>
@@ -46,33 +58,33 @@
       </ion-item>
     </ion-item-group>
 
-      <br>
-      <br>
+  <ion-list no-lines>
+    <h4>HSA Accounts</h4>
+    <button ion-item>
+      <h2>"Account Name" - "Account Number"</h2>
+      <p>"Balance"</p>
+    </button>
 
-    <ion-item-group>
-      <ion-item-divider color="light">FSA Accounts</ion-item-divider>
-      <ion-item-sliding>
-        <ion-item>
-          <h2>"Account Name" - "Account Number"</h2>
-          <p>"Balance"</p>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="information-circle"></ion-icon>
-            Details
-          </button>
-          <button ion-button color="secondary">
-            <ion-icon name="remove-circle"></ion-icon>
-            Delete
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-      
-      <ion-item>
-        Add FSA Account
-        <ion-icon name="add-circle" item-right></ion-icon>
-      </ion-item>
-    </ion-item-group>
+    <!--Hide this if there is one account already-->   
+    <button ion-item>
+      Add HSA Account
+      <ion-icon name="add-circle" item-right></ion-icon>
+    </button>
+
+    <br>
+    <br>
+
+    <h4>FSA Accounts</h4>
+    <button ion-item>
+      <h2>"Account Name" - "Account Number"</h2>
+      <p>"Balance"</p>
+    </button>
+
+    <!--Hide this if there is one account already--> 
+    <button ion-item>
+      Add FSA Account
+      <ion-icon name="add-circle" item-right></ion-icon>
+    </button>
   </ion-list>
 
   <button ion-button (click)="helloTest()">Hello World Test</button>

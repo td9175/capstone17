@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
+//import { importBackandService } from '@backand/angular2-sdk';
+//import { Backand } from './../providers/backand';
+=======
 // import { importBackandService } from '@backand/angular2-sdk';
+>>>>>>> master
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -17,11 +23,15 @@ import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
 // import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
+import { MyVaultPage } from './../pages/my-vault/my-vault'; 
 
 // API Imports
 import { UserApi } from '../pages/shared/shared';
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> master
 
 @Component({
   templateUrl: 'app.html',
@@ -94,5 +104,9 @@ export class MyApp {
 
   goToUserSettings() {
     this.nav.push(UserSettingsPage);
+  }
+
+  signOut(){
+    this.nav.push(LoginPage)
   }
 } // end myapp

@@ -1,3 +1,4 @@
+import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import io from 'socket.io-client';
@@ -16,6 +17,7 @@ import { HelpPage } from './../pages/help/help';
 import { ReportsPage } from './../pages/reports/reports';
 import { AboutPage } from './../pages/about/about';
 import { AccountsPage } from './../pages/accounts/accounts';
+import { MyVaultPage } from './../pages/my-vault/my-vault'; 
 
 import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
@@ -38,7 +40,9 @@ import { Page2 } from '../pages/page2/page2';
     TaxInfoPage,
     VaultPage,
     UserSettingsPage,
-    Page2
+    Page2,
+    MyVaultPage,
+    AddReceiptPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -61,6 +65,8 @@ import { Page2 } from '../pages/page2/page2';
     VaultPage,
     UserSettingsPage,
     Page2,
+    MyVaultPage,
+    AddReceiptPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

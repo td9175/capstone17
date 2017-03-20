@@ -1,3 +1,5 @@
+import { MyVaultPage } from './../my-vault/my-vault';
+import { AddReceiptPage } from './../add-receipt/add-receipt';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -17,6 +19,18 @@ export class VaultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
+  }
+
+  loadAddRecieptPage(){
+    this.navCtrl.push(AddReceiptPage)
+  }
+
+  loadUploadPage(){
+
+  }
+
+  loadMyVaultPage(){
+    this.navCtrl.push(MyVaultPage);
   }
 
 }
