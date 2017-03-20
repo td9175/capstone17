@@ -18,7 +18,7 @@
 				'amount' => $row['amount']
 			);
 		}
-		json_encode($data);
+		
 		return $data;
     	
     }
