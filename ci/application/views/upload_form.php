@@ -5,8 +5,9 @@
    </head>
 	
    <body> 
-      <?php echo $error;?> 
-      <?php echo form_open_multipart('upload/do_upload');?> 
+      <?php echo $error;
+      include: 'applications/helpers/form_helper.php';?> 
+      <?php echo form_open('upload/do_upload');?> 
 		
       <form action = "" method = "">
          <input type = "file" name = "userfile" size = "20" /> 
