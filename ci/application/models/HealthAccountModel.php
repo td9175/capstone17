@@ -11,7 +11,6 @@
 
 		 $result = $this->db->query($query, $id);
 
-		echo"updated";
 		 foreach ($result->result_array() as $row) {
 
         	$data[] = array(
@@ -24,7 +23,7 @@
 				);
 				
 				
-			return json_encode($data);
+			return $data;
 
 			}
 
