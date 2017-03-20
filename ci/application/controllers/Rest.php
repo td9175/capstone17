@@ -102,25 +102,28 @@ require('application/libraries/REST_Controller.php');
 				// Send the user information to the model to check for the email
         $login_response = $this->UserAccountModel->post_login($email);
 
-				if (strcmp($login_response, "Incorrect email or password.") == 0){ // The strings are a match.
-					// Email not found, send back a response with $logged_in = FALSE, 200 Success
-  				$this->response($logged_in, 200);
+				$this->response($login_response, 200);
+				
 
-				} elseif (password_verify($password, $login_response['hash_pass'])) {
-					// Email and password match
-					// Set the login_message flag to TRUE
-					$logged_in = "TRUE";
-
-					// Set the session variable
-					$_SESSION['email'] = $email;
-
-					// Send back a response with $logged_in = TRUE, 200 Success
-					$this->response($logged_in, 200);
-				} else {
-
-					// Password does not match, send back a response with $logged_in = FALSE, 200 Success
-  				$this->response($logged_in, 200);
-				}
+				// if (strcmp($login_response, "Incorrect email or password.") == 0){ // The strings are a match.
+				// 	// Email not found, send back a response with $logged_in = FALSE, 200 Success
+  			// 	$this->response($logged_in, 200);
+				//
+				// } elseif (password_verify($password, $login_response['hash_pass'])) {
+				// 	// Email and password match
+				// 	// Set the login_message flag to TRUE
+				// 	$logged_in = "TRUE";
+				//
+				// 	// Set the session variable
+				// 	$_SESSION['email'] = $email;
+				//
+				// 	// Send back a response with $logged_in = TRUE, 200 Success
+				// 	$this->response($logged_in, 200);
+				// } else {
+				//
+				// 	// Password does not match, send back a response with $logged_in = FALSE, 200 Success
+  			// 	$this->response($logged_in, 200);
+				// }
       }
 
 
