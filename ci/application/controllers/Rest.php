@@ -127,13 +127,13 @@ require('application/libraries/REST_Controller.php');
 	  				$this->response($logged_in, 200);
 	  			}
       }
-      
 
-	
-      
-      
+
+
+
+
       function hsa_get($id) {
-      	
+
     	$this->load->model('HealthAccountModel');
 
 			if(!$this->get('id'))
@@ -153,9 +153,9 @@ require('application/libraries/REST_Controller.php');
 			{
 				$this->response(NULL, 404);
 			}
-      
-      
-      
+
+
+
       }
       function fsa_get($id) {
       	$this->load->model('HealthAccountModel');
@@ -176,27 +176,27 @@ require('application/libraries/REST_Controller.php');
 			{
 				$this->response(NULL, 404);
 			}
-      
-      
+
+
       }
-      
+
       function transaction_get($acct_num) {
       	$this->load->model('AccountTransactionModel');
-      	
+
       	if(!$this->get('acct_num')) {
       		$this->response(NULL, 400);
-      	} 
+      	}
       	$trans_info = $this->AccountTransactionModel->get_trans_info($this->get('acct_num'));
-      	
+
       	if($trans_info) {
       		$this->response($trans_info, 200);
       	} else {
       		$this->response(NULL, 404);
       	}
-      	
-      
+
+
       }
-      
+
       function upload_post()
 	{
 		echo "in upload_post()";
@@ -205,7 +205,7 @@ require('application/libraries/REST_Controller.php');
 
 				// Get user information for registration
         $image = $this->post('image');
-		
+
 
 
         // If registration_response has data respond with data and success, or 404
@@ -218,7 +218,7 @@ require('application/libraries/REST_Controller.php');
   			}
 	}
 
-	
+
 
 
 	}

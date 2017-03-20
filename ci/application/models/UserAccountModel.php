@@ -90,6 +90,7 @@ class UserAccountModel extends CI_Model {
 
       // Execute the query
       if ($result = $this->db->query($query, $email)){
+        echo '<script>console.log("Result: $result")</script>';
 
         // Insert the associated hash_pass into the data array
         foreach ($result->result_array() as $row) {
