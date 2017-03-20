@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 //import { importBackandService } from '@backand/angular2-sdk';
 //import { Backand } from './../providers/backand';
-=======
-// import { importBackandService } from '@backand/angular2-sdk';
->>>>>>> master
+
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -27,11 +24,6 @@ import { MyVaultPage } from './../pages/my-vault/my-vault';
 
 // API Imports
 import { UserApi } from '../pages/shared/shared';
-<<<<<<< HEAD
-=======
-
-
->>>>>>> master
 
 @Component({
   templateUrl: 'app.html',

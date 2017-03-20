@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Camera } from 'ionic-native';
 
 /*
   Generated class for the AddReceipt page.
@@ -15,7 +14,6 @@ import { Camera } from 'ionic-native';
 export class AddReceiptPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
-  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddReceiptPage');
