@@ -117,7 +117,7 @@ require('application/libraries/REST_Controller.php');
 					// Send back a response with $logged_in = TRUE, 200 Success
 					$this->response($logged_in, 200);
 				} else {
-					
+
 					// Password does not match, send back a response with $logged_in = FALSE, 200 Success
   				$this->response($logged_in, 200);
 				}
