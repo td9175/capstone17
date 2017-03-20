@@ -90,26 +90,17 @@ class UserAccountModel extends CI_Model {
 
       // Execute the query
       if ($result = $this->db->query($query, $email)){
-
-        // $data['hash_pass'] = $result;
-        $data['hash_pass'] = count($result->result_array());
-
-
-        // // Insert the associated hash_pass into the data array
-        // foreach ($result->result_array() as $row) {
-        //   $data['hash_pass'] = $row['hash_pass'];
-        // }
-
-      } else {
-
-          // Email not found
-          $data['hash_pass'] = NULL;
+        if (count($result->result_array() == 0){ // Email address not found
+          $data['response'] = "Incorrect email or password.";
+        } else {
+          // Insert the associated hash_pass into the data array
+          foreach ($result->result_array() as $row) {
+            $data['response'] = $row['hash_pass'];
+          }
         }
-
-
+      }
       // Pass back the data
       return $data;
-
   }
 
 }
