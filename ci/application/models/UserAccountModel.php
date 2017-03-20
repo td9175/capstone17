@@ -90,10 +90,10 @@ class UserAccountModel extends CI_Model {
 
       // Execute the query
       if ($result = $this->db->query($query, $email)){
-        echo '<script>console.log("checkpoint1\n")</script>';
-        echo '<script>console.log("Result: $result")</script>';
 
-        $data['hash_pass'] = $result;
+        // $data['hash_pass'] = $result;
+        $data['hash_pass'] = count($result->result_array());
+
 
         // // Insert the associated hash_pass into the data array
         // foreach ($result->result_array() as $row) {
