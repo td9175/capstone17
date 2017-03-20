@@ -1,5 +1,3 @@
-
-
 <?php 
 	
 	echo form_open('Drugs/search_for_drug', array('method'=>'get')); ?>

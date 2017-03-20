@@ -8,11 +8,11 @@
 	
       public function __construct() { 
          parent::__construct(); 
-         //$this->load->helper(array('form', 'url')); 
+         $this->load->helper(array('form', 'url')); 
       }
 		
       public function index() { 
-         $this->load->view('upload_form', array('error' => ' ' )); 
+         $this->load->view('upload_form'); 
       } 
 		
       public function do_upload() { 
