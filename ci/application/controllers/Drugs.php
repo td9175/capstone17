@@ -102,7 +102,7 @@ class Drugs extends CI_Controller {
       echo $response;
     }
           public function do_upload() { 
-         $config['upload_path']   = '/var/www/html/ci/application/uploads/'; 
+         $config['upload_path']   = '/var/www/html/ci/uploads/'; 
          $config['allowed_types'] = 'gif|jpg|png'; 
          $config['max_size']      = 100; 
          $config['max_width']     = 1024; 
