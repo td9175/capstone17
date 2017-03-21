@@ -108,7 +108,7 @@ require('application/libraries/REST_Controller.php');
 				if (strcmp($login_response['response'], $error_message) == 0){ // The strings are a match.
 					// Email not found, send back a response with $error_message, 200 Success
   				$this->response($error_message, 200);
-				} elseif (password_verify($password, $login_response['hash_pass'])){
+				} elseif (password_verify($password, $login_response['response'])){
 						// Email and password match
 						// Set the login_message flag to TRUE
 						$logged_in = "TRUE";
@@ -212,9 +212,9 @@ require('application/libraries/REST_Controller.php');
 	  				$this->response(NULL, 404); // 404 Not found
 	  			}
 		}
-		
+
 	function upload_get() {
-	
+
 		$this->load->view('upload_form');
 
 
