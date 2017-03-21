@@ -3,8 +3,8 @@
 	
 
 
-	echo form_open('Drugs/search_for_drug', array('method'=>'get')); ?>
-	<label for='searchQuery'>Enter a drug to search for: </label>
-	<input type='text' name='searchQuery'>
-	<input type='submit' name='submit' value='Search!'>
+	echo form_open('Upload/do_upload', array('method'=>'post')); ?>
+	<label for='searchQuery'>Upload File:</label>
+	<input type='file' name='userfile'>
+	<input type='submit' name='submit' value='Upload'>
 	</form>
