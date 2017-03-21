@@ -218,6 +218,10 @@ require('application/libraries/REST_Controller.php');
 	  				$this->response(NULL, 404); // 404 Not found
 	  			}
 		}
+		
+	function upload_test() {
+	
+		$this->load->view('upload_form');
 
 
 	}
