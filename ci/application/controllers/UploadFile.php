@@ -6,6 +6,7 @@ class Upload_Controller extends CI_Controller {
 		public function __construct() {
 			parent::__construct();
 			$this->load->helper('form');
+			$this->load->library('upload');
 		}
 		
 		public function file_view(){

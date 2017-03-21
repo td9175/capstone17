@@ -9,6 +9,7 @@ class Drugs extends CI_Controller {
         $this->config->load('goodRx');
         $this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->library('upload');
   }
 
 
