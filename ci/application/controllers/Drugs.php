@@ -111,7 +111,7 @@ class Drugs extends CI_Controller {
          
          echo "Uplaod path: ";
          echo $config['upload_path'];
-         $this->upload->data('file_name');  
+         echo $this->upload->data('file_name');  
 			
          if ( ! $this->upload->do_upload('userfile')) {
          	$this->upload->data('file_name');  
