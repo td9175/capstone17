@@ -15,6 +15,7 @@
       } 
 		
       public function do_upload() { 
+      echo "in do_upload()";
          $config['upload_path']   = './uploads/'; 
          $config['allowed_types'] = 'gif|jpg|png'; 
          $config['max_size']      = 100; 
