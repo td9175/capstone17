@@ -102,12 +102,12 @@ class Drugs extends CI_Controller {
       echo $response;
     }
           public function do_upload() { 
-         $config['upload_path']   = APPPATH.'uploads/'; 
+         $config['upload_path']   = '/var/www/html/ci/application/uploads/'; 
          $config['allowed_types'] = 'gif|jpg|png'; 
          $config['max_size']      = 100; 
          $config['max_width']     = 1024; 
          $config['max_height']    = 768;  
-         $this->load->library('upload', $config);
+         $this->load->library('upload');
          $this->upload->initialize($config);
          
          echo "Uplaod path: ";
