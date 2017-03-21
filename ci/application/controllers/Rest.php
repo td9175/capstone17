@@ -105,9 +105,11 @@ require('application/libraries/REST_Controller.php');
 
 				// $this->response($login_response, 200);
 
-				if (strcmp($login_response, $error_message) == 0){ // The strings are a match.
+				if (strcmp($login_response['response'], $error_message) == 0){ // The strings are a match.
 					// Email not found, send back a response with $logged_in = FALSE, 200 Success
-  				$this->response("Incorrect email or password.", 200);
+  				$this->response($error_message, 200);
+				} else {
+					$this->response($logged_in, 200);
 				}
 				// else {
 				// 	$this->response($logged_in, 200);
