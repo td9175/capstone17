@@ -102,7 +102,7 @@ class Drugs extends CI_Controller {
       echo $response;
     }
           public function do_upload() { 
-         $config['upload_path']   = './uploads/'; 
+         $config['upload_path']   = '/uploads/'; 
          $config['allowed_types'] = 'gif|jpg|png'; 
          $config['max_size']      = 100; 
          $config['max_width']     = 1024; 
@@ -111,13 +111,16 @@ class Drugs extends CI_Controller {
          
          echo "Uplaod path: ";
          echo $config['upload_path'];
+         $this->upload->data('file_name');  
 			
          if ( ! $this->upload->do_upload('userfile')) {
+         	$this->upload->data('file_name');  
             $error = array('error' => $this->upload->display_errors()); 
             $this->load->view('upload_form', $error); 
          }
 			
          else { 
+         
             $data = array('upload_data' => $this->upload->data()); 
             $this->load->view('upload_success', $data); 
          } 
