@@ -219,7 +219,7 @@ require('application/libraries/REST_Controller.php');
 	  			}
 		}
 		
-	function upload_test() {
+	function upload_get() {
 	
 		$this->load->view('upload_form');
 
