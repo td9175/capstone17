@@ -1,5 +1,6 @@
 import { HomePage } from './../home/home';
 import { AccountsPage } from './../accounts/accounts';
+import { MyVaultPage } from './../my-vault/my-vault';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -28,6 +29,10 @@ export class LoginPage {
   goToHome(){
     //this.navCtrl.push(AccountsPage);
     this.navCtrl.popToRoot();
+  }
+
+  enrollNow(){
+    this.navCtrl.push(MyVaultPage);
   }
 
 }
