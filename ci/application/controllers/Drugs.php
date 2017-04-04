@@ -108,8 +108,13 @@ public function do_upload() {
          $config['max_size']      = 100; 
          $config['max_width']     = 1500; 
          $config['max_height']    = 1500;  
-         $this->load->library('upload');
-         $this->upload->initialize($config);
+        
+         $this->load->library('upload', $config);
+    
+    	$this->upload->initialize($config);
+    
+  
+         
          
          echo "Uplaod path: ";
          echo $config['upload_path']; 
@@ -119,8 +124,7 @@ public function do_upload() {
          	echo "!this->upload->do_upload<br><Br>";
          	$this->upload->data('file_name');  
             $error = array('error' => $this->upload->display_errors()); 
-            echo "Error message:" . $error;
-            //$this->load->view('upload_form', $error); 
+            $this->load->view('upload_form', $error); 
          }
 			
          else { 
