@@ -193,25 +193,6 @@ require('application/libraries/REST_Controller.php');
 
       }
 
-	  function upload_post(){
-			echo "in upload_post()";
-	        // Load the model
-	        //$this->load->model('UserAccountModel');
-
-					// Get user information for registration
-	        $image = $this->post('image');
-
-
-
-	        // If registration_response has data respond with data and success, or 404
-	        if($image){
-	        		echo "success";
-	  				$this->response($image, 200); // 200 Success
-	  			} else {
-	  				echo "fail";
-	  				$this->response(NULL, 404); // 404 Not found
-	  			}
-		}
 
 	function upload_get() {
 
