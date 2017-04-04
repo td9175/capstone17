@@ -1,10 +1,4 @@
-
-<html>
-<head>
-<title>Upload Form</title>
-</head>
-<body>
-<code><?php echo $msg;?></code>
+<code><?php echo "Message:" .  $msg;?></code>
 
 
 <code>
@@ -13,12 +7,14 @@
 
 </code>
 <img scr="<?php echo $upload_data['full_path'];?>">
-<?php endif;
+<?php endif;?>
 
-echo form_open('Drugs/do_upload'); ?>
-	<label for='userfile'>Upload File:</label>
-	<input type='file' name='userfile'>
-	<input type='submit' name='submit' value='Upload'>
-	</form> 
-</body>
-</html>
+<?php echo form_open_multipart('Drugs/upload_it');?>
+
+<input type="file" name="userfile" size="20" />
+
+<br /><br />
+
+<input type="submit" value="upload" />
+
+</form>

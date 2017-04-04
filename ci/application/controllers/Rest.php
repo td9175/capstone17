@@ -195,12 +195,15 @@ require('application/libraries/REST_Controller.php');
 
 
 	function upload_get() {
-	$data = array('msg' => "Upload File");
+	//load the helper library
+		$this->load->helper('form');
+    	$this->load->helper('url');
+		//Set the message for the first time
+		$data = array('msg' => "Upload File");
     
-    $data['upload_data'] = '';
+    	$data['upload_data'] = '';
     
-
-    
+		//load the view/upload.php with $data
 		$this->load->view('upload_form', $data);
 
 

@@ -102,19 +102,26 @@ class Drugs extends CI_Controller {
       echo $response;
     }
     
-public function do_upload() { 
+function upload_it() {
+		//load the helper
+		$this->load->helper('form');
 
-		 $this->load->helper('form');
+		//Configure
+		//set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
+		$config['upload_path'] = 'application/views/uploads/';
+		
+    // set the filter image types
+		$config['allowed_types'] = 'gif|jpg|png';
+		
+		//load the upload library
+		$this->load->library('upload', $config);
+    
+    $this->upload->initialize($config);
+    
+    $this->upload->set_allowed_types('*');
 
-         $config['upload_path']   = '/var/www/html/ci/uploads/'; 
-         	//if you're using linux, set file permissions to 777
-         $config['allowed_types'] = 'gif|jpg|png'; 
-
-         $this->load->library('upload', $config);
-		 $this->upload->initialize($config);
-
-		 $data['upload_data']='';
-			
+		$data['upload_data'] = '';
+    
 		//if not successful, set the error message
 		if (!$this->upload->do_upload('userfile')) {
 			$data = array('msg' => $this->upload->display_errors());
@@ -122,12 +129,14 @@ public function do_upload() {
 		} else { //else, set the success message
 			$data = array('msg' => "Upload success!");
       
-      		$data['upload_data'] = $this->upload->data();
+      $data['upload_data'] = $this->upload->data();
 
 		}
 		
-		$this->load->view('upload_form', $data); 
-         } 
+		//load the view/upload.php
+		$this->load->view('upload_form', $data);
+		
+	}
       
 
 }
