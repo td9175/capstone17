@@ -5,7 +5,7 @@ class UserAccountModel extends CI_Model {
 
     function get_users() {
     	$this->load->database();
-        //$return_arr = array();
+      //$return_arr = array();
 
 		 $query = $this->db->query('SELECT * from UserAccount');
 
