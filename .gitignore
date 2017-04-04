@@ -19,3 +19,6 @@ plugins
 *.DS_Store
 *www/build/main.js
 *www/build/main.js.map
+www/build/main.js
+
+ci/.DS_Store
