@@ -195,8 +195,8 @@ require('application/libraries/REST_Controller.php');
 
 
 	function upload_get() {
-
-		$this->load->view('upload_form');
+		$error = '';
+		$this->load->view('upload_form', $error);
 
 
 	}
