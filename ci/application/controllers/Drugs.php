@@ -105,14 +105,13 @@ class Drugs extends CI_Controller {
          $config['upload_path']   = '/var/www/html/ci/uploads/'; 
          $config['allowed_types'] = 'gif|jpg|png'; 
          $config['max_size']      = 100; 
-         $config['max_width']     = 1024; 
-         $config['max_height']    = 768;  
+         $config['max_width']     = 1500; 
+         $config['max_height']    = 1500;  
          $this->load->library('upload');
          $this->upload->initialize($config);
          
          echo "Uplaod path: ";
-         echo $config['upload_path'];
-         echo $this->upload->data('file_name');  
+         echo $config['upload_path']; 
 			
          if ( ! $this->upload->do_upload('userfile')) {
          	$this->upload->data('file_name');  
