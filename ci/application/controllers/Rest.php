@@ -195,7 +195,13 @@ require('application/libraries/REST_Controller.php');
 
 
 	function upload_get() {
-		$error = '';
+	$data = array('msg' => "Upload File");
+    
+    $data['upload_data'] = '';
+    
+		//load the view/upload.php with $data
+		$this->load->view('upload', $data);
+    
 		$this->load->view('upload_form', $error);
 
 
