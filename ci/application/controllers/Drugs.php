@@ -108,7 +108,8 @@ function upload_it() {
 
 		//Configure
 		//set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
-		$config['upload_path'] = 'application/uploads/';
+		$config['upload_path'] = APPPATH;
+		echo "Upload path: " . $config['upload_path'];
 		
     // set the filter image types
 		$config['allowed_types'] = 'gif|jpg|png';
