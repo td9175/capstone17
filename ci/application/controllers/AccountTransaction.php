@@ -9,7 +9,7 @@ require('application/libraries/REST_Controller.php');
       // Load the model
       $this->load->model('AccountTransactionModel');
       // Get the input for amount to reimburse
-      $acct_num = $this->post('account_number')
+      $acct_num = $this->post('account_number');
       $amount = $this->post('amount');
       // Pass the user input to the model to make the transaction query in the database
       $result = $this->AccountTransactionModel->reimburse_account($acct_num, $amount);
