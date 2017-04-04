@@ -4,7 +4,7 @@
 <title>Upload Form</title>
 </head>
 <body>
-<?php 
+<?php echo $error;
 echo form_open('Drugs/do_upload', array('method'=>'post')); ?>
 	<label for='searchQuery'>Upload File:</label>
 	<input type='file' name='userfile'>
