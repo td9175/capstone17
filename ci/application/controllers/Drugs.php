@@ -9,7 +9,7 @@ class Drugs extends CI_Controller {
         $this->config->load('goodRx');
         $this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->library('upload');
+		//$this->load->library('upload');
   }
 
 
@@ -103,36 +103,30 @@ class Drugs extends CI_Controller {
     }
     
 public function do_upload() { 
+
+		 $this->load->helper('form');
+
          $config['upload_path']   = '/var/www/html/ci/uploads/'; 
+         	//if you're using linux, set file permissions to 777
          $config['allowed_types'] = 'gif|jpg|png'; 
-         $config['max_size']      = 100; 
-         $config['max_width']     = 1500; 
-         $config['max_height']    = 1500;  
-        
+
          $this->load->library('upload', $config);
-    
-    	$this->upload->initialize($config);
-    
-  
-         
-         
-         echo "Uplaod path: ";
-         echo $config['upload_path']; 
-         $image = do_upload('uploadFile');
-         echo "<br>Image name: " . $image;
+		 $this->upload->initialize($config);
+
+		 $data['upload_data']='';
 			
-			
-         if ( ! $this->upload->do_upload('uploadFile')) {
-         	echo "!this->upload->do_upload<br><Br>";
-         	$this->upload->data('file_name');  
-            $error = array('error' => $this->upload->display_errors()); 
-            $this->load->view('upload_form', $error); 
-         }
-			
-         else { 
-         	echo "in else";
-            $data = array('upload_data' => $this->upload->data()); 
-            $this->load->view('upload_success', $data); 
+		//if not successful, set the error message
+		if (!$this->upload->do_upload('userfile')) {
+			$data = array('msg' => $this->upload->display_errors());
+
+		} else { //else, set the success message
+			$data = array('msg' => "Upload success!");
+      
+      		$data['upload_data'] = $this->upload->data();
+
+		}
+		
+		$this->load->view('upload_success', $data); 
          } 
       } 
 
