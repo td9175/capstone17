@@ -118,9 +118,11 @@ public function do_upload() {
          
          echo "Uplaod path: ";
          echo $config['upload_path']; 
-         echo "<br>Here i am";
+         $image = do_upload('uploadFile');
+         echo "<br>Image name: " . $image;
 			
-         if ( ! $this->upload->do_upload('userfile')) {
+			
+         if ( ! $this->upload->do_upload('uploadFile')) {
          	echo "!this->upload->do_upload<br><Br>";
          	$this->upload->data('file_name');  
             $error = array('error' => $this->upload->display_errors()); 
