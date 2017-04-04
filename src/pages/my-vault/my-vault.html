@@ -24,7 +24,7 @@
   <h1>Your Reciept Data</h1>
 
   <ion-list>
-    <button ion-item item-left (click)="loadReciept()">
+    <!--<button ion-item item-left (click)="loadReciept()">
       <h2 id = "recieptDate">"Receipt date"</h2>
       <p id = "detailNotes">"Notes about reciept"</p>
       <ion-icon name="arrow-forward" item-right></ion-icon>
@@ -33,6 +33,7 @@
       <h2>"Receipt date 2"</h2>
       <p>"Notes about reciept 2"</p>
       <ion-icon name="arrow-forward" item-right></ion-icon>
-    </button>
+    </button> -->
+    <ion-item *ngFor="let grocery of groceries">{{grocery}}</ion-item>
   </ion-list>
 </ion-content>

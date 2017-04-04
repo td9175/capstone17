@@ -14,7 +14,20 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MyVaultPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  receipts: any
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.receipts = [
+            {
+              receiptID: 1,
+              title: 'Category 1'
+              receipts : [
+                        {id: 1, title: 'item 1'},
+                        {id: 2, title: 'item 2'}
+                      ]
+            }
+        ];
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyVaultPage');
