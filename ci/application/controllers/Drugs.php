@@ -128,6 +128,6 @@ public function do_upload() {
 		
 		$this->load->view('upload_success', $data); 
          } 
-      } 
+      
 
 }
