@@ -111,7 +111,6 @@ function upload_it() {
 		$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 		echo "Upload path: " . $config['upload_path'];
 		echo "<br>";
-		echo "File name: ". $config['filename'];
     // set the filter image types
 		$config['allowed_types'] = 'gif|jpg|png';
 		
