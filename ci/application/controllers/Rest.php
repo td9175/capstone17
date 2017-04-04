@@ -200,4 +200,53 @@ require('application/libraries/REST_Controller.php');
 
 
 	}
+        
+    function receipt_get() {
+		//index.php/rest/receipt/id/1/format/json
+		//"id/1" is the parameter
+
+    	$this->load->model('ReceiptModel');
+
+        if(!$this->get('id'))
+        {
+            $this->response(NULL, 400);
+        }
+
+        $receipt = $this->ReceiptModel->get_receipt_id($this->get('id') );
+
+        if($receipt)
+        {
+            $this->response($receipt, 200); // 200 being the HTTP response code
+        }
+        else
+        {
+            $this->response(NULL, 404);
+        }
+
+  	}
+
+    function receipts_get() {
+        // respond with information about several users
+        // index.php/rest/receipts
+
+        $this->load->model('ReceiptModel');
+
+        if(!$this->get('id'))
+        {
+            $this->response(NULL, 400);
+        }
+
+        $receipts = $this->ReceiptModel->get_receipts();
+
+        if($receipts)
+        {
+            $this->response($receipts, 200); // 200 being the HTTP response code
+        }
+
+        else
+        {
+            $this->response(NULL, 404);
+        }
+
+    }
 }
