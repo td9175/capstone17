@@ -116,10 +116,11 @@ public function do_upload() {
          echo "<br>Here i am";
 			
          if ( ! $this->upload->do_upload('userfile')) {
-         	echo "!this->upload->do_upload";
+         	echo "!this->upload->do_upload<br><Br>";
          	$this->upload->data('file_name');  
             $error = array('error' => $this->upload->display_errors()); 
-            $this->load->view('upload_form', $error); 
+            echo "Error message:" . $error;
+            //$this->load->view('upload_form', $error); 
          }
 			
          else { 
