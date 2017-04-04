@@ -101,7 +101,8 @@ class Drugs extends CI_Controller {
       // Echo the response for RESTful API calls
       echo $response;
     }
-          public function do_upload() { 
+    
+public function do_upload() { 
          $config['upload_path']   = '/var/www/html/ci/uploads/'; 
          $config['allowed_types'] = 'gif|jpg|png'; 
          $config['max_size']      = 100; 
@@ -112,6 +113,7 @@ class Drugs extends CI_Controller {
          
          echo "Uplaod path: ";
          echo $config['upload_path']; 
+         echo "<br>Here i am";
 			
          if ( ! $this->upload->do_upload('userfile')) {
          	$this->upload->data('file_name');  
