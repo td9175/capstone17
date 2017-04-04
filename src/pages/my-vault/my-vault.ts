@@ -19,8 +19,8 @@ export class MyVaultPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.receipts = [
             {
-              receiptID: 1,
-              title: 'Category 1'
+              receiptsId: 1,
+              title: 'April 04, 2017 @ 4:54p.m.',
               receipts : [
                         {id: 1, title: 'item 1'},
                         {id: 2, title: 'item 2'}
