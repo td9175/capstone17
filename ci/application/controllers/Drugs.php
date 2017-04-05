@@ -106,20 +106,22 @@ function upload_it() {
 		//load the helper
 		$this->load->helper('form');
 
-		//Configure
-		//set the path where the files uploaded will be copied. NOTE if using linux, set the folder to permission 777
+		//need to create folder for each user, path will be unique to the user 
 		$config['upload_path'] = '/var/www/html/ci/application/receipts/';
+		
+		//need to change filename to be unique to the user 
+		$config['filename'] = 
+		
 		echo "Upload path: " . $config['upload_path'];
-		echo "<br>";
-    // set the filter image types
+		
+    	// set the filter image types
 		$config['allowed_types'] = 'gif|jpg|png';
 		
 		//load the upload library
 		$this->load->library('upload', $config);
     
-    $this->upload->initialize($config);
-    
-    $this->upload->set_allowed_types('*');
+    	$this->upload->initialize($config);
+    	$this->upload->set_allowed_types('*');
 
 		$data['upload_data'] = '';
     
