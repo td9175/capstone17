@@ -29,8 +29,10 @@
 			$this->load->database();
 			// Build the query
     	$query = "INSERT INTO AccountTransaction (account_number, amount) VALUES (?,?)";
+			// Build the parameter array
+			$params = array($acct_num, $amount);
 			// Execute the query
-			$result = $this->db->query($query, $acct_num, $amount);
+			$result = $this->db->query($query, $params);
 			echo "$result \n";
 			// Return the result
 			return $result;
