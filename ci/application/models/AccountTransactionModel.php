@@ -36,11 +36,11 @@
 
 			$result = $this->db->query($query, $params);
 
-			$db_error_message = $this->db->_error_message();
-			$db_error_num = $this->db->_error_number();
+			$db_error = $this->db->error();
+			// $db_error_num = $this->db->_error_number();
 
 			echo "Result: $result \n";
-			echo "DB Error: $db_error_num : $db_error_message \n";
+			echo "DB Error: $db_error \n";
 
 			// echo "Checkpoint2 \n";
 			// // Check if the insert was successful
