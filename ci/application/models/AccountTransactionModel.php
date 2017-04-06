@@ -31,9 +31,9 @@
     	$query = "INSERT INTO AccountTransaction (account_number, amount) VALUES (?,?)";
 			// Execute the query
 			$result = $this->db->query($query, $acct_num, $amount);
-			echo "$result";
+			echo "$result \n";
 			// Return the result
-			return $result
+			return $result;
 		}
 
 
