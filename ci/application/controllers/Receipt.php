@@ -1,8 +1,7 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-require('application/libraries/REST_Controller.php');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Receipt extends REST_Controller {
+	class Receipt extends CI_Controller {
 	
 	
 		
