@@ -132,8 +132,8 @@ function upload_it() {
 		} else { //else, set the success message
 			$data = array('msg' => "Upload success!");
       
-      		$data['upload_data'] = $this->upload->data();
-      		echo "Try: " . $this->upload->data('full_path');
+      		$data['upload_data'] = $this->upload->data('full_path');
+      		
       		//load view to do OCR? 
 
 		}
