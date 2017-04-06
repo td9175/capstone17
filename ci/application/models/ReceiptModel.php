@@ -43,6 +43,31 @@ class ReceiptModel extends CI_Model {
 
     	return $data;
     }
+    
+    function receiptData_post($receipt, $user_id) {
+    
+    $this->load->database();
+
+    
+    
+    
+    $query = "INSERT INTO Receipt (receipt_id, user_id, image) 
+    	VALUES (null, ?, ?) WHERE ";
+    $result = $this->db->query($query, $user_id, $receipt);
+    
+    foreach ($result->result_array() as $row) {
+			$data[] = array(
+				'receipt_id' => $row['receipt_id'],
+				'user_id' => $row['user_id'],
+				'image' => $row['image'],
+                'amount' => $row['amount'],
+                'description' => $row['description']
+			);
+		}
+		return $data['image'];
+    
+    
+    }
 
     /*
     function post_registration($email, $hash_pass, $first_name, $last_name){

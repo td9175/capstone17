@@ -5,6 +5,11 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 class Ocr extends CI_Controller {
 	    
 
+function folder_get() {
+	
+}
+
+
 	    //https://capstone.td9175.com/ci/index.php/OCR/ocr_request
 function ocr_request() {
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');

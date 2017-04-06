@@ -6,10 +6,11 @@
 <?php var_dump($upload_data);?>
 
 </code>
-<img scr="<?php echo $upload_data['full_path'];?>">
+
+
 <?php endif;?>
 
-<?php echo form_open_multipart('Drugs/upload_it');?>
+<?php echo form_open_multipart('Receipt/upload_it');?>
 
 <input type="file" name="userfile" size="20" />
 
