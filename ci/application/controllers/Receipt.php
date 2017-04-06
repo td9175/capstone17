@@ -3,7 +3,6 @@ header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
 	class Receipt extends REST_Controller {
-		$this->load->model('ReceiptModel');
 	
 	
 		
