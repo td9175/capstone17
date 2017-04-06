@@ -14,11 +14,11 @@ require('application/libraries/REST_Controller.php');
       // Pass the user input to the model to make the transaction query in the database
       $result = $this->AccountTransactionModel->reimburse_account($acct_num, $amount);
       // If response has data respond with data and success, or 404
-      if($result){
-        $this->response($result, 200); // 200 Success
-      } else {
-        $this->response(NULL, 404); // 404 Not found
-      }
+      // if($result){
+      //   $this->response($result, 200); // 200 Success
+      // } else {
+      //   $this->response(NULL, 404); // 404 Not found
+      // }
     }
 
 
