@@ -36,6 +36,8 @@
 			// Check if the insert was successful
 			if ($result != 1) {
 				$result = "Error: account reimbursement failed.";
+			} else {
+				$result = "Reimbursement successfully processed!";
 			}
 			// Return the result
 			return $result;
