@@ -12,7 +12,6 @@ www
 .sass-cache
 coverage
 platforms
-plugins
 *.swp
 *.swo
 *.log
