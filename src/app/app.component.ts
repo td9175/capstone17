@@ -6,6 +6,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { HttpModule } from '@angular/http';
+import { Camera } from 'ionic-native';
 
 // Pages Import 
 // Page1 and Page2 are test and placeholder pages.

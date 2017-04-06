@@ -1,7 +1,7 @@
-import { AppNgModuleInfo } from '@ionic/app-scripts/dist';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera } from 'ionic-native';
+
 
 /*
   Generated class for the AddReceipt page.
@@ -15,7 +15,7 @@ import { Camera } from 'ionic-native';
 })
 export class AddReceiptPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddReceiptPage');
@@ -24,8 +24,8 @@ export class AddReceiptPage {
   goBack() {
     this.navCtrl.pop();
   }
-
-  takePicture(){
+  
+    takePicture(){
     var options = {
       quality: 50,
       destinationType: 0,
@@ -41,5 +41,7 @@ export class AddReceiptPage {
       console.log("Shit")
     });
   }
+
+
 
 }

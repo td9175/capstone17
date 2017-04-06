@@ -2,6 +2,7 @@ import { MyVaultPage } from './../my-vault/my-vault';
 import { AddReceiptPage } from './../add-receipt/add-receipt';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Camera } from 'ionic-native';
 
 /*
   Generated class for the Vault page.
@@ -15,7 +16,7 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class VaultPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
