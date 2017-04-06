@@ -34,7 +34,7 @@
 			// Execute the query
 			$result = $this->db->query($query, $params);
 			// Check if the insert was successful
-			if ($result != "true") {
+			if ($result != 1) {
 				$result = "Error: Failed to reimburse transaction.";
 			}
 			// Return the result
