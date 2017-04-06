@@ -34,9 +34,9 @@
 			// Execute the query
 			echo "Checkpoint1 \n";
 			if ( ! $this->db->query($query, $params)) {
-				echo "An error occured.\n";
-			} else {
 				echo "Much success!\n";
+			} else {
+				echo "An error occured.\n";
 			}
 			echo "Checkpoint2 \n";
 
