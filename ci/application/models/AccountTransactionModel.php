@@ -34,14 +34,21 @@
 			// Execute the query
 			echo "Checkpoint1 \n";
 			if ($result = $this->db->query($query, $params)) {
+				echo "$this->db->_error_message()\n";
+				echo "$this->db->_error_number()\n";
+		
+				echo "Checkpoint2 \n";
 				// Check if the insert was successful
-				echo "$result";
+				echo "$result\n";
 				if ($result != 1) {
+					echo "Checkpoint3 \n";
 					$result = "Error: Failed to reimburse transaction.";
 				}
 				if ($result != true) {
+					echo "Checkpoint4 \n";
 					$result = "Error: Failed to reimburse transaction.";
 				}
+				echo "Checkpoint5 \n";
 				// Return the result
 				return $result;
 			}
