@@ -15,7 +15,8 @@ require('application/libraries/REST_Controller.php');
       $result = $this->AccountTransactionModel->reimburse_account($acct_num, $amount);
       // If response has data respond with data and success, or 404
       if($result){
-        $this->response($result, 200); // 200 Success
+				$message = "Reimbursement successfully processed!";
+        $this->response($message, 200); // 200 Success
       } else {
         $this->response(NULL, 404); // 404 Not found
       }

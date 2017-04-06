@@ -35,7 +35,7 @@
 			$result = $this->db->query($query, $params);
 			// Check if the insert was successful
 			if ($result != 1) {
-				$result = "Error: account reimbursement failed. \n";
+				$result = "Error: account reimbursement failed.";
 			}
 			// Return the result
 			return $result;
