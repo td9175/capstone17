@@ -33,7 +33,10 @@
 			$params = array($acct_num, $amount);
 			// Execute the query
 			$result = $this->db->query($query, $params);
-			echo "$result \n";
+			// Check if the insert was successful
+			if ($result != "true") {
+				$result = "Error: Failed to reimburse transaction.";
+			}
 			// Return the result
 			return $result;
 		}
