@@ -6,7 +6,6 @@
 !*/cache/.htaccess
 /ci/nbproject/private/
 .DS_Store
-node_modules
 www
 .tmp
 .sass-cache
