@@ -19,20 +19,17 @@
  * found in the LICENSE file at https://angular.io/license
  */
 (function (_global) {
-    // patch Notification
-    patchNotification(_global);
-    function patchNotification(_global) {
-        var Notification = _global['Notification'];
-        if (!Notification || !Notification.prototype) {
-            return;
-        }
-        var desc = Object.getOwnPropertyDescriptor(Notification.prototype, 'onerror');
-        if (!desc || !desc.configurable) {
-            return;
-        }
-        var patchOnProperties = Zone[Zone['__symbol__']('patchOnProperties')];
-        patchOnProperties(Notification.prototype, null);
-    }
+    var __symbol__ = Zone['__symbol__'];
+    // TODO: @JiaLiPassion, we can automatically patch bluebird
+    // if global.Promise = Bluebird, but sometimes in nodejs,
+    // global.Promise is not Bluebird, and Bluebird is just be
+    // used by other libraries such as sequelize, so I think it is
+    // safe to just expose a method to patch Bluebird explicitly
+    Zone[__symbol__('bluebird')] = function patchBluebird(Bluebird) {
+        Bluebird.setScheduler(function (fn) {
+            Zone.current.scheduleMicroTask('bluebird', fn);
+        });
+    };
 })(typeof window === 'object' && window || typeof self === 'object' && self || global);
 
 })));
