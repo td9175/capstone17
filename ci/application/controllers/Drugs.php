@@ -110,7 +110,7 @@ function upload_it() {
 		$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 		
 		//need to change filename to be unique to the user 
-		$config['filename'] = 
+		//$config['filename'] = 
 		
 		echo "Upload path: " . $config['upload_path'];
 		
@@ -132,7 +132,8 @@ function upload_it() {
 		} else { //else, set the success message
 			$data = array('msg' => "Upload success!");
       
-      $data['upload_data'] = $this->upload->data();
+      		$data['upload_data'] = $this->upload->data();
+      		//load view to do OCR? 
 
 		}
 		
