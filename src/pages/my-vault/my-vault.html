@@ -35,11 +35,8 @@
       <ion-icon name="arrow-forward" item-right></ion-icon>
     </button> -->
     <button ion-item item-left (click)="loadReciept()" *ngFor="let receipt of receipts">
-      <h2> DateTime: {{ receipt.title }}</h2>
-      <p>Id: {{ receipt.id }}</p>
-      <p *ngFor="let subreceipt of receipt.receipt">
-        Title: {{ subreceipt.title }} - Id: {{ subreceipt.id }}
-      </p>
+      <h2> Date: {{ receipt.title }}</h2>
+      <p>Amount of Purchase: {{ receipt.amount }}</p>
     </button>
   </ion-list>
 </ion-content>

@@ -18,15 +18,22 @@ export class MyVaultPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.receipts = [
-            {
-              receiptsId: 1,
-              title: 'April 04, 2017 @ 4:54p.m.',
-              receipts : [
-                        {id: 1, title: 'item 1'},
-                        {id: 2, title: 'item 2'}
-                      ]
-            }
-        ];
+      {
+        receiptsId: 1,
+        title: 'April 04, 2017 @ 4:54p.m.',
+        amount: '$4.99'
+      },
+      {
+        receiptsId: 2,
+        title: 'April 06, 2017 @ 1:54p.m.',
+        amount: '$1.59'
+      },
+      {
+        receiptsId: 3,
+        title: 'April 03, 2017 @ 2:54p.m.',
+        amount: '$5.79'
+      }
+    ];
   }
 
   ionViewDidLoad() {
