@@ -23,7 +23,7 @@
 
     }
 
-		// Gets data (amount to reimburse) from receipt OCR and handles the transaction for reimbusement
+		// Gets data (amount to reimburse) from receipt OCR and handles the database transaction for reimbusement
 		function reimburse_account($acct_num, $amount) {
 			// Load the database
 			$this->load->database();
@@ -33,11 +33,12 @@
 			$params = array($acct_num, $amount);
 			// Execute the query
 			$result = $this->db->query($query, $params);
-			echo "Result: $result \n";
-
-			// // Return the result
-			// return $result;
-
+			// Check if the insert was successful
+			if ($result != 1) {
+				$result = "Error: account reimbursement failed. \n";
+			}
+			// Return the result
+			return $result;
 		}
 
 
