@@ -33,19 +33,15 @@
 			$params = array($acct_num, $amount);
 			// Execute the query
 			echo "Checkpoint1 \n";
-			if ( ! $this->db->query($query, $params)) {
-				echo "Much success!\n";
-			} else {
-				echo "An error occured.\n";
-			}
-			echo "Checkpoint2 \n";
 
-			// $result = $this->db->query($query, $params);
-			//
-			// if ($this->db->error()) {
-			// 	echo "An error occured.\n";
-			// }
-			//
+			$result = $this->db->query($query, $params);
+
+			$db_error_message = $this->db->_error_message();
+			$db_error_num = $this->db->_error_number();
+
+			echo "Result: $result \n";
+			echo "DB Error: $db_error_num : $db_error_message \n";
+
 			// echo "Checkpoint2 \n";
 			// // Check if the insert was successful
 			// echo "$result\n";
