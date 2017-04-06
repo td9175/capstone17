@@ -32,28 +32,9 @@
 			// Build the parameter array
 			$params = array($acct_num, $amount);
 			// Execute the query
-			echo "Checkpoint1 \n";
-
 			$result = $this->db->query($query, $params);
-
-			$db_error = $this->db->error();
-			// $db_error_num = $this->db->_error_number();
-
 			echo "Result: $result \n";
-			echo "DB Error: $db_error \n";
 
-			// echo "Checkpoint2 \n";
-			// // Check if the insert was successful
-			// echo "$result\n";
-			// if ($result != 1) {
-			// 	echo "Checkpoint3 \n";
-			// 	$result = "Error: Failed to reimburse transaction.";
-			// }
-			// if ($result != true) {
-			// 	echo "Checkpoint4 \n";
-			// 	$result = "Error: Failed to reimburse transaction.";
-			// }
-			// echo "Checkpoint5 \n";
 			// // Return the result
 			// return $result;
 
