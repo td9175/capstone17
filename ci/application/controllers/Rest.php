@@ -78,6 +78,8 @@ require('application/libraries/REST_Controller.php');
 
         // If registration_response has data respond with data and success, or 404
         if($registration_response){
+					// Create the user's folder to store receipt images
+					mkdir("/var/www/html/ci/application/receipts", 0777, TRUE);
   				$this->response($registration_response, 200); // 200 Success
   			} else {
   				$this->response(NULL, 404); // 404 Not found
@@ -200,15 +202,15 @@ require('application/libraries/REST_Controller.php');
     	$this->load->helper('url');
 		//Set the message for the first time
 		$data = array('msg' => "Upload File");
-    
+
     	$data['upload_data'] = '';
-    
+
 		//load the view/upload.php with $data
 		$this->load->view('upload_form', $data);
 
 
 	}
-        
+
     function receipt_get() {
 		//index.php/rest/receipt/id/1/format/json
 		//"id/1" is the parameter
