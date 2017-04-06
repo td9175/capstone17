@@ -79,7 +79,7 @@ require('application/libraries/REST_Controller.php');
         // If registration_response has data respond with data and success, or 404
         if($registration_response){
 					// Create the user's folder to store receipt images
-					mkdir("/var/www/html/ci/application/receipts", 0777, TRUE);
+					mkdir("/var/www/html/ci/application/receipts/$email", 0777, TRUE);
   				$this->response($registration_response, 200); // 200 Success
   			} else {
   				$this->response(NULL, 404); // 404 Not found
