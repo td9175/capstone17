@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
-	class Rest extends REST_Controller {
+	class AccountTransaction extends REST_Controller {
 
     // Gets the scanned amount to reimburse from OCR and handles the reimbursement transaction
     function reimburse_account_post(){
