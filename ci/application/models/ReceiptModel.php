@@ -1,11 +1,11 @@
 <?php
 class ReceiptModel extends CI_Model {
 
-    function get_receipts() {
+    function get_receipts_by_user_id($id) {
     	$this->load->database();
         //$return_arr = array();
 
-		 $query = $this->db->query('SELECT * from Receipt');
+		 $query = $this->db->query('SELECT * from Receipt WHERE user_id = ?');
 
 
 		 foreach ($query->result_array() as $row) {
@@ -22,7 +22,7 @@ class ReceiptModel extends CI_Model {
           return $data;
     }
 
-    function get_receipt_id($id) {
+    function get_receipt_by_id($id) {
     	//http://capstone.td9175.com/ci/index.php/rest/user/id/1
     	//request for a specfic id
 

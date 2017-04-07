@@ -205,7 +205,7 @@ require('application/libraries/REST_Controller.php');
             $this->response(NULL, 400);
         }
 
-        $receipt = $this->ReceiptModel->get_receipt_id($this->get('id') );
+        $receipt = $this->ReceiptModel->get_receipt_by_id( $this->get('id') );
 
         if($receipt)
         {
@@ -229,7 +229,7 @@ require('application/libraries/REST_Controller.php');
             $this->response(NULL, 400);
         }
 
-        $receipts = $this->ReceiptModel->get_receipts();
+        $receipts = $this->ReceiptModel->get_receipts_by_user_id( $this->get('id'));
 
         if($receipts)
         {
