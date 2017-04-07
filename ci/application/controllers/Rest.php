@@ -179,8 +179,6 @@ require('application/libraries/REST_Controller.php');
       }
 
 
-
-
 	function upload_get() {
 	//load the helper library
 		$this->load->helper('form');
