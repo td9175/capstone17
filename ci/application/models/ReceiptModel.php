@@ -7,11 +7,11 @@ class ReceiptModel extends CI_Model {
     	$this->load->database();
         //$return_arr = array();
 
-		 $query = "SELECT * from Receipt WHERE user_id = ?";
+		 $query = 'SELECT * from Receipt WHERE user_id = ?';
          $result = $this->db->query($query, $id);
 
          if($result !== FALSE && $result->num_rows() > 0){
-             foreach ($query->result_array() as $row) {
+             foreach ($result->result_array() as $row) {
 
                 $data[] = array(
                     'receipt_id' => $row['receipt_id'],
@@ -22,7 +22,7 @@ class ReceiptModel extends CI_Model {
                     );
               }
           }else{
-            $data = 'There are no receipts at this user id.';   
+                $data = 'There are no receipts at this user id.';   
           }
 
           return $data;
@@ -33,7 +33,7 @@ class ReceiptModel extends CI_Model {
 
     	$this->load->database();
 
-    	$query = "SELECT * FROM Receipt WHERE receipt_id = ?";
+    	$query = 'SELECT * FROM Receipt WHERE receipt_id = ?';
         $result = $this->db->query($query, $id);
         
         if($result !== FALSE && $result->num_rows() > 0){
@@ -47,7 +47,7 @@ class ReceiptModel extends CI_Model {
                 );
             }
         }else{
-            $data = 'There is no receipt at this id.';   
+                $data = 'There is no receipt at this id.';   
         }
 
     	return $data;
