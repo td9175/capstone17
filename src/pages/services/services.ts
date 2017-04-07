@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import { NavController, NavParams } from 'ionic-angular';
+import { YelpPoster } from './../shared/yelp-api-post.service';
 
 /*
   Generated class for the Services page.
@@ -13,10 +15,10 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ServicesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesPage');
-  }
 
-}
+    };
+  }

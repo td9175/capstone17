@@ -13,18 +13,20 @@
 </ion-header>
 
 
-  <!--Working on search bar, hence it's commented out'-->
 <ion-content>
-  <!--
+<form #form="ngForm">
+  <input type="text" placeholder="dentist, dermatologist, etc.">
+  <button type="submit">Ok</button>
+</form>
+<!-- Old search bar -->
+<!-- 
   <ion-searchbar
-    [(ngModel)]="data.services"
+    [(ngModel)]="service"
     [showCancelButton]="shouldShowCancel"
     (ionInput)="onInput($event)"
     (ionCancel)="onCancel($event)">
   </ion-searchbar>
-  -->
   <div padding>
-    <!--
     <ion-card>
       <ion-card-header>
         Response
@@ -34,6 +36,6 @@
         <b>{{data.response}}</b>
       </ion-card-content>
     </ion-card>
-    -->
   </div>
+--> 
 </ion-content>
