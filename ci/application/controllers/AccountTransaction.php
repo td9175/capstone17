@@ -5,6 +5,8 @@ require('application/libraries/REST_Controller.php');
 	class AccountTransaction extends REST_Controller {
 
     // Gets the scanned amount to reimburse from OCR and handles the reimbursement transaction
+		// Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
+		// POST variables: account_number, amount
     function reimburse_account_post(){
       // Load the model
       $this->load->model('AccountTransactionModel');
@@ -21,7 +23,22 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
+		function transaction_get($acct_num) {
+			$this->load->model('AccountTransactionModel');
 
+			if(!$this->get('acct_num')) {
+				$this->response(NULL, 400);
+			}
+			$trans_info = $this->AccountTransactionModel->get_trans_info($this->get('acct_num'));
+
+			if($trans_info) {
+				$this->response($trans_info, 200);
+			} else {
+				$this->response(NULL, 404);
+			}
+
+
+		}
 
 
 
