@@ -4,9 +4,7 @@ require('application/libraries/REST_Controller.php');
 
 class HealthAccount extends REST_Controller {
 
-
   function hsa_get($id) {
-
     $this->load->model('HealthAccountModel');
 
     if(!$this->get('id'))

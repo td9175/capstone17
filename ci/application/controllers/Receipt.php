@@ -3,8 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	class Receipt extends CI_Controller {
 
-
-
 		//function to insert receipt into DB
 		//function to insert OCR info into DB
 		function upload_it() {
@@ -20,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		echo "Upload path: " . $config['upload_path'];
 
-    	// set the filter image types
+    // set the filter image types
 		$config['allowed_types'] = 'gif|jpg|png';
 
 		//load the upload library
@@ -47,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		}
 
-		//load the view/upload.php
+		// load the view/upload.php
 		$this->load->view('upload_form', $data);
 
 	}
