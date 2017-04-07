@@ -15,7 +15,7 @@ class ReceiptModel extends CI_Model {
 				'user_id' => $row['user_id'],
 				'image' => $row['image'],
                 'amount' => $row['amount'],
-                'description' => $row['description']
+                'date_time_stamp' => $row['date_time_stamp']
 				);
           }
 
@@ -37,7 +37,7 @@ class ReceiptModel extends CI_Model {
 				'user_id' => $row['user_id'],
 				'image' => $row['image'],
                 'amount' => $row['amount'],
-                'description' => $row['description']
+                'date_time_stamp' => $row['date_time_stamp']
 			);
 		}
 
@@ -61,7 +61,7 @@ class ReceiptModel extends CI_Model {
 				'user_id' => $row['user_id'],
 				'image' => $row['image'],
                 'amount' => $row['amount'],
-                'description' => $row['description']
+                'date_time_stamp' => $row['date_time_stamp']
 			);
 		}
 		return $data['image'];
