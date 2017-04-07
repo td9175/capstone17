@@ -7,16 +7,19 @@ class ReceiptModel extends CI_Model {
 
 		 $query = $this->db->query('SELECT * from Receipt WHERE user_id = ?');
 
+         if($query !== FALSE && $query->num_rows() > 0){
+             foreach ($query->result_array() as $row) {
 
-		 foreach ($query->result_array() as $row) {
-
-        	$data[] = array(
-				'receipt_id' => $row['receipt_id'],
-				'user_id' => $row['user_id'],
-				'image' => $row['image'],
-                'amount' => $row['amount'],
-                'date_time_stamp' => $row['date_time_stamp']
-				);
+                $data[] = array(
+                    'receipt_id' => $row['receipt_id'],
+                    'user_id' => $row['user_id'],
+                    'image' => $row['image'],
+                    'amount' => $row['amount'],
+                    'date_time_stamp' => $row['date_time_stamp']
+                    );
+              }
+          }else{
+            $data = 'There are no receipts at this user id.';   
           }
 
           return $data;
@@ -31,15 +34,19 @@ class ReceiptModel extends CI_Model {
     	$query = "SELECT * FROM Receipt WHERE receipt_id = ?";
         $result = $this->db->query($query, $id);
         
-		foreach ($result->result_array() as $row) {
-			$data[] = array(
-				'receipt_id' => $row['receipt_id'],
-				'user_id' => $row['user_id'],
-				'image' => $row['image'],
-                'amount' => $row['amount'],
-                'date_time_stamp' => $row['date_time_stamp']
-			);
-		}
+        if($query !== FALSE && $query->num_rows() > 0){
+            foreach ($result->result_array() as $row) {
+                $data[] = array(
+                    'receipt_id' => $row['receipt_id'],
+                    'user_id' => $row['user_id'],
+                    'image' => $row['image'],
+                    'amount' => $row['amount'],
+                    'date_time_stamp' => $row['date_time_stamp']
+                );
+            }
+        }else{
+            $data = 'There is no receipt at this id.';   
+        }
 
     	return $data;
     }
