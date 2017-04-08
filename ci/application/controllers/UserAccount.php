@@ -84,6 +84,7 @@ require('application/libraries/REST_Controller.php');
 
 			if(!$_SESSION){
 				$this->response(NULL, 400);
+				return;
 			}
 
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);
