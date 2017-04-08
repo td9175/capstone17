@@ -82,7 +82,7 @@ require('application/libraries/REST_Controller.php');
     function user_get() {
     	$this->load->model('UserAccountModel');
 
-			if(!$_SESSION['email']){
+			if(!$_SESSION){
 				$this->response(NULL, 400);
 			}
 
