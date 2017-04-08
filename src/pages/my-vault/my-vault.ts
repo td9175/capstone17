@@ -14,7 +14,9 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class MyVaultPage {
 
-  receipts: any
+  receipts: any;
+
+  filteredReceipts: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.receipts = [
@@ -38,6 +40,7 @@ export class MyVaultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyVaultPage');
+    this.filteredReceipts = this.receipts;
   }
 
   goBack() {
@@ -48,4 +51,30 @@ export class MyVaultPage {
     this.navCtrl.push(AccountsPage);
   }
 
+  initializeItems(): void {
+  this.filteredReceipts = this.receipts;
+}
+
+  getReceipt(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+
+
+    // if the value is an empty string don't filter the items
+    if (!q) {
+      return;
+    }
+
+    this.filteredReceipts = this.receipts.filter((v) => {
+      if(v.title && q) {
+        if (v.title.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
 }
