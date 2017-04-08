@@ -7,12 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-  <h2 align = "center">Hello "User's Name"</h2>
 
-  <br>
-  <br>
-
-  <h4>Test json array from sami</h4>
+  <!--<h4>Test json array from sami</h4>
   <ion-list>
     <ion-item *ngFor="let user of users">
         <h2>User ID = {{user.user_id}}</h2>
@@ -22,12 +18,12 @@
     </ion-item>
   </ion-list>
 
-  <ion-list inset>
+  <ion-list>
     <ion-item-group>
       <ion-item-divider color="light">HSA Accounts</ion-item-divider>
       <ion-item-sliding>
-        <ion-item>
-          <h2>"Account Name" - "Account Number"</h2>
+        <ion-item *ngFor="let user of users">
+          <h2>{{ user.user_id }}'s Account - {{ user.account_number }}</h2>
           <p>"Balance"</p>
         </ion-item>
         <ion-item-options side="right">
@@ -70,6 +66,16 @@
       <ion-icon name="add-circle" item-right></ion-icon>
     </button>
   </ion-list>
+  -->
+  
+  <ion-list no-lines>
+    <h4>HSA Accounts</h4>
+    <button ion-item *ngFor="let user of users">
+      <h2>{{ user.user_id }}'s Account' - Account #: {{ user.account_number }}</h2>
+      <p>Balance - {{ user.balance }}</p>
+    </button>
+  </ion-list>
+
 
   <button ion-button (click)="helloTest()">Hello World Test</button>
   <button ion-button (click)="fsaTest()">FSA Test</button>
