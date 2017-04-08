@@ -21,11 +21,10 @@
     debounce = 2000>
   </ion-searchbar>
 
-<p>{{ searchProductResults }}</p>
-
-<!--<ion-list>
-    <button ion-item item-left *ngFor="let product of searchProductResults.data.candidates">
-      <h2> {{ searchProductResults.data.candidates[candidate] }}</h2>
+  <ion-list>
+    <button ion-item item-left *ngFor="let product of searchProductResults">
+      <h2> {{ product }}</h2>
     </button>
-  </ion-list>-->
+  </ion-list>
+}
 </ion-content>

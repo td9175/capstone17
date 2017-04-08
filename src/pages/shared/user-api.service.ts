@@ -8,7 +8,8 @@ export class UserApi {
     private userid = 19;
     // userid 19 is the test 
     
-    public drugToSearch = ' ';
+    public drugToSearch = 'advil';
+    public data: any;
 
     constructor(private http: Http) { }
     // much much better way to do this.

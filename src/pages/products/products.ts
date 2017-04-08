@@ -14,6 +14,9 @@ import { UserApi } from './../shared/user-api.service';
 })
 export class ProductsPage {
 
+  private sub;
+  public indexes;
+
   searchProductResults: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
@@ -29,7 +32,14 @@ export class ProductsPage {
       return;
     }
 
-    this.userApi.drugToSearch = q;
-    this.userApi.getProductData().then(data => this.searchProductResults = data);
+    /*this.userApi.drugToSearch = q;
+    //this.userApi.getProductData().then(data => this.searchProductResults = data);
+
+    this.sub = this.userApi.getProductData().subscribe(
+        data => this.indexes =  JSON.parse(data),
+        error => alert(" Error is : " + error),
+        () => console.log("finished")
+     );*/
+
   }
 }
