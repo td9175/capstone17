@@ -77,26 +77,21 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
+		// Get all user info for the logged in account
+		// Make a get request to http://capstone.td9175.com/ci/index.php/UserAccount/user
     function user_get() {
-		//index.php/rest/user/id/1/format/json
-		//"id/1" is the parameter
 
     	$this->load->model('UserAccountModel');
 
-			if(!$this->get('id'))
-			{
+			if(!$this->session('email')){
 				$this->response(NULL, 400);
 			}
 
-			$user = $this->UserAccountModel->get_user_id($this->get('id') );
+			$user = $this->UserAccountModel->get_user($this->session('email'));
 
-			if($user)
-			{
+			if($user){
 				$this->response($user, 200); // 200 being the HTTP response code
-			}
-
-			else
-			{
+			} else{
 				$this->response(NULL, 404);
 			}
 

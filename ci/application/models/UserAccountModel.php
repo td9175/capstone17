@@ -26,23 +26,25 @@ class UserAccountModel extends CI_Model {
 
     }
 
-    function get_user_id($id) {
-    	//http://capstone.td9175.com/ci/index.php/rest/user/id/1
-    	//request for a specfic id
+    // Get all user info for the logged in account
+    // Make a get request to http://capstone.td9175.com/ci/index.php/UserAccount/user
+    function get_user($email) {
 
     	$this->load->database();
 
-    	$query = "SELECT * FROM UserAccount WHERE user_id = ?";
+      $query = "SELECT * FROM UserAccount WHERE email = ?";
 
-		 $result = $this->db->query($query, $id);
-		foreach ($result->result_array() as $row) {
+	    $result = $this->db->query($query, $email);
+
+      foreach ($result->result_array() as $row) {
 			$data[] = array(
 				'user_id' => $row['user_id'],
 				'email' => $row['email'],
-				'first_name' => $row['first_name']
+				'first_name' => $row['first_name'],
+        'last_name' => $row['last_name'],
+        'enabled' => $row['enabled']
 			);
 		}
-
     	return $data;
     }
 
