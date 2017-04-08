@@ -78,9 +78,9 @@ require('application/libraries/REST_Controller.php');
     }
 
 		// Get all user info for the logged in account
-		// Make a get request to http://capstone.td9175.com/ci/index.php/UserAccount/user
+		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
     function user_get() {
-
+			$this->load->library('session');
     	$this->load->model('UserAccountModel');
 
 			if(!$this->session('email')){
