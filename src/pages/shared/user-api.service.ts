@@ -6,13 +6,22 @@ export class UserApi {
 
     private baseUrl = 'http://capstone.td9175.com';
     private userid = 19;
-    // userid 19 is the test one
+    // userid 19 is the test 
+    
+    public drugToSearch = ' ';
 
     constructor(private http: Http) { }
     // much much better way to do this.
     getUserData(){
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/rest/hsa/id/${this.userid}.json`)
+                .subscribe(res => resolve(res.json()));
+        });
+    }
+
+    getProductData(){
+        return new Promise(resolve =>{
+            this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}.json`)
                 .subscribe(res => resolve(res.json()));
         });
     }

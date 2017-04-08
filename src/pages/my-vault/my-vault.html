@@ -20,7 +20,10 @@
 
 
 <ion-content>
-  <ion-searchbar (ionInput)="getReceipt($event)"></ion-searchbar>
+  <ion-searchbar
+  (ionInput)="getReceipt($event)"
+  [showCancelButton]="shouldShowCancel">
+  </ion-searchbar>
 
   <ion-list>
     <button ion-item item-left (click)="loadReciept()" *ngFor="let receipt of filteredReceipts">

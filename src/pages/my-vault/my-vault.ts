@@ -34,6 +34,11 @@ export class MyVaultPage {
         receiptsId: 3,
         title: 'April 03, 2017 @ 2:54p.m.',
         amount: '$5.79'
+      },
+      {
+        receiptsId: 4,
+        title: 'March 03, 2017 @ 2:54p.m.',
+        amount: '$5.79'
       }
     ];
   }

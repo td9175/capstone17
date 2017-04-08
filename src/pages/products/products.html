@@ -16,13 +16,16 @@
 <!--<ion-content padding>-->
 <ion-content>
   <ion-searchbar
-    [(ngModel)]="myInput"
     [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)">
+    (ionInput)="getProducts($event)"
+    debounce = 2000>
   </ion-searchbar>
-  <div padding>
-    <h2>Products Page</h2>
-    <h3>Bobby's awesome search can go here</h3>
-  </div>
+
+<p>{{ searchProductResults }}</p>
+
+<!--<ion-list>
+    <button ion-item item-left *ngFor="let product of searchProductResults.data.candidates">
+      <h2> {{ searchProductResults.data.candidates[candidate] }}</h2>
+    </button>
+  </ion-list>-->
 </ion-content>

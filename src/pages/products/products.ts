@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { UserApi } from './../shared/user-api.service';
 
 /*
   Generated class for the Products page.
@@ -13,10 +14,22 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ProductsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  searchProductResults: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductsPage');
   }
 
+  getProducts(searchbar){
+     // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+    if (!q) {
+      return;
+    }
+
+    this.userApi.drugToSearch = q;
+    this.userApi.getProductData().then(data => this.searchProductResults = data);
+  }
 }
