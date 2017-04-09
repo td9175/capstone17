@@ -69,7 +69,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			}
 
 			// load the view/upload.php
-			redirect('OCR/ocr_request');
+			//redirect('OCR/ocr_request');
 		$this->load->view('upload_form', $data);
 
 	}
