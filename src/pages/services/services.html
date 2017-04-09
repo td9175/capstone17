@@ -13,34 +13,30 @@
 </ion-header>
 
 
-<ion-content>
-<!-- Test Search -->
-<!--
-<form #form="ngForm">
-  <input type="text" placeholder="dentist, dermatologist, etc." name="serviceSearch" ngModel>
-  <button type="submit">Ok</button>
-</form> 
--->
-<!-- Old search bar -->
-<!-- 
-  <ion-searchbar
-    [(ngModel)]="service"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="onInput($event)"
-    (ionCancel)="onCancel($event)">
-  </ion-searchbar>
-  <div padding>
-    <ion-card>
-      <ion-card-header>
-        Response
-      </ion-card-header>
-
-      <ion-card-content>
-        <b>{{data.response}}</b>
-      </ion-card-content>
-    </ion-card>
+<ion-content padding>
+    <ion-item>
+      <ion-label>Service Search</ion-label>
+      <ion-input #YelpSearch="ngModel" class="form-container" 
+      [ngModel]="model.YelpSearchInput" 
+      (ngModelChange)="model.YelpSearchInput=$event"></ion-input>
+    </ion-item>
+  <!-- Form validation -->
+  <div *ngIf="YelpSearch.invalid && YelpSearch.dirty" class="alert alert-danger">
+    Search Input is required
   </div>
---> 
+
+<!-- Old search bar -->
+  <!--
+  <ion-searchbar
+    [(ngModel)]="model.YelpSearchInput" 
+    (ngModelChange)="model.YelpSearchInput=$event"
+    [showCancelButton]="shouldShowCancel">
+  </ion-searchbar>
+  -->
+
+  <div padding>
+  </div>
 <!-- Show model -->
 Model: {{ model | json }}
+<!-- Angular: {{ ion-searchbar.value | json }} -->
 </ion-content>
