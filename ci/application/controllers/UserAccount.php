@@ -118,15 +118,33 @@ require('application/libraries/REST_Controller.php');
 				$this->load->model('UserAccountModel');
 
 				if(!$this->post('email')){
-					$this->response(NULL, 400);
+					$this->response(NULL, 400); // 400 Bad request
 				}
 
 				$response = $this->UserAccountModel->disable_user($this->post('email'));
-				echo "$response \n";
+
 				if($response){
-					$this->response($response, 200); // 200 being the HTTP response code
+					$this->response($response, 200); // 200 Success
 				} else{
-					$this->response(NULL, 404);
+					$this->response(NULL, 404); // 404 Not found
+				}
+			}
+
+			// Enable a users account
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
+			function enable_user_post() {
+				$this->load->model('UserAccountModel');
+
+				if(!$this->post('email')){
+					$this->response(NULL, 400); // 400 Bad request
+				}
+
+				$response = $this->UserAccountModel->enable_user($this->post('email'));
+
+				if($response){
+					$this->response($response, 200); // 200 Success
+				} else{
+					$this->response(NULL, 404); // 404 Not found
 				}
 			}
 

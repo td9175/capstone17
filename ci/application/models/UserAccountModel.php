@@ -100,7 +100,7 @@ class UserAccountModel extends CI_Model {
       return $data;
   }
 
-  // Get all user info for the logged in account
+  // Disable a users account
   // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
   function disable_user($email) {
     // Load the database
@@ -117,7 +117,25 @@ class UserAccountModel extends CI_Model {
     }
     // Return the result message
     return $message;
+  }
 
+  // Enable a user account
+  // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
+  function enable_user($email) {
+    // Load the database
+    $this->load->database();
+    // Build the query
+    $query = "UPDATE UserAccount SET enabled=1 WHERE email = ?";
+    // Execute the query
+    $result = $this->db->query($query, $email);
+    // Check if the row was affected
+    if ($this->db->affected_rows() == 1) {
+      $message = "Success: account enabled.";
+    } else {
+      $message = "Error: failed to enable account.";
+    }
+    // Return the result message
+    return $message;
   }
 
 }
