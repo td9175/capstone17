@@ -20,7 +20,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$email = "hello@world.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
-			$rand = random_string('alnum', 10);
+			$rand = random_string('num', 3);
 			echo "<br>Date:" . $date;
 			
 			$f_name = $date;
@@ -61,7 +61,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 				$path = 'hello@world.com/';
-				$path .= $fname;
+				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				
