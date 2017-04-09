@@ -107,7 +107,7 @@ class UserAccountModel extends CI_Model {
     // Load the database
     $this->load->database();
     // Build the query
-    $query = "UPDATE UserAccount SET enabled=1 WHERE email = ?";
+    $query = "UPDATE UserAccount SET enabled=0 WHERE email = ?";
     // Execute the query
     $result = $this->db->query($query, $email);
     // Return the result
