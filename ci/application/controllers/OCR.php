@@ -42,7 +42,7 @@ class Ocr extends CI_Controller {
 			// Request body
 			$newurl = "{'url': '";
 			$newurl .= $path;
-			$newurl = "'}";
+			$newurl .= "'}";
 			echo "url: "  . $newurl;
 			echo "<br><Br>";
 			$request->setBody($newurl);
