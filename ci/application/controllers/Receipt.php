@@ -11,12 +11,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$this->load->model('ReceiptModel');
 
 		//need to create folder for each user, path will be unique to the user
-		$email = $_SESSION['id'];
+		$email = $_SESSION['email'];
 		echo "Email: ". $email; 
+		$date = date('d-m-y');
+		$time = time();
+		
 		$config['upload_path'] = '/var/www/html/ci/application/receipts/';
-
+		$config['upload_path'] .= $email;
+		
 		//need to change filename to be unique to the user
-		//$config['filename'] =
+		$config['file_name'] = $date .':'.$time;
 
 		echo "Upload path: " . $config['upload_path'];
 

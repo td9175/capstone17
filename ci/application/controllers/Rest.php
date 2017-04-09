@@ -117,6 +117,7 @@ require('application/libraries/REST_Controller.php');
 
 						// Set the session variable
 						$_SESSION['email'] = $email;
+						$_SESSION['id'] = $id; 
 
 						// Send back a response with $logged_in = TRUE, 200 Success
 						$this->response($logged_in, 200);
