@@ -96,7 +96,6 @@ class UserAccountModel extends CI_Model {
           $data['response'] = $row['hash_pass'];
         }
       }
-
       // Pass back the data
       return $data;
   }
@@ -110,8 +109,14 @@ class UserAccountModel extends CI_Model {
     $query = "UPDATE UserAccount SET enabled=0 WHERE email = ?";
     // Execute the query
     $result = $this->db->query($query, $email);
-    // Return the result
-    return $result;
+    // Check if the row was affected
+    if ($this->db->affected_rows() == 1) {
+      $message = "Success: account disabled.";
+    } else {
+      $message = "Error: failed to disable account.";
+    }
+    // Return the result message
+    return $message;
 
   }
 
