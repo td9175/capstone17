@@ -87,7 +87,6 @@ require('application/libraries/REST_Controller.php');
 
 			if(!$_SESSION){
 				$this->response(NULL, 400);
-				return;
 			}
 
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);
@@ -177,5 +176,21 @@ require('application/libraries/REST_Controller.php');
 					$this->response(NULL, 404); // 404 Not found
 				}
 			}
+
+			// Logout a user
+			function logout_get(){
+				// Initialize the session
+				session_start();
+
+				// Unset all of the session variables
+				$_SESSION = array();
+
+				// Destroy the session
+				session_destroy();
+
+				// Send back a response
+				$this->response("Success: logged out.", 200); // 200 Success
+			}
+
 
   }
