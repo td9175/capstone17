@@ -11,7 +11,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$this->load->model('ReceiptModel');
 
 			//need to create folder for each user, path will be unique to the user
-			$email = $_SESSION['email'];
+			//$email = $_SESSION['email'];
+			$email = "samiholder@gmail.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
 			echo "<br>Date:" . $date;
