@@ -14,10 +14,13 @@
 
 
 <ion-content>
+<!-- Test Search -->
+<!--
 <form #form="ngForm">
-  <input type="text" placeholder="dentist, dermatologist, etc.">
+  <input type="text" placeholder="dentist, dermatologist, etc." name="serviceSearch" ngModel>
   <button type="submit">Ok</button>
-</form>
+</form> 
+-->
 <!-- Old search bar -->
 <!-- 
   <ion-searchbar
@@ -38,4 +41,6 @@
     </ion-card>
   </div>
 --> 
+<!-- Show model -->
+Model: {{ model | json }}
 </ion-content>

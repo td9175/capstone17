@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NavController, NavParams } from 'ionic-angular';
 import { YelpPoster } from './../shared/yelp-api-post.service';
+import { YelpSearchModel } from './../../models/yelpsearch.model';
 
 /*
   Generated class for the Services page.
@@ -14,7 +15,7 @@ import { YelpPoster } from './../shared/yelp-api-post.service';
   templateUrl: 'services.html'
 })
 export class ServicesPage {
-
+  model = new YelpSearchModel('Dentist');
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) {}
 
   ionViewDidLoad() {
