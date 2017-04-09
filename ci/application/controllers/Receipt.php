@@ -20,7 +20,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$email = "hello@world.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
-			$rand = random_string('num', 3);
+			$rand = random_string('alnum', 3);
 			echo "<br>Date:" . $date;
 			
 			$f_name = $date;
@@ -64,7 +64,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
-				
+				echo "Path: " . $path;
 
 			}
 
