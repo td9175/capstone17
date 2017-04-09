@@ -102,7 +102,7 @@ class UserAccountModel extends CI_Model {
   }
 
   // Get all user info for the logged in account
-  // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
+  // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
   function disable_user($email) {
     // Load the database
     $this->load->database();

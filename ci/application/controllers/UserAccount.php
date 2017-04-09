@@ -112,8 +112,8 @@ require('application/libraries/REST_Controller.php');
 
     	}
 
-			// Get all user info for the logged in account
-			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
+			// Disable a users account
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
 			function disable_user_post() {
 				$this->load->model('UserAccountModel');
 
