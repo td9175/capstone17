@@ -5,15 +5,15 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 class Ocr extends CI_Controller {
 	    
 
-function folder_get() {
 	
-}
-
-
-	    //https://capstone.td9175.com/ci/index.php/OCR/ocr_request
-function ocr_request() {
+	public function ocr_request() {
+	
+			//imagePath should be the email/name of the file 
+			$imagePath = $_SESSION['path'];
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
+			$path = 'http://capstone.td9178.com/ci/application/receipts/';
+			$path .= $imagePath; 
 	
 			$request->setConfig(array(
 				'ssl_verify_peer'   => FALSE,
@@ -38,14 +38,14 @@ function ocr_request() {
 
 			$request->setMethod(HTTP_Request2::METHOD_POST);
 
-			$image = 'http://i1008.photobucket.com/albums/af202/CompSyn/Walmart_QS_zpsw3uk1oeh.png';
+			
 			// Request body
 			$newurl = "{'url': '";
-			$newurl .= $image;
+			$newurl .= $path;
 			$newurl = "'}";
 			echo "url: "  . $newurl;
 			echo "<br><Br>";
-			$request->setBody("{'url':'http://i1008.photobucket.com/albums/af202/CompSyn/Walmart_QS_zpsw3uk1oeh.png'}");
+			$request->setBody($newurl);
 
 			try {
 				$response = $request->send();
@@ -58,23 +58,26 @@ function ocr_request() {
 			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
 			RecursiveIteratorIterator::SELF_FIRST);
 
-		foreach ($jsonIterator as $key => $val) {
-				if(is_array($val)) {
-					echo "$key:";
-					echo "<br>";
-				} else {
-				echo "$key => $val";
-				echo "<br>";
-				}
+			foreach ($jsonIterator as $key => $val) {
+					if(is_array($val)) {
+						echo "$key:";
+						echo "<br>";
+					} else {
+						echo "$key => $val";
+						echo "<br>";
+					}
 			}
 		
-				}
+				}//end try
 			catch (HttpException $ex) {
 				echo $ex;
 			}
 
 		}
+	
 
-}
+	}
+
+
 
 ?>
