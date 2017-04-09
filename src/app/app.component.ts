@@ -1,7 +1,3 @@
-import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
-//import { importBackandService } from '@backand/angular2-sdk';
-//import { Backand } from './../providers/backand';
-
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -19,6 +15,7 @@ import { TaxInfoPage } from './../pages/tax-info/tax-info';
 import { AccountsPage } from './../pages/accounts/accounts';
 import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
+import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 // import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
 import { MyVaultPage } from './../pages/my-vault/my-vault'; 
@@ -38,7 +35,7 @@ export class MyApp {
 
   // It would probably be smarter to use HomePage as root,
   // Then we could figure out a global login via TS checks.
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -48,16 +45,12 @@ export class MyApp {
     // used for an example of ngFor and navigation
     // we should add the logout as a function to the navbar
     this.pages = [
-      //{ title: 'Accounts', component: AccountsPage },
       { title: 'Reports', component: ReportsPage},
-      //{ title: 'RequestRiembursement', component: Page2 },
       { title: 'Tax Info', component: TaxInfoPage },
       { title: 'Help', component: HelpPage },
       { title: 'About', component: AboutPage },
       { title: 'Settings', component: UserSettingsPage },
-      { title: 'Debug Home', component: HomePage }
-      
-    ];
+      { title: 'Debug Home', component: HomePage } ];
 
   }
 
@@ -102,4 +95,5 @@ export class MyApp {
   signOut(){
     this.nav.push(LoginPage)
   }
+
 } // end myapp

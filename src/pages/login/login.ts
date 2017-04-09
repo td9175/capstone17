@@ -28,7 +28,8 @@ export class LoginPage {
 
   goToHome(){
     //this.navCtrl.push(AccountsPage);
-    this.navCtrl.popToRoot();
+    //this.navCtrl.popToRoot();
+    this.navCtrl.push(HomePage);
   }
 
   enrollNow(){
