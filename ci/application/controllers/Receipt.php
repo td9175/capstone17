@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$this->load->model('ReceiptModel');
 
 		//need to create folder for each user, path will be unique to the user
-		$email = $_SESSION['email'];
+		$email = $_SESSION['id'];
 		echo "Email: ". $email; 
 		$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 
