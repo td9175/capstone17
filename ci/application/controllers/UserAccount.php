@@ -122,7 +122,7 @@ require('application/libraries/REST_Controller.php');
 				}
 
 				$response = $this->UserAccountModel->disable_user($this->post('email'));
-
+				echo "$response \n";
 				if($response){
 					$this->response($response, 200); // 200 being the HTTP response code
 				} else{
