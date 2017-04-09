@@ -12,6 +12,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			//load the helper
 			$this->load->helper('form');
 			$this->load->helper('url');
+			$this->load->helper('string');
 			$this->load->model('ReceiptModel');
 
 			//need to create folder for each user, path will be unique to the user
@@ -19,15 +20,17 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$email = "hello@world.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
+			$rand = random_string('alnum', 10);
 			echo "<br>Date:" . $date;
 			
-
+			$f_name = $date.$rand;
 		
 			$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 			$config['upload_path'] .= $email;
 		
 			//need to change filename to be unique to the user
-			$config['file_name'] = $date;
+			$config['file_name'] = $f_name;
+			
 
 			echo "Upload path: " . $config['upload_path'];
 			echo "<br><br>";
@@ -57,7 +60,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 				$path = 'hello@world.com/';
-				$path .= $date;
+				$path .= $fname;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				redirect('OCR/ocr_request');
