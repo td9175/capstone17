@@ -53,10 +53,10 @@ class ReceiptModel extends CI_Model {
     	return $data;
     }
     
-    function receiptData_post($receipt, $user_id) {
+    function receiptData_post($receipt_path, $user_email) {
     
     $this->load->database();
-
+	
     
     
     
