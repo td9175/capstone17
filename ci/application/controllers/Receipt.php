@@ -23,7 +23,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$rand = random_string('alnum', 10);
 			echo "<br>Date:" . $date;
 			
-			$f_name = $date.$rand;
+			$f_name = $date;
+			$f_name .= $rand;
 		
 			$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 			$config['upload_path'] .= $email;
