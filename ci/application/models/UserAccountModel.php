@@ -3,7 +3,6 @@ class UserAccountModel extends CI_Model {
 
     // Get info for every user
     function get_users() {
-
       $this->load->database();
 
   		$query = $this->db->query('SELECT * from UserAccount');
@@ -17,12 +16,10 @@ class UserAccountModel extends CI_Model {
 				);
   		}
     	return $data;
-
     }
 
     // Get all enabled user accounts
     function get_enabled_users() {
-
       $this->load->database();
 
       $query = $this->db->query('SELECT * from UserAccount WHERE enabled=0');
@@ -35,12 +32,10 @@ class UserAccountModel extends CI_Model {
         );
       }
       return $data;
-
     }
 
     // Get all disabled user accounts
     function get_disabled_users() {
-
       $this->load->database();
 
       $query = $this->db->query('SELECT * from UserAccount WHERE enabled=1');
@@ -53,7 +48,6 @@ class UserAccountModel extends CI_Model {
         );
       }
       return $data;
-
     }
 
     // Get all user info for the logged in account
@@ -71,22 +65,13 @@ class UserAccountModel extends CI_Model {
         'last_name' => $row['last_name'],
         'enabled' => $row['enabled']
 			);
-		}
+  		}
     	return $data;
     }
 
     // Register a user account
     function post_registration($email, $hash_pass, $first_name, $last_name){
-    // Send a post request to http://capstone.td9175.com/ci/index.php/Rest/registration/email/value/hash_pass/value/first_name/value/last_name/value
-
-      // Load the database
       $this->load->database();
-
-      // Sanitize the user input
-      // $email = $this->db->escape($email);
-      // $hash_pass = $this->db->escape($hash_pass);
-      // $first_name = $this->db->escape($first_name);
-      // $last_name = $this->db->escape($last_name);
 
       // Build the query to create a user account
       $query = "INSERT INTO UserAccount (email, hash_pass, first_name, last_name) VALUES (?,?,?,?)";
@@ -103,18 +88,11 @@ class UserAccountModel extends CI_Model {
 
       // Pass back the data
       return $data;
-
     }
 
     // Login a user
     function post_login($email){
-    // Send a post request to http://capstone.td9175.com/ci/index.php/Rest/registration/email/value/hash_pass/value/first_name/value/last_name/value
-
-      // Load the database
       $this->load->database();
-
-      // Sanitize the user input
-      // $email = $this->db->escape($email);
 
       // Build the query to check for account with an email provided by the user
       $query = "SELECT hash_pass FROM UserAccount WHERE email=?";

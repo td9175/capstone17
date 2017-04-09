@@ -178,6 +178,7 @@ require('application/libraries/REST_Controller.php');
 			}
 
 			// Logout a user
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/logout
 			function logout_get(){
 				// Initialize the session
 				session_start();
