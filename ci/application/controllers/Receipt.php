@@ -58,6 +58,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 				$path = 'hello@world.com/';
 				$path .= $date;
+				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				redirect('OCR/ocr_request');
 
