@@ -4,25 +4,21 @@ class UserAccountModel extends CI_Model {
 
 
     function get_users() {
-    	$this->load->database();
-      //$return_arr = array();
 
-		 $query = $this->db->query('SELECT * from UserAccount');
+      $this->load->database();
 
+  		$query = $this->db->query('SELECT * from UserAccount');
 
-		 foreach ($query->result_array() as $row) {
-
-        	$data[] = array(
-				'user_id' => $row['user_id'],
-				'email' => $row['email'],
-				'first_name' => $row['first_name']
+  		foreach ($query->result_array() as $row) {
+        $data[] = array(
+    			'user_id' => $row['user_id'],
+  				'email' => $row['email'],
+  				'first_name' => $row['first_name'],
+          'last_name' => $row['last_name'],
+          'enabled' => $row['enabled']
 				);
-
-			}
-
-
-    		return $data;
-
+  		}
+    	return $data;
 
     }
 
@@ -103,6 +99,20 @@ class UserAccountModel extends CI_Model {
 
       // Pass back the data
       return $data;
+  }
+
+  // Get all user info for the logged in account
+  // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
+  function disable_user($email) {
+    // Load the database
+    $this->load->database();
+    // Build the query
+    $query = "UPDATE UserAccount SET enabled=1 WHERE email = ?";
+    // Execute the query
+    $result = $this->db->query($query, $email);
+    // Return the result
+    return $result;
+
   }
 
 }

@@ -38,6 +38,8 @@ require('application/libraries/REST_Controller.php');
 
     // RESTful API to login a user
     // Author: Robert Fink
+		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/login
+		// POST variables to send: email, password
     function login_post(){
 
       // Set the initial logged_in flag to FALSE
@@ -73,7 +75,6 @@ require('application/libraries/REST_Controller.php');
         } else {
           // Password does not match, send back a response with $error_message, 200 Success
           $this->response($error_message, 200);
-
       }
     }
 
@@ -96,29 +97,37 @@ require('application/libraries/REST_Controller.php');
 			}
   	}
 
+			// Get info for every user
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/users
     	function users_get() {
-        // respond with information about several users
-        // index.php/rest/users
-
         $this->load->model('UserAccountModel');
-
-  			if(!$this->get('id'))
-  			{
-  				$this->response(NULL, 400);
-  			}
 
   			$users = $this->UserAccountModel->get_users();
 
-  			if($users)
-  			{
+  			if($users){
   				$this->response($users, 200); // 200 being the HTTP response code
-  			}
-
-  			else
-  			{
+  			} else{
   				$this->response(NULL, 404);
   			}
 
     	}
+
+			// Get all user info for the logged in account
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
+			function disable_user_post() {
+				$this->load->model('UserAccountModel');
+
+				if(!$this->post('email')){
+					$this->response(NULL, 400);
+				}
+
+				$response = $this->UserAccountModel->disable_user($this->post('email'));
+
+				if($response){
+					$this->response($response, 200); // 200 being the HTTP response code
+				} else{
+					$this->response(NULL, 404);
+				}
+			}
 
   }
