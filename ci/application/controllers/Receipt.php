@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
+
 
 	class Receipt extends CI_Controller {
 
@@ -54,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 				$path = 'hello@world.com';
 				$path .= $date;
-				$ocrResponse = ocr_request($path);
+				$ocrResponse = ocr($path);
 
 
 			}
@@ -66,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	
 	
-	function ocr_request($imagePath) {
+	public function ocr($imagePath) {
 	
 			//imagePath should be the email/name of the file 
 			
@@ -118,17 +120,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
 			RecursiveIteratorIterator::SELF_FIRST);
 
-		foreach ($jsonIterator as $key => $val) {
-				if(is_array($val)) {
-					echo "$key:";
-					echo "<br>";
-				} else {
-				echo "$key => $val";
-				echo "<br>";
-				}
+			foreach ($jsonIterator as $key => $val) {
+					if(is_array($val)) {
+						echo "$key:";
+						echo "<br>";
+					} else {
+						echo "$key => $val";
+						echo "<br>";
+					}
 			}
 		
-				}
+				}//end try
 			catch (HttpException $ex) {
 				echo $ex;
 			}
