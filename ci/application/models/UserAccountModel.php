@@ -1,8 +1,7 @@
 <?php
 class UserAccountModel extends CI_Model {
 
-
-
+    // Get info for every user
     function get_users() {
 
       $this->load->database();
@@ -11,7 +10,6 @@ class UserAccountModel extends CI_Model {
 
   		foreach ($query->result_array() as $row) {
         $data[] = array(
-    			'user_id' => $row['user_id'],
   				'email' => $row['email'],
   				'first_name' => $row['first_name'],
           'last_name' => $row['last_name'],
@@ -22,8 +20,43 @@ class UserAccountModel extends CI_Model {
 
     }
 
+    // Get all enabled user accounts
+    function get_enabled_users() {
+
+      $this->load->database();
+
+      $query = $this->db->query('SELECT * from UserAccount WHERE enabled=0');
+
+      foreach ($query->result_array() as $row) {
+        $data[] = array(
+          'email' => $row['email'],
+          'first_name' => $row['first_name'],
+          'last_name' => $row['last_name'],
+        );
+      }
+      return $data;
+
+    }
+
+    // Get all disabled user accounts
+    function get_disabled_users() {
+
+      $this->load->database();
+
+      $query = $this->db->query('SELECT * from UserAccount WHERE enabled=1');
+
+      foreach ($query->result_array() as $row) {
+        $data[] = array(
+          'email' => $row['email'],
+          'first_name' => $row['first_name'],
+          'last_name' => $row['last_name'],
+        );
+      }
+      return $data;
+
+    }
+
     // Get all user info for the logged in account
-    // Make a get request to http://capstone.td9175.com/ci/index.php/UserAccount/user
     function get_user($email) {
     	$this->load->database();
 
@@ -33,7 +66,6 @@ class UserAccountModel extends CI_Model {
 
       foreach ($result->result_array() as $row) {
 			$data[] = array(
-				'user_id' => $row['user_id'],
 				'email' => $row['email'],
 				'first_name' => $row['first_name'],
         'last_name' => $row['last_name'],
@@ -43,6 +75,7 @@ class UserAccountModel extends CI_Model {
     	return $data;
     }
 
+    // Register a user account
     function post_registration($email, $hash_pass, $first_name, $last_name){
     // Send a post request to http://capstone.td9175.com/ci/index.php/Rest/registration/email/value/hash_pass/value/first_name/value/last_name/value
 
@@ -73,6 +106,7 @@ class UserAccountModel extends CI_Model {
 
     }
 
+    // Login a user
     function post_login($email){
     // Send a post request to http://capstone.td9175.com/ci/index.php/Rest/registration/email/value/hash_pass/value/first_name/value/last_name/value
 
@@ -101,7 +135,6 @@ class UserAccountModel extends CI_Model {
   }
 
   // Disable a users account
-  // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
   function disable_user($email) {
     // Load the database
     $this->load->database();
@@ -120,7 +153,6 @@ class UserAccountModel extends CI_Model {
   }
 
   // Enable a user account
-  // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
   function enable_user($email) {
     // Load the database
     $this->load->database();

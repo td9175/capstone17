@@ -2,10 +2,13 @@
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
+	// RESTful API for User Account functions
+	// Author: Robert Fink
 	class UserAccount extends REST_Controller {
 
-    // RESTful API to register a user
-    // Author: Robert Fink
+		// Register a user account
+		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/registration
+		// POST variables to send: email, password, first_name, last_name
     function registration_post(){
 
       // Load the model
@@ -36,8 +39,7 @@ require('application/libraries/REST_Controller.php');
 
     }
 
-    // RESTful API to login a user
-    // Author: Robert Fink
+    // Login a user
 		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/login
 		// POST variables to send: email, password
     function login_post(){
@@ -91,7 +93,7 @@ require('application/libraries/REST_Controller.php');
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);
 
 			if($user){
-				$this->response($user, 200); // 200 being the HTTP response code
+				$this->response($user, 200); // 200 Success
 			} else{
 				$this->response(NULL, 404);
 			}
@@ -105,7 +107,7 @@ require('application/libraries/REST_Controller.php');
   			$users = $this->UserAccountModel->get_users();
 
   			if($users){
-  				$this->response($users, 200); // 200 being the HTTP response code
+  				$this->response($users, 200); // 200 Success
   			} else{
   				$this->response(NULL, 404);
   			}
@@ -113,7 +115,7 @@ require('application/libraries/REST_Controller.php');
     	}
 
 			// Disable a users account
-			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
+			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
 			function disable_user_post() {
 				$this->load->model('UserAccountModel');
 
@@ -131,7 +133,7 @@ require('application/libraries/REST_Controller.php');
 			}
 
 			// Enable a users account
-			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
+			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
 			function enable_user_post() {
 				$this->load->model('UserAccountModel');
 
@@ -140,6 +142,34 @@ require('application/libraries/REST_Controller.php');
 				}
 
 				$response = $this->UserAccountModel->enable_user($this->post('email'));
+
+				if($response){
+					$this->response($response, 200); // 200 Success
+				} else{
+					$this->response(NULL, 404); // 404 Not found
+				}
+			}
+
+			// Get all enabled user accounts
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enabled_users
+			function enabled_users_get() {
+				$this->load->model('UserAccountModel');
+
+				$response = $this->UserAccountModel->get_enabled_users();
+
+				if($response){
+					$this->response($response, 200); // 200 Success
+				} else{
+					$this->response(NULL, 404); // 404 Not found
+				}
+			}
+
+			// Get all disabled user accounts
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disabled_users
+			function disabled_users_get() {
+				$this->load->model('UserAccountModel');
+
+				$response = $this->UserAccountModel->get_disabled_users();
 
 				if($response){
 					$this->response($response, 200); // 200 Success
