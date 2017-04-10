@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { NavController, NavParams } from 'ionic-angular';
 import { YelpPoster } from './../shared/yelp-api-post.service';
 import { YelpSearchModel } from './../../models/yelpsearch.model';
+import { NgForm } from '@angular/forms/src/directives';
 
 /*
   Generated class for the Services page.
@@ -16,10 +17,21 @@ import { YelpSearchModel } from './../../models/yelpsearch.model';
 })
 export class ServicesPage {
   model = new YelpSearchModel('Dentist');
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) {}
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) { 
+  }
+  // form method
+  submitForm(form: NgForm) {
+    // Validation should go up here if we get this far
+    console.log(form.value);
+    this.yelpPoster.postYelpSearchForm(this.model)
+        .subscribe(
+          data => console.log('success: ', data),
+          err => console.log('error: ', err)
+        )
+  }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ServicesPage');
-
+    console.log('ionViewDidLoad ServicesPage')
     };
   }

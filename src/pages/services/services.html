@@ -14,12 +14,20 @@
 
 
 <ion-content padding>
+  <form #form="ngForm" (ngSubmit)="submitForm(form)">
     <ion-item>
-      <ion-label>Service Search</ion-label>
-      <ion-input #YelpSearch="ngModel" class="form-container" 
+      <ion-label>Search:</ion-label>
+      <ion-input 
+      #YelpSearch="ngModel" 
+      required type="text" 
+      class="form-container" 
+      name="yelpSearch" 
       [ngModel]="model.YelpSearchInput" 
-      (ngModelChange)="model.YelpSearchInput=$event"></ion-input>
+      (ngModelChange)="model.YelpSearchInput=$event">
+      </ion-input>
     </ion-item>
+    <button ion-button type="submit" block>Search</button>
+  </form>
   <!-- Form validation -->
   <div *ngIf="YelpSearch.invalid && YelpSearch.dirty" class="alert alert-danger">
     Search Input is required
