@@ -51,7 +51,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 						  "words": [
 							{
 							  "boundingBox": "110,816,70,16",
-							  "text": "10\/14\/10"
+							  "text": "10/14/10"
 							}
 						  ]
 						},
@@ -69,11 +69,14 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  ]
 				}';
 		
+		preg_match_all("/\d\d\/\d\d\/\d\d/", $string, $other_matches);
 		
 		preg_match_all("/([0-9]{2})\/([0-9]{2})\/([0-9]{2})/", $string, $matches);
 		echo "<br>";
-		//echo "Matches: ". $matches;
+		echo "Matches: ";
 		print_r($matches);
+		echo "<BR>Other matches: ";
+		print_r($other_matchers); 
 		
 		
 		}
