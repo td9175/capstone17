@@ -123,7 +123,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		print_r($other_matches); 
 		
 		
-		preg_match_all("/TOTAL/i", $string, $total);
+		preg_match_all("/TOTAL\s*(.*?)\w+/i", $string, $total);
 		echo "<br>total:";
 		print_r($total);
 		
