@@ -62,7 +62,7 @@ require('application/libraries/REST_Controller.php');
 				$this->response($msg, 403); // 403 Forbidden
 			}
 
-			if (strcmp($login_response['hash_pass'], $error_message) == 0){ // The strings are a match.
+			if (strcmp($login_response['hash_pass'], $password) == 0){ // The strings are a match.
         // Email not found, send back a response with $error_message, 200 Success
         $this->response($error_message, 200);
       } elseif (password_verify($password, $login_response['hash_pass'])){
