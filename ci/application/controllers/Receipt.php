@@ -70,9 +70,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				}';
 		
 		
-		
-		
-		
+		preg_match_all('\/dd/dd/dd/', $text, $matches);
+		echo "<br>";
+		echo "Matches: ". $matches;
 		
 		
 		}
