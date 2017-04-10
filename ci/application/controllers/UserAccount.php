@@ -79,11 +79,11 @@ require('application/libraries/REST_Controller.php');
 					}
 
           // Send back a response with $logged_in = TRUE, 200 Success
-					$error_message = "Incorrect email or password.";
           $this->response($logged_in, 200);
 
         } else {
           // Password does not match, send back a response with $error_message, 200 Success
+					$error_message = "Incorrect email or password.";
           $this->response($error_message, 200);
       }
     }
