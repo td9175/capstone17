@@ -67,11 +67,11 @@ require('application/libraries/REST_Controller.php');
         $this->response($error_message, 200);
       } elseif (password_verify($password, $login_response['hash_pass'])){
           // Email and password match
-          // Set the login_message flag to TRUE
-          $logged_in = "TRUE";
+          // Set the login_message flag to the email address
+          $logged_in = $email;
 
           // Set the session variable
-          $login_response['hash_pass'] = $email;
+          $_SESSION['email'] = $email;
 
 					// If the account has admin priviledge set the admin session variable
 					if ($login_response['is_admin']) {
