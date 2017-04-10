@@ -54,6 +54,11 @@ class Ocr extends CI_Controller {
 				echo "<br><Br>";
 				json_encode($newanswer);
 				echo "New: " . $newanswer;
+				
+				
+				
+				
+				
 			   $jsonIterator = new RecursiveIteratorIterator(
 			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
 			RecursiveIteratorIterator::SELF_FIRST);
@@ -67,6 +72,13 @@ class Ocr extends CI_Controller {
 						echo "<br>";
 					}
 			}
+					
+		$json = json_decode($newanswer); 
+		
+		foreach($json['word']['text'] as $item) {
+    		print $item['text'];
+    		print ' - ';
+   		}
 		
 				}//end try
 			catch (HttpException $ex) {

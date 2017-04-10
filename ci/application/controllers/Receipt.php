@@ -129,13 +129,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		print_r($matches);
 		echo "<BR>Other matches: ";
 		print_r($other_matches);
-		
-		$json = json_decode($string, true); 
-		
-		foreach($json['word']['text'] as $item) {
-    		print $item['text'];
-    		print ' - ';
-   		}
+d
     
     
     
@@ -206,7 +200,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				echo "Path: " . $path;
-				redirect('OCR/ocr_request');
+				//redirect('OCR/ocr_request');
 			}
 
 			// load the view/upload.php
