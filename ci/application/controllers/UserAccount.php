@@ -47,9 +47,6 @@ require('application/libraries/REST_Controller.php');
       // Set the initial logged_in flag to FALSE
       $logged_in = "FALSE";
 
-      // Generic error message
-      $error_message = "Incorrect email or password.";
-
       // Load the model
       $this->load->model('UserAccountModel');
 
@@ -60,18 +57,29 @@ require('application/libraries/REST_Controller.php');
       // Send the user information to the model to check for the email
       $login_response = $this->UserAccountModel->post_login($email);
 
-      if (strcmp($login_response['response'], $error_message) == 0){ // The strings are a match.
+			if ($login_response['is_enabled'] == 0) {
+				$msg = "Account is disabled.";
+				$this->response($msg, 403) // 403 Forbidden
+			}
+
+			if (strcmp($login_response['hash_pass'], $error_message) == 0){ // The strings are a match.
         // Email not found, send back a response with $error_message, 200 Success
         $this->response($error_message, 200);
-      } elseif (password_verify($password, $login_response['response'])){
+      } elseif (password_verify($password, $login_response['hash_pass'])){
           // Email and password match
           // Set the login_message flag to TRUE
           $logged_in = "TRUE";
 
           // Set the session variable
-          $_SESSION['email'] = $email;
+          $login_response['hash_pass'] = $email;
+
+					// If the account has admin priviledge set the admin session variable
+					if ($login_response['is_admin']) {
+						$_SESSION['admin'] = TRUE;
+					}
 
           // Send back a response with $logged_in = TRUE, 200 Success
+					$error_message = "Incorrect email or password.";
           $this->response($logged_in, 200);
 
         } else {

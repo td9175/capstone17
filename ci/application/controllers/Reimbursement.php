@@ -23,4 +23,33 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
+
+		// Get all reimbursement records
+		function reimbursements_get() {
+			// Load the model
+      $this->load->model('AccountTransactionModel');
+			// Call the model to query the db
+			$result = $this->AccountTransactionModel->all_reimbursements();
+			// If response has data respond with data and success, or 404
+      if($result){
+        $this->response($result, 200); // 200 Success
+      } else {
+        $this->response(NULL, 404); // 404 Not found
+      }
+		}
+
+		// Get all reimbursement records for a single user
+		function reimbursements_get() {
+			// Load the model
+      $this->load->model('AccountTransactionModel');
+			// Call the model to query the db
+			$result = $this->AccountTransactionModel->get_user_reimbursements($);
+			// If response has data respond with data and success, or 404
+      if($result){
+        $this->response($result, 200); // 200 Success
+      } else {
+        $this->response(NULL, 404); // 404 Not found
+      }
+		}
+
   }

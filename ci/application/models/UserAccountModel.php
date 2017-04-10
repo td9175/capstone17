@@ -95,7 +95,7 @@ class UserAccountModel extends CI_Model {
       $this->load->database();
 
       // Build the query to check for account with an email provided by the user
-      $query = "SELECT hash_pass FROM UserAccount WHERE email=?";
+      $query = "SELECT hash_pass, is_enabled, is_admin FROM UserAccount WHERE email=?";
 
       // Execute the query
       $result = $this->db->query($query, $email);
@@ -105,7 +105,9 @@ class UserAccountModel extends CI_Model {
       } else {
         // Insert the associated hash_pass into the data array
         foreach ($result->result_array() as $row) {
-          $data['response'] = $row['hash_pass'];
+          $data['hash_pass'] = $row['hash_pass'];
+          $data['is_enabled'] = $row['is_enabled'];
+          $data['is_admin'] = $row['is_admin'];
         }
       }
       // Pass back the data
