@@ -8,6 +8,8 @@
 
 		$result = $this->db->query($query, $email);
 
+		$data = array();
+
 		foreach ($result->result_array() as $row) {
 				$data[] = array(
 					'account_number' => $row['account_number'],
@@ -24,6 +26,8 @@
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA'";
 
 		$result = $this->db->query($query, $email);
+
+		$data = array();
 
 		foreach ($result->result_array() as $row) {
 				$data[] = array(
