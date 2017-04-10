@@ -38,7 +38,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			echo "File name: " . $config['file_name'];
 
 		// set the filter image types
-			$config['allowed_types'] = 'gif|jpg|png';
+			$config['allowed_types'] = 'jpg';
 
 			//load the upload library
 			$this->load->library('upload', $config);
