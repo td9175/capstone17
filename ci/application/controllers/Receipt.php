@@ -149,7 +149,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->model('ReceiptModel');
 
 			//need to create folder for each user, path will be unique to the user
-			$_SESSION['email']= $email;
+			$email = $_SESSION['email'];
 			//$email = "hello@world.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
