@@ -16,7 +16,51 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  "textAngle": 0,
 				  "orientation": "Up",
 				  "regions": [
-
+						      {
+          "boundingBox": "320,313,42,14",
+          "words": [
+            {
+              "boundingBox": "320,313,42,14",
+              "text": "10.30"
+            }
+          ]
+        },
+        {
+          "boundingBox": "199,314,71,14",
+          "words": [
+            {
+              "boundingBox": "199,314,71,14",
+              "text": "SUBTOTRL"
+            }
+          ]
+        },
+        {
+          "boundingBox": "320,331,43,14",
+          "words": [
+            {
+              "boundingBox": "320,331,43,14",
+              "text": "10.30"
+            }
+          ]
+        },
+        {
+          "boundingBox": "227,332,43,14",
+          "words": [
+            {
+              "boundingBox": "227,332,43,14",
+              "text": "TOTAL"
+            }
+          ]
+        },
+        {
+          "boundingBox": "320,349,43,15",
+          "words": [
+            {
+              "boundingBox": "320,349,43,15",
+              "text": "10.00"
+            }
+          ]
+        },
 						{
 						  "boundingBox": "72,797,274,16",
 						  "words": [
@@ -77,6 +121,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		print_r($matches);
 		echo "<BR>Other matches: ";
 		print_r($other_matches); 
+		
+		
+		preg_match_all("/\TOTAL\/", $string, $total);
+		echo "<br>total:";
+		print_r($total);
+		
 		
 		
 		}
