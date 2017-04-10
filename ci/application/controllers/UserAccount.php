@@ -59,7 +59,7 @@ require('application/libraries/REST_Controller.php');
 
 			if ($login_response['is_enabled'] == 0) {
 				$msg = "Account is disabled.";
-				$this->response($msg, 403) // 403 Forbidden
+				$this->response($msg, 403); // 403 Forbidden
 			}
 
 			if (strcmp($login_response['hash_pass'], $error_message) == 0){ // The strings are a match.
