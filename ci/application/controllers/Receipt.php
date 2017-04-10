@@ -7,8 +7,77 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		//function to insert receipt into DB
 		//function to insert OCR info into DB
+		
+		
+		function parse_it() {
+			echo "Parsing <br><Br>";
+			$string = '{
+				  "language": "en",
+				  "textAngle": 0,
+				  "orientation": "Up",
+				  "regions": [
+
+						{
+						  "boundingBox": "72,797,274,16",
+						  "words": [
+							{
+							  "boundingBox": "72,799,44,14",
+							  "text": "THANK"
+							},
+							{
+							  "boundingBox": "127,799,26,14",
+							  "text": "you"
+							},
+							{
+							  "boundingBox": "164,798,26,14",
+							  "text": "FOR"
+							},
+							{
+							  "boundingBox": "201,798,71,14",
+							  "text": "SHOPPING"
+							},
+							{
+							  "boundingBox": "283,798,36,14",
+							  "text": "UITH"
+							},
+							{
+							  "boundingBox": "330,797,16,15",
+							  "text": "US"
+							}
+						  ]
+						},
+						{
+						  "boundingBox": "110,816,70,16",
+						  "words": [
+							{
+							  "boundingBox": "110,816,70,16",
+							  "text": "10\/14\/10"
+							}
+						  ]
+						},
+						{
+						  "boundingBox": "229,816,14,14",
+						  "words": [
+							{
+							  "boundingBox": "229,816,14,14",
+							  "text": "21"
+							}
+						  ]
+						}
+					  ]
+					}
+				  ]
+				}';
+		
+		
+		
+		
+		
+		
+		
+		}
 		function upload_it() {
-			
+			session_start();
 			//load the helper
 			$this->load->helper('form');
 			$this->load->helper('url');
@@ -16,8 +85,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->model('ReceiptModel');
 
 			//need to create folder for each user, path will be unique to the user
-			//$email = $_SESSION['email'];
-			$email = "hello@world.com";
+			$email = $_SESSION['email'];
+			//$email = "hello@world.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
