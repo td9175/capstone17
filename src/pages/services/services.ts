@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms/src/directives';
   templateUrl: 'services.html'
 })
 export class ServicesPage {
-  model = new YelpSearchModel('Dentist');
+  model = new YelpSearchModel('Dentist', 65201);
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) { 
   }

@@ -18,19 +18,33 @@
     <ion-item>
       <ion-label>Search:</ion-label>
       <ion-input 
-      #YelpSearch="ngModel" 
+      #term="ngModel" 
       required type="text" 
       class="form-container" 
-      name="yelpSearch" 
-      [ngModel]="model.YelpSearchInput" 
-      (ngModelChange)="model.YelpSearchInput=$event">
+      name="term" 
+      [ngModel]="model.term" 
+      (ngModelChange)="model.term=$event">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Zipcode:</ion-label>
+      <ion-input 
+      #location="ngModel" 
+      required type="number" 
+      class="form-container" 
+      name="location" 
+      [ngModel]="model.location" 
+      (ngModelChange)="model.location=$event">
       </ion-input>
     </ion-item>
     <button ion-button type="submit" block>Search</button>
   </form>
   <!-- Form validation -->
-  <div *ngIf="YelpSearch.invalid && YelpSearch.dirty" class="alert alert-danger">
+  <div *ngIf="term.invalid && term.dirty" class="alert alert-danger">
     Search Input is required
+  </div>
+  <div *ngIf="location.invalid && location.dirty" class="alert alert-danger">
+    Invalid Zipcode
   </div>
 
 <!-- Old search bar -->

@@ -1,7 +1,8 @@
 
 export class YelpSearchModel {
     constructor( 
-        public YelpSearchInput: string
+        public term: string,
+        public location: number,
     ) {
 
     }
