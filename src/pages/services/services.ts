@@ -16,8 +16,10 @@ import { NgForm } from '@angular/forms/src/directives';
   templateUrl: 'services.html'
 })
 export class ServicesPage {
-  model = new YelpSearchModel('Dentist', 65201);
+  model = new YelpSearchModel('Dentist', '65201', '40000', '2');
   
+  results: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) { 
   }
   // form method
@@ -26,8 +28,11 @@ export class ServicesPage {
     console.log(form.value);
     this.yelpPoster.postYelpSearchForm(this.model)
         .subscribe(
-          data => console.log('success: ', data),
-          err => console.log('error: ', err)
+          data => this.results = data.businesses,
+          //data => this.results = data,
+          //data => console.log('success: ', data),
+          err => console.log('error: ', err),
+          () => console.log('results: ', this.results),
         )
   }
 

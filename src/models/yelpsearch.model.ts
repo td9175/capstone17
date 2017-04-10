@@ -1,8 +1,10 @@
 
 export class YelpSearchModel {
     constructor( 
-        public term: string,
-        public location: number,
+        public term:string,
+        public location:string,
+        public radius:string,
+        public limit:string
     ) {
 
     }

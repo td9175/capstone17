@@ -53,7 +53,7 @@ export class AccountsPage {
   }
 
   // action sheet popup test
-
+  /*
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Test Action Sheet',
@@ -83,4 +83,5 @@ export class AccountsPage {
     actionSheet.present();
 
   }
+  */
 }
