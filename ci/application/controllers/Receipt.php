@@ -147,7 +147,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 }
 		
 		
-		}
+		
 		function upload_it() {
 			session_start();
 			//load the helper
