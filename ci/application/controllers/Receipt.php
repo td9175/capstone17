@@ -142,7 +142,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		
 		
 		function upload_it() {
-			session_start();
 			//load the helper
 			$this->load->helper('form');
 			$this->load->helper('url');
@@ -150,7 +149,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->model('ReceiptModel');
 
 			//need to create folder for each user, path will be unique to the user
-			$email = $_SESSION['email'];
+			$_SESSION['email']= $email;
 			//$email = "hello@world.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
