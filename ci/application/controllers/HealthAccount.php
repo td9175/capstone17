@@ -50,8 +50,8 @@ class HealthAccount extends REST_Controller {
     if(!$this->post('email')){
       $this->response(NULL, 400);
     }
-
-    echo "Email: $this->post('email') \n";
+    $email = $this->post('email');
+    echo "Email: $email \n";
 
     $user = $this->HealthAccountModel->get_hsa_info($this->post('email'));
 
@@ -69,8 +69,9 @@ class HealthAccount extends REST_Controller {
       $this->response(NULL, 400);
     }
 
-    echo "Email: $this->post('email') \n";
-    
+    $email = $this->post('email');
+    echo "Email: $email \n";
+
     $user = $this->HealthAccountModel->get_fsa_info($this->post('email'));
 
     if($user){
