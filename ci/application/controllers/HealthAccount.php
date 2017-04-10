@@ -38,7 +38,27 @@ class HealthAccount extends REST_Controller {
 
     if($user)
     {
+      $this->response($user, 200); // 200 being the HTTP response code
+    }
 
+    else
+    {
+      $this->response(NULL, 404);
+    }
+  }
+
+  function hsa_post() {
+    $this->load->model('HealthAccountModel');
+
+    if(!$this->post('email'))
+    {
+      $this->response(NULL, 400);
+    }
+
+    $user = $this->HealthAccountModel->get_hsa_info($this->post('email') );
+
+    if($user)
+    {
       $this->response($user, 200); // 200 being the HTTP response code
     }
 
