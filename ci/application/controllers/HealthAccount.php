@@ -25,11 +25,11 @@ class HealthAccount extends REST_Controller {
   function gather_hsa_post() {
     $this->load->model('HealthAccountModel');
 
-    if(!$this->get('email')){
+    if(!$this->post('email')){
       $this->response(NULL, 400);
     }
 
-    $user = $this->HealthAccountModel->get_hsa_info($this->get('email'));
+    $user = $this->HealthAccountModel->get_hsa_info($this->post('email'));
 
     if($user) {
       $this->response($user, 200); // 200 being the HTTP response code
@@ -61,12 +61,12 @@ class HealthAccount extends REST_Controller {
   function gather_fsa_post() {
     $this->load->model('HealthAccountModel');
 
-    if(!$this->get('email'))
+    if(!$this->post('email'))
     {
       $this->response(NULL, 400);
     }
 
-    $user = $this->HealthAccountModel->get_fsa_info($decoded_email);
+    $user = $this->HealthAccountModel->get_fsa_info($this->post('email'));
 
     if($user){
       $this->response($user, 200); // 200 being the HTTP response code
