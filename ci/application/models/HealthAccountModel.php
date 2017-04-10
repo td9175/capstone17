@@ -3,6 +3,8 @@
 
 	function get_hsa_info($email) {
 		$this->load->database();
+        
+        $email = urldecode($email)
 
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA'";
 
@@ -20,6 +22,8 @@
 
 	function get_fsa_info($email) {
 		$this->load->database();
+        
+        $email = urldecode($email)
 
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA'";
 
