@@ -76,7 +76,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		echo "Matches: ";
 		print_r($matches);
 		echo "<BR>Other matches: ";
-		print_r($other_matchers); 
+		print_r($other_matches); 
 		
 		
 		}
