@@ -131,16 +131,16 @@ require('application/libraries/REST_Controller.php');
 
 
 
-      function hsa_get($id) {
+      function hsa_get($email) {
 
     	$this->load->model('HealthAccountModel');
 
-			if(!$this->get('id'))
+			if(!$this->get('email'))
 			{
 				$this->response(NULL, 400);
 			}
 
-			$user = $this->HealthAccountModel->get_hsa_info($this->get('id') );
+			$user = $this->HealthAccountModel->get_hsa_info($this->get('email') );
 
 			if($user)
 			{
@@ -156,15 +156,15 @@ require('application/libraries/REST_Controller.php');
 
 
       }
-      function fsa_get($id) {
+      function fsa_get($email) {
       	$this->load->model('HealthAccountModel');
 
-			if(!$this->get('id'))
+			if(!$this->get('email'))
 			{
 				$this->response(NULL, 400);
 			}
 
-			$user = $this->HealthAccountModel->get_fsa_info($this->get('id'));
+			$user = $this->HealthAccountModel->get_fsa_info($this->get('email'));
 
 			if($user)
 			{
