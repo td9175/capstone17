@@ -4,32 +4,38 @@ require('application/libraries/REST_Controller.php');
 
 class HealthAccount extends REST_Controller {
 
-  // function hsa_get() {
+  // function hsa_get($id) {
   //   $this->load->model('HealthAccountModel');
   //
-  //   if(!$this->get('email')){
+  //   if(!$this->get('id'))
+  //   {
   //     $this->response(NULL, 400);
   //   }
   //
-  //   $decoded_email = urldecode($this->get('email'));
+  //   $user = $this->HealthAccountModel->get_hsa_info($this->get('id') );
   //
-  //   $user = $this->HealthAccountModel->get_hsa_info($decoded_email);
+  //   if($user)
+  //   {
   //
-  //   if($user) {
   //     $this->response($user, 200); // 200 being the HTTP response code
-  //   } else {
+  //   }
+  //
+  //   else
+  //   {
   //     $this->response(NULL, 404);
   //   }
   // }
 
-  function gather_hsa_post() {
+  function hsa_get() {
     $this->load->model('HealthAccountModel');
 
-    if(!$this->post('email')){
+    if(!$this->get('email')){
       $this->response(NULL, 400);
     }
 
-    $user = $this->HealthAccountModel->get_hsa_info($this->post('email'));
+    $decoded_email = urldecode($this->get('email'));
+
+    $user = $this->HealthAccountModel->get_hsa_info($decoded_email);
 
     if($user) {
       $this->response($user, 200); // 200 being the HTTP response code
@@ -38,31 +44,26 @@ class HealthAccount extends REST_Controller {
     }
   }
 
-
-  // function fsa_get() {
-  //   $this->load->model('HealthAccountModel');
-  //
-  //   if(!$this->get('email'))
-  //   {
-  //     $this->response(NULL, 400);
-  //   }
-  //
-  //   $decoded_email = urldecode($this->get('email'));
-  //
-  //   $user = $this->HealthAccountModel->get_fsa_info($decoded_email);
-  //
-  //   if($user){
-  //     $this->response($user, 200); // 200 being the HTTP response code
-  //   } else {
-  //     $this->response(NULL, 404);
-  //   }
-  // }
-
-  function gather_fsa_post() {
+  function hsa_post() {
     $this->load->model('HealthAccountModel');
 
-    if(!$this->post('email'))
-    {
+    if(!$this->post('email')){
+      $this->response(NULL, 400);
+    }
+
+    $user = $this->HealthAccountModel->get_hsa_info($this->post('email'));
+
+    if($user){
+      $this->response($user, 200); // 200 being the HTTP response code
+    } else {
+      $this->response(NULL, 404);
+    }
+  }
+
+  function fsa_post() {
+    $this->load->model('HealthAccountModel');
+
+    if(!$this->post('email')){
       $this->response(NULL, 400);
     }
 
@@ -71,6 +72,48 @@ class HealthAccount extends REST_Controller {
     if($user){
       $this->response($user, 200); // 200 being the HTTP response code
     } else {
+      $this->response(NULL, 404);
+    }
+  }
+
+  // function fsa_get($id) {
+  //   $this->load->model('HealthAccountModel');
+  //
+  //   if(!$this->get('id'))
+  //   {
+  //     $this->response(NULL, 400);
+  //   }
+  //
+  //   $user = $this->HealthAccountModel->get_fsa_info($this->get('id'));
+  //
+  //   if($user)
+  //   {
+  //     $this->response($user, 200); // 200 being the HTTP response code
+  //   }
+  //
+  //   else
+  //   {
+  //     $this->response(NULL, 404);
+  //   }
+  // }
+
+  function fsa_get() {
+    $this->load->model('HealthAccountModel');
+
+    if(!$this->get('email'))
+    {
+      $this->response(NULL, 400);
+    }
+
+    $user = $this->HealthAccountModel->get_fsa_info($this->get('email'));
+
+    if($user)
+    {
+      $this->response($user, 200); // 200 being the HTTP response code
+    }
+
+    else
+    {
       $this->response(NULL, 404);
     }
   }
