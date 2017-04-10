@@ -10,6 +10,14 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		
 		
 		function parse_it() {
+		
+		
+		
+		
+
+		
+		
+		
 			echo "Parsing <br><Br>";
 			$string = '{
 				  "language": "en",
@@ -120,13 +128,23 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		echo "Matches: ";
 		print_r($matches);
 		echo "<BR>Other matches: ";
-		print_r($other_matches); 
+		print_r($other_matches);
 		
+		$json = json_decode($string, true); 
 		
-		preg_match_all("/TOTAL\s*(.*?)\w+/i", $string, $total);
-		echo "<br>total:";
-		print_r($total);
-		
+		foreach($json['word']['text'] as $item) {
+    		print $item['text'];
+    		print ' - ';
+   		}
+    
+    
+    
+    
+    
+    
+    
+    
+}
 		
 		
 		}
