@@ -7,6 +7,7 @@
 ************************************************************************/
 
 defined('BASEPATH') OR exit('No direct script access allowed');
+header("Access-Control-Allow-Origin: *");
 
 /************************************************************************
  * Yelp Fusion API code.
