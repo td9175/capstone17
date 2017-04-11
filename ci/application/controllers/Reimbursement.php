@@ -9,7 +9,7 @@ require('application/libraries/REST_Controller.php');
     // POST variables: account_number, amount
     function reimburse_account_post(){
       // Load the model
-      $this->load->model('AccountTransactionModel');
+      $this->load->model('ReimbursementModel');
       // Get the input for amount to reimburse
       $acct_num = $this->post('account_number');
       $amount = $this->post('amount');
@@ -27,7 +27,7 @@ require('application/libraries/REST_Controller.php');
 		// Get all reimbursement records
 		function all_reimbursements_get() {
 			// Load the model
-      $this->load->model('AccountTransactionModel');
+      $this->load->model('ReimbursementModel');
 			// Call the model to query the db
 			$result = $this->ReimbursementModel->all_reimbursements();
 			// If response has data respond with data and success, or 404
@@ -41,7 +41,7 @@ require('application/libraries/REST_Controller.php');
 		// Get all reimbursement records for a single user by email
 		function user_reimbursements_get() {
 			// Load the model
-      $this->load->model('AccountTransactionModel');
+      $this->load->model('ReimbursementModel');
 			// Check for the get variable
 			if (!$this->get('email')) {
 				$this->response(NULL, 404); // 400 Bad request
