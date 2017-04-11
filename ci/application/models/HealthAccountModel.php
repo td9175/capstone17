@@ -55,6 +55,7 @@
 		return $data;
 	}
 
+	// RESTful api to post an FSA account for a user into the database
 	function post_fsa_info($params) {
 		$this->load->database();
 
