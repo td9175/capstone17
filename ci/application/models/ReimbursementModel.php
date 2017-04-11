@@ -39,6 +39,7 @@
 							'account_number' => $row['account_number'],
 							'date_time_stamp' => $row['date_time_stamp']
 						);
+					}
 			} else {
 				$data = "Error: no reimbursment records.";
 			}
@@ -64,6 +65,7 @@
 							'account_number' => $row['account_number'],
 							'date_time_stamp' => $row['date_time_stamp']
 						);
+					}
 			} else {
 				$data = "Error: no reimbursment records.";
 			}
