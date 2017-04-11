@@ -26,13 +26,7 @@
 		$result = $this->db->query($query, $params);
 
 		if ($this->db->affected_rows() == 1) {
-			foreach ($result->result_array() as $row) {
-					$data[] = array(
-						'account_number' => $row['account_number'],
-						'account_type' => $row['account_type'],
-						'email' => $row['email']
-					);
-				}
+			$data = "Success: added HSA account";
 		} else {
 			$data = "Error: could not add HSA account.";
 		}
@@ -66,13 +60,7 @@
 		$result = $this->db->query($query, $params);
 
 		if ($this->db->affected_rows() == 1) {
-			foreach ($result->result_array() as $row) {
-					$data[] = array(
-						'account_number' => $row['account_number'],
-						'account_type' => $row['account_type'],
-						'email' => $row['email']
-					);
-				}
+			$data = "Success: added FSA account";
 		} else {
 			$data = "Error: could not add FSA account.";
 		}
