@@ -36,6 +36,10 @@ export class ServicesPage {
         )
   }
 
+  serviceclick(){
+    
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesPage')
     };

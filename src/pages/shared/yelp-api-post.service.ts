@@ -36,7 +36,5 @@ export class YelpPoster {
                     .map((res:Response) => res.json())
                     //.catch(this.handleError);
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-
-        //console.log('posting YelpSearch:', yelpSearchModel)
     }
 }

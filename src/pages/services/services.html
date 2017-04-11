@@ -47,26 +47,17 @@
     Invalid Zipcode
   </div>
 
-<!-- Old search bar -->
-  <!--
-  <ion-searchbar
-    [(ngModel)]="model.YelpSearchInput" 
-    (ngModelChange)="model.YelpSearchInput=$event"
-    [showCancelButton]="shouldShowCancel">
-  </ion-searchbar>
-  -->
-
   <div padding>
     <h4>Test return json from yelp</h4>
   </div>
 
   <ion-list>
-    <ion-item *ngFor="let result of results">
+    <ion-item (click)="serviceClick()" *ngFor="let result of results">
         <h2>{{result.name}}</h2>
+        <h4>rating: {{result.rating}}/5</h4>
     </ion-item>
   </ion-list>
 
 <!-- Show model -->
 Model: {{ model | json }}
-<!-- Angular: {{ ion-searchbar.value | json }} -->
 </ion-content>
