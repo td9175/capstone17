@@ -1,6 +1,7 @@
 <?php
 	class HealthAccountModel extends CI_Model {
 
+	// RESTful api to get the HSA accounts for a user by the email address
 	function get_hsa_info($email) {
 		$this->load->database();
 
@@ -18,6 +19,7 @@
 		return $data;
 	}
 
+	// RESTful api to post an HSA account for a user into the database
 	function post_hsa_info($params) {
 		$this->load->database();
 
@@ -33,6 +35,7 @@
 		 return $data;
 	}
 
+	// RESTful api to get the FSA accounts for a user by the email address
 	function get_fsa_info($email) {
 		$this->load->database();
 

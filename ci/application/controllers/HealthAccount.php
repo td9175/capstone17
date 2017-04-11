@@ -4,6 +4,8 @@ require('application/libraries/REST_Controller.php');
 
 class HealthAccount extends REST_Controller {
 
+  // RESTful api to get the HSA accounts for a user by the email address
+  // GET variable: email
   function hsa_get() {
     $this->load->model('HealthAccountModel');
 
@@ -22,6 +24,8 @@ class HealthAccount extends REST_Controller {
     }
   }
 
+  // RESTful api to post an HSA account for a user into the database
+  // POST variables: account_number, email
   function hsa_post() {
     $this->load->model('HealthAccountModel');
 
@@ -42,6 +46,8 @@ class HealthAccount extends REST_Controller {
     }
   }
 
+  // RESTful api to get the FSA accounts for a user by the email address
+  // GET variable: email
   function fsa_get() {
     $this->load->model('HealthAccountModel');
 
@@ -60,6 +66,8 @@ class HealthAccount extends REST_Controller {
     }
   }
 
+  // RESTful api to post an FSA account for a user into the database
+  // POST variables: account_number, email
   function fsa_post() {
     $this->load->model('HealthAccountModel');
 
