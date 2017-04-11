@@ -44,10 +44,13 @@ require('application/libraries/REST_Controller.php');
       $this->load->model('ReimbursementModel');
 			// Check for the get variable
 			if (!$this->get('email')) {
-				$this->response(NULL, 404); // 400 Bad request
+				// 400 Bad request
+				$this->response(NULL, 400);
 			}
+			// Decode the url encoded variable
+			$decoded_email = urldecode($this->get('email'));
 			// Call the model to query the db
-			$result = $this->ReimbursementModel->get_user_reimbursements($this->get('email'));
+			$result = $this->ReimbursementModel->get_user_reimbursements($decoded_email);
 			// If response has data respond with data and success, or 404
       if($result){
         $this->response($result, 200); // 200 Success
