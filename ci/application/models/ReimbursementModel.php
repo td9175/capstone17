@@ -31,7 +31,14 @@
 			$result = $this->db->query($query);
 			// Check if any results were returned
 			if ($result->num_rows() > 0) {
-				$data = $result;
+				foreach ($result->result_array() as $row) {
+						$data[] = array(
+							'email' => $row['email'],
+							'image' => $row['image'],
+							'amount' => $row['amount'],
+							'account_number' => $row['account_number'],
+							'date_time_stamp' => $row['date_time_stamp']
+						);
 			} else {
 				$data = "Error: no reimbursment records.";
 			}
@@ -49,7 +56,14 @@
 			$result = $this->db->query($query, $email);
 			// Check if any results were returned
 			if ($result->num_rows() > 0) {
-				$data = $result;
+				foreach ($result->result_array() as $row) {
+						$data[] = array(
+							'email' => $row['email'],
+							'image' => $row['image'],
+							'amount' => $row['amount'],
+							'account_number' => $row['account_number'],
+							'date_time_stamp' => $row['date_time_stamp']
+						);
 			} else {
 				$data = "Error: no reimbursment records.";
 			}
