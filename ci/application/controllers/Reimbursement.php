@@ -25,7 +25,7 @@ require('application/libraries/REST_Controller.php');
 
 
 		// Get all reimbursement records
-		function reimbursements_get() {
+		function all_reimbursements_get() {
 			// Load the model
       $this->load->model('AccountTransactionModel');
 			// Call the model to query the db
@@ -38,12 +38,16 @@ require('application/libraries/REST_Controller.php');
       }
 		}
 
-		// Get all reimbursement records for a single user
-		function reimbursements_get() {
+		// Get all reimbursement records for a single user by email
+		function user_reimbursements_get() {
 			// Load the model
       $this->load->model('AccountTransactionModel');
+			// Check for the get variable
+			if (!$this->get('email')) {
+				$this->response(NULL, 404); // 400 Bad request
+			}
 			// Call the model to query the db
-			$result = $this->AccountTransactionModel->get_user_reimbursements($);
+			$result = $this->AccountTransactionModel->get_user_reimbursements($this->get('email'));
 			// If response has data respond with data and success, or 404
       if($result){
         $this->response($result, 200); // 200 Success

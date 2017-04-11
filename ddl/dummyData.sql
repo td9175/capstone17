@@ -10,4 +10,3 @@ insert into AccountTransaction (amount, account_number) values (1900, 00000001);
 insert into Receipt (email, image) values ("umbCapstone17@gmail.com", "path/to/image");
 
 insert into Reimbursement (receipt_id, amount, account_number) values (2, 2500, 00000001);
-insert into Reimbursement (receipt_id, amount, account_number) values (2, 1400, 00000001);
