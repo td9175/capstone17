@@ -10,7 +10,6 @@ export class UserApi {
     // encodeURI(userid);
     baseid = encodeURIComponent(this.userid)
     public drugToSearch = 'advil';
-    public data: any;
 
     constructor(private http: Http) { }
     // much much better way to do this.
@@ -27,16 +26,12 @@ export class UserApi {
     
 
     getProductData(){
-        /*return new Promise(resolve =>{
-            this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`)
-                .subscribe(res => resolve(res.json()));
-        });*/
-
-        // don't have the data yet
-        return new Promise(resolve => {
+        /*return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/advil`)
                 .subscribe(res => resolve(res.json()));
-            });
+            });*/
+        console.log(this.drugToSearch);
+        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
     }
 
     // this is for testing purposes, working json file stored on firebase.

@@ -22,7 +22,7 @@
   </ion-searchbar>
 
   <ion-list>
-    <button ion-item item-left ng-repeat="let product of searchProductResults">
+    <button ion-item item-left *ngFor="let product of searchJson">
       <h2> {{ product }}</h2>
     </button>
   </ion-list>

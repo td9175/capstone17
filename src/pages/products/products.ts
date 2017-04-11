@@ -23,7 +23,7 @@ export class ProductsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductsPage');
-    this.loadsearch();
+    //this.loadsearch();
   }
 
   getProducts(searchbar){
@@ -33,24 +33,24 @@ export class ProductsPage {
       return;
     }
 
-    //this.loadsearch();
+    this.userApi.drugToSearch =  q;
+    this.loadsearch();
 
-    /*this.userApi.drugToSearch = q;
-    this.userApi.getProductData().then(data => this.searchProductResults = data);
-
-    this.sub = this.userApi.getProductData().subscribe(
-        data => this.indexes =  JSON.parse(data),
-        error => alert(" Error is : " + error),
-        () => console.log("finished")
-     );*/
-
+    console.log(this.userApi.drugToSearch);
   }
 
   loadsearch(){
-    /*this.userApi.getProductData()
-    .then(data => {
-      this.searchJson = data;*/
-    this.userApi.getProductData().then(data => this.searchJson = data);
-    console.log(this.searchJson);
+    this.userApi.getProductData().subscribe(
+      result => {
+        this.searchJson=result.data.candidates;
+        console.log("Success : "+this.searchJson);
+      },
+      err =>{
+        console.error("Error : "+err);
+      } ,
+      () => {
+        console.log('getData completed');
+      }
+    );
   }
 }
