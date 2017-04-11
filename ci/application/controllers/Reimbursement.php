@@ -14,7 +14,7 @@ require('application/libraries/REST_Controller.php');
       $acct_num = $this->post('account_number');
       $amount = $this->post('amount');
       // Pass the user input to the model to make the transaction query in the database
-      $result = $this->AccountTransactionModel->reimburse_account($acct_num, $amount);
+      $result = $this->ReimbursementModel->reimburse_account($acct_num, $amount);
       // If response has data respond with data and success, or 404
       if($result){
         $this->response($result, 200); // 200 Success
@@ -29,7 +29,7 @@ require('application/libraries/REST_Controller.php');
 			// Load the model
       $this->load->model('AccountTransactionModel');
 			// Call the model to query the db
-			$result = $this->AccountTransactionModel->all_reimbursements();
+			$result = $this->ReimbursementModel->all_reimbursements();
 			// If response has data respond with data and success, or 404
       if($result){
         $this->response($result, 200); // 200 Success
@@ -47,7 +47,7 @@ require('application/libraries/REST_Controller.php');
 				$this->response(NULL, 404); // 400 Bad request
 			}
 			// Call the model to query the db
-			$result = $this->AccountTransactionModel->get_user_reimbursements($this->get('email'));
+			$result = $this->ReimbursementModel->get_user_reimbursements($this->get('email'));
 			// If response has data respond with data and success, or 404
       if($result){
         $this->response($result, 200); // 200 Success
