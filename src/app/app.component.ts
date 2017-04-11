@@ -18,7 +18,8 @@ import { ReportsPage } from './../pages/reports/reports';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 // import { Page1 } from '../pages/page1/page1';
 import { Page2 } from '../pages/page2/page2';
-import { MyVaultPage } from './../pages/my-vault/my-vault'; 
+import { MyVaultPage } from './../pages/my-vault/my-vault';
+import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 
 // API Imports
 import { UserApi } from '../pages/shared/shared';

@@ -8,7 +8,7 @@
 
 <ion-content padding>
 
-  <!--<h4>Test json array from sami</h4>
+  <h4>This is the one working with email</h4>
   <ion-list>
     <ion-item *ngFor="let user of users">
         <h2>Account Email = {{user.email}}</h2>
@@ -65,8 +65,11 @@
       <ion-icon name="add-circle" item-right></ion-icon>
     </button>
   </ion-list>
-  -->
   
+  
+  <!-- Who commented out the above stuff???-->
+  
+  <!--
   <ion-list no-lines>
     <h4>HSA Accounts</h4>
     <button ion-item *ngFor="let user of users">
@@ -74,12 +77,17 @@
       <p>Balance - {{ user.balance }}</p>
     </button>
   </ion-list>
+  -->
 
-
-  <button ion-button (click)="helloTest()">Hello World Test</button>
+  <!--These will switch to entire divs hopefully-->
+  <!--Leaving them for now  until we add click event-->
   <button ion-button (click)="fsaTest()">FSA Test</button>
   <button ion-button (click)="hsaTest()">HSA Test</button>
+  
+  <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
-  <button ion-button (click)="presentActionSheet()">Action Sheet Test</button>
+  
+  <!--Leaving this here for now, but only temp, incase we want to use later-->
+  <!--<button ion-button (click)="presentActionSheet()">Action Sheet Test</button>-->
 
 </ion-content>

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { YelpPoster } from './../shared/yelp-api-post.service';
 import { YelpSearchModel } from './../../models/yelpsearch.model';
 import { NgForm } from '@angular/forms/src/directives';
+import { YelpResultPage } from './../yelp-result/yelp-result';
 
 /*
   Generated class for the Services page.
@@ -20,24 +21,32 @@ export class ServicesPage {
   
   results: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster, private loadingController: LoadingController) { 
   }
   // form method
   submitForm(form: NgForm) {
-    // Validation should go up here if we get this far
-    console.log(form.value);
-    this.yelpPoster.postYelpSearchForm(this.model)
+    let loader = this.loadingController.create({
+      content: 'Finding Services Near You...'
+    });
+
+    loader.present().then(() => {
+        // Validation should go up here if we get this far
+        console.log(form.value);
+        this.yelpPoster.postYelpSearchForm(this.model)
         .subscribe(
           data => this.results = data.businesses,
           //data => this.results = data,
           //data => console.log('success: ', data),
           err => console.log('error: ', err),
           () => console.log('results: ', this.results),
-        )
+        );
+        loader.dismiss();
+    });
+    
   }
 
-  serviceclick(){
-    
+  serviceClick(){
+    this.navCtrl.push(YelpResultPage);
   }
 
   ionViewDidLoad() {

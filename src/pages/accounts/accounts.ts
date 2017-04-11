@@ -36,10 +36,6 @@ export class AccountsPage {
   }
   */
 
-  helloTest() {
-    console.log('Hello, World!');
-  }
-  
   hsaTest() {
     this.navCtrl.push(HSAPage);
   }
@@ -52,7 +48,8 @@ export class AccountsPage {
     this.navCtrl.push(LoginPage);
   }
 
-  // action sheet popup test
+  // action sheet popup test, 
+  // left here just incase we want to use later.
   /*
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({

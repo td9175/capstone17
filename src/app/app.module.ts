@@ -20,6 +20,7 @@ import { AccountsPage } from './../pages/accounts/accounts';
 import { MyVaultPage } from './../pages/my-vault/my-vault'; 
 
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
+import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 
 import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
@@ -41,6 +42,7 @@ import { Camera } from 'ionic-native';
     LoginPage,
     ProductsPage,
     ServicesPage,
+    YelpResultPage,
     TaxInfoPage,
     VaultPage,
     UserSettingsPage,
@@ -65,6 +67,7 @@ import { Camera } from 'ionic-native';
     LoginPage,
     ProductsPage,
     ServicesPage,
+    YelpResultPage,
     TaxInfoPage,
     VaultPage,
     UserSettingsPage,
