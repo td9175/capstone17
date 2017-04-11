@@ -36,7 +36,7 @@ class HealthAccount extends REST_Controller {
     $response = $this->HealthAccountModel->post_hsa_info($params);
 
     if($response) {
-      $this->response($user, 200); // 200 Success
+      $this->response($response, 200); // 200 Success
     } else {
       $this->response(NULL, 404);
     }
@@ -74,7 +74,7 @@ class HealthAccount extends REST_Controller {
     $response = $this->HealthAccountModel->post_fsa_info($params);
 
     if($response) {
-      $this->response($user, 200); // 200 Success
+      $this->response($response, 200); // 200 Success
     } else {
       $this->response(NULL, 404);
     }
