@@ -17,7 +17,7 @@ export class ProductsPage {
   private sub;
   public indexes;
 
-  searchProductResults: any;
+  searchJson: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
 
@@ -47,9 +47,10 @@ export class ProductsPage {
   }
 
   loadsearch(){
-    this.userApi.getProductData()
+    /*this.userApi.getProductData()
     .then(data => {
-      this.searchProductResults = data;
-    });
+      this.searchJson = data;*/
+    this.userApi.getProductData().then(data => this.searchJson = data);
+    console.log(this.searchJson);
   }
 }
