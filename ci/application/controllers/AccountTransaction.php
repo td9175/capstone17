@@ -14,11 +14,8 @@ require('application/libraries/REST_Controller.php');
 			if(!$this->get('email')) {
 				$this->response(NULL, 400);
 			}
-			// Get the email variable
-			$email = $this->get('email');
 			// URL decode the email
-			$decoded_email = json_decode($email);
-			echo "Decoded: $decoded_email \n";
+			$decoded_email = urldecode($this->get('email'));
 			// Call the transaction_history function in the model
 			$response = $this->AccountTransactionModel->get_transaction_history($decoded_email);
 			// Verify there is something, and respond with the JSON
