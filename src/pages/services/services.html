@@ -46,7 +46,7 @@
   </div>
 
   <ion-list>
-    <ion-item (click)="serviceClick()" *ngFor="let result of results">
+    <ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)" >
         <h2>{{result.name}}</h2>
         <h4>rating: {{result.rating}}/5</h4>
     </ion-item>

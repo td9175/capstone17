@@ -1,9 +1,12 @@
+import { processLintResults } from '@ionic/app-scripts/dist/lint/lint-utils';
 import { Component } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { YelpPoster } from './../shared/yelp-api-post.service';
 import { YelpSearchModel } from './../../models/yelpsearch.model';
 import { NgForm } from '@angular/forms/src/directives';
+
+// Page import
 import { YelpResultPage } from './../yelp-result/yelp-result';
 
 /*
@@ -20,6 +23,7 @@ export class ServicesPage {
   model = new YelpSearchModel('Dentist', '65201', '40000', '2');
   
   results: any;
+  private resultData: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster, private loadingController: LoadingController) { 
   }
@@ -45,8 +49,9 @@ export class ServicesPage {
     
   }
 
-  serviceClick(){
-    this.navCtrl.push(YelpResultPage);
+  serviceClicked(event, result){
+    this.navCtrl.push(YelpResultPage, { result: result });
+    //this.navCtrl.push(YelpResultPage);
   }
 
   ionViewDidLoad() {

@@ -1,12 +1,21 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar class="show-back-button">
   </ion-navbar>
   <ion-toolbar color="secondary">
-    <ion-title>Result Name Here</ion-title>
+    <ion-title>{{result.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item>
+      <h2>Name: {{result.name}}</h2>
+      <h4>Phone: {{result.phone}}</h4>
+      <h4>Rating: {{result.rating}}/5</h4>
+      <h4>Address: {{result.location.address1}}/5</h4>
+      <h4>Number of Reviews: {{result.review_count}}</h4>
+      <h4>More Info: {{result.url}}</h4>
+    </ion-item>
+  </ion-list>
 </ion-content>
