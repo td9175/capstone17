@@ -121,8 +121,9 @@ require('application/libraries/REST_Controller.php');
 
     	}
 
-			// Disable a users account
+			// Disable a user's account
 			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
+			// POST variable to send: email
 			function disable_user_post() {
 				$this->load->model('UserAccountModel');
 
@@ -139,8 +140,9 @@ require('application/libraries/REST_Controller.php');
 				}
 			}
 
-			// Enable a users account
+			// Enable a user's account
 			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
+			// POST variable to send: email
 			function enable_user_post() {
 				$this->load->model('UserAccountModel');
 

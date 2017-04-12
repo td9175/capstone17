@@ -4,21 +4,26 @@ require('application/libraries/REST_Controller.php');
 
 	class AccountTransaction extends REST_Controller {
 
-		function transaction_get($acct_num) {
+		// RESTful API to get a user's health account transaction history
+		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/transaction
+		// GET variable to send: email
+		function transaction_get() {
+			// Load the model
 			$this->load->model('AccountTransactionModel');
-
-			if(!$this->get('acct_num')) {
+			// Check if the email get variable was passed
+			if(!$this->get('email')) {
 				$this->response(NULL, 400);
 			}
-			$trans_info = $this->AccountTransactionModel->get_trans_info($this->get('acct_num'));
-
-			if($trans_info) {
-				$this->response($trans_info, 200);
+			// URL decode the email
+			$decoded_email = $this->get('email');
+			// Call the transaction_history function in the model
+			$response = $this->AccountTransactionModel->get_transaction_history($decoded_email);
+			// Verify there is something, and respond with the JSON
+			if($response) {
+				$this->response($response, 200);
 			} else {
 				$this->response(NULL, 404);
 			}
-
-
 		}
 
 
