@@ -15,10 +15,10 @@ require('application/libraries/REST_Controller.php');
 				$this->response(NULL, 400);
 			}
 			$email = $this->get('email');
-			echo "$email \n";
+			echo "Email: $email \n";
 			// URL decode the email
 			$decoded_email = json_decode($this->get('email'));
-			echo "$decoded_email \n";
+			echo "Decoded: $decoded_email \n";
 			// Call the transaction_history function in the model
 			$response = $this->AccountTransactionModel->get_transaction_history($decoded_email);
 			// Verify there is something, and respond with the JSON
