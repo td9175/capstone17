@@ -14,9 +14,11 @@
 
 
 <ion-content padding>
+    <h1>{{ productToGetDetails }}</h1>
     <ion-list>
-    <button ion-item item-left *ngFor="let product of comparisonJson">
-      <h2>Price: $ + {{ product }}</h2>
-    </button>
+      <ion-item item-left *ngFor="let store of storeComparisonJson; let price of priceComparisonJson">
+        <h2>{{ store }}</h2>
+        <p>Costs ${{ price }}</p>
+      </ion-item>
   </ion-list>
 </ion-content>
