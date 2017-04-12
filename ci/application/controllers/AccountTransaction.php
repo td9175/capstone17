@@ -14,8 +14,7 @@ require('application/libraries/REST_Controller.php');
 			if(!$this->get('email')) {
 				$this->response(NULL, 400);
 			}
-			$email = $this->get('email');
-			echo "Email: $email \n";
+
 			// URL decode the email
 			$decoded_email = json_decode($this->get('email'));
 			echo "Decoded: $decoded_email \n";
