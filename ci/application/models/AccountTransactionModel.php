@@ -11,7 +11,7 @@
 			// Build the query string
     	$query = "SELECT H.account_number, H.account_type, A.amount, A.date_time_stamp FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ?";
 
-			 $result = $this->db->query($query, $acct_num);
+			$result = $this->db->query($query, $email);
 			foreach ($result->result_array() as $row) {
 				$data[] = array(
 					'account_number' => $row['account_number'],
@@ -22,7 +22,6 @@
 			}
 			// Pass back the data
 			return $data;
-
     }
 
 
