@@ -32,12 +32,17 @@ export class UserApi {
             this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/advil`)
                 .subscribe(res => resolve(res.json()));
             });*/
-        console.log(this.drugToSearch);
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
     }
 
+    getProductPrices2(){
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`)
+                .subscribe(res => resolve(res.json()));
+        });
+    }
+
     getProductPrices(){
-        console.log(this.drugToGetDetails);
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
     }
 

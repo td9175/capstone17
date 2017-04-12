@@ -9,16 +9,27 @@
   <ion-navbar>
     <ion-title>product-detail</ion-title>
   </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <h1>{{ productToGetDetails }}</h1>
+    <!--<h1>{{productToGetDetails}}</h1>
     <ion-list>
-      <ion-item item-left *ngFor="let store of storeComparisonJson; let price of priceComparisonJson">
-        <h2>{{ store }}</h2>
-        <p>Costs ${{ price }}</p>
-      </ion-item>
+      <ion-item item-left *ngFor="let price of combinedArray" >
+        <p>Costs $ {{price}}</p>
+      </ion-item>   
+  </ion-list>-->
+  <ion-list>
+    <ion-item item-left *ngFor="let store of prices">
+      <p>Store: {{ store.prices }} Price: {{ store.stores }}
+    </ion-item>
   </ion-list>
 </ion-content>
