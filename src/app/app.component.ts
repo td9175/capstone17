@@ -1,3 +1,4 @@
+import { ProductDetail } from './../pages/product-detail/product-detail';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';

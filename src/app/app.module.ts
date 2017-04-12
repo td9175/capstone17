@@ -1,3 +1,4 @@
+import { ProductDetail } from './../pages/product-detail/product-detail';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -48,7 +49,8 @@ import { Camera } from 'ionic-native';
     UserSettingsPage,
     Page2,
     MyVaultPage,
-    AddReceiptPage
+    AddReceiptPage,
+    ProductDetail
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -73,7 +75,8 @@ import { Camera } from 'ionic-native';
     UserSettingsPage,
     Page2,
     MyVaultPage,
-    AddReceiptPage
+    AddReceiptPage,
+    ProductDetail
   ],
   providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera]
 })

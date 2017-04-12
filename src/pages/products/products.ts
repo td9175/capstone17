@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserApi } from './../shared/user-api.service';
+import { ProductDetail } from './../product-detail/product-detail';
 
 /*
   Generated class for the Products page.
@@ -14,10 +15,7 @@ import { UserApi } from './../shared/user-api.service';
 })
 export class ProductsPage {
 
-  private sub;
-  public indexes;
-
-  searchJson: any;
+  public searchJson: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
 
@@ -52,5 +50,11 @@ export class ProductsPage {
         console.log('getData completed');
       }
     );
+  }
+
+  loadProductDetail(product){
+    this.userApi.drugToGetDetails = product;
+    console.log(this.userApi.drugToGetDetails);
+    this.navCtrl.push(ProductDetail);
   }
 }

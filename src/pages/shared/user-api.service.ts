@@ -9,7 +9,9 @@ export class UserApi {
     // for user id.
     // encodeURI(userid);
     baseid = encodeURIComponent(this.userid)
-    public drugToSearch = 'advil';
+    
+    public drugToSearch: any;
+    public drugToGetDetails: any;
 
     constructor(private http: Http) { }
     // much much better way to do this.
@@ -32,6 +34,11 @@ export class UserApi {
             });*/
         console.log(this.drugToSearch);
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
+    }
+
+    getProductPrices(){
+        console.log(this.drugToGetDetails);
+        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
     }
 
     // this is for testing purposes, working json file stored on firebase.
