@@ -65,6 +65,8 @@
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
+				$result_array = $result->result_array();
+				echo "$result_array \n";
 				foreach ($result->result_array() as $row) {
 					$data[] = $row['balance'];
 				}
