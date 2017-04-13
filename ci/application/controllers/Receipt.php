@@ -149,10 +149,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->helper('string');
 			$this->load->model('ReceiptModel');
 
-			//need to create folder for each user, path will be unique to the user
-			$email = $_SESSION['email'];
-			//$email = "hello@world.com";
-			echo "Email: ". $email;
+
+			//$email = $_SESSION['email'];
+			$email = "umbcapstone17%40gmail.com";
+			echo "Email: ". $email; 
+
+
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
 			echo "<br>Date:" . $date;
@@ -194,12 +196,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
-				$path = 'hello@world.com/';
+				$path = 'umbcapstone17@gmail.com/';
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
-				echo "Path: " . $path;
-				//redirect('OCR/ocr_request');
+				echo "Path for OCR: " . $path;
+				redirect('OCR/ocr_request');
 			}
 
 			// load the view/upload.php
