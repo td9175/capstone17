@@ -55,11 +55,17 @@
   <!--when calling on response json data-->
   <p ion-text color="danger" class="alert-noresult" *ngIf="(results?.length==0)">No Health Services Found.</p>
   <ion-list>
-    <a button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)">
+    <a button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)" detail-push>
         <h2>{{result.name}}</h2>
         <h4>rating: {{result.rating}}/5</h4>   
     </a>
   </ion-list>
+
+  <!-- 
+  Detail Push is technically not following material design,-
+  but it looks way better for usability, 
+  especially for this app's older userbase.
+  -->
 
 <!-- Show model for testing-->
 Model: {{ model | json }}
