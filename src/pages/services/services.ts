@@ -20,7 +20,7 @@ import { YelpResultPage } from './../yelp-result/yelp-result';
   templateUrl: 'services.html'
 })
 export class ServicesPage {
-  model = new YelpSearchModel('Dentist', '65201', '40000', '2');
+  model = new YelpSearchModel('Dentist', '65201', '40000', '20');
   
   results: any;
   private resultData: any;

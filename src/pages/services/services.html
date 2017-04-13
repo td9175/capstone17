@@ -34,24 +34,33 @@
     <button ion-button type="submit" block>Search</button>
   </form>
   <!-- Form validation -->
-  <div *ngIf="term.invalid && term.dirty" class="alert alert-danger">
+  <p ion-text color="danger" *ngIf="term.invalid && term.dirty" class="alert-validation">
     Search Input is required
-  </div>
-  <div *ngIf="location.invalid && location.dirty" class="alert alert-danger">
+  </p>
+  <p ion-text color="danger" *ngIf="location.invalid && location.dirty" class="alert-validation">
     Invalid Zipcode
-  </div>
+  </p>
 
+  <!--
   <div padding>
     <h4>Test return json from yelp</h4>
   </div>
+  -->
+  
+  <!--We'll need to use infinitescroll if we want to later be able to keep pulling in
+      more results, but currently top 20.
+  -->
 
+  <!--For future reference use the ? elvis operator with ngIf,-->
+  <!--when calling on response json data-->
+  <p ion-text color="danger" class="alert-noresult" *ngIf="(results?.length==0)">No Health Services Found.</p>
   <ion-list>
-    <ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)" >
+    <button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)">
         <h2>{{result.name}}</h2>
-        <h4>rating: {{result.rating}}/5</h4>
-    </ion-item>
+        <h4>rating: {{result.rating}}/5</h4>   
+    </button>
   </ion-list>
 
-<!-- Show model -->
+<!-- Show model for testing-->
 Model: {{ model | json }}
 </ion-content>
