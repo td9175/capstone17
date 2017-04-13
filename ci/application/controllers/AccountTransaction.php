@@ -83,7 +83,7 @@ require('application/libraries/REST_Controller.php');
 			// URL decode the email
 			$decoded_email = urldecode($this->get('email'));
 			// Call the transaction_history function in the model
-			$response = $this->AccountTransactionModel->hsa_balance($decoded_email);
+			$response = $this->AccountTransactionModel->fsa_balance($decoded_email);
 			// Verify there is something, and respond with the JSON
 			if($response) {
 				$this->response($response, 200);
