@@ -22,7 +22,7 @@
       <ion-item-divider color="light">HSA Accounts</ion-item-divider>
       <ion-item-sliding>
         <ion-item *ngFor="let user of users">
-          <h2>{{ user.user_id }}'s Account - {{ user.account_number }}</h2>
+          <h2>{{ user.email }}'s Account - {{ user.account_number }}</h2>
           <p>"Balance"</p>
         </ion-item>
         <ion-item-options side="right">
@@ -80,9 +80,10 @@
   -->
 
   <!--These will switch to entire divs hopefully-->
-  <!--Leaving them for now  until we add click event-->
+  <!--
   <button ion-button (click)="fsaTest()">FSA Test</button>
   <button ion-button (click)="hsaTest()">HSA Test</button>
+  -->
   
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>

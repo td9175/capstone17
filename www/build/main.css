@@ -10098,6 +10098,16 @@ ion-item-group .item-wrapper:last-child .item-ios .item-inner {
   border-bottom: 1px solid #dedede;
 }
 
+.item-md[detail-push] .item-inner,
+button.item-md:not([detail-none]) .item-inner,
+a.item-md:not([detail-none]) .item-inner {
+  background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2012%2020'><path%20d='M2,20l-2-2l8-8L0,2l2-2l10,10L2,20z'%20fill='%23dedede'/></svg>");
+  padding-right: 32px;
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px 14px;
+}
+
 .item-md [item-left],
 .item-md [item-right] {
   margin: 9px 8px 9px 0;
@@ -21306,3 +21316,47 @@ page-login ion-row {
 page-login ion-item {
   font-size: 0.9em;
 }
+
+.alert-validation {
+  text-align: center;
+}
+
+.alert-noresult {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+.object-fit_cover {
+  object-fit: cover;
+}
+
+img {
+  height: 230px;
+  background-color: #444;
+  background-image: url(http://placehold.it/350x250);
+}
+
+img[class] {
+  width: 100%;
+}
+
+.card {
+  box-shadow: 0 0px 0px transparent;
+}
+
+.yelpResult-tag-badge {
+  -webkit-margin-end: 5px;
+  -moz-margin-end: 5px;
+  margin-inline-end: 5px;
+}
+
+/*
+img {
+  height: 120px;
+}
+
+.cover {
+  width: 260px;
+  object-fit: cover;
+}
+*/

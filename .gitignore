@@ -6,7 +6,6 @@
 !*/cache/.htaccess
 /ci/nbproject/private/
 .DS_Store
-www
 .tmp
 .sass-cache
 coverage

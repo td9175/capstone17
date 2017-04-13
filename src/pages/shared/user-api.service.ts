@@ -12,9 +12,10 @@ export class UserApi {
     
     public drugToSearch: any;
     public drugToGetDetails: any;
+    public fullData: any;
 
     constructor(private http: Http) { }
-    // much much better way to do this.
+
     getUserData(){
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${this.baseid}`)
@@ -28,16 +29,16 @@ export class UserApi {
     
 
     getProductData(){
-        /*return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/advil`)
-                .subscribe(res => resolve(res.json()));
-            });*/
-        console.log(this.drugToSearch);
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
     }
 
+    getProductPrices2(){
+        this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json()).subscribe(data => {
+            console.log(data);
+        });
+    }
+
     getProductPrices(){
-        console.log(this.drugToGetDetails);
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
     }
 

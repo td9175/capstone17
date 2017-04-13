@@ -21,11 +21,9 @@ export class ProductsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductsPage');
-    //this.loadsearch();
   }
 
   getProducts(searchbar){
-     // set q to the value of the searchbar
     var q = searchbar.srcElement.value;
     if (!q) {
       return;
@@ -33,8 +31,6 @@ export class ProductsPage {
 
     this.userApi.drugToSearch =  q;
     this.loadsearch();
-
-    console.log(this.userApi.drugToSearch);
   }
 
   loadsearch(){
@@ -52,9 +48,16 @@ export class ProductsPage {
     );
   }
 
+  /*
+
+
+
+
+
+  */
+
   loadProductDetail(product){
     this.userApi.drugToGetDetails = product;
-    console.log(this.userApi.drugToGetDetails);
     this.navCtrl.push(ProductDetail);
   }
 }

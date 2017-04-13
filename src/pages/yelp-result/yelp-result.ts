@@ -11,11 +11,26 @@ import { NgForm } from '@angular/forms/src/directives';
 })
 export class YelpResultPage {
 
+  result: any;
+  cats: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) { 
+    this.result = navParams.get('result');
+
   }
 
+
+  
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad YelpResultPage');
+          this.cats = this.result.categories;
+          console.log('categories load: ', this.cats);
+  }
+    
+  
+
+  goBack() {
+    this.navCtrl.pop();
   }
 
 }

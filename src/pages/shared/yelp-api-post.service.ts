@@ -32,9 +32,11 @@ export class YelpPoster {
         let options = new RequestOptions({ headers: headers })
 
         return this.http.post('https://capstone.td9175.com/ci/index.php/YelpHealthServiceRequest/search_query', body, options)
-                    //.map(this.extractData)
                     .map((res:Response) => res.json())
-                    //.catch(this.handleError);
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    getCurrentResult(){
+    // empty for now, might be able to use extractData instead
     }
 }

@@ -1,20 +1,21 @@
 <?php
 //defined('BASEPATH') OR exit('No direct script access allowed');
+header("Access-Control-Allow-Origin: *");
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 class Ocr extends CI_Controller {
-	    
 
-	
+
+
 	public function ocr_request() {
-	
-			//imagePath should be the email/name of the file 
+
+			//imagePath should be the email/name of the file
 			$imagePath = $_SESSION['path'];
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
 			$path = 'https://capstone.td9175.com/ci/application/receipts/';
-			$path .= $imagePath; 
-	
+			$path .= $imagePath;
+
 			$request->setConfig(array(
 				'ssl_verify_peer'   => FALSE,
 				'ssl_verify_host'   => FALSE
@@ -38,7 +39,7 @@ class Ocr extends CI_Controller {
 
 			$request->setMethod(HTTP_Request2::METHOD_POST);
 
-			
+
 			// Request body
 			$newurl = "{'url': '";
 			$newurl .= $path;
@@ -54,11 +55,11 @@ class Ocr extends CI_Controller {
 				echo "<br><Br>";
 				json_encode($newanswer);
 				echo "New: " . $newanswer;
-				
-				
-				
-				
-				
+
+
+
+
+
 			   $jsonIterator = new RecursiveIteratorIterator(
 			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
 			RecursiveIteratorIterator::SELF_FIRST);
@@ -72,21 +73,21 @@ class Ocr extends CI_Controller {
 						echo "<br>";
 					}
 			}
-					
-		$json = json_decode($newanswer); 
-		
+
+		$json = json_decode($newanswer);
+
 		foreach($json['word']['text'] as $item) {
     		print $item['text'];
     		print ' - ';
    		}
-		
+
 				}//end try
 			catch (HttpException $ex) {
 				echo $ex;
 			}
 
 		}
-	
+
 
 	}
 

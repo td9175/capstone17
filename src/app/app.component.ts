@@ -36,8 +36,9 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // It would probably be smarter to use HomePage as root,
-  // Then we could figure out a global login via TS checks.
-  rootPage: any = LoginPage;
+  // Attempting to Change it back to homepage to fix navigation, will look into,
+  // using overlay for Login.
+  rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
 
