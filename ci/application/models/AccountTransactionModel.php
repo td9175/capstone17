@@ -88,7 +88,7 @@
 			// Load the database
 			$this->load->database();
 			// Generic error message
-			$error_msg = "Error: could not calculate HSA account balance.";
+			$error_msg = "Error: could not calculate FSA account balance.";
 			// Build the query string
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'FSA' ";
 			// Execute the query
