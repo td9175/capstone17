@@ -196,7 +196,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
-				$path = 'hello@world.com/';
+				$path = 'umbcapstone17@gmail.com/';
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
