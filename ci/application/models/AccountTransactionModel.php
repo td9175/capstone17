@@ -66,7 +66,7 @@
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					echo "$row \n";
+					echo "$row[0] \n";
 					$data[] = $row['balance'];
 				}
 			} else {
