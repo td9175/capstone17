@@ -64,13 +64,13 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() === 1) {
-				foreach ($result->result_array() as $row) {
-					$data = $row['balance'];
-				}
-			} else {
+			if ($result->num_rows() == 0) {
 				// Error
 				$data = "Error: could not calculate HSA account balance.";
+			} else {
+				foreach ($result->result_array() as $row) {
+					$data[] = $row['balance'];
+				}
 			}
 			// Pass back the data
 			return $data;
@@ -85,13 +85,13 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() === 1) {
-				foreach ($result->result_array() as $row) {
-					$data = $row['balance'];
-				}
-			} else {
+			if ($result->num_rows() == 0) {
 				// Error
 				$data = "Error: could not calculate FSA account balance.";
+			} else {
+				foreach ($result->result_array() as $row) {
+					$data[] = $row['balance'];
+				}
 			}
 			// Pass back the data
 			return $data;
