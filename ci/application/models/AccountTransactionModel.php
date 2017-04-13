@@ -66,7 +66,7 @@
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					$data[] = $row['balance'];
+					$data = $row['balance'];
 				}
 			} else {
 				// Error
@@ -87,7 +87,7 @@
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					$data[] = $row['balance'];
+					$data = $row['balance'];
 				}
 			} else {
 				// Error
