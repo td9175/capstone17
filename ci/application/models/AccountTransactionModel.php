@@ -63,15 +63,15 @@
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'HSA' ";
 			// Execute the query
 			$result = $this->db->query($query, $email);
-			var_dump($result);
-			echo "\n \n \n";
 			// Check if any rows were returned
-			if ($result->num_rows() == 0) {
-				// Error
-				$data = "Error: could not calculate HSA account balance.";
-			} else {
+			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					$data[] = $row['balance'];
+					if ($row['balance'] == NULL) {
+						// Error
+						$data = "Error: could not calculate FSA account balance.";
+					} else {
+						$data = $row['balance'];
+					}
 				}
 			}
 			// Pass back the data
@@ -90,12 +90,14 @@
 			echo "\n \n \n";
 
 			// Check if any rows were returned
-			if ($result->num_rows() == 0) {
-				// Error
-				$data = "Error: could not calculate FSA account balance.";
-			} else {
+			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					$data[] = $row['balance'];
+					if ($row['balance'] == NULL) {
+						// Error
+						$data = "Error: could not calculate FSA account balance.";
+					} else {
+						$data = $row['balance'];
+					}
 				}
 			}
 			// Pass back the data
