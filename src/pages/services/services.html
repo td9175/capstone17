@@ -55,10 +55,10 @@
   <!--when calling on response json data-->
   <p ion-text color="danger" class="alert-noresult" *ngIf="(results?.length==0)">No Health Services Found.</p>
   <ion-list>
-    <button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)">
+    <a button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)">
         <h2>{{result.name}}</h2>
         <h4>rating: {{result.rating}}/5</h4>   
-    </button>
+    </a>
   </ion-list>
 
 <!-- Show model for testing-->
