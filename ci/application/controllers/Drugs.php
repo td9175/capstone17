@@ -1,34 +1,25 @@
 <?php
+/************************************************************************
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+************************************************************************/
 header("Access-Control-Allow-Origin: *");
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Drugs extends CI_Controller {
 
-	public function __construct()
-	{
+	public function __construct(){
         parent::__construct();
         $this->config->load('goodRx');
         $this->load->helper('url');
-		$this->load->helper('form');
-		//$this->load->library('upload');
+				$this->load->helper('form');
   }
 
-
-	public function index()
-	{
-		$this->load->view('drugs');
-	}
-
-
-	public function base64url_encode($data)
-	{
+	public function base64url_encode($data){
     	return strtr(base64_encode($data), '+/', '__');
 	}
 
-
-	public function search_for_drug($searchQuery)
-	{
-      // Get user input from the form on drugs.php
+	public function search_for_drug($searchQuery){
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
@@ -65,9 +56,7 @@ class Drugs extends CI_Controller {
     }
 
 
-    public function price_comparison($name)
-	{
-      // Get user input from the form on drugs.php
+    public function price_comparison($name){
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
@@ -102,8 +91,5 @@ class Drugs extends CI_Controller {
       // Echo the response for RESTful API calls
       echo $response;
     }
-    
-
-      
 
 }

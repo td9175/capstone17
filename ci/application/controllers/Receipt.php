@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+header("Access-Control-Allow-Origin: *");
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
@@ -7,17 +8,17 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		//function to insert receipt into DB
 		//function to insert OCR info into DB
-		
-		
-		function parse_it() {
-		
-		
-		
-		
 
-		
-		
-		
+
+		function parse_it() {
+
+
+
+
+
+
+
+
 			echo "Parsing <br><Br>";
 			$string = '{
 				  "language": "en",
@@ -120,9 +121,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					}
 				  ]
 				}';
-		
+
 		preg_match_all("/\d\d\/\d\d\/\d\d/", $string, $other_matches);
-		
+
 		preg_match_all("/([0-9]{2})\/([0-9]{2})\/([0-9]{2})/", $string, $matches);
 		echo "<br>";
 		echo "Matches: ";
@@ -130,17 +131,17 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		echo "<BR>Other matches: ";
 		print_r($other_matches);
 
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
 }
-		
-		
-		
+
+
+
 		function upload_it() {
 			//load the helper
 			$this->load->helper('form');
@@ -151,20 +152,20 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			//need to create folder for each user, path will be unique to the user
 			$email = $_SESSION['email'];
 			//$email = "hello@world.com";
-			echo "Email: ". $email; 
+			echo "Email: ". $email;
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
 			echo "<br>Date:" . $date;
-			
+
 			$f_name = $date;
 			$f_name .= $rand;
-		
+
 			$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 			$config['upload_path'] .= $email;
-		
+
 			//need to change filename to be unique to the user
 			$config['file_name'] = $f_name;
-			
+
 
 			echo "Upload path: " . $config['upload_path'];
 			echo "<br><br>";
@@ -202,14 +203,14 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			}
 
 			// load the view/upload.php
-			
+
 		$this->load->view('upload_form', $data);
 
 	}
-	
-	
-	
-	
+
+
+
+
 
 	}
 
