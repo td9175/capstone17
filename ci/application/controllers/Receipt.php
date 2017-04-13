@@ -149,8 +149,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->model('ReceiptModel');
 
 			//need to create folder for each user, path will be unique to the user
-			$email = $_SESSION['email'];
-			//$email = "hello@world.com";
+			//$email = $_SESSION['email'];
+			$email = "umbcapstone17@gmail.com";
 			echo "Email: ". $email; 
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
@@ -198,7 +198,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				echo "Path: " . $path;
-				//redirect('OCR/ocr_request');
+				redirect('OCR/ocr_request');
 			}
 
 			// load the view/upload.php
