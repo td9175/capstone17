@@ -73,7 +73,7 @@ require('application/libraries/REST_Controller.php');
 		// Get the balance for a user's FSA account
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/fsa_balance
 		// GET variable to send: email
-		function hsa_balance_get() {
+		function fsa_balance_get() {
 			//Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
