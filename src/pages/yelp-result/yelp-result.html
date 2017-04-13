@@ -22,7 +22,7 @@
         <ion-card-title>
           {{result.name}}
         </ion-card-title>
-        <ion-badge *ngFor="let cat of cats" color="secondary">{{cat.title}}</ion-badge>
+        <ion-badge class="yelpResult-tag-badge" *ngFor="let cat of cats" color="secondary">{{cat.title}}</ion-badge>
             <hr />
             <p ion-text color="secondary" class="rating"><strong>Rating: {{result.rating}}/5</strong> ({{result.review_count}} Reviews)</p>
             <p><strong>Business Address:</strong><br>{{result.location.address1}}<br>{{result.location.city}}, {{result.location.state}} {{result.location.zip_code}}</p>
