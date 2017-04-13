@@ -59,25 +59,18 @@
 		function hsa_balance($email) {
 			// Load the database
 			$this->load->database();
-			// Generic error message
-			$error_msg = "Error: could not calculate HSA account balance.";
 			// Build the query string
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'HSA' ";
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() > 0) {
+			if ($result->num_rows() === 1) {
 				foreach ($result->result_array() as $row) {
-					// Check if balance is null
-					if ($row['balance'] == NULL) {
-						// Error
-						$data = $error_msg;
-					} else {
-						$data = $row['balance'];
-					}
+					$data = $row['balance'];
 				}
 			} else {
-				$data = $error_msg;
+				// Error
+				$data = "Error: could not calculate HSA account balance.";
 			}
 			// Pass back the data
 			return $data;
@@ -87,25 +80,18 @@
 		function fsa_balance($email) {
 			// Load the database
 			$this->load->database();
-			// Generic error message
-			$error_msg = "Error: could not calculate FSA account balance.";
 			// Build the query string
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'FSA' ";
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() > 0) {
+			if ($result->num_rows() === 1) {
 				foreach ($result->result_array() as $row) {
-					// Check if balance is null
-					if ($row['balance'] == NULL) {
-						// Error
-						$data = $error_msg;
-					} else {
-						$data = $row['balance'];
-					}
+					$data = $row['balance'];
 				}
 			} else {
-				$data = $error_msg;
+				// Error
+				$data = "Error: could not calculate FSA account balance.";
 			}
 			// Pass back the data
 			return $data;
@@ -113,5 +99,6 @@
 
 
 }
+
 
 ?>

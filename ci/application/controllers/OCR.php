@@ -74,6 +74,12 @@ class Ocr extends CI_Controller {
 					}
 			}
 
+		$json = json_decode($newanswer);
+
+		foreach($json['word']['text'] as $item) {
+    		print $item['text'];
+    		print ' - ';
+   		}
 
 				}//end try
 			catch (HttpException $ex) {
