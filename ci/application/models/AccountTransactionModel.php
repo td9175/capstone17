@@ -63,6 +63,7 @@
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'HSA' ";
 			// Execute the query
 			$result = $this->db->query($query, $email);
+			var_dump($result->num_rows());
 			// Check if any rows were returned
 			if ($result->num_rows() == 0) {
 				// Error
@@ -84,6 +85,8 @@
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'FSA' ";
 			// Execute the query
 			$result = $this->db->query($query, $email);
+			var_dump($result->num_rows());
+
 			// Check if any rows were returned
 			if ($result->num_rows() == 0) {
 				// Error
