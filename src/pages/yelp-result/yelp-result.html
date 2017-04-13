@@ -7,7 +7,7 @@
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>{{result.name}}</ion-title>
+    <ion-title>More Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,9 +24,7 @@
         </ion-card-title>
         <ion-badge class="yelpResult-tag-badge" *ngFor="let cat of cats" color="secondary">{{cat.title}}</ion-badge>
             <hr />
-            <p ion-text color="secondary" class="rating" *ngIf="(result?.review_count >= 2)"><strong>Rating: {{result.rating}}/5</strong> ({{result.review_count}} Reviews)</p>
-            <p ion-text color="secondary" class="rating" *ngIf="(result?.review_count == 1)"><strong>Rating: {{result.rating}}/5</strong> ({{result.review_count}} Review)</p>
-            <p ion-text color="secondary" class="rating" *ngIf="(result?.review_count <= 0)"><strong>No Reviews Yet</strong></p>
+            <p ion-text color="secondary" class="rating"><strong>Rating: {{result.rating}}/5</strong> ({{result.review_count}} Reviews)</p>
             <p><strong>Business Address:</strong><br>{{result.location.address1}}<br>{{result.location.city}}, {{result.location.state}} {{result.location.zip_code}}</p>
             <p>Business Phone: <a href="tel:{{result.phone}}">{{result.display_phone}}</a></p>
       </ion-card-content>
@@ -35,17 +33,41 @@
         <ion-col width-50>
           <a ion-text button href="tel:{{result.phone}}" ion-button clear small color="secondary" icon-left>
             <ion-icon name='call'></ion-icon>
-              Call
+            Call
           </a>
         </ion-col>
         <ion-col width-50>
-          <a ion-text button href="{{result.url}}"ion-button clear small color="secondary" icon-left>
+          <a ion-text button href="{{result.url}}"ion-button clear small color="secondary" icon-right>
             <ion-icon name='information-circle'></ion-icon>
-              Yelp Info
+            Yelp Info
           </a>
         </ion-col>
       </ion-row>
 
+      
+
+    
     </ion-card>
 
+
+    
+    <!--
+    <ion-grid>
+      <ion-row>
+        <ion-col class="image">
+            <img class="object-fit_cover" [src]="result.image_url">
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+            <h4 class="resultname">{{result.name}}</h4>
+            <p class="rating">Rating: {{result.rating}}/5 (From {{result.review_count}} Reviews)</p>
+            <p>Business Address:<br>{{result.location.address1}}<br>{{result.location.city}}, {{result.location.state}} {{result.location.zip_code}}</p>
+            <p>Business Phone: <a href="tel:{{result.phone}}">{{result.display_phone}}</a></p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    -->
+  
   </ion-content>

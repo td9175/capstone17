@@ -9,6 +9,12 @@ import { NgForm } from '@angular/forms/src/directives';
 // Page import
 import { YelpResultPage } from './../yelp-result/yelp-result';
 
+/*
+  Generated class for the Services page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
   selector: 'page-services',
   templateUrl: 'services.html'
@@ -28,10 +34,13 @@ export class ServicesPage {
     });
 
     loader.present().then(() => {
+        // Validation should go up here if we get this far
         console.log(form.value);
         this.yelpPoster.postYelpSearchForm(this.model)
         .subscribe(
           data => this.results = data.businesses,
+          //data => this.results = data,
+          //data => console.log('success: ', data),
           err => console.log('error: ', err),
           () => console.log('results: ', this.results),
         );
@@ -42,6 +51,7 @@ export class ServicesPage {
 
   serviceClicked(event, result){
     this.navCtrl.push(YelpResultPage, { result: result });
+    //this.navCtrl.push(YelpResultPage);
   }
 
   ionViewDidLoad() {
