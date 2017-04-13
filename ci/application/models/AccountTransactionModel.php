@@ -64,6 +64,10 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			var_dump($result);
+
+			echo "\n \n \n";
+
+			var_dump($result->result_array());
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
