@@ -63,10 +63,10 @@
 			$query = "SELECT sum(A.amount) AS balance FROM AccountTransaction AS A JOIN HealthAccount AS H USING (account_number) WHERE H.email = ? AND H.account_type = 'HSA' ";
 			// Execute the query
 			$result = $this->db->query($query, $email);
+			var_dump($result);
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					var_dump($row);
 					$data[] = $row['balance'];
 				}
 			} else {
