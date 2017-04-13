@@ -29,18 +29,13 @@ export class ProductDetail {
     console.log('ionViewDidLoad ProductDetailPage');
     this.productToGetDetails = this.userApi.drugToGetDetails;
     this.loadJsonFiles();
-    this.makeCombinedArray();
   }
 
   loadJsonFiles(){
     this.userApi.getProductPrices().subscribe(
       result => {
-        this.fullData=result.data.price_detail;
         this.prices=result.data.price_detail.price;
         this.stores=result.data.price_detail.pharmacy;
-        console.log("FullData Success: ", this.fullData);
-        console.log("Price Success : ", this.prices);
-        console.log("Store Success : ", this.stores);
       },
       err =>{
         console.error("Error : "+err);
@@ -51,12 +46,6 @@ export class ProductDetail {
     );
 
     //this.makeCombinedArray();
-  }
-
-  makeCombinedArray(){
-    for(let price of this.prices){
-      console.log(price);
-    }
   }
 
   goBack() {
