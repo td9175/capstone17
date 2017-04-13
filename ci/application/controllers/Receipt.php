@@ -149,16 +149,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->helper('string');
 			$this->load->model('ReceiptModel');
 
-			//need to create folder for each user, path will be unique to the user
-<<<<<<< HEAD
+
 			//$email = $_SESSION['email'];
 			$email = "umbcapstone17@gmail.com";
 			echo "Email: ". $email; 
-=======
-			$email = $_SESSION['email'];
-			//$email = "hello@world.com";
-			echo "Email: ". $email;
->>>>>>> origin/master
+
+
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
 			echo "<br>Date:" . $date;
