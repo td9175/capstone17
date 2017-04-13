@@ -1,8 +1,9 @@
 <?php
-/************************************************************************
+/*
 		@Author: Robert Fink
 		12bit - UMB Bank Health Spending App
-************************************************************************/
+*/
+
 header("Access-Control-Allow-Origin: *");
 defined('BASEPATH') OR exit('No direct script access allowed');
 

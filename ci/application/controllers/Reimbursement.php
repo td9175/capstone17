@@ -1,10 +1,15 @@
 <?php
+/*
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+*/
+
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
 	class Reimbursement extends REST_Controller {
 
-    // Gets the scanned amount to reimburse from OCR and handles the reimbursement transaction
+    // Gets the  amount to reimburse from OCR and handles the reimbursement transaction
     // Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
     // POST variables: account_number, amount
     function reimburse_account_post(){

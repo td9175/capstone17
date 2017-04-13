@@ -1,4 +1,9 @@
 <?php
+/*
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+*/
+
 	class HealthAccountModel extends CI_Model {
 
 	// RESTful api to get the HSA accounts for a user by the email address

@@ -1,4 +1,9 @@
 <?php
+/*
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+*/
+
 	class AccountTransactionModel extends CI_Model {
 
 		// Get a user's HSA transaction history

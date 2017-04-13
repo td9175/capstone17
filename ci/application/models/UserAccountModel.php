@@ -1,4 +1,9 @@
 <?php
+/*
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+*/
+
 class UserAccountModel extends CI_Model {
 
     // Get info for every user

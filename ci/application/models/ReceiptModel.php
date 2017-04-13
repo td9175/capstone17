@@ -3,9 +3,8 @@ class ReceiptModel extends CI_Model {
 
     function get_receipts_by_user_id($id) {
         //http://capstone.td9175.com/ci/index.php/rest/receipts/1
-        
-    	$this->load->database();
-        //$return_arr = array();
+
+    $this->load->database();
 
 		 $query = 'SELECT * from Receipt WHERE user_id = ?';
          $result = $this->db->query($query, $id);
@@ -22,7 +21,7 @@ class ReceiptModel extends CI_Model {
                     );
               }
           }else{
-                $data = 'There are no receipts at this user id.';   
+                $data = 'There are no receipts at this user id.';
           }
 
           return $data;
@@ -35,7 +34,7 @@ class ReceiptModel extends CI_Model {
 
     	$query = 'SELECT * FROM Receipt WHERE receipt_id = ?';
         $result = $this->db->query($query, $id);
-        
+
         if($result !== FALSE && $result->num_rows() > 0){
             foreach ($result->result_array() as $row) {
                 $data[] = array(
@@ -47,23 +46,23 @@ class ReceiptModel extends CI_Model {
                 );
             }
         }else{
-                $data = 'There is no receipt at this id.';   
+                $data = 'There is no receipt at this id.';
         }
 
     	return $data;
     }
-    
+
     function receiptData_post($receipt_path, $user_email) {
-    
+
     $this->load->database();
-	
-    
-    
-    
-    $query = "INSERT INTO Receipt (receipt_id, user_id, image) 
+
+
+
+
+    $query = "INSERT INTO Receipt (receipt_id, user_id, image)
     	VALUES (null, ?, ?) WHERE ";
     $result = $this->db->query($query, $user_id, $receipt);
-    
+
     foreach ($result->result_array() as $row) {
 			$data[] = array(
 				'receipt_id' => $row['receipt_id'],
@@ -74,8 +73,8 @@ class ReceiptModel extends CI_Model {
 			);
 		}
 		return $data['image'];
-    
-    
+
+
     }
 
     /*

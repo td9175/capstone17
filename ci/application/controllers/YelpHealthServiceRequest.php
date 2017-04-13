@@ -1,23 +1,22 @@
 <?php
-/************************************************************************
+/*
 		@Author: Robert Fink
 		12bit - UMB Bank Health Spending App
-************************************************************************/
+*/
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
 
-/************************************************************************
+/*
  * Yelp Fusion API code.
- *
  * This program demonstrates the capability of the Yelp Fusion API
  * by using the Business Search API to query for businesses by a
  * search term, location, and radius. Then using the Yelp Business and Review API's to query additional
  * information about the results from the search query.
- *
+
  * Please refer to http://www.yelp.com/developers/v3/documentation
  * for the API documentation.
- ************************************************************************/
+ */
 
 class YelpHealthServiceRequest extends CI_Controller {
 	public function __construct()
@@ -27,11 +26,10 @@ class YelpHealthServiceRequest extends CI_Controller {
   }
 
 
-  /************************************************************************
-   * Send a GET request to the Yelp API for the authentication token
-   *
-   * @return   OAuth bearer token, obtained using clientId and clientSecret.
-  ************************************************************************/
+  /*
+   Send a GET request to the Yelp API for the authentication token
+   @return   OAuth bearer token, obtained using clientId and clientSecret.
+  */
    function obtain_bearer_token() {
      // Yelp Fusion API secret stuff
      $clientId = $this->config->item("clientId");
@@ -94,15 +92,15 @@ class YelpHealthServiceRequest extends CI_Controller {
   }
 
 
-  /************************************************************************
-   * Makes a request to one of the Yelp API's and returns a response
-   *
-   * @param    $bearer_token   API bearer token from obtain_bearer_token
-   * @param    $host    The domain host of the API
-   * @param    $path    The path of the API after the domain.
-   * @param    $url_params    Array of query-string parameters.
-   * @return   The JSON response from the request
-  ************************************************************************/
+  /*
+    Makes a request to one of the Yelp API's and returns a response
+
+   @param    $bearer_token   API bearer token from obtain_bearer_token
+   @param    $host    The domain host of the API
+   @param    $path    The path of the API after the domain.
+   @param    $url_params    Array of query-string parameters.
+   @return   The JSON response from the request
+  */
    function request($bearer_token, $host, $path, $url_params = array()) {
       // Try to send a Yelp API Call
       try {
@@ -157,18 +155,15 @@ class YelpHealthServiceRequest extends CI_Controller {
       } catch(Exception $e) {
           trigger_error(sprintf('Curl failed with error #%d: %s', $e->getCode(), $e->getMessage()), E_USER_ERROR);
       }
-
       return $response;
   }
 
-
-	/************************************************************************
-   * Queries the Yelp autocomplete API with the input values from the user
-   *
-   * @param    $text        The search term to query
-	 * @param    $latitude    The location of the business to query (Required)
-	 * @param    $longitude   The location of the business to query (Required)
-   ************************************************************************/
+	/*
+   Queries the Yelp autocomplete API with the input values from the user
+   @param    $text        The search term to query
+	 @param    $latitude    The location of the business to query (Required)
+	 @param    $longitude   The location of the business to query (Required)
+  */
 	function auto_complete(){
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
@@ -196,17 +191,16 @@ class YelpHealthServiceRequest extends CI_Controller {
 	}
 
 
-	/************************************************************************
-   * Queries the Yelp search API with the input values from the user
-   *
-   * @param    $text        The search term to query (optional)
-   * @param    $location    The location of the business to query (Required if latitude and longitude are not provided.)
-	 * @param    $latitude    The location of the business to query (Required if location is not provided.)
-	 * @param    $longitude   The location of the business to query (Required if location is not provided.)
-	 * @param    $categories  The category to filter by (constant HEALTH)
-	 * @param    $radius      The radius to search within the location (optional, MAX=40000 (25 miles))
-	 * @param    $limit 			The number to limit search results by (optional, default=20 MAX=50)
-   ************************************************************************/
+	/*
+   Queries the Yelp search API with the input values from the user
+   @param    $text        The search term to query (optional)
+   @param    $location    The location of the business to query (Required if latitude and longitude are not provided.)
+	 @param    $latitude    The location of the business to query (Required if location is not provided.)
+	 @param    $longitude   The location of the business to query (Required if location is not provided.)
+	 @param    $categories  The category to filter by (constant HEALTH)
+	 @param    $radius      The radius to search within the location (optional, MAX=40000 (25 miles))
+	 @param    $limit 			The number to limit search results by (optional, default=20 MAX=50)
+   */
    function search_query() {
 		 // Yelp Fusion API constants
      $apiHost = $this->config->item('apiHost');
@@ -244,11 +238,10 @@ class YelpHealthServiceRequest extends CI_Controller {
   }
 
 
-	/************************************************************************
-   * Queries the Yelp business API with the input values from the user
-   *
-   * @param    $id        	The selected business id to query (Required)
-   ************************************************************************/
+	/*
+  	Queries the Yelp business API with the input values from the user
+  	@param    $id        	The selected business id to query (Required)
+   */
 	function business_info(){
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
@@ -268,11 +261,10 @@ class YelpHealthServiceRequest extends CI_Controller {
 	}
 
 
-	/************************************************************************
-	 * Queries the Yelp reviews API for a business
-	 *
-	 * @param    $id        	The selected business id to query (Required)
-	 ************************************************************************/
+	/*
+	 Queries the Yelp reviews API for a business
+	 @param    $id        	The selected business id to query (Required)
+	 */
 	function business_reviews(){
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');

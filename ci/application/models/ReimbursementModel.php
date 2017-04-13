@@ -1,4 +1,9 @@
 <?php
+/*
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+*/
+
 	class ReimbursementModel extends CI_Model {
 
     // Gets data (amount to reimburse) from receipt OCR and handles the database transaction for reimbusement

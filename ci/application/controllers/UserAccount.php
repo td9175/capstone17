@@ -1,9 +1,13 @@
 <?php
+/*
+		@Author: Robert Fink
+		12bit - UMB Bank Health Spending App
+*/
+
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
 	// RESTful API for User Account functions
-	// Author: Robert Fink
 	class UserAccount extends REST_Controller {
 
 		// Register a user account
