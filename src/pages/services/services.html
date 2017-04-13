@@ -6,7 +6,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
   <form #form="ngForm" (ngSubmit)="submitForm(form)">
     <ion-item>
@@ -52,7 +51,6 @@
   -->
 
   <!--For future reference use the ? elvis operator with *ngIf,-->
-  <!--when calling on response json data-->
   <p ion-text color="danger" class="alert-noresult" *ngIf="(results?.length==0)">No Health Services Found.</p>
   <ion-list>
     <a button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)" detail-push>
