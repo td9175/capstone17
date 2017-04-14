@@ -26,38 +26,12 @@
       return $result;
     }
 
-		// Get all reimbursment records and tie to a receipt and account number
-		function all_reimbursements(){
-			// Load the database
-      $this->load->database();
-      // Build the query
-      $query = "SELECT X.email, X.image, X.date_time_stamp, Y.amount, Y.account_number FROM Receipt AS X JOIN Reimbursement AS Y USING (receipt_id)";
-			// Execute the query
-			$result = $this->db->query($query);
-			// Check if any results were returned
-			if ($result->num_rows() > 0) {
-				foreach ($result->result_array() as $row) {
-						$data[] = array(
-							'email' => $row['email'],
-							'image' => $row['image'],
-							'amount' => $row['amount'],
-							'account_number' => $row['account_number'],
-							'date_time_stamp' => $row['date_time_stamp']
-						);
-					}
-			} else {
-				$data = "Error: no reimbursment records.";
-			}
-			// Return the result
-			return $data;
-		}
-
 		// Get all reimbursment records for a user and tie to a receipt and account number
 		function get_user_reimbursements($email){
 			// Load the database
-      $this->load->database();
-      // Build the query
-      $query = "SELECT X.email, X.image, X.date_time_stamp, Y.amount, Y.account_number FROM Receipt AS X JOIN Reimbursement AS Y USING (receipt_id) WHERE X.email = ?";
+			$this->load->database();
+			// Build the query
+			$query = "SELECT X.email, X.image, X.date_time_stamp, Y.amount, Y.account_number FROM Receipt AS X JOIN Reimbursement AS Y USING (receipt_id) WHERE X.email = ?";
 			// Execute the query passing the email into the query parameter
 			$result = $this->db->query($query, $email);
 			// Check if any results were returned
@@ -77,5 +51,32 @@
 			// Return the result
 			return $data;
 		}
+
+
+		// // Get all reimbursment records in the database and tie to a respective receipt and account number
+		// function all_reimbursements(){
+		// 	// Load the database
+    //   $this->load->database();
+    //   // Build the query
+    //   $query = "SELECT X.email, X.image, X.date_time_stamp, Y.amount, Y.account_number FROM Receipt AS X JOIN Reimbursement AS Y USING (receipt_id)";
+		// 	// Execute the query
+		// 	$result = $this->db->query($query);
+		// 	// Check if any results were returned
+		// 	if ($result->num_rows() > 0) {
+		// 		foreach ($result->result_array() as $row) {
+		// 				$data[] = array(
+		// 					'email' => $row['email'],
+		// 					'image' => $row['image'],
+		// 					'amount' => $row['amount'],
+		// 					'account_number' => $row['account_number'],
+		// 					'date_time_stamp' => $row['date_time_stamp']
+		// 				);
+		// 			}
+		// 	} else {
+		// 		$data = "Error: no reimbursment records.";
+		// 	}
+		// 	// Return the result
+		// 	return $data;
+		// }
 
   }
