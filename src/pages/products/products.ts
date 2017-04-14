@@ -16,35 +16,46 @@ import { ProductDetail } from './../product-detail/product-detail';
 export class ProductsPage {
 
   public searchJson: any;
+  public success: any;
+  public searchEmpty: any = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
 
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductsPage');
+    console.log('SearchEmpty Status: ', this.searchEmpty);
   }
+
 
   getProducts(searchbar){
     var q = searchbar.srcElement.value;
     if (!q) {
+      this.searchEmpty = true;
+      console.log("SearchEmpty Status: ", this.searchEmpty)
       return;
+    } else {
+      this.searchEmpty = false;
+      this.userApi.drugToSearch = encodeURIComponent(q);
+      console.log("SearchEmpty Status: ", this.searchEmpty)
+      this.loadsearch();
     }
-
-    this.userApi.drugToSearch =  q;
-    this.loadsearch();
   }
 
   loadsearch(){
     this.userApi.getProductData().subscribe(
       result => {
-        this.searchJson=result.data.candidates;
-        console.log("Success : "+this.searchJson);
+        if (result.success === true) {
+          this.searchJson=result.data.candidates;
+          console.log("Returned Drug Data: ", this.searchJson);
+          } else {
+          this.success=false;
+          console.log("Success Status: ", this.success);
+        }
       },
       err =>{
         console.error("Error : "+err);
       } ,
-      () => {
-        console.log('getData completed');
-      }
     );
   }
 

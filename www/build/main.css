@@ -21317,6 +21317,22 @@ page-login ion-item {
   font-size: 0.9em;
 }
 
+page-product-detail .card {
+  box-shadow: 0 0px 0px transparent;
+}
+
+page-product-detail .text-warning-disclamor {
+  font-size: 12px;
+}
+
+page-product-detail .highlight-secondary {
+  color: #0099e6;
+}
+
+.padding-horizontal {
+  padding: 0px 10px;
+}
+
 .alert-validation {
   text-align: center;
 }
@@ -21326,25 +21342,25 @@ page-login ion-item {
   font-size: 1.4em;
 }
 
-.object-fit_cover {
+page-yelp-result .object-fit_cover {
   object-fit: cover;
 }
 
-img {
+page-yelp-result img {
   height: 230px;
   background-color: #444;
   background-image: url(http://placehold.it/350x250);
 }
 
-img[class] {
+page-yelp-result img[class] {
   width: 100%;
 }
 
-.card {
+page-yelp-result .card {
   box-shadow: 0 0px 0px transparent;
 }
 
-.yelpResult-tag-badge {
+page-yelp-result .yelpResult-tag-badge {
   -webkit-margin-end: 5px;
   -moz-margin-end: 5px;
   margin-inline-end: 5px;

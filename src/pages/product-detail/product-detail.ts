@@ -12,6 +12,7 @@ export class ProductDetail {
 
   public prices: any;
   public stores: any;
+  public drug: any;
   public success: any;
   public productToGetDetails: any;
 
@@ -27,17 +28,18 @@ export class ProductDetail {
     this.userApi.getProductPrices().subscribe(
       result => {
         if (result.success === true) {
+          this.drug=result;
           this.prices=result.data.price_detail.price;
           this.stores=result.data.price_detail.pharmacy;
         } else {
           this.success=false;
-          console.log("cant get session info:", this.success);
+          console.log("Success Status: ", this.success);
         }
 
       },
 
       err => { console.error("Error : "+err);} ,
-      () => { console.log('Price Data: ', this.prices, 'Store Data: ', this.stores);} ,
+      () => { console.log('Price Data: ', this.prices, 'Store Data: ', this.stores, 'Drug Data: ', this.drug);} ,
     
     );
   }

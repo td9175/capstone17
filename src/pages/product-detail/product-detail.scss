@@ -1,3 +1,12 @@
-page-product-detail {
+page-product-detail{
+  .card {
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0); }
 
+  .text-warning-disclamor {
+    font-size: 12px;
+  }
+
+  .highlight-secondary {
+    color: map-get($colors, secondary);
+  }
 }
