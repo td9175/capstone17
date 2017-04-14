@@ -6,9 +6,10 @@
 
 class UserAccountModel extends CI_Model {
 
+    // Load the database for every call
     function __construct() {
       parent::__construct();
-      $this->load->database(); // Load the database for every call
+      $this->load->database();
     }
 
     // Get info for every user
@@ -22,7 +23,8 @@ class UserAccountModel extends CI_Model {
   				'email' => $row['email'],
   				'first_name' => $row['first_name'],
           'last_name' => $row['last_name'],
-          'enabled' => $row['enabled']
+          'is_enabled' => $row['is_enabled'],
+          'is_admin' => $row['is_admin']
 				);
   		}
     	return $data;
@@ -30,7 +32,7 @@ class UserAccountModel extends CI_Model {
 
     // Get all enabled user accounts
     function get_enabled_users() {
-      $this->load->database();
+      // $this->load->database();
 
       $query = $this->db->query('SELECT * from UserAccount WHERE enabled=0');
 
@@ -39,6 +41,7 @@ class UserAccountModel extends CI_Model {
           'email' => $row['email'],
           'first_name' => $row['first_name'],
           'last_name' => $row['last_name'],
+          'is_admin' => $row['is_admin']
         );
       }
       return $data;
@@ -46,7 +49,7 @@ class UserAccountModel extends CI_Model {
 
     // Get all disabled user accounts
     function get_disabled_users() {
-      $this->load->database();
+      // $this->load->database();
 
       $query = $this->db->query('SELECT * from UserAccount WHERE enabled=1');
 
@@ -55,6 +58,7 @@ class UserAccountModel extends CI_Model {
           'email' => $row['email'],
           'first_name' => $row['first_name'],
           'last_name' => $row['last_name'],
+          'is_admin' => $row['is_admin']
         );
       }
       return $data;
@@ -62,7 +66,7 @@ class UserAccountModel extends CI_Model {
 
     // Get all user info for the logged in account
     function get_user($email) {
-    	$this->load->database();
+    	// $this->load->database();
 
       $query = "SELECT * FROM UserAccount WHERE email = ?";
 
@@ -73,7 +77,8 @@ class UserAccountModel extends CI_Model {
 				'email' => $row['email'],
 				'first_name' => $row['first_name'],
         'last_name' => $row['last_name'],
-        'enabled' => $row['enabled']
+        'is_enabled' => $row['is_enabled'],
+        'is_admin' => $row['is_admin']
 			);
   		}
     	return $data;
@@ -81,7 +86,7 @@ class UserAccountModel extends CI_Model {
 
     // Register a user account
     function post_registration($email, $hash_pass, $first_name, $last_name){
-      $this->load->database();
+      // $this->load->database();
 
       // Build the query to create a user account
       $query = "INSERT INTO UserAccount (email, hash_pass, first_name, last_name) VALUES (?,?,?,?)";
@@ -102,7 +107,7 @@ class UserAccountModel extends CI_Model {
 
     // Login a user
     function post_login($email){
-      $this->load->database();
+      // $this->load->database();
 
       // Build the query to check for account with an email provided by the user
       $query = "SELECT hash_pass, is_enabled, is_admin FROM UserAccount WHERE email=?";
@@ -127,7 +132,7 @@ class UserAccountModel extends CI_Model {
   // Disable a users account
   function disable_user($email) {
     // Load the database
-    $this->load->database();
+    // $this->load->database();
     // Build the query
     $query = "UPDATE UserAccount SET enabled=0 WHERE email = ?";
     // Execute the query
@@ -145,7 +150,7 @@ class UserAccountModel extends CI_Model {
   // Enable a user account
   function enable_user($email) {
     // Load the database
-    $this->load->database();
+    // $this->load->database();
     // Build the query
     $query = "UPDATE UserAccount SET enabled=1 WHERE email = ?";
     // Execute the query
