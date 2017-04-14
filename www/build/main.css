@@ -21317,6 +21317,15 @@ page-login ion-item {
   font-size: 0.9em;
 }
 
+page-product-detail {
+  /*
+  ion-grid {
+    height: 100%;
+    justify-content: center;
+  }
+  */
+}
+
 page-product-detail .card {
   box-shadow: 0 0px 0px transparent;
 }
@@ -21329,8 +21338,13 @@ page-product-detail .highlight-secondary {
   color: #0099e6;
 }
 
-.padding-horizontal {
+page-products .padding-horizontal {
   padding: 0px 10px;
+}
+
+page-products .alert-empty-search-bar {
+  color: #747678;
+  text-align: center;
 }
 
 .alert-validation {

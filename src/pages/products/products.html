@@ -12,8 +12,11 @@
     (ionInput)="getProducts($event)"
     debounce = 1500>
   </ion-searchbar>
-
-  <ion-list class="padding-horizontal">
+  
+  <p ion-text class="alert-empty-search-bar" *ngIf="(searchEmpty == true)">Search for prescription drugs<br>and compare prices.</p>
+  
+  <!--<ion-list class="padding-horizontal">-->
+  <ion-list no-padding>
     <a button ion-item item-left (click)="loadProductDetail(product)" *ngFor="let product of searchJson" detail-push>
       <h2>{{product}}</h2>
     </a>

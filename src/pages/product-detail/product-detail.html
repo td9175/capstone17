@@ -13,10 +13,41 @@
 
 <ion-content padding>
 
-    <ion-grid> 
-      <ion-row small>
+    
+    <p ion-text class="alert-no-result" *ngIf="(success == false)">Sorry, no price data was found.</p>
+    <ion-grid *ngIf="(success == true)" no-padding>   
+      <ion-item text-wrap no-padding>
+        <ion-row>
+          <ion-col>
+            <h1 ion-text>{{drug?.data.display}}</h1>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col width-70>
+              <p item-left *ngFor="let store of stores">
+                {{store}}
+              </p>
+            </ion-col>
+            <ion-col width-30>
+              <p item-right *ngFor="let price of prices">
+                ${{price}}
+              <p>
+            </ion-col>
+        </ion-row>
+      </ion-item>
+      <!-- Should we include this disclamour or just say powered by goodrx??-->
+      <!--
+      <ion-row>
+        <ion-col width-100>
+          <p class="text-warning-disclamor" ion-text color="secondary"><strong>About Price Comparison:</strong> Price comparisons may not accuretly reflect local prices; but it does show the 3 lowest cash prices for a given prescription drug from a basket of nationwide pharmacy chains,</p>
+        </ion-col>
+      </ion-row>
+      -->
+      <ion-item no-padding>
+      <ion-row>
         <ion-col>
-          <p ion-text>{{drug?.data.display}}</p>
+          <h2 ion-text>Product Information</h2>
           <p ion-text>
             <br><span class="highlight-secondary">Dosage:</span> {{drug?.data.dosage}}
             <br><span class="highlight-secondary">Form:</span> {{drug?.data.form}}
@@ -24,44 +55,12 @@
           </p>
         </ion-col>
       </ion-row>
-    
-      <ion-row>
-        <ion-col width-100>
-          <hr />
-          <h5>Price Comparison</h5>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-50>
-          <h5 ion-text color="secondary">Pharmacy:</h5>
-        </ion-col>
-         <ion-col width-50>
-           <h5 ion-text color="secondary">Price:</h5>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col width-50>
-            <ion-item item-left *ngFor="let store of stores">
-              <p>{{store}}</p>
-            </ion-item>
-          </ion-col>
-          <ion-col width-50>
-            <ion-item item-left *ngFor="let price of prices">
-              <h3>${{price}}</h3>
-            </ion-item>
-          </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col width-100>
-          <p class="text-warning-disclamor" ion-text color="secondary"><strong>About Price Comparison:</strong> Price comparisons may not accuretly reflect local prices; but it does show the 3 lowest cash prices for a given prescription drug from a basket of nationwide pharmacy chains,</p>
-        </ion-col>
-      </ion-row>
+      </ion-item>
     </ion-grid>
-    
 </ion-content>
 
 
-<!-- Michael's backup code left here incase you needed it again-->
+<!-- Michael's backup code left here incase we need it again-->
 <!--<h1>{{productToGetDetails}}</h1>
     <ion-list>
       <ion-item item-left *ngFor="let price of combinedArray" >

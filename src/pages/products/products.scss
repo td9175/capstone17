@@ -1,3 +1,12 @@
-.padding-horizontal {  
-  padding: 0px 10px; 
+page-products{
+  .padding-horizontal {  
+    padding: 0px 10px; 
+  }
+
+  .alert-empty-search-bar{
+    color: map-get($colors, dark);
+    text-align: center;
+  }
 }
+
+

@@ -31,6 +31,8 @@ export class ProductDetail {
           this.drug=result;
           this.prices=result.data.price_detail.price;
           this.stores=result.data.price_detail.pharmacy;
+          this.success=true;
+          console.log("Success Status: ", this.success);
         } else {
           this.success=false;
           console.log("Success Status: ", this.success);
