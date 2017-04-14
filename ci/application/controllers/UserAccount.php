@@ -10,6 +10,12 @@ require('application/libraries/REST_Controller.php');
 	// RESTful API for User Account functions
 	class UserAccount extends REST_Controller {
 
+		// Load the model for every call
+    function __construct() {
+      parent::__construct();
+      $this->load->model('UserAccountModel');
+    }
+
 		// Register a user account
 		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/registration
 		// POST variables to send: email, password, first_name, last_name
@@ -113,7 +119,7 @@ require('application/libraries/REST_Controller.php');
 			// Get info for every user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/users
     	function users_get() {
-        $this->load->model('UserAccountModel');
+        // $this->load->model('UserAccountModel');
 
   			$users = $this->UserAccountModel->get_users();
 
