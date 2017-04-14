@@ -21,9 +21,6 @@ require('application/libraries/REST_Controller.php');
 		// POST variables to send: email, password, first_name, last_name
     function registration_post(){
 
-      // Load the model
-      $this->load->model('UserAccountModel');
-
       // Get user information for registration
       $email = $this->post('email');
       $password = $this->post('password');
@@ -56,9 +53,6 @@ require('application/libraries/REST_Controller.php');
 
       // Set the initial logged_in flag to FALSE
       $logged_in = "FALSE";
-
-      // Load the model
-      $this->load->model('UserAccountModel');
 
       // Get user information for login
       $email = $this->post('email');
@@ -101,7 +95,6 @@ require('application/libraries/REST_Controller.php');
 		// Get all user info for the logged in account
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
     function user_get() {
-    	$this->load->model('UserAccountModel');
 
 			if(!$_SESSION){
 				$this->response(NULL, 400);
@@ -119,8 +112,6 @@ require('application/libraries/REST_Controller.php');
 			// Get info for every user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/users
     	function users_get() {
-        // $this->load->model('UserAccountModel');
-
   			$users = $this->UserAccountModel->get_users();
 
   			if($users){
@@ -135,7 +126,6 @@ require('application/libraries/REST_Controller.php');
 			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
 			// POST variable to send: email
 			function disable_user_post() {
-				$this->load->model('UserAccountModel');
 
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
@@ -154,7 +144,6 @@ require('application/libraries/REST_Controller.php');
 			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
 			// POST variable to send: email
 			function enable_user_post() {
-				$this->load->model('UserAccountModel');
 
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
@@ -172,7 +161,6 @@ require('application/libraries/REST_Controller.php');
 			// Get all enabled user accounts
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enabled_users
 			function enabled_users_get() {
-				$this->load->model('UserAccountModel');
 
 				$response = $this->UserAccountModel->get_enabled_users();
 
@@ -186,7 +174,6 @@ require('application/libraries/REST_Controller.php');
 			// Get all disabled user accounts
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disabled_users
 			function disabled_users_get() {
-				$this->load->model('UserAccountModel');
 
 				$response = $this->UserAccountModel->get_disabled_users();
 
@@ -200,6 +187,7 @@ require('application/libraries/REST_Controller.php');
 			// Logout a user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/logout
 			function logout_get(){
+
 				// Initialize the session
 				session_start();
 
