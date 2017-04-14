@@ -92,22 +92,41 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
-		// Get all user info for the logged in account
+		// // Get all user info for the logged in account
+		// // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
+    // function user_get() {
+		//
+		// 	if(!$_SESSION){
+		// 		$this->response(NULL, 400);
+		// 	}
+		//
+		// 	$user = $this->UserAccountModel->get_user($_SESSION['email']);
+		//
+		// 	if($user){
+		// 		$this->response($user, 200); // 200 Success
+		// 	} else{
+		// 		$this->response(NULL, 404);
+		// 	}
+  	// }
+
+		// Get all user info for an account
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
-    function user_get() {
-
-			if(!$_SESSION){
-				$this->response(NULL, 400);
-			}
-
-			$user = $this->UserAccountModel->get_user($_SESSION['email']);
+		function user_get() {
+			// Check for the email variable
+			if(!$this->get('email')){
+	      $this->response(NULL, 400);
+	    }
+			// URL decode email variable
+			$decoded_email = urldecode($this->get('email'));
+			// Call the model function using the email
+			$user = $this->UserAccountModel->get_user($decoded_email);
 
 			if($user){
 				$this->response($user, 200); // 200 Success
 			} else{
 				$this->response(NULL, 404);
 			}
-  	}
+		}
 
 			// Get info for every user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/users
