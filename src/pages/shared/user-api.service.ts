@@ -42,14 +42,7 @@ export class UserApi {
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
     }
 
-    // this is for testing purposes, working json file stored on firebase.
+    
+    // Firebase test data:
     // private baseUrl = 'https://capstone17-umbhealth-i2.firebaseio.com';
-    /*
-    getUserData(){
-        return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/0`)
-                .subscribe(res => resolve(res.json()));
-        });
-    }
-*/
 } //end export class

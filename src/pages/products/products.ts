@@ -48,14 +48,6 @@ export class ProductsPage {
     );
   }
 
-  /*
-
-
-
-
-
-  */
-
   loadProductDetail(product){
     this.userApi.drugToGetDetails = product;
     this.navCtrl.push(ProductDetail);

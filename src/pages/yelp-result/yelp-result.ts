@@ -16,7 +16,6 @@ export class YelpResultPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster) { 
     this.result = navParams.get('result');
-
   }
 
 
@@ -27,8 +26,6 @@ export class YelpResultPage {
           console.log('categories load: ', this.cats);
   }
     
-  
-
   goBack() {
     this.navCtrl.pop();
   }

@@ -4,12 +4,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserApi } from './../shared/user-api.service';
 
-/*
-  Generated class for the ProductDetail page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-product-detail',
   templateUrl: 'product-detail.html'
@@ -18,10 +12,8 @@ export class ProductDetail {
 
   public prices: any;
   public stores: any;
-  public fullData: any;
+  public success: any;
   public productToGetDetails: any;
-  public combinedArray: any;
-  public index: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
 
@@ -30,24 +22,26 @@ export class ProductDetail {
     this.productToGetDetails = this.userApi.drugToGetDetails;
     this.loadJsonFiles();
   }
-
+  
   loadJsonFiles(){
     this.userApi.getProductPrices().subscribe(
       result => {
-        this.prices=result.data.price_detail.price;
-        this.stores=result.data.price_detail.pharmacy;
+        if (result.success === true) {
+          this.prices=result.data.price_detail.price;
+          this.stores=result.data.price_detail.pharmacy;
+        } else {
+          this.success=false;
+          console.log("cant get session info:", this.success);
+        }
+
       },
-      err =>{
-        console.error("Error : "+err);
-      } ,
-      () => {
-        console.log('getData completed');
-      }
+
+      err => { console.error("Error : "+err);} ,
+      () => { console.log('Price Data: ', this.prices, 'Store Data: ', this.stores);} ,
+    
     );
-
-    //this.makeCombinedArray();
   }
-
+  
   goBack() {
     this.navCtrl.pop();
   }
