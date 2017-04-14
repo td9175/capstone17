@@ -17,7 +17,7 @@ require('application/libraries/REST_Controller.php');
 
     // Gets the amount to reimburse from parsed OCR data and handles the reimbursement transaction
     // Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
-    // POST variables: account_number, amount
+    // POST variables: receipt_id, amount, account_number
     function reimburse_account_post(){
 
       // Get the input for amount to reimburse
