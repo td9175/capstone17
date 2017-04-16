@@ -14,7 +14,6 @@ require('application/libraries/REST_Controller.php');
     function __construct() {
       parent::__construct();
       $this->load->model('UserAccountModel');
-			require('Authentication.php');
     }
 
 		// Register a user account
@@ -113,6 +112,7 @@ require('application/libraries/REST_Controller.php');
 		// Get all user info for an account
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
 		function user_get() {
+			is_logged_in();
 			// Check for the email variable
 			if(!$this->get('email')){
 	      $this->response(NULL, 400);
@@ -217,7 +217,7 @@ require('application/libraries/REST_Controller.php');
 
 			// Checks if a user is logged in or not
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/is_authenticated
-			function is_logged_in_get() {
+			function is_logged_in() {
 				$response = "Please log in.";
 				if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
 					$email = $_SESSION['email'];
