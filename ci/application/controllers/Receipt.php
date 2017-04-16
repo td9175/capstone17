@@ -152,7 +152,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 			//$email = $_SESSION['email'];
-			$email = "umbcapstone17%40gmail.com";
+			$email = "umbcapstone17@gmail.com";
 			echo "Email: ". $email; 
 
 
@@ -164,7 +164,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$f_name = $date;
 			$f_name .= $rand;
 
-			$config['upload_path'] = '/var/www/html/ci/application/receipts/';
+			$config['upload_path'] = '/var/www/html/ci/receipts/';
 			$config['upload_path'] .= $email;
 
 			//need to change filename to be unique to the user
