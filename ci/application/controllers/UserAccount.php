@@ -14,6 +14,9 @@ require('application/libraries/REST_Controller.php');
     function __construct() {
       parent::__construct();
       $this->load->model('UserAccountModel');
+			if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] != TRUE) {
+				$this->response("Please log in.", 400); // 400 Bad request
+			}
     }
 
 		// Register a user account
