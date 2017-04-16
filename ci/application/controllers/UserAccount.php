@@ -92,6 +92,18 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
+		// Checks if a user is logged in or not
+		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/is_authenticated
+		static function is_logged_in() {
+			$response = "Please log in.";
+			if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
+				$email = $_SESSION['email'];
+				$response = "$email logged in.";
+			}
+			// Send back a response
+			$this->response($response);
+		}
+
 		// // Get all user info for the logged in account
 		// // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
     function session_user_get() {
@@ -112,7 +124,7 @@ require('application/libraries/REST_Controller.php');
 		// Get all user info for an account
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
 		function user_get() {
-			UserAccount.is_logged_in();
+			is_logged_in();
 			// Check for the email variable
 			if(!$this->get('email')){
 	      $this->response(NULL, 400);
@@ -213,18 +225,6 @@ require('application/libraries/REST_Controller.php');
 				session_destroy();
 				// Send back a response
 				$this->response("Success: logged out.", 200); // 200 Success
-			}
-
-			// Checks if a user is logged in or not
-			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/is_authenticated
-			static function is_logged_in() {
-				$response = "Please log in.";
-				if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
-					$email = $_SESSION['email'];
-					$response = "$email logged in.";
-				}
-				// Send back a response
-				$this->response($response);
 			}
 
 
