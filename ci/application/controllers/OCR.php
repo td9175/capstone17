@@ -1,5 +1,10 @@
 <?php
 //defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+		@Author: Sami Holder
+		12bit - UMB Bank Health Spending App
+*/
 header("Access-Control-Allow-Origin: *");
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
@@ -10,11 +15,11 @@ class Ocr extends CI_Controller {
 	public function ocr_request() {
 
 			//imagePath should be the email/name of the file
-			$imagePath = $_SESSION['path'];
+			//$imagePath = $_SESSION['path'];
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
-			$path = 'https://capstone.td9175.com/ci/application/receipts/';
-			$path .= $imagePath;
+			$path = 'https://capstone.td9175.com/ci/application/receipts/walrmart1.jpg';
+			//$path .= $imagePath;
 
 			$request->setConfig(array(
 				'ssl_verify_peer'   => FALSE,
@@ -40,13 +45,17 @@ class Ocr extends CI_Controller {
 			$request->setMethod(HTTP_Request2::METHOD_POST);
 
 
-			// Request body
 			$newurl = "{'url': '";
 			$newurl .= $path;
 			$newurl .= "'}";
 			echo "url: "  . $newurl;
 			echo "<br><Br>";
+		
+			
+			
+			
 			$request->setBody($newurl);
+			
 
 			try {
 				$response = $request->send();
