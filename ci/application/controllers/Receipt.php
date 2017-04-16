@@ -152,7 +152,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 			//$email = $_SESSION['email'];
-			$email = "umbcapstone17@gmail.com";
+			$email = "umbcapstone17%40gmail.com";
 			echo "Email: ". $email; 
 
 
