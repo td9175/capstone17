@@ -60,7 +60,7 @@ require('application/libraries/REST_Controller.php');
 
       // Send the user information to the model to check for the email
       $login_response = $this->UserAccountModel->post_login($email);
-
+			var_dump($login_response);
 			if ($login_response['is_enabled'] == 0) {
 				$msg = "Account is disabled.";
 				$this->response($msg, 403); // 403 Forbidden
@@ -105,7 +105,7 @@ require('application/libraries/REST_Controller.php');
 		}
 
 		// // Get all user info for the logged in account
-		// // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
+		// // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/session_user
     function session_user_get() {
 
 			if(!$_SESSION){
