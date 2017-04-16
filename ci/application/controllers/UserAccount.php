@@ -216,7 +216,7 @@ require('application/libraries/REST_Controller.php');
 
 			// Checks if a user is logged in or not
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/is_authenticated
-			function is_authenticated() {
+			function is_logged_in_get() {
 				$response = "Please log in.";
 				if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
 					$email = $_SESSION['email'];
