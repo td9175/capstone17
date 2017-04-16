@@ -219,7 +219,8 @@ require('application/libraries/REST_Controller.php');
 			function is_authenticated() {
 				$response = "Please log in.";
 				if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
-					$response = "$_SESSION['email'] logged in.";
+					$email = $_SESSION['email'];
+					$response = "$email logged in.";
 				}
 				// Send back a response
 				$this->response($response);
