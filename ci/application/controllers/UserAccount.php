@@ -15,7 +15,7 @@ require('application/libraries/REST_Controller.php');
       parent::__construct();
       $this->load->model('UserAccountModel');
 			if (is_logged_in() == FALSE) {
-				$this->response("Please log in.");
+				$this->response("Please log in.", 400); // 400 Bad request
 			}
     }
 
