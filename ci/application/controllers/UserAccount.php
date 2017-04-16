@@ -50,45 +50,35 @@ require('application/libraries/REST_Controller.php');
 		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/login
 		// POST variables to send: email, password
     function login_post(){
-
-      // Set the initial logged_in flag to FALSE
-      $logged_in = "FALSE";
-
+			// Set generic login messages
+			$success_msg = "Logging in...";
+			$error_msg = "Incorrect email or password.";
+			$disabled_msg = "Account is disabled.";
       // Get user information for login
       $email = $this->post('email');
       $password = $this->post('password');
-
       // Send the user information to the model to check for the email
       $login_response = $this->UserAccountModel->post_login($email);
-			var_dump($login_response);
-			if ($login_response['is_enabled'] == 0) {
-				$msg = "Account is disabled.";
-				$this->response($msg, 403); // 403 Forbidden
-			}
-
-			if (strcmp($login_response['hash_pass'], $password) == 0){ // The strings are a match.
-        // Email not found, send back a response with $error_message, 200 Success
-        $this->response($error_message, 200);
-      } elseif (password_verify($password, $login_response['hash_pass'])){
-          // Email and password match
-          // Set the login_message flag to the email address
-          $logged_in = $email;
-
+			// Check for errors
+			if (isset($login_response['error']) && !empty($login_response['error'])) {
+				$this->response($error_msg, 400); // 400 Bad request
+				// Check if account is enabled
+			} elseif (isset($login_response['is_enabled']) && $login_response['is_enabled'] == 0) {
+				$this->response($disabled_msg, 403); // 403 Forbidden
+				// Email and password match
+			} elseif (password_verify($password, $login_response['hash_pass'])){
           // Set the session variable
+					$_SESSION['logged_in'] = TRUE;
           $_SESSION['email'] = $email;
-
 					// If the account has admin priviledge set the admin session variable
 					if ($login_response['is_admin']) {
-						$_SESSION['admin'] = TRUE;
+						$_SESSION['is_admin'] = TRUE;
 					}
-
-          // Send back a response with $logged_in = TRUE, 200 Success
-          $this->response($logged_in, 200);
-
+          // Send back a response with $success_msg, 200 Success
+          $this->response($success_msg, 200);
         } else {
-          // Password does not match, send back a response with $error_message, 200 Success
-					$error_message = "Incorrect email or password.";
-          $this->response($error_message, 200);
+          // Password does not match, send back a response with $error_message, 400 Bad request
+          $this->response($error_msg, 400);
       }
     }
 
