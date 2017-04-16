@@ -206,18 +206,23 @@ require('application/libraries/REST_Controller.php');
 			// Logout a user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/logout
 			function logout_get(){
-
-				// Initialize the session
-				session_start();
-
 				// Unset all of the session variables
 				$_SESSION = array();
-
 				// Destroy the session
 				session_destroy();
-
 				// Send back a response
 				$this->response("Success: logged out.", 200); // 200 Success
+			}
+
+			// Checks if a user is logged in or not
+			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/is_authenticated
+			function is_authenticated() {
+				$response = "Please log in.";
+				if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
+					$response = "$_SESSION['email'] logged in.";
+				}
+				// Send back a response
+				$this->response($response);
 			}
 
 
