@@ -18,7 +18,7 @@ class Ocr extends CI_Controller {
 			//$imagePath = $_SESSION['path'];
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
-			$path = 'https://capstone.td9175.com/ci/application/receipts/walrmart1.jpg';
+			$path = 'https://capstone.td9175.com/ci/application/receipts/umbcapstone17@gmail.com/16-04-170Rs.jpg';
 			//$path .= $imagePath;
 
 			$request->setConfig(array(
