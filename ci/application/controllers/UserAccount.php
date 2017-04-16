@@ -94,20 +94,20 @@ require('application/libraries/REST_Controller.php');
 
 		// // Get all user info for the logged in account
 		// // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
-    // function user_get() {
-		//
-		// 	if(!$_SESSION){
-		// 		$this->response(NULL, 400);
-		// 	}
-		//
-		// 	$user = $this->UserAccountModel->get_user($_SESSION['email']);
-		//
-		// 	if($user){
-		// 		$this->response($user, 200); // 200 Success
-		// 	} else{
-		// 		$this->response(NULL, 404);
-		// 	}
-  	// }
+    function session_user_get() {
+
+			if(!$_SESSION){
+				$this->response(NULL, 400);
+			}
+
+			$user = $this->UserAccountModel->get_user($_SESSION['email']);
+
+			if($user){
+				$this->response($user, 200); // 200 Success
+			} else{
+				$this->response(NULL, 404);
+			}
+  	}
 
 		// Get all user info for an account
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
