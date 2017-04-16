@@ -23,20 +23,18 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			echo "Email: ". $email; 
 
 
-
+			//create the unique file name
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
 			echo "<br>Date:" . $date;
-
 			$f_name = $date;
 			$f_name .= $rand;
-
-			$config['upload_path'] = '/var/www/html/ci/receipts/';
-			$config['upload_path'] .= $email;
-
-			//need to change filename to be unique to the user
+			//set file name 
 			$config['file_name'] = $f_name;
 
+			//set upload path to unique email
+			$config['upload_path'] = '/var/www/html/ci/application/receipts/';
+			$config['upload_path'] .= $email;
 
 			echo "Upload path: " . $config['upload_path'];
 			echo "<br><br>";
