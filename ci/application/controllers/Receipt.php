@@ -17,7 +17,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		function upload_it() {
 		
 		
-			$logged_in = is_logged_in();
+			//$logged_in = is_logged_in();
 			$this->load->helper('form');
 			
 			$this->load->helper('url');
