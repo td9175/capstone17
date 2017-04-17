@@ -15,15 +15,20 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 		function upload_it() {
+		
+		
+			$person = is_logged_in();
+			echo "Person: " . $person;
 			//load the helper
 			$this->load->helper('form');
+			
 			$this->load->helper('url');
 			$this->load->helper('string');
 			$this->load->model('ReceiptModel');
 
 
 
-			//$email = $_SESSION['email'];
+			$email = $_SESSION['email'];
 			$email = "umbcapstone17@gmail.com";
 			echo "Email: ". $email; 
 
