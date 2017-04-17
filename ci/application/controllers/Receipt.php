@@ -72,24 +72,13 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$data['upload_data'] = $this->upload->data('full_path');
 
 				//insert into DB
-				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
-	
-				$parts = pathinfo($this->upload->do_upload('userfile'));
-				echo "<BR>File name: ". $parts;
-				$ext = '';
-				switch($parts['extension']) {
-					case "jpg":
-						 $ext = "jpg";
-					case "jpeg":
-							$ext = "jpeg";
-				}
-				echo "<Br>Extension:" . $ext;
+
 				$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
 				$path .= $ext;
 				$_SESSION['path'] = $path;
 				echo "<Br>Path: " . $path;
-				//redirect('OCR/ocr_request');
+				redirect('OCR/ocr_request');
 			}
 
 			// load the view/upload.php
