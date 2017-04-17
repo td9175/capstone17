@@ -26,22 +26,19 @@ export class AddReceiptPage {
   }
   
     takePicture(){
-    var options = {
-      quality: 50,
-      destinationType: 0,
-      sourceType: 1, //0:Photo Library, 1=camera, 2 = Saved photo album
-      encodingType: 1 //0=jpg 1=png
+      var options = {
+        quality: 50,
+        destinationType: 0,
+        sourceType: 1, //0:Photo Library, 1=camera, 2 = Saved photo album
+        encodingType: 0 //0=jpg 1=png
+      }
+
+      Camera.getPicture(options).then((imageData) => {
+        let base64Image = 'data:image/png;base64,' + imageData;
+        console.log("here's your sign")
+        console.log(base64Image)
+      }, (err) => {
+        console.log("Shit")
+      });
     }
-
-    Camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/png;base64,' + imageData;
-      console.log("here's your sign")
-      console.log(base64Image)
-    }, (err) => {
-      console.log("Shit")
-    });
-  }
-
-
-
 }
