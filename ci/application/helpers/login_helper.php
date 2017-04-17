@@ -6,6 +6,7 @@ function is_logged_in() {
   } else {
     //die("Please log in.");
     echo "not logged in"; 
+    redirect(UserAccount/login);
   }
 
 }

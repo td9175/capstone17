@@ -72,7 +72,10 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$data['upload_data'] = $this->upload->data('full_path');
 
 				//insert into DB
+				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
+	
 
+			
 				$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
 				$path .= '.jpg';
