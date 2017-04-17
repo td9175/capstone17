@@ -75,11 +75,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 	
 				$parts = pathinfo($f_name);
+				$ext = '';
 				switch($parts['extension']) {
 					case "jpg":
-						echo $ext = "jpg";
+						 $ext = "jpg";
 					case "jpeg":
-						echo $ext = "jpeg";
+							$ext = "jpeg";
 				}
 				
 				$path = 'umbcapstone17%40gmail.com/';
