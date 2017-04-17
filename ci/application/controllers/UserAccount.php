@@ -78,9 +78,9 @@ require('application/libraries/REST_Controller.php');
 					}
 					$session_name = session_name();
 					$session_id = session_id();
-					$session_path = "\\";
+					$session_path = "\ ";
 					$session_domain = "capstone.td9175.com";
-					$session_data = array('name' => $session_name, 'value' => $session_id, 'path' => '\\', 'domain' => $session_domain);
+					$session_data = array($session_name => $session_id, 'path' => $session_path, 'domain' => $session_domain);
           // Send back a response with $success_msg, 200 Success
           $this->response($session_data, 200);
         } else {
