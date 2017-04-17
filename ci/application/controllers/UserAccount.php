@@ -35,23 +35,21 @@ require('application/libraries/REST_Controller.php');
       // Send the user information to the model and try to register the user account
       $registration_response = $this->UserAccountModel->post_registration($email, $hash_pass, $first_name, $last_name);
 
-      // If registration_response has data respond with data and success, or 404
-      if($registration_response){
-        // Create the user's folder to store receipt images
+      // Send back success or error response
+      if(isset($registration_response['error'])  && !empty($registration_response['error'])){
+				$this->response($registration_response, 400); // Bad request
+      } elseif (isset($registration_response['success']) && !empty($registration_response['success'])) {
+				// Create the user's folder to store receipt images
         mkdir("/var/www/html/ci/application/receipts/$email", 0777, TRUE);
-        $this->response($registration_response, 400); // 200 Success
-      } else {
-        $this->response(NULL, 404); // 404 Not found
-      }
-
+        $this->response($registration_response, 200); // 200 Success
+      } 
     }
 
     // Login a user
 		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/login
 		// POST variables to send: email, password
     function login_post(){
-			// Set generic login messages
-			$success_msg = "Logging in...";
+			// Set generic error messages
 			$error_msg = "Incorrect email or password.";
 			$disabled_msg = "Account is disabled.";
       // Get user information for login
@@ -65,13 +63,11 @@ require('application/libraries/REST_Controller.php');
 				// Check if account is enabled
 			} elseif (isset($login_response['is_enabled']) && $login_response['is_enabled'] == 0) {
 				$this->response($disabled_msg, 403); // 403 Forbidden
-				// Email and password match
+				// Check if email and password match
 			} elseif (password_verify($password, $login_response['hash_pass'])){
           // Set the session variable
 					$_SESSION['logged_in'] = TRUE;
           $_SESSION['email'] = $email;
-
-
 					// If the account has admin priviledge set the admin session variable
 					if ($login_response['is_admin']) {
 						$_SESSION['is_admin'] = TRUE;
@@ -80,8 +76,8 @@ require('application/libraries/REST_Controller.php');
 					$session_id = session_id();
 					$session_path = '/';
 					$session_domain = "capstone.td9175.com";
-					$session_data = array($session_name => $session_id, 'path' => '/', 'domain' => $session_domain);
-          // Send back a response with $success_msg, 200 Success
+					$session_data = array($session_name => $session_id, 'path' => $session_path, 'domain' => $session_domain);
+          // Send back a response with session data, 200 Success
           $this->response($session_data, 200);
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
