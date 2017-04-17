@@ -74,7 +74,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 	
-				$parts = pathinfo($this->upload->do_upload('userfile');
+				$parts = pathinfo($this->upload->do_upload('userfile'));
 				echo "<BR>File name: ". $parts;
 				$ext = '';
 				switch($parts['extension']) {
