@@ -82,7 +82,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					case "jpeg":
 							$ext = "jpeg";
 				}
-				
+				echo "Extension:" . $ext;
 				$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
 				$path .= $ext;
