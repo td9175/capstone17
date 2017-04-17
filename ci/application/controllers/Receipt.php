@@ -74,7 +74,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 	
-				$parts = pathinfo($f_name);
+				$parts = pathinfo($this->upload->do_upload('userfile');
+				echo "<BR>File name: ". $parts;
 				$ext = '';
 				switch($parts['extension']) {
 					case "jpg":
@@ -82,12 +83,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					case "jpeg":
 							$ext = "jpeg";
 				}
-				echo "Extension:" . $ext;
+				echo "<Br>Extension:" . $ext;
 				$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
 				$path .= $ext;
 				$_SESSION['path'] = $path;
-				echo "Path: " . $path;
+				echo "<Br>Path: " . $path;
 				//redirect('OCR/ocr_request');
 			}
 
