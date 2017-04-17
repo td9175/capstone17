@@ -70,12 +70,15 @@ require('application/libraries/REST_Controller.php');
           // Set the session variable
 					$_SESSION['logged_in'] = TRUE;
           $_SESSION['email'] = $email;
+
+
 					// If the account has admin priviledge set the admin session variable
 					if ($login_response['is_admin']) {
 						$_SESSION['is_admin'] = TRUE;
 					}
+					$session_info = session_get_cookie_params();
           // Send back a response with $success_msg, 200 Success
-          $this->response($success_msg, 200);
+          $this->response($session_info, 200);
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
           $this->response($error_msg, 400);
@@ -87,11 +90,7 @@ require('application/libraries/REST_Controller.php');
     function session_user_get() {
 			// Check if a user is logged in
 			is_logged_in();
-
-			if(!$_SESSION){
-				$this->response(NULL, 400);
-			}
-
+			// Get a user from the model by email
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);
 
 			if($user){
@@ -125,6 +124,8 @@ require('application/libraries/REST_Controller.php');
 			// Get info for every user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/users
     	function users_get() {
+				// Check if a user is logged in
+				is_logged_in();
   			$users = $this->UserAccountModel->get_users();
 
   			if($users){
@@ -139,7 +140,8 @@ require('application/libraries/REST_Controller.php');
 			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/disable_user
 			// POST variable to send: email
 			function disable_user_post() {
-
+				// Check if a user is logged in
+				is_logged_in();
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
 				}
@@ -157,7 +159,8 @@ require('application/libraries/REST_Controller.php');
 			// Make a POST request to https://capstone.td9175.com/ci/index.php/UserAccount/enable_user
 			// POST variable to send: email
 			function enable_user_post() {
-
+				// Check if a user is logged in
+				is_logged_in();
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
 				}
@@ -174,7 +177,8 @@ require('application/libraries/REST_Controller.php');
 			// Get all enabled user accounts
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enabled_users
 			function enabled_users_get() {
-
+				// Check if a user is logged in
+				is_logged_in();
 				$response = $this->UserAccountModel->get_enabled_users();
 
 				if($response){
@@ -187,7 +191,8 @@ require('application/libraries/REST_Controller.php');
 			// Get all disabled user accounts
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disabled_users
 			function disabled_users_get() {
-
+				// Check if a user is logged in
+				is_logged_in();
 				$response = $this->UserAccountModel->get_disabled_users();
 
 				if($response){
