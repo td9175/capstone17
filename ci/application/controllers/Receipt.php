@@ -28,7 +28,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 
-			$email = $_SESSION['email'];
 			$email = "umbcapstone17@gmail.com";
 			echo "Email: ". $email; 
 
@@ -52,6 +51,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		// set the filter image types
 			$config['allowed_types'] = 'jpg';
+			
 
 			//load the upload library
 			$this->load->library('upload', $config);
@@ -74,10 +74,15 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 	
-
+				$parts = pathinfo($f_name);
+				switch($parts['extension']) {
+					case "jpg":
+						echo $ext = "jpg";
+					case "jpeg":
+						echo $ext = "jpeg";
 				$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
-				$path .= '.jpg';
+				$path .= $ext;
 				$_SESSION['path'] = $path;
 				echo "Path: " . $path;
 				redirect('OCR/ocr_request');
