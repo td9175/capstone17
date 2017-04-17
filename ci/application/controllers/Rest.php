@@ -5,6 +5,10 @@ require('application/libraries/REST_Controller.php');
 	class Rest extends REST_Controller {
 
 		function user_get() {
+		
+		// RESTful API to register a user
+			// Author: Sami Holder
+		
 		//index.php/rest/user/id/1/format/json
 		//"id/1" is the parameter
 
@@ -30,6 +34,10 @@ require('application/libraries/REST_Controller.php');
   	}
 
     	function users_get() {
+    	
+    	// RESTful API to register a user
+			// Author: Sami Holder
+			
         // respond with information about several users
         // index.php/rest/users
 
@@ -132,6 +140,8 @@ require('application/libraries/REST_Controller.php');
 
 
       function hsa_get($email) {
+      // RESTful API to register a user
+			// Author: Sami Holder
 
     	$this->load->model('HealthAccountModel');
 
@@ -157,6 +167,9 @@ require('application/libraries/REST_Controller.php');
 
       }
       function fsa_get($email) {
+      // RESTful API to register a user
+			// Author: Sami Holder 
+			
       	$this->load->model('HealthAccountModel');
 
 			if(!$this->get('email'))
@@ -182,6 +195,8 @@ require('application/libraries/REST_Controller.php');
 
 	function upload_get() {
 	//load the helper library
+	// RESTful API to register a user
+			// Author: Sami Holder
 		$this->load->helper('form');
     	$this->load->helper('url');
 		//Set the message for the first time
@@ -198,6 +213,8 @@ require('application/libraries/REST_Controller.php');
     function receipt_get() {
 		//index.php/rest/receipt/id/1/format/json
 		//"id/1" is the parameter
+		// RESTful API to register a user
+			// Author: Zach Hill
 
     	$this->load->model('ReceiptModel');
 
@@ -220,6 +237,9 @@ require('application/libraries/REST_Controller.php');
   	}
 
     function receipts_get() {
+    // RESTful API to register a user
+			// Author: Zach Hill
+			
         // respond with information about several users
         // index.php/rest/receipts
 
