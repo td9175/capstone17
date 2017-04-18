@@ -35,7 +35,7 @@ class Drugs extends CI_Controller {
       $url = "https://api.goodrx.com/drug-search?";
 
       // Build the query string
-      $queryString = "query=" . $searchQuery . "&api_key=" . $apiKey;
+      $queryString = "query=" . urldecode($searchQuery) . "&api_key=" . $apiKey;
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
@@ -72,7 +72,7 @@ class Drugs extends CI_Controller {
       $url = "https://api.goodrx.com/compare-price?";
 
       // Build the query string
-      $queryString = "name=" . $name . "&api_key=" . $apiKey;
+      $queryString = "name=" . urldecode($name) . "&api_key=" . $apiKey;
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
