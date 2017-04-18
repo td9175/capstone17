@@ -20,21 +20,15 @@ require('application/libraries/REST_Controller.php');
 		// Make POST requests to https://capstone.td9175.com/ci/index.php/UserAccount/registration
 		// POST variables to send: email, password, first_name, last_name
     function registration_post(){
-
       // Get user information for registration
       $email = $this->post('email');
       $password = $this->post('password');
       $first_name = $this->post('first_name');
       $last_name = $this->post('last_name');
-
       // Hash the password for security
-      // Beware that DEFAULT may change over time, so you would want to prepare
-      // By allowing your storage to expand past 60 characters (255 would be good)
       $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-
       // Send the user information to the model and try to register the user account
       $registration_response = $this->UserAccountModel->post_registration($email, $hash_pass, $first_name, $last_name);
-
       // Send back success or error response
       if(isset($registration_response['error'])  && !empty($registration_response['error'])){
 				$this->response($registration_response, 400); // Bad request
@@ -42,7 +36,7 @@ require('application/libraries/REST_Controller.php');
 				// Create the user's folder to store receipt images
         mkdir("/var/www/html/ci/application/receipts/$email", 0777, TRUE);
         $this->response($registration_response, 200); // 200 Success
-      } 
+      }
     }
 
     // Login a user
@@ -85,8 +79,8 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
-		// // Get all user info for the logged in account
-		// // Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/session_user
+		// Get all user info for the logged in account
+		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/session_user
     function session_user_get() {
 			// Check if a user is logged in
 			is_logged_in();
