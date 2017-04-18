@@ -452,7 +452,10 @@ class RegexOCR extends REST_Controller {
   preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
   // var_dump();
 
-  $match = $matches[1];
+  $yPosition = $matches[1];
+
+  preg_match_all('/$yPosition.*?text":\s*"(.*?)"/i', $string, $matches);
+
   foreach ($match as $line) {
     echo "$line \n";
   }
