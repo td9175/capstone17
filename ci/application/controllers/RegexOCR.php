@@ -454,21 +454,27 @@ class RegexOCR extends REST_Controller {
 
   $yPosition = $matches[1];
 
-  $regex = '/'. $yPosition . '/ixU';
+
 
   echo "$regex \n\n";
 
-  preg_match_all($regex, $string, $matches);
-
-  $words = $matches[1];
-
-  var_dump($matches[1]);
-
-  echo "\n\n";
-
-  foreach ($words as $line) {
-    echo "$line \n";
+  foreach ($yPosition as $position) {
+    $regex = '/'. $positon . '/ixU';
+    preg_match_all($regex, $string, $matches);
+    var_dump($matches);
   }
+
+
+  // 
+  // $words = $matches[1];
+  //
+  // var_dump($matches[1]);
+  //
+  // echo "\n\n";
+  //
+  // foreach ($words as $line) {
+  //   echo "$line \n";
+  // }
 
 
   }
