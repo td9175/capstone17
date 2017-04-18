@@ -62,10 +62,16 @@ class Ocr extends CI_Controller {
 				//echo $response->getBody();
 				$newanswer = $response->getBody();
 				echo "<br><Br>";
-				json_encode($newanswer);
-				echo "New: " . $newanswer;
+				
+				echo "Trying this!<br><br>";
+				
+				json_decode($newanswer, true);
+				foreach($json['boundingBox']['words'] as $item) {
+    				print $item['text'];
+    				print ' - ';
 
-
+    				print '<br>';
+    		}
 
 
 
@@ -82,6 +88,7 @@ class Ocr extends CI_Controller {
 						echo "<br>";
 					}
 			}
+			
 
 
 
@@ -92,6 +99,11 @@ class Ocr extends CI_Controller {
 
 		}
 
+
+
+	
+	
+	}
 
 	}
 
