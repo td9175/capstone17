@@ -63,17 +63,7 @@ class Ocr extends CI_Controller {
 				$newanswer = $response->getBody();
 				echo "<br><Br>";
 				
-				echo "Trying this!<br><br>";
-				
-				$json = json_decode($newanswer, true);
-				foreach($json['regions']['lines'] as $item) {
-    				print $item['text'];
-    				print ' - ';
-
-    				print '<br>';
-    		}
-
-
+		
 
 			   $jsonIterator = new RecursiveIteratorIterator(
 			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
