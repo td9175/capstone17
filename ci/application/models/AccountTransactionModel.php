@@ -26,8 +26,7 @@
 					);
 				}
 			} else {
-				// Error
-				$data = "Error: could not retrieve transaction history.";
+				$data = "No HSA transaction history exists for $email.";
 			}
 			// Pass back the data
 			return $data;
@@ -53,8 +52,7 @@
 					);
 				}
 			} else {
-				// Error
-				$data = "Error: could not retrieve transaction history.";
+				$data = "No FSA transaction history exists for $email.";
 			}
 			// Pass back the data
 			return $data;

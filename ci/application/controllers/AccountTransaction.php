@@ -23,12 +23,8 @@ require('application/libraries/REST_Controller.php');
 			$decoded_email = urldecode($this->get('email'));
 			// Call the transaction_history function in the model
 			$response = $this->AccountTransactionModel->get_hsa_transaction_history($decoded_email);
-			// Verify there is something, and respond with the JSON
-			if($response) {
-				$this->response($response, 200);
-			} else {
-				$this->response(NULL, 404);
-			}
+			// Respond
+			$this->response($response, 200);
 		}
 
 		// RESTful API to get a user's FSA transaction history
@@ -45,12 +41,8 @@ require('application/libraries/REST_Controller.php');
 			$decoded_email = urldecode($this->get('email'));
 			// Call the transaction_history function in the model
 			$response = $this->AccountTransactionModel->get_fsa_transaction_history($decoded_email);
-			// Verify there is something, and respond with the JSON
-			if($response) {
-				$this->response($response, 200);
-			} else {
-				$this->response(NULL, 404);
-			}
+			// Respond
+			$this->response($response, 200);
 		}
 
 		// Get the balance for a user's HSA account
@@ -67,12 +59,8 @@ require('application/libraries/REST_Controller.php');
 			$decoded_email = urldecode($this->get('email'));
 			// Call the transaction_history function in the model
 			$response = $this->AccountTransactionModel->hsa_balance($decoded_email);
-			// Verify there is something, and respond with the JSON
-			if($response) {
-				$this->response($response, 200);
-			} else {
-				$this->response(NULL, 404);
-			}
+			// Respond
+			$this->response($response, 200);
 		}
 
 		// Get the balance for a user's FSA account
@@ -89,12 +77,8 @@ require('application/libraries/REST_Controller.php');
 			$decoded_email = urldecode($this->get('email'));
 			// Call the transaction_history function in the model
 			$response = $this->AccountTransactionModel->fsa_balance($decoded_email);
-			// Verify there is something, and respond with the JSON
-			if($response) {
-				$this->response($response, 200);
-			} else {
-				$this->response(NULL, 404);
-			}
+			// Respond
+			$this->response($response, 200);
 		}
 
 
