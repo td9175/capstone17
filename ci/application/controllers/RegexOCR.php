@@ -9,7 +9,7 @@ require('application/libraries/REST_Controller.php');
 
 class RegexOCR extends REST_Controller {
 
-  function receipt_regex() {
+  function receipt_regex_get() {
       $string = '{
         "language": "en",
         "textAngle": 0,
