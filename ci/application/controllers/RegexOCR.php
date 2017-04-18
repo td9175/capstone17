@@ -450,12 +450,14 @@ class RegexOCR extends REST_Controller {
 ';
 
   preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
-  // var_dump($matches);
-  $i = 0;
-  foreach ($matches[1] as $line) {
-    echo "$line[$i] \n";
-    $i++;
-  }
+  var_dump($matches[1]);
+  // $i = 0;
+  // foreach ($matches[1] as $line) {
+  //   echo "$line[$i] \n";
+  //   $i++;
+  // }
+
+
   }
 
 }
