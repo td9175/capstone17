@@ -7,36 +7,35 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "io.ionic.starter"
-        },
         "cordova-plugin-camera": {
             "CAMERA_USAGE_DESCRIPTION": " ",
             "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
-        }
-    },
-    "dependent_plugins": {
+        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
         }
-    }
+    },
+    "dependent_plugins": {}
 }

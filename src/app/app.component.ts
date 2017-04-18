@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { HttpModule } from '@angular/http';
-import { Camera } from 'ionic-native';
+import { Camera } from '@ionic-native/camera';
 
 // Pages Import 
 // Page1 and Page2 are test and placeholder pages.
@@ -42,7 +42,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, public camera: Camera) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'V2 Test' target in the 'V2 Test' project
+// Prefix header for all source files of the 'umb-health-v02' target in the 'umb-health-v02' project
 //
 
 #ifdef __OBJC__
