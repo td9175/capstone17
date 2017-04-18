@@ -1,6 +1,7 @@
 import { AccountsPage } from './../accounts/accounts';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Camera } from '@ionic-native/camera';
 
 /*
   Generated class for the MyVault page.
@@ -18,7 +19,7 @@ export class MyVaultPage {
 
   filteredReceipts: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera) {
     this.receipts = [
       {
         receiptsId: 1,

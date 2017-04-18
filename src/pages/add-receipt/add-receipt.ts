@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Camera } from 'ionic-native';
+import { Camera } from '@ionic-native/camera';
 
 
 /*
@@ -15,7 +15,7 @@ import { Camera } from 'ionic-native';
 })
 export class AddReceiptPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddReceiptPage');
@@ -25,16 +25,17 @@ export class AddReceiptPage {
     this.navCtrl.pop();
   }
   
-    takePicture(){
-      var options = {
+    image_fire(){
+      const options = {
         quality: 50,
-        destinationType: 0,
-        sourceType: 1, //0:Photo Library, 1=camera, 2 = Saved photo album
-        encodingType: 0 //0=jpg 1=png
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        sourceType: 1,
+        mediaType: this.camera.MediaType.PICTURE
       }
 
-      Camera.getPicture(options).then((imageData) => {
-        let base64Image = 'data:image/png;base64,' + imageData;
+      this.camera.getPicture(options).then((imageData) => {
+        let base64Image = 'data:image/jpeg;base64,' + imageData;
         console.log("here's your sign")
         console.log(base64Image)
       }, (err) => {

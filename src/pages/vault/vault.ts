@@ -2,7 +2,7 @@ import { MyVaultPage } from './../my-vault/my-vault';
 import { AddReceiptPage } from './../add-receipt/add-receipt';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Camera } from 'ionic-native';
+import { Camera } from '@ionic-native/camera';
 
 /*
   Generated class for the Vault page.
