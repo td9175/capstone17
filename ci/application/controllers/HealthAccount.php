@@ -21,13 +21,10 @@ class HealthAccount extends REST_Controller {
 
     $decoded_email = urldecode($this->get('email'));
 
-    $user = $this->HealthAccountModel->get_hsa_info($decoded_email);
+    $response = $this->HealthAccountModel->get_hsa_info($decoded_email);
 
-    if($user) {
-      $this->response($user, 200); // 200 being the HTTP response code
-    } else {
-      $this->response(NULL, 404);
-    }
+    $this->response($response, 200); // 200 Success
+
   }
 
   // RESTful api to post an HSA account for a user into the database
@@ -46,11 +43,7 @@ class HealthAccount extends REST_Controller {
 
     $response = $this->HealthAccountModel->post_hsa_info($params);
 
-    if($response) {
-      $this->response($response, 200); // 200 Success
-    } else {
-      $this->response(NULL, 404);
-    }
+    $this->response($response, 200); // 200 Success
   }
 
   // RESTful api to get the FSA accounts for a user by the email address
@@ -65,13 +58,9 @@ class HealthAccount extends REST_Controller {
 
     $decoded_email = urldecode($this->get('email'));
 
-    $user = $this->HealthAccountModel->get_fsa_info($decoded_email);
+    $response = $this->HealthAccountModel->get_fsa_info($decoded_email);
 
-    if($user) {
-      $this->response($user, 200); // 200 Success
-    } else {
-      $this->response(NULL, 404);
-    }
+    $this->response($response, 200); // 200 Success
   }
 
   // RESTful api to post an FSA account for a user into the database
@@ -90,11 +79,7 @@ class HealthAccount extends REST_Controller {
 
     $response = $this->HealthAccountModel->post_fsa_info($params);
 
-    if($response) {
-      $this->response($response, 200); // 200 Success
-    } else {
-      $this->response(NULL, 404);
-    }
+    $this->response($response, 200); // 200 Success
   }
 
 

@@ -13,14 +13,18 @@
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA'";
 
 		$result = $this->db->query($query, $email);
+		if ($result->num_rows() > 0) {
+			foreach ($result->result_array() as $row) {
+					$data[] = array(
+						'account_number' => $row['account_number'],
+						'account_type' => $row['account_type'],
+						'email' => $row['email']
+					);
+				}
+		} else {
+			$data = "No HSA account exists for $email. Add an HSA account now.";
+		}
 
-		foreach ($result->result_array() as $row) {
-				$data[] = array(
-					'account_number' => $row['account_number'],
-					'account_type' => $row['account_type'],
-					'email' => $row['email']
-				);
-			}
 		return $data;
 	}
 
@@ -50,13 +54,18 @@
 
 		$data = array();
 
-		foreach ($result->result_array() as $row) {
-				$data[] = array(
-					'account_number' => $row['account_number'],
-					'account_type' => $row['account_type'],
-					'email' => $row['email']
-				);
-			}
+		if ($result->num_rows() > 0) {
+			foreach ($result->result_array() as $row) {
+					$data[] = array(
+						'account_number' => $row['account_number'],
+						'account_type' => $row['account_type'],
+						'email' => $row['email']
+					);
+				}
+		} else {
+			$data = "No FSA account exists for $email. Add an FSA account now.";
+		}
+
 		return $data;
 	}
 
