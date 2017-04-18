@@ -86,12 +86,8 @@ require('application/libraries/REST_Controller.php');
 			is_logged_in();
 			// Get a user from the model by email
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);
-
-			if($user){
-				$this->response($user, 200); // 200 Success
-			} else{
-				$this->response(NULL, 404);
-			}
+			// Respond
+			$this->response($user, 200); // 200 Success
   	}
 
 		// Get all user info for an account
@@ -107,12 +103,8 @@ require('application/libraries/REST_Controller.php');
 			$decoded_email = urldecode($this->get('email'));
 			// Call the model function using the email
 			$user = $this->UserAccountModel->get_user($decoded_email);
-
-			if($user){
-				$this->response($user, 200); // 200 Success
-			} else{
-				$this->response(NULL, 404);
-			}
+			// Respond
+			$this->response($user, 200); // 200 Success
 		}
 
 			// Get info for every user
@@ -120,13 +112,10 @@ require('application/libraries/REST_Controller.php');
     	function users_get() {
 				// Check if a user is logged in
 				is_logged_in();
+				// Call the model function
   			$users = $this->UserAccountModel->get_users();
-
-  			if($users){
-  				$this->response($users, 200); // 200 Success
-  			} else{
-  				$this->response(NULL, 404);
-  			}
+				// Respond
+				$this->response($user, 200); // 200 Success
 
     	}
 
@@ -139,14 +128,10 @@ require('application/libraries/REST_Controller.php');
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
 				}
-
+				// Call the model function and pass the email
 				$response = $this->UserAccountModel->disable_user($this->post('email'));
-
-				if($response){
-					$this->response($response, 200); // 200 Success
-				} else{
-					$this->response(NULL, 404); // 404 Not found
-				}
+				// Respond
+				$this->response($response, 200); // 200 Success
 			}
 
 			// Enable a user's account
@@ -155,17 +140,14 @@ require('application/libraries/REST_Controller.php');
 			function enable_user_post() {
 				// Check if a user is logged in
 				is_logged_in();
+				// Check if an email was included in the POST request
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
 				}
-
+				// Call the model function and pass the email
 				$response = $this->UserAccountModel->enable_user($this->post('email'));
-
-				if($response){
-					$this->response($response, 200); // 200 Success
-				} else{
-					$this->response(NULL, 404); // 404 Not found
-				}
+				// Respond
+				$this->response($response, 200); // 200 Success
 			}
 
 			// Get all enabled user accounts
@@ -173,13 +155,10 @@ require('application/libraries/REST_Controller.php');
 			function enabled_users_get() {
 				// Check if a user is logged in
 				is_logged_in();
+				// Call the model function
 				$response = $this->UserAccountModel->get_enabled_users();
-
-				if($response){
-					$this->response($response, 200); // 200 Success
-				} else{
-					$this->response(NULL, 404); // 404 Not found
-				}
+				// Respond
+				$this->response($response, 200); // 200 Success
 			}
 
 			// Get all disabled user accounts
@@ -187,18 +166,17 @@ require('application/libraries/REST_Controller.php');
 			function disabled_users_get() {
 				// Check if a user is logged in
 				is_logged_in();
+				// Call the model function
 				$response = $this->UserAccountModel->get_disabled_users();
-
-				if($response){
-					$this->response($response, 200); // 200 Success
-				} else{
-					$this->response(NULL, 404); // 404 Not found
-				}
+				// Respond
+				$this->response($response, 200); // 200 Success
 			}
 
 			// Logout a user
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/logout
 			function logout_get(){
+				// Check if a user is logged in
+				is_logged_in();
 				// Unset all of the session variables
 				$_SESSION = array();
 				// Destroy the session

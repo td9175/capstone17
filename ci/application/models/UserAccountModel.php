@@ -14,26 +14,31 @@ class UserAccountModel extends CI_Model {
 
     // Get info for every user
     function get_users() {
-
+      // Execute the query
   		$query = $this->db->query('SELECT * from UserAccount');
-
-  		foreach ($query->result_array() as $row) {
-        $data[] = array(
-  				'email' => $row['email'],
-  				'first_name' => $row['first_name'],
-          'last_name' => $row['last_name'],
-          'is_enabled' => $row['is_enabled'],
-          'is_admin' => $row['is_admin']
-				);
-  		}
+      // Check if there are any results
+      if ($query->num_rows() > 0) {
+        foreach ($query->result_array() as $row) {
+          $data[] = array(
+    				'email' => $row['email'],
+    				'first_name' => $row['first_name'],
+            'last_name' => $row['last_name'],
+            'is_enabled' => $row['is_enabled'],
+            'is_admin' => $row['is_admin']
+  				);
+    		}
+      } else {
+        $data = "No users have registered yet...";
+      }
       // Pass back the data
     	return $data;
     }
 
     // Get all enabled user accounts
     function get_enabled_users() {
-
+      // Execute the query
       $query = $this->db->query('SELECT * from UserAccount WHERE is_enabled=1');
+      // Check if any results are returned from the query
       if ($query->num_rows() > 0) {
         foreach ($query->result_array() as $row) {
           $data[] = array(
@@ -43,13 +48,14 @@ class UserAccountModel extends CI_Model {
             'is_admin' => $row['is_admin']
           );
         }
-      } else { $data = "Error: could not retrieve list of enabled accounts."; }
+      } else {
+        $data = "Error: could not retrieve list of enabled accounts.";
+      }
       return $data;
     }
 
     // Get all disabled user accounts
     function get_disabled_users() {
-
       $query = $this->db->query('SELECT * from UserAccount WHERE is_enabled=0');
       // Check if any results are returned from the query
       if ($query->num_rows() > 0) {
@@ -61,40 +67,44 @@ class UserAccountModel extends CI_Model {
             'is_admin' => $row['is_admin']
           );
         }
-      } else { $data = "Error: could not retrieve list of disabled accounts."; }
+      } else {
+        $data = "Error: could not retrieve list of disabled accounts.";
+      }
       // Pass back the data
       return $data;
     }
 
     // Get all user info for the logged in account
     function get_user($email) {
-
+      // Build the query
       $query = "SELECT * FROM UserAccount WHERE email = ?";
-
+      // Execute the query
 	    $result = $this->db->query($query, $email);
-
-      foreach ($result->result_array() as $row) {
-			$data[] = array(
-				'email' => $row['email'],
-				'first_name' => $row['first_name'],
-        'last_name' => $row['last_name'],
-        'is_enabled' => $row['is_enabled'],
-        'is_admin' => $row['is_admin']
-			);
-  		}
+      // Check if any results are returned from the query
+      if ($query->num_rows() > 0) {
+        // Build the data array
+        foreach ($result->result_array() as $row) {
+  			$data[] = array(
+  				'email' => $row['email'],
+  				'first_name' => $row['first_name'],
+          'last_name' => $row['last_name'],
+          'is_enabled' => $row['is_enabled'],
+          'is_admin' => $row['is_admin']
+  			);
+    		}
+      } else {
+        $data = "User does not exist.";
+      }
       // Pass back the data
     	return $data;
     }
 
     // Register a user account
     function post_registration($email, $hash_pass, $first_name, $last_name){
-
       // Build the query to create a user account
       $query = "INSERT INTO UserAccount (email, hash_pass, first_name, last_name) VALUES (?,?,?,?)";
-
       // Create an array of the parameters for paramater binding
       $params = array($email, $hash_pass, $first_name, $last_name);
-
       // Execute the query
       if ($this->db->query($query, $params)){
         $data['success'] = "Much success! Account created. Go login.\n";
@@ -107,13 +117,10 @@ class UserAccountModel extends CI_Model {
 
     // Login a user
     function post_login($email){
-
       // Build the query to check for account with an email provided by the user
       $query = "SELECT hash_pass, is_enabled, is_admin FROM UserAccount WHERE email=?";
-
       // Execute the query
       $result = $this->db->query($query, $email);
-
       if (count($result->result_array()) == 0){
         $data['error'] = "Incorrect email or password.";
       } else {
@@ -130,7 +137,6 @@ class UserAccountModel extends CI_Model {
 
   // Disable a users account
   function disable_user($email) {
-
     // Build the query
     $query = "UPDATE UserAccount SET enabled=0 WHERE email = ?";
     // Execute the query
@@ -147,7 +153,6 @@ class UserAccountModel extends CI_Model {
 
   // Enable a user account
   function enable_user($email) {
-
     // Build the query
     $query = "UPDATE UserAccount SET enabled=1 WHERE email = ?";
     // Execute the query
