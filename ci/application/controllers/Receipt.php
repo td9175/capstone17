@@ -80,7 +80,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				echo "<Br>Path: " . $path;
-				redirect('OCR/ocr_request');
+				//redirect('OCR/ocr_request');
 			}
 
 			// load the view/upload.php
