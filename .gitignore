@@ -18,3 +18,4 @@ coverage
 www/build/main.js
 ci/.DS_Store
 www/build/main.js.map
+vendor/*
