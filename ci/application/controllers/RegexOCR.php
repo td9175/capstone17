@@ -454,7 +454,11 @@ class RegexOCR extends REST_Controller {
 
   $yPosition = $matches[1];
 
-  preg_match_all('/($yPosition)/ixU', $string, $matches);
+  $regex = '/'. $yPosition . '/ixU';
+
+  echo "$regex \n\n";
+
+  preg_match_all($regex, $string, $matches);
 
   $words = $matches[1];
 
