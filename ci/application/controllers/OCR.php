@@ -101,9 +101,7 @@ class Ocr extends CI_Controller {
 
 
 
-	
-	
-	}
+
 
 	}
 
