@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class UserApi {
 
-    private baseUrl = 'http://capstone.td9175.com';
+    private baseUrl = 'https://capstone.td9175.com';
     private userid = 'umbcapstone17@gmail.com';
     // for user id.
     // encodeURI(userid);
