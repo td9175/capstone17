@@ -454,7 +454,7 @@ class RegexOCR extends REST_Controller {
 
   $yPosition = $matches[1];
 
-  preg_match_all('/$yPosition.*?text":\s*"(.*?)"/i', $string, $matches);
+  preg_match_all('/$yPosition.*text":\s*"(.*)"/i', $string, $matches);
 
   $words = $matches[1];
 
