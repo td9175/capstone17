@@ -459,8 +459,8 @@ class RegexOCR extends REST_Controller {
 
 
   foreach ($yPosition as $position) {
-    $regex = '/'. $position . '/ixU';
-    echo "$regex \n\n";
+    // $regex = '/'. $position . '/ixU';
+    // echo "$regex \n\n";
     // preg_match_all($regex, $string, $matches);
     echo "$position \n";
     // var_dump($matches);
