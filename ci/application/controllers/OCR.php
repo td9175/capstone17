@@ -66,7 +66,7 @@ class Ocr extends CI_Controller {
 				echo "Trying this!<br><br>";
 				
 				$json = json_decode($newanswer, true);
-				foreach($json['regions']['boundingBox'] as $item) {
+				foreach($json['regions']['lines'] as $item) {
     				print $item['text'];
     				print ' - ';
 
