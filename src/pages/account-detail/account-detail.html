@@ -21,7 +21,14 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor letter in accountType>
-    <h>{{letter}}
+  <h1>Account Details</h1>
+
+  <ion-list>
+    <ion-item item-left *ngFor="let account of accountType">
+      <h2> {{ account.A }}</h2>
+      <h2> {{ account.B }}</h2>
+      <h2> {{ account.C }}</h2>
+      <h2> {{ account.D }}</h2>
+    </ion-item>
   </ion-list>
 </ion-content>

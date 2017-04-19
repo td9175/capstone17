@@ -23,7 +23,7 @@ export class AccountDetailPage {
     console.log('ionViewDidLoad AccountDetailPage');
     this.accountType = "HSA"
     var A={A:0,B:1,C:2}
-    var B={D:3,E:4,F:5}
+    var B={A:3,B:4,C:5}
     this.transactions.push(A);
     this.transactions.push(B);
   }
