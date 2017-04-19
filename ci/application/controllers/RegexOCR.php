@@ -460,9 +460,7 @@ class RegexOCR extends REST_Controller {
     // echo "$regex \n";
 
     preg_match_all($regex, $string, $matches);
-    var_dump($matches[0]);
-    echo "\n\n\n\n\n\n";
-    var_dump($matches[1]);
+    var_dump($matches);
 
   }
 
