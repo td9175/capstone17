@@ -458,7 +458,7 @@ class RegexOCR extends REST_Controller {
     $regex = '/'. $position . '.*?"text":\s+"(.*?)"/ixU';
     // echo "$regex \n\n";
     preg_match_all($regex, $string, $matches);
-    var_dump($matches);
+    var_dump($matches[1]);
     // echo "$position \n";
     // var_dump($matches);
   }
