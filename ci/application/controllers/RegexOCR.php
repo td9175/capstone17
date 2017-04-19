@@ -455,7 +455,7 @@ class RegexOCR extends REST_Controller {
   $yPosition = $matches[1];
 
   foreach ($yPosition as $position) {
-    $regex = '/'. $position . '(.*?)text/ixU';
+    $regex = '/'. $position . '(:?.*|\\n)text(.*)/ixU';
     // \"text\":\s+\"(.*)\"
     // echo "$regex \n";
 
