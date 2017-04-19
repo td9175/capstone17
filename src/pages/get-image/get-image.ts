@@ -21,7 +21,7 @@ export class GetImagePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private receiptPoster: ReceiptPoster, private loadingController: LoadingController) { 
   }
-  // form method
+
   submitForm(form: NgForm) {
     let loader = this.loadingController.create({
       content: 'Processing receipt...'
