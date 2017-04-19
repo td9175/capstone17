@@ -32,7 +32,7 @@ export class AddReceiptPage {
   image_fire() {
     const options = {
       quality: 50,
-      destinationType: this.camera.DestinationType.NATIVE_URI,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       sourceType: this.camera.PictureSourceType.CAMERA,
       mediaType: this.camera.MediaType.PICTURE
@@ -56,9 +56,7 @@ export class AddReceiptPage {
     }
     this.camera.getPicture(options).then((imageData) => {
       console.log("imageData from image_pick() here: ", imageData);
-      localStorage.setItem("tempPhoto", imageData);
-      let chosenImage = 'data:image/jpeg;base64,' + imageData;
-      return chosenImage;
+      return imageData;
     }, (err) => {
         console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
     });
