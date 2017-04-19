@@ -38,7 +38,7 @@ class Drugs extends CI_Controller {
       // Build the query string
       $queryString = "query=" . urldecode($searchQuery) . "&api_key=" . $apiKey;
 
-			$urldecoded = urldecode($searchQuery)
+			$urldecoded = urldecode($searchQuery);
 			echo "After urldecode: $urldecoded \n";
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
