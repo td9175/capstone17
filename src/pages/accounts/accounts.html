@@ -7,8 +7,8 @@
 </ion-header>
 
 <ion-content padding>
-
-  <h4>This is the one working with email</h4>
+  
+  <!--
   <ion-list>
     <ion-item *ngFor="let user of users">
         <h2>Account Email = {{user.email}}</h2>
@@ -16,13 +16,14 @@
         <h2>Account Type = {{user.account_type}}</h2>
     </ion-item>
   </ion-list>
+  -->
 
   <ion-list>
     <ion-item-group>
       <ion-item-divider color="light">HSA Accounts</ion-item-divider>
       <ion-item-sliding>
         <ion-item *ngFor="let user of users">
-          <h2>{{ user.email }}'s Account - {{ user.account_number }}</h2>
+          <h2>{{user.email}}'s Account - {{user.account_number}}</h2>
           <p>"Balance"</p>
         </ion-item>
         <ion-item-options side="right">
