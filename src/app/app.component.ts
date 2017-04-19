@@ -52,8 +52,7 @@ export class MyApp {
       { title: 'Tax Info', component: TaxInfoPage },
       { title: 'Help', component: HelpPage },
       { title: 'About', component: AboutPage },
-      { title: 'Settings', component: UserSettingsPage },
-      { title: 'Debug Home', component: HomePage } ];
+      { title: 'Settings', component: UserSettingsPage }, ];
 
   }
 
