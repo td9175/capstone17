@@ -39,9 +39,6 @@ export class AddReceiptPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      console.log("imageData here: ", imageData);
-      localStorage.setItem("tempPhoto", imageData);
-      
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       console.log("Base64 encoded jpeg follows: ", base64Image);
       return base64Image;
@@ -59,8 +56,9 @@ export class AddReceiptPage {
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
+      console.log("imageData here: ", imageData);
+      localStorage.setItem("tempPhoto", imageData);
       let chosenImage = 'data:image/jpeg;base64,' + imageData;
-      console.log("Base64 encoded jpeg follows: ", chosenImage);
       return chosenImage;
     }, (err) => {
         console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
