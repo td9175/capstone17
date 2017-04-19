@@ -454,7 +454,7 @@ class RegexOCR2 extends REST_Controller {
 
 	//array of all yPositions 
   $yPosition = $matches[1];
-  echo "Search:" . array_search("100", $yPosition);
+  echo "Search:" . array_search("129", $yPosition);
 
   foreach ($yPosition as $position) {
 	
