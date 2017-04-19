@@ -32,16 +32,15 @@ export class AddReceiptPage {
   image_fire() {
     const options = {
       quality: 50,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      //encodingType: this.camera.EncodingType.JPEG,
+      destinationType: this.camera.DestinationType.NATIVE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
       sourceType: this.camera.PictureSourceType.CAMERA,
-      //mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      console.log("Base64 encoded jpeg follows: ", base64Image);
-      return base64Image;
+      console.log("imageData from image_fire() here: ", imageData);
+      return imageData;
     }, (err) => {
         console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
     });
@@ -50,13 +49,13 @@ export class AddReceiptPage {
   image_pick() {
     const options = {
       quality: 50,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
 			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       mediaType: this.camera.MediaType.PICTURE
     }
     this.camera.getPicture(options).then((imageData) => {
-      console.log("imageData here: ", imageData);
+      console.log("imageData from image_pick() here: ", imageData);
       localStorage.setItem("tempPhoto", imageData);
       let chosenImage = 'data:image/jpeg;base64,' + imageData;
       return chosenImage;
