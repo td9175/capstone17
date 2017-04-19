@@ -35,7 +35,7 @@
 
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA'";
 
-		$result = $this->db->query($query, $email);
+		$result = $this->db->query($query, $params['email']);
 		if ($result->num_rows() >= 1) {
 			$data = "Error: You can only add 1 HSA account";
 		} else {
@@ -82,7 +82,7 @@
 
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA'";
 
-		$result = $this->db->query($query, $email);
+		$result = $this->db->query($query, $params['email']);
 
 		if ($result->num_rows() >= 1) {
 			$data = "Error: You can only add 1 FSA account";
