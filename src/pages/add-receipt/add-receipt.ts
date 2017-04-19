@@ -46,7 +46,7 @@ export class AddReceiptPage {
     }
 
     let loader = this.loadingController.create({
-      content: 'Processing receipt...'
+      content: 'Please wait...'
     });
 
     loader.present().then(() => {
@@ -75,8 +75,8 @@ export class AddReceiptPage {
       mediaType: this.camera.MediaType.PICTURE
     }
 
-        let loader = this.loadingController.create({
-      content: 'Processing receipt...'
+    let loader = this.loadingController.create({
+      content: 'Please wait...'
     });
 
     loader.present().then(() => {
