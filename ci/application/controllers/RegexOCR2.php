@@ -7,7 +7,7 @@
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
-class RegexOCR extends REST_Controller {
+class RegexOCR2 extends REST_Controller {
 
   function receipt_regex_get() {
       $string = '{
@@ -454,17 +454,11 @@ class RegexOCR extends REST_Controller {
 
 	//array of all yPositions 
   $yPosition = $matches[1];
+  echo "Search:" . array_search("129", $yPosition);
 
   foreach ($yPosition as $position) {
-    $regex = '/'. $position . '(.*|\\n)/ixU';
-    // \"text\":\s+\"(.*)\"
-    // echo "$regex \n";
-
-    if (preg_match_all($regex, $string, $matches2) == FALSE) {
-      echo "An error occured. \n";
-    } else {
-      var_dump($matches2);
-    }
+	
+	echo "Position: " . $position ."<br>"; 
 
 
   }
