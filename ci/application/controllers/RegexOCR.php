@@ -455,25 +455,14 @@ class RegexOCR extends REST_Controller {
   $yPosition = $matches[1];
 
   foreach ($yPosition as $position) {
-    $regex = '/'. $position . '.*?"text":\s+"(.*?)"/ix';
-    echo "$regex \n";
-    // echo "$regex \n\n";
-    // preg_match_all($regex, $string, $matches);
-    // var_dump($matches[1]);
+    $regex = '/'. $position . '.*"text":\s+"(.*)"/ixU';
+    // echo "$regex \n";
+
+    preg_match_all($regex, $string, $matches);
+    var_dump($matches[1]);
 
   }
 
-
-  //
-  // $words = $matches[1];
-  //
-  // var_dump($matches[1]);
-  //
-  // echo "\n\n";
-  //
-  // foreach ($words as $line) {
-  //   echo "$line \n";
-  // }
 
 
   }
