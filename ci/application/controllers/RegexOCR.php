@@ -461,6 +461,7 @@ class RegexOCR extends REST_Controller {
 
     if (preg_match_all($regex, $string, $matches) == FALSE) {
       echo "An error occured. \n";
+
     } else {
       var_dump($matches[1]);
     }

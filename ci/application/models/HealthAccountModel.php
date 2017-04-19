@@ -10,7 +10,7 @@
 	function get_hsa_info($email) {
 		$this->load->database();
 
-		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA'";
+		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA' LIMIT 1";
 
 		$result = $this->db->query($query, $email);
 		if ($result->num_rows() > 0) {
@@ -30,17 +30,26 @@
 
 	// RESTful api to post an HSA account for a user into the database
 	function post_hsa_info($params) {
+
 		$this->load->database();
 
-		$query = "INSERT INTO HealthAccount (account_number, account_type, email) VALUES (?, 'HSA' ,?)";
+		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA'";
 
-		$result = $this->db->query($query, $params);
-
-		if ($this->db->affected_rows() == 1) {
-			$data = "Success: added HSA account";
+		$result = $this->db->query($query, $email);
+		if ($result->num_rows() >= 1) {
+			$data = "Error: You can only add 1 HSA account";
 		} else {
-			$data = "Error: could not add HSA account.";
+			$query = "INSERT INTO HealthAccount (account_number, account_type, email) VALUES (?, 'HSA' ,?)";
+
+			$result = $this->db->query($query, $params);
+
+			if ($this->db->affected_rows() == 1) {
+				$data = "Success: added HSA account";
+			} else {
+				$data = "Error: could not add HSA account.";
+			}
 		}
+
 		 return $data;
 	}
 
@@ -48,11 +57,9 @@
 	function get_fsa_info($email) {
 		$this->load->database();
 
-		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA'";
+		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA' LIMIT 1";
 
 		$result = $this->db->query($query, $email);
-
-		$data = array();
 
 		if ($result->num_rows() > 0) {
 			foreach ($result->result_array() as $row) {
@@ -73,15 +80,24 @@
 	function post_fsa_info($params) {
 		$this->load->database();
 
-		$query = "INSERT INTO HealthAccount (account_number, account_type, email) VALUES (?, 'FSA',?)";
+		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA'";
 
-		$result = $this->db->query($query, $params);
+		$result = $this->db->query($query, $email);
 
-		if ($this->db->affected_rows() == 1) {
-			$data = "Success: added FSA account";
+		if ($result->num_rows() >= 1) {
+			$data = "Error: You can only add 1 FSA account";
 		} else {
-			$data = "Error: could not add FSA account.";
+			$query = "INSERT INTO HealthAccount (account_number, account_type, email) VALUES (?, 'FSA',?)";
+
+			$result = $this->db->query($query, $params);
+
+			if ($this->db->affected_rows() == 1) {
+				$data = "Success: added FSA account";
+			} else {
+				$data = "Error: could not add FSA account.";
+			}
 		}
+
 		return $data;
 	}
 
