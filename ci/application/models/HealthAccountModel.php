@@ -34,6 +34,7 @@
 		$this->load->database();
 
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'HSA'";
+		echo "$params \n";
 
 		$result = $this->db->query($query, $params['email']);
 		if ($result->num_rows() >= 1) {
@@ -81,6 +82,7 @@
 		$this->load->database();
 
 		$query = "SELECT * FROM HealthAccount WHERE email = ? AND account_type = 'FSA'";
+		echo "$params \n";
 
 		$result = $this->db->query($query, $params['email']);
 
