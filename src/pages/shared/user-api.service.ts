@@ -18,7 +18,7 @@ export class UserApi {
 
     getUserData(){
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${this.baseid}`)
+            this.http.get(`${this.baseUrl}ci/index.php/HealthAccount/hsa/email/umbcapstone17${this.baseid}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
