@@ -81,7 +81,7 @@ class Drugs extends CI_Controller {
       $queryString = "name=" . urldecode($name) . "&api_key=" . $apiKey;
 
 			$decoded = urldecode($name);
-			echo "After urldecode: $name \n";
+			echo "After urldecode: $decoded \n";
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
