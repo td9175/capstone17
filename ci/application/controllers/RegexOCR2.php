@@ -7,7 +7,7 @@
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
-class RegexOCR_2 extends REST_Controller {
+class RegexOCR2 extends REST_Controller {
 
   function receipt_regex_get() {
       $string = '{
