@@ -59,7 +59,7 @@ class Ocr extends CI_Controller {
 
 			try {
 				$response = $request->send();
-				//echo $response->getBody();
+				echo $response->getBody();
 				$newanswer = $response->getBody();
 				echo "<br><Br>";
 				
