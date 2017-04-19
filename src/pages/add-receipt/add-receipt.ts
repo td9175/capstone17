@@ -39,6 +39,7 @@ export class AddReceiptPage {
     }
 
     this.camera.getPicture(options).then((imageData) => {
+      console.log("imageData here: ", imageData);
       localStorage.setItem("tempPhoto", imageData);
       
       let base64Image = 'data:image/jpeg;base64,' + imageData;
