@@ -24,10 +24,8 @@ export class UserApi {
     }
 
     // GET request: /UserAccount/user .. if it's logged in, brings up user data: name
-
     // https://capstone.td9175.com/ci/index.php/HealthAccount/hsa/email/umbcapstone17%40gmail.com
     
-
     getProductData(){
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
     }
