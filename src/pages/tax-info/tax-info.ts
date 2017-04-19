@@ -19,4 +19,9 @@ export class TaxInfoPage {
     console.log('ionViewDidLoad TaxInfoPage');
   }
 
+  redirectToUmb() {
+    
+  }
+
+
 }
