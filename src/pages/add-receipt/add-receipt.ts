@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
+import { Http, Headers } from '@angular/http';
+import { ReceiptPoster } from './../shared/receipt-post.service';
+import { OcrUploadImageModel } from './../../models/ocruploadimage.model';
 
 
 /*
@@ -16,8 +19,12 @@ import { Camera } from '@ionic-native/camera';
 export class AddReceiptPage {
 
   receiptImage: any;
+  model = new OcrUploadImageModel('');
+  
+  ocrreply: any;
+  private resultData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private receiptPoster: ReceiptPoster, private loadingController: LoadingController, private camera: Camera) {
     //this.receiptImage = this.image_fire()
   }
 
@@ -33,36 +40,59 @@ export class AddReceiptPage {
     const options = {
       quality: 50,
       destinationType: this.camera.DestinationType.FILE_URI,
-      //encodingType: this.camera.EncodingType.JPEG,
+      encodingType: this.camera.EncodingType.JPEG,
       sourceType: this.camera.PictureSourceType.CAMERA,
-      //mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE
     }
 
-    this.camera.getPicture(options).then((imageData) => {
-      localStorage.setItem("tempPhoto", imageData);
-      
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      console.log("Base64 encoded jpeg follows: ", base64Image);
-      return base64Image;
-    }, (err) => {
-        console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
+    let loader = this.loadingController.create({
+      content: 'Please wait...'
+    });
+
+    loader.present().then(() => {
+          this.camera.getPicture(options).then((imageData) => {
+          console.log("imageData from image_fire() here: ", imageData);
+          return imageData;
+        }, (err) => {
+            console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
+        });
+        this.receiptPoster.postReceiptForm(this.model)
+        .subscribe(
+          data => this.ocrreply = data.somethingReturned,
+          err => console.log('error: ', err),
+          () => console.log('Something returned: ', this.ocrreply),
+        );
+        loader.dismiss();
     });
   }
 
   image_pick() {
     const options = {
       quality: 50,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
 			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       mediaType: this.camera.MediaType.PICTURE
     }
-    this.camera.getPicture(options).then((imageData) => {
-      let chosenImage = 'data:image/jpeg;base64,' + imageData;
-      console.log("Base64 encoded jpeg follows: ", chosenImage);
-      return chosenImage;
-    }, (err) => {
-        console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
+
+    let loader = this.loadingController.create({
+      content: 'Please wait...'
+    });
+
+    loader.present().then(() => {
+          this.camera.getPicture(options).then((imageData) => {
+          console.log("imageData from image_pick() here: ", imageData);
+          return imageData;
+        }, (err) => {
+            console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
+        });
+        this.receiptPoster.postReceiptForm(this.model)
+        .subscribe(
+          data => this.ocrreply = data.somethingReturned,
+          err => console.log('error: ', err),
+          () => console.log('Something returned: ', this.ocrreply),
+        );
+        loader.dismiss();
     });
   }
 }

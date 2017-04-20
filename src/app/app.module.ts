@@ -22,6 +22,7 @@ import { AccountsPage } from './../pages/accounts/accounts';
 import { MyVaultPage } from './../pages/my-vault/my-vault'; 
 
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
+import { ReceiptPoster } from './../pages/shared/receipt-post.service';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 
 import { MyApp } from './app.component';
@@ -81,6 +82,6 @@ import { Camera } from '@ionic-native/camera';
     ProductDetail,
     AccountDetailPage
   ],
-  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera]
+  providers: [YelpPoster, ReceiptPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera]
 })
 export class AppModule {}
