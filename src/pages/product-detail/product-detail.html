@@ -25,13 +25,13 @@
         
         <ion-row>
             <ion-col width-70>
-              <p item-left *ngFor="let store of stores">
+              <p class="price-search-result" ion-text color="secondary" item-left *ngFor="let store of stores">
                 {{store}}
               </p>
             </ion-col>
             <ion-col width-30>
-              <p item-right *ngFor="let price of prices">
-                ${{price}}
+              <p class="price-search-result" ion-text color="secondary" item-right *ngFor="let price of prices">
+                <strong>${{price}}</strong>
               <p>
             </ion-col>
         </ion-row>
@@ -51,13 +51,8 @@
       </ion-item>
     </ion-grid>
     
-    <!-- Required from GoodRx -->
-    <!--
-    <p ion-text >
-      <br><a href="https://www.goodrx.com" class="highlight-goodrx">Powered by GoodRx</a>
-    </p>
-    -->
-    <!--
-      <ion-img width="80" height="80" src="https://d4fuqqd5l3dbz.cloudfront.net/static/logos/powered-by-goodrx-black-xs.png"></ion-img>
-    -->
+    <!-- Required from GoodRx User Agreement -->
+      <a href="https://www.goodrx.com">
+        <ion-img class="goodrx-img" width="120" height="50" src="https://d4fuqqd5l3dbz.cloudfront.net/static/images/powered-by-goodrx-black-xs.png"></ion-img>
+      </a>
 </ion-content>
