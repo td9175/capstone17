@@ -35,7 +35,7 @@ export class VaultPage {
 
   public uploadImage(receiptImage) {
     // Destination URL
-    var url = "https://capstone.td9175.com/ci/index.php/Rest/upload_it/";
+    var url = "https://capstone.td9175.com/ci/index.php/Receipt/upload_it/";
   
     // File for Upload
     var targetPath = receiptImage;
