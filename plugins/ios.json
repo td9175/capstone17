@@ -35,6 +35,15 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-filepath": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
         }
     },
     "dependent_plugins": {}
