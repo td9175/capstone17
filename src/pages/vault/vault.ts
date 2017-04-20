@@ -7,6 +7,8 @@ import { ReceiptPoster } from './../shared/receipt-post.service';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
 import { OcrUploadImageModel } from './../../models/ocruploadimage.model';
+import { File } from '@ionic-native/file';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 
 /*
   Generated class for the Vault page.
@@ -51,12 +53,12 @@ export class VaultPage {
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
-        this.receiptPoster.postReceiptForm(this.model)
-        .subscribe(
-          data => this.ocrreply = data.somethingReturned,
-          err => console.log('error: ', err),
-          () => console.log('Something returned: ', this.ocrreply),
-        );
+        // this.receiptPoster.postReceiptForm(this.model)
+        // .subscribe(
+        //   data => this.ocrreply = data.somethingReturned,
+        //   err => console.log('error: ', err),
+        //   () => console.log('Something returned: ', this.ocrreply),
+        // );
         loader.dismiss();
     });
   }
@@ -81,13 +83,74 @@ export class VaultPage {
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
-        this.receiptPoster.postReceiptForm(this.model)
-        .subscribe(
-          data => this.ocrreply = data.somethingReturned,
-          err => console.log('error: ', err),
-          () => console.log('Something returned: ', this.ocrreply),
-        );
+        // this.receiptPoster.postReceiptForm(this.model)
+        // .subscribe(
+        //   data => this.ocrreply = data.somethingReturned,
+        //   err => console.log('error: ', err),
+        //   () => console.log('Something returned: ', this.ocrreply),
+        // );
         loader.dismiss();
+    });
+  }
+
+  // private presentToast(text) {
+  //   let toast = this.toastCtrl.create({
+  //     message: text,
+  //     duration: 3000,
+  //     position: 'top'
+  //   });
+  //   toast.present();
+  // }
+  
+  // Always get the accurate path to your apps folder
+  // public pathForImage(img) {
+  //   if (img === null) {
+  //     return '';
+  //   } else {
+  //     return file.dataDirectory + img;
+  //   }
+  // }
+
+  public uploadImage(receiptImage) {
+    // Destination URL
+    var url = "https://capstone.td9175.com/ci/index.php/Rest/upload_i/";
+  
+    // File for Upload
+    var targetPath = receiptImage;
+    var currentName = receiptImage.substr(receiptImage.lastIndexOf('/') + 1);
+    var correctPath = receiptImage.substr(0, receiptImage.lastIndexOf('/') + 1);
+  
+    // File name only
+    var filename = currentName;
+  
+    var options = {
+      fileKey: "file",
+      fileName: filename,
+      chunkedMode: false,
+      mimeType: "multipart/form-data",
+      params : {'userfile': filename}
+    };
+  
+    const fileTransfer: TransferObject = new TransferObject();
+  
+    let loader = this.loadingController.create({
+      content: 'Please wait...'
+    });
+
+    loader = this.loadingController.create({
+      content: 'Uploading...',
+    });
+    loader.present();
+  
+    // Use the FileTransfer to upload the image
+    fileTransfer.upload(targetPath, url, options).then(data => {
+      loader.dismissAll();
+      console.log("upload successful!");
+      //this.presentToast('Image succesful uploaded.');
+    }, err => {
+      loader.dismissAll();
+      console.log("error uploading file");
+      //this.presentToast('Error while uploading file.');
     });
   }
 
