@@ -460,7 +460,7 @@ class RegexOCR2 extends REST_Controller {
     echo "<br>Regex: " .$regex;
 
     if (preg_match_all($regex, $string, $matches)) {
-    	foreach ($matches as $match) {
+    	foreach ($matches[1] as $match) {
       	$counter++;
       	echo "<br>Counter:" . $counter;
       
