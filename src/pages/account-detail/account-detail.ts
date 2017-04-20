@@ -1,3 +1,4 @@
+import { UserApi } from './../shared/user-api.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -13,19 +14,27 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'account-detail.html'
 })
 export class AccountDetailPage {
+  
+  accountType = "HSA";
+  user = "umbcapstone17%40gmail.com";
 
-  accountType: any;
   transactions: any;
+  success: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountDetailPage');
-    this.accountType = "HSA"
-    var A={A:0,B:1,C:2}
-    var B={A:3,B:4,C:5}
-    this.transactions.push(A);
-    this.transactions.push(B);
+    this.userApi.user = this.user;
+
+    /*if (this.accountType == "HSA"){
+      this.loadHsaTransaction();
+    }
+    else{
+      this.loadFsaTransaction();
+    }*/
+    this.userApi.getHsaTransaction().then(data => this.transactions = data);
+    
   }
 
   goBack() {
