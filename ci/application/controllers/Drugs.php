@@ -75,7 +75,9 @@ class Drugs extends CI_Controller {
       $url = "https://api.goodrx.com/compare-price?";
 
       // Build the query string
-      $queryString = "name=" . urldecode($name) . "&api_key=" . $apiKey;
+			$name = urldecode($name);
+			$apiKey = "&api_key=" . $apiKey;
+      // $queryString = "name=" . urldecode($name) . "&api_key=" . $apiKey;
 			echo "$queryString \n";
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
@@ -83,7 +85,7 @@ class Drugs extends CI_Controller {
 			echo "$sig \n";
 
       //Build the URL string with the query string and keyed hash signature
-      $url = urlencode($url . $queryString . "&sig=" . $sig);
+      $url = $url . $name . $apiKey . "&sig=" . $sig;
 			echo "$url \n";
 
       // Set some curl options
