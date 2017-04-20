@@ -76,6 +76,7 @@ class Drugs extends CI_Controller {
 
       // Build the query string
 			$name = urldecode($name);
+			$name = str_replace(" ", "", $name):
       $queryString = "name=" . $name . "&api_key=" . $apiKey;
 			echo "$queryString \n";
 
