@@ -461,8 +461,11 @@ class RegexOCR extends REST_Controller {
   foreach ($positions as $position) {
     $positionPlusOne = $position + 1;
     $positionMinusOne = $position - 1;
-    $regex = '/\d{1,3},(?:'.$position.'|'.$positionPlusOne.'|'.$positionMinusOne.')\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
-    echo "$regex \n";
+    $regex = '/\d{1,3},(?:'.$position.'|'.$positionPlusOne.'|'.$positionMinusOne.'),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
+    // echo "$regex \n";
+
+    //   /\d{1,3},(?:100|101|99)\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
+    //   /\d{1,3},(?:100|101|99),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
     // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
 
     if (preg_match_all($regex, $string, $matches)) {
