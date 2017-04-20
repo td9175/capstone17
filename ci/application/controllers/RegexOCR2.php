@@ -470,3 +470,5 @@ class RegexOCR2 extends REST_Controller {
   }
 
 }
+
+}
