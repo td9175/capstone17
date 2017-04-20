@@ -9,8 +9,8 @@ $bucket = "https://console.cloud.google.com/storage/browser/capstone_receipts/?_
 
 $options = [ 'gs_bucket_name' => $bucket ];
 $upload_url = CloudStorageTools::createUploadUrl('/process.php', $options);
-
-?>*/
+*/
+?>
 
 <!DOCTYPE html>
 <html lang="en">
