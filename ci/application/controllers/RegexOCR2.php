@@ -457,9 +457,10 @@ class RegexOCR2 extends REST_Controller {
   foreach ($yPosition as $position) {
     $regex = '/'. $position . ',.*\n.*text":\s"(.*)"/';
     // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
+    echo "<br>Regex: " .$regex;
 
     if (preg_match_all($regex, $string, $matches)) {
-      print_r ($matches[1]);
+      //print_r ($matches[1]);
     } else {
       echo "An error occured. \n";
     }
