@@ -33,84 +33,6 @@ export class VaultPage {
     console.log('ionViewDidLoad VaultPage');
   }
 
-  image_fire() {
-    const options = {
-      quality: 50,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-      sourceType: this.camera.PictureSourceType.CAMERA,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-
-    let loader = this.loadingController.create({
-      content: 'Please wait...'
-    });
-
-    loader.present().then(() => {
-          this.camera.getPicture(options).then((imageData) => {
-          console.log("imageData from image_fire() here: ", imageData);
-          return imageData;
-        }, (err) => {
-            console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
-        });
-        // this.receiptPoster.postReceiptForm(this.model)
-        // .subscribe(
-        //   data => this.ocrreply = data.somethingReturned,
-        //   err => console.log('error: ', err),
-        //   () => console.log('Something returned: ', this.ocrreply),
-        // );
-        loader.dismiss();
-    });
-  }
-
-  image_pick() {
-    const options = {
-      quality: 50,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.JPEG,
-			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-
-    let loader = this.loadingController.create({
-      content: 'Please wait...'
-    });
-
-    loader.present().then(() => {
-          this.camera.getPicture(options).then((imageData) => {
-          console.log("imageData from image_pick() here: ", imageData);
-          return imageData;
-        }, (err) => {
-            console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
-        });
-        // this.receiptPoster.postReceiptForm(this.model)
-        // .subscribe(
-        //   data => this.ocrreply = data.somethingReturned,
-        //   err => console.log('error: ', err),
-        //   () => console.log('Something returned: ', this.ocrreply),
-        // );
-        loader.dismiss();
-    });
-  }
-
-  // private presentToast(text) {
-  //   let toast = this.toastCtrl.create({
-  //     message: text,
-  //     duration: 3000,
-  //     position: 'top'
-  //   });
-  //   toast.present();
-  // }
-  
-  // Always get the accurate path to your apps folder
-  // public pathForImage(img) {
-  //   if (img === null) {
-  //     return '';
-  //   } else {
-  //     return file.dataDirectory + img;
-  //   }
-  // }
-
   public uploadImage(receiptImage) {
     // Destination URL
     var url = "https://capstone.td9175.com/ci/index.php/Rest/upload_i/";
@@ -153,6 +75,84 @@ export class VaultPage {
       //this.presentToast('Error while uploading file.');
     });
   }
+
+  image_fire() {
+    const options = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    let loader = this.loadingController.create({
+      content: 'Please wait...'
+    });
+
+    loader.present().then(() => {
+          this.camera.getPicture(options).then((imageData) => {
+          console.log("imageData from image_fire() here: ", imageData);
+          this.uploadImage(imageData);
+        }, (err) => {
+            console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
+        });
+        // this.receiptPoster.postReceiptForm(this.model)
+        // .subscribe(
+        //   data => this.ocrreply = data.somethingReturned,
+        //   err => console.log('error: ', err),
+        //   () => console.log('Something returned: ', this.ocrreply),
+        // );
+        loader.dismiss();
+    });
+  }
+
+  image_pick() {
+    const options = {
+      quality: 50,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    let loader = this.loadingController.create({
+      content: 'Please wait...'
+    });
+
+    loader.present().then(() => {
+          this.camera.getPicture(options).then((imageData) => {
+          console.log("imageData from image_pick() here: ", imageData);
+          this.uploadImage(imageData);
+        }, (err) => {
+            console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
+        });
+        // this.receiptPoster.postReceiptForm(this.model)
+        // .subscribe(
+        //   data => this.ocrreply = data.somethingReturned,
+        //   err => console.log('error: ', err),
+        //   () => console.log('Something returned: ', this.ocrreply),
+        // );
+        loader.dismiss();
+    });
+  }
+
+  // private presentToast(text) {
+  //   let toast = this.toastCtrl.create({
+  //     message: text,
+  //     duration: 3000,
+  //     position: 'top'
+  //   });
+  //   toast.present();
+  // }
+  
+  // Always get the accurate path to your apps folder
+  // public pathForImage(img) {
+  //   if (img === null) {
+  //     return '';
+  //   } else {
+  //     return file.dataDirectory + img;
+  //   }
+  // }
 
   fireUploadSheet() {
     let actionSheet = this.actionSheetCtrl.create({
