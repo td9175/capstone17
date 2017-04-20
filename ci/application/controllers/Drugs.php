@@ -75,7 +75,8 @@ class Drugs extends CI_Controller {
       $url = "https://api.goodrx.com/compare-price?";
 
       // Build the query string
-			// $name = urldecode($name);
+			$name = urldecode($name);
+			$name = urlencode($name);
       $queryString = "name=" . $name . "&api_key=" . $apiKey;
 			echo "$queryString \n";
 
