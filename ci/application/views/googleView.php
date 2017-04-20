@@ -1,6 +1,6 @@
 <?php
 //include_once("creds.php"); // Get $bucket
-//require '/var/www/html/ci/application/config/autoload.php';
+require 'application/config/autoload.php';
 use google\appengine\api\cloud_storage\CloudStorageTools;
 //Create Bucket here 
 // https://cloud.google.com/storage/docs/getting-started-console#create_a_bucket
