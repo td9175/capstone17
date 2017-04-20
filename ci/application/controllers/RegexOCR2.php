@@ -451,7 +451,7 @@ class RegexOCR2 extends REST_Controller {
 
   // Get the Y cordinate for everything
   preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
-
+	$counter = 0;
   $yPosition = $matches[1];
 
   foreach ($yPosition as $position) {
@@ -460,7 +460,11 @@ class RegexOCR2 extends REST_Controller {
     echo "<br>Regex: " .$regex;
 
     if (preg_match_all($regex, $string, $matches)) {
-      //print_r ($matches[1]);
+    	foreach ($matches as $match) {
+      	$counter++;
+      	echo "<br>Counter:" . $counter;
+      
+      }
     } else {
       echo "An error occured. \n";
     }
