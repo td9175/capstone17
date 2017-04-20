@@ -455,16 +455,15 @@ class RegexOCR extends REST_Controller {
   $yPosition = $matches[1];
 
   foreach ($yPosition as $position) {
-    $regex = '/'. $position . '(.*)/ixU';
-    // \"text\":\s+\"(.*)\"
-    // echo "$regex \n";
+    $regex = '/'. $yPosition . ',.*\n.*text":\s"(.*)"/gi';
+    // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
 
-    if (preg_match_all($regex, $string, $matches) == FALSE) {
-      echo "An error occured. \n";
-
-    } else {
+    if (preg_match_all($regex, $string, $matches)) {
       var_dump($matches[1]);
+    } else {
+      echo "An error occured. \n";
     }
+
 
 
   }
