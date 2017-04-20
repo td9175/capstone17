@@ -45,7 +45,7 @@ class ReceiptModel extends CI_Model {
                     'date_time_stamp' => $row['date_time_stamp']
                 );
             }
-        }else{
+        } else {
                 $data = 'There is no receipt at this id.';
         }
 
@@ -73,7 +73,6 @@ class ReceiptModel extends CI_Model {
 			);
 		}
 		return $data['image'];
-
 
     }
 

@@ -164,7 +164,7 @@ class RegexOCR extends REST_Controller {
                 "words": [
                   {
                     "boundingBox": "205,285,111,17",
-                    "text": "0015488514"
+                    "text": "00154885H"
                   }
                 ]
               },
@@ -173,7 +173,7 @@ class RegexOCR extends REST_Controller {
                 "words": [
                   {
                     "boundingBox": "205,314,112,17",
-                    "text": "0028556614"
+                    "text": "00285566H"
                   }
                 ]
               },
