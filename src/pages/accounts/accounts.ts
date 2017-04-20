@@ -15,6 +15,7 @@ import { ActionSheetController } from 'ionic-angular';
 export class AccountsPage {
 
   users: any;
+  accountType: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { }
 
@@ -51,8 +52,16 @@ export class AccountsPage {
     this.navCtrl.push(LoginPage);
   }
 
-  loadAccountDetails(){
-    this.navCtrl.push(AccountDetailPage);
+  loadHsaAccountDetails(event, accountType){
+    accountType = "HSA";
+    this.navCtrl.push(AccountDetailPage, { accountType: accountType });
+
+  }
+
+  loadFsaAccountDetails(event, accountType){
+    accountType = "FSA";
+    this.navCtrl.push(AccountDetailPage, { accountType: accountType });
+
   }
 
   // action sheet popup test, 

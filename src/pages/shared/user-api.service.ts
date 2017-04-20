@@ -38,11 +38,13 @@ export class UserApi {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${this.baseid}`)
                 .subscribe(res => resolve(res.json()));
         });
-        //return this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${this.user}`).map(res => res.json());
     }
 
     getFsaTransaction(){
-        return this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_transaction/email/${this.user}`).map(res => res.json());
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_transaction/email/${this.baseid}`)
+                .subscribe(res => resolve(res.json()));
+        });
     }
     
     // Firebase test data:

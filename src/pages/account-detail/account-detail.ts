@@ -27,13 +27,13 @@ export class AccountDetailPage {
     console.log('ionViewDidLoad AccountDetailPage');
     this.userApi.user = this.user;
 
-    /*if (this.accountType == "HSA"){
-      this.loadHsaTransaction();
+    if (this.accountType == "HSA"){
+      this.userApi.getHsaTransaction().then(data => this.transactions = data);
     }
     else{
-      this.loadFsaTransaction();
-    }*/
-    this.userApi.getHsaTransaction().then(data => this.transactions = data);
+      this.userApi.getFsaTransaction().then(data => this.transactions = data);
+    }
+    
     
   }
 
