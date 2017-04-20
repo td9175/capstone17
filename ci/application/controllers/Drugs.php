@@ -83,7 +83,7 @@ class Drugs extends CI_Controller {
 			echo "$sig \n";
 
       //Build the URL string with the query string and keyed hash signature
-      $url = $url . $queryString . "&sig=" . $sig;
+      $url = urlencode($url . $queryString . "&sig=" . $sig);
 			echo "$url \n";
 
       // Set some curl options
