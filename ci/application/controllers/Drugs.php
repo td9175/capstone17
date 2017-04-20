@@ -44,6 +44,7 @@ class Drugs extends CI_Controller {
 
       //Build the URL string with the query string and keyed hash signature
       $url = $url . $queryString . "&sig=" . $sig;
+			$url = strip
 			echo "$url \n";
 
       // Set some curl options
@@ -76,13 +77,16 @@ class Drugs extends CI_Controller {
 
       // Build the query string
       $queryString = "name=" . $name . "&api_key=" . $apiKey;
+			echo "$queryString \n";
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
+			echo "$sig \n";
 
       //Build the URL string with the query string and keyed hash signature
       $url = $url . $queryString . "&sig=" . $sig;
-
+			echo "$url \n";
+			
       // Set some curl options
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
