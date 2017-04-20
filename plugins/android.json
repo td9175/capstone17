@@ -42,6 +42,9 @@
         },
         "cordova-plugin-filepath": {
             "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
         }
     },
     "dependent_plugins": {}

@@ -21338,6 +21338,11 @@ page-product-detail .highlight-secondary {
   color: #0099e6;
 }
 
+page-product-detail .highlight-goodrx {
+  color: #747678;
+  font-size: 10px;
+}
+
 page-products .padding-horizontal {
   padding: 0px 10px;
 }
