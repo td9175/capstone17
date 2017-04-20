@@ -452,19 +452,23 @@ class RegexOCR2 extends REST_Controller {
   // Get the Y cordinate for everything
   preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
-	//array of all yPositions 
   $yPosition = $matches[1];
-  echo "Search:" . array_search("129", $yPosition);
 
   foreach ($yPosition as $position) {
-	
-	echo "Position: " . $position ."<br>"; 
+    $regex = '/'. $position . ',.*\n.*text":\s"(.*)"/';
+    // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
+
+    if (preg_match_all($regex, $string, $matches)) {
+      print_r ($matches[1]);
+    } else {
+      echo "An error occured. \n";
+    }
+
+
 
 
   }
 
-
-
-  }
+}
 
 }
