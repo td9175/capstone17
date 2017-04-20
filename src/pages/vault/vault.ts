@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ReceiptPoster } from './../shared/receipt-post.service';
+import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 
 /*
   Generated class for the Vault page.
@@ -17,10 +18,14 @@ import { ReceiptPoster } from './../shared/receipt-post.service';
 })
 export class VaultPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster, private actionSheet: ActionSheet) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
+  }
+
+  fireUploadSheet() {
+    
   }
 
   loadAddRecieptPage(){
