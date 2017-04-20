@@ -1,3 +1,4 @@
+import { AccountDetailPage } from './../account-detail/account-detail';
 import { UserApi } from './../shared/user-api.service';
 //import { ReportsPage } from './../reports/reports';
 import { HSAPage } from '../hsa/hsa';
@@ -48,6 +49,10 @@ export class AccountsPage {
 
   loginTest() {
     this.navCtrl.push(LoginPage);
+  }
+
+  loadAccountDetails(){
+    this.navCtrl.push(AccountDetailPage);
   }
 
   // action sheet popup test, 

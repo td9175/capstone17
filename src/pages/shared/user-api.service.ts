@@ -13,6 +13,7 @@ export class UserApi {
     public drugToSearch: any;
     public drugToGetDetails: any;
     public fullData: any;
+    public user: any;
 
     constructor(private http: Http) { }
 
@@ -32,6 +33,18 @@ export class UserApi {
 
     getProductPrices(){
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
+    }
+
+    getHsaTransaction(){
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${this.baseid}`)
+                .subscribe(res => resolve(res.json()));
+        });
+        //return this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${this.user}`).map(res => res.json());
+    }
+
+    getFsaTransaction(){
+        return this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_transaction/email/${this.user}`).map(res => res.json());
     }
     
     // Firebase test data:

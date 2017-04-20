@@ -1,0 +1,33 @@
+<!--
+  Generated template for the AccountDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>account-detail</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-title>Account Details</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1>Account Details</h1>
+
+  <ion-list>
+    <ion-item item-left *ngFor="let transaction of transactions">
+      <h2>Date of transaction: {{ transaction.date_time_stamp }}</h2>
+      <p>Amount of transaction:  {{ transaction.amount }} </p>
+    </ion-item>
+  </ion-list>
+</ion-content>
