@@ -30,6 +30,7 @@
 		75FEB48CFF75480A86CA6E50 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AB0C8C1B7B41F295802316 /* CDVLocalFilesystem.m */; };
 		A164161AD83D4977AD4972B4 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 323141E75685481A824D8EE9 /* CDVAssetLibraryFilesystem.m */; };
 		C137168270BB4DC292C22F4E /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2573DA90A2F243DC8FF776D5 /* CDVFileTransfer.m */; };
+		42905B006A2D47E9BC93FC51 /* ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B2400DF9779344E2BA5614B0 /* ActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		00ED3E69FE6545AE83176251 /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.h"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		2573DA90A2F243DC8FF776D5 /* CDVFileTransfer.m */ = {isa = PBXFileReference; name = "CDVFileTransfer.m"; path = "cordova-plugin-file-transfer/CDVFileTransfer.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		33D4EE63731C4DFAAEFF26BC /* CDVFileTransfer.h */ = {isa = PBXFileReference; name = "CDVFileTransfer.h"; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		B2400DF9779344E2BA5614B0 /* ActionSheet.m */ = {isa = PBXFileReference; name = "ActionSheet.m"; path = "cordova-plugin-actionsheet/ActionSheet.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		9FE95980BD394785A1E22FC8 /* ActionSheet.h */ = {isa = PBXFileReference; name = "ActionSheet.h"; path = "cordova-plugin-actionsheet/ActionSheet.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +243,8 @@
 				00ED3E69FE6545AE83176251 /* CDVAssetLibraryFilesystem.h */,
 				2573DA90A2F243DC8FF776D5 /* CDVFileTransfer.m */,
 				33D4EE63731C4DFAAEFF26BC /* CDVFileTransfer.h */,
+				B2400DF9779344E2BA5614B0 /* ActionSheet.m */,
+				9FE95980BD394785A1E22FC8 /* ActionSheet.h */,
 			);
 			name = Plugins;
 			path = "umb-health-v02/Plugins";
@@ -374,6 +379,7 @@
 				75FEB48CFF75480A86CA6E50 /* CDVLocalFilesystem.m in Sources */,
 				A164161AD83D4977AD4972B4 /* CDVAssetLibraryFilesystem.m in Sources */,
 				C137168270BB4DC292C22F4E /* CDVFileTransfer.m in Sources */,
+				42905B006A2D47E9BC93FC51 /* ActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
