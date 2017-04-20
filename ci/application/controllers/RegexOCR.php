@@ -469,7 +469,11 @@ class RegexOCR extends REST_Controller {
     // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
 
     if (preg_match_all($regex, $string, $matches)) {
-      var_dump($matches[1]);
+      $lines = array_unique($matches[1]);
+      foreach ($lines as $line) {
+        echo "$line \n";
+      }
+      // var_dump($matches[1]);
     } else {
       echo "An error occured. \n";
     }
