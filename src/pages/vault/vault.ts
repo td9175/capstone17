@@ -44,13 +44,17 @@ export class VaultPage {
   
     // File name only
     var filename = currentName;
+    console.log("filename: ", filename);
+    console.log("targetPath: ", targetPath);
+    console.log("currentName: ", currentName);
+    console.log("correctPath: ", correctPath);
   
     var options = {
       fileKey: "file",
       fileName: filename,
       chunkedMode: false,
       mimeType: "multipart/form-data",
-      params : {'userfile': filename}
+      params : {'userfile': targetPath}
     };
   
     const fileTransfer: TransferObject = new TransferObject();
@@ -68,10 +72,12 @@ export class VaultPage {
     fileTransfer.upload(targetPath, url, options).then(data => {
       loader.dismissAll();
       console.log("upload successful!");
+      console.log(data);
       //this.presentToast('Image succesful uploaded.');
     }, err => {
       loader.dismissAll();
       console.log("error uploading file");
+      console.log(err);
       //this.presentToast('Error while uploading file.');
     });
   }
