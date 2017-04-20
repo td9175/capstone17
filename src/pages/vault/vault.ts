@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ReceiptPoster } from './../shared/receipt-post.service';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
+import { ActionSheetController } from 'ionic-angular';
 
 /*
   Generated class for the Vault page.
@@ -18,14 +19,35 @@ import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 })
 export class VaultPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster, private actionSheet: ActionSheet) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
   }
 
   fireUploadSheet() {
-    
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Select an image from:',
+      buttons: [
+        {
+          text: 'Photo Library',
+          handler: () => {
+            //this.takePicture(Camera.PictureSourceType.PHOTOLIBRARY);
+          }
+        },
+        {
+          text: 'Take Picture with Camera',
+          handler: () => {
+            //this.takePicture(Camera.PictureSourceType.CAMERA);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   loadAddRecieptPage(){
