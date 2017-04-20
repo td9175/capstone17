@@ -460,7 +460,7 @@ class RegexOCR2 extends REST_Controller {
     echo "<br>Regex: " .$regex;
 
     if (preg_match_all($regex, $string, $matches)) {
-    	var_dump($matches[1])
+    	var_dump($matches[1]);
     	echo "$position <BR>";
     	
     } else {
