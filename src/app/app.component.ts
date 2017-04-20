@@ -5,6 +5,10 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
 
+import { ReceiptPoster } from './../shared/receipt-post.service';
+import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
+import { ActionSheetController } from 'ionic-angular';
+
 // Pages Import 
 // Page1 and Page2 are test and placeholder pages.
 

@@ -21317,15 +21317,6 @@ page-login ion-item {
   font-size: 0.9em;
 }
 
-page-product-detail {
-  /*
-  ion-grid {
-    height: 100%;
-    justify-content: center;
-  }
-  */
-}
-
 page-product-detail .card {
   box-shadow: 0 0px 0px transparent;
 }
@@ -21341,6 +21332,13 @@ page-product-detail .highlight-secondary {
 page-product-detail .highlight-goodrx {
   color: #747678;
   font-size: 10px;
+}
+
+page-product-detail .goodrx-img {
+  background-color: transparent;
+  border: none;
+  float: right;
+  position: static;
 }
 
 page-products .padding-horizontal {

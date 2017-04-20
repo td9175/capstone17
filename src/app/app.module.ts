@@ -31,6 +31,9 @@ import { Page2 } from '../pages/page2/page2';
 
 import { Camera } from '@ionic-native/camera';
 
+import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
+import { ActionSheetController } from 'ionic-angular';
+
 @NgModule({
   declarations: [
     HomePage,
@@ -82,6 +85,6 @@ import { Camera } from '@ionic-native/camera';
     ProductDetail,
     AccountDetailPage
   ],
-  providers: [YelpPoster, ReceiptPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera]
+  providers: [YelpPoster, ReceiptPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController]
 })
 export class AppModule {}
