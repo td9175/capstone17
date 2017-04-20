@@ -30,13 +30,13 @@ export class VaultPage {
       title: 'Select an image from:',
       buttons: [
         {
-          text: 'Photo Library',
+          text: 'Camera Roll',
           handler: () => {
             //this.takePicture(Camera.PictureSourceType.PHOTOLIBRARY);
           }
         },
         {
-          text: 'Take Picture with Camera',
+          text: 'Take Photo with Camera',
           handler: () => {
             //this.takePicture(Camera.PictureSourceType.CAMERA);
           }
