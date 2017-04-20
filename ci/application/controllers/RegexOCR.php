@@ -452,9 +452,13 @@ class RegexOCR extends REST_Controller {
   // Get the Y cordinate for everything
   preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
+  // Put the matches array into a named variable
   $yPosition = $matches[1];
 
-  foreach ($yPosition as $position) {
+  // Remove duplicate Y values
+  $positions = array_unique($yPosition);
+
+  foreach ($positions as $position) {
     $regex = '/'. $position . ',.*\n.*text":\s"(.*)"/';
     // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
 
