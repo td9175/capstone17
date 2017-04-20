@@ -20,6 +20,7 @@ export class ProductDetail {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductDetailPage');
+    console.log('ProductToGetDetails= ', this.productToGetDetails)
     this.productToGetDetails = this.userApi.drugToGetDetails;
     this.loadJsonFiles();
   }

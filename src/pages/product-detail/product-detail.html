@@ -36,14 +36,7 @@
             </ion-col>
         </ion-row>
       </ion-item>
-      <!-- Should we include this disclamour or just say powered by goodrx??-->
-      <!--
-      <ion-row>
-        <ion-col width-100>
-          <p class="text-warning-disclamor" ion-text color="secondary"><strong>About Price Comparison:</strong> Price comparisons may not accuretly reflect local prices; but it does show the 3 lowest cash prices for a given prescription drug from a basket of nationwide pharmacy chains,</p>
-        </ion-col>
-      </ion-row>
-      -->
+
       <ion-item no-padding>
       <ion-row>
         <ion-col>
@@ -57,23 +50,9 @@
       </ion-row>
       </ion-item>
     </ion-grid>
+    
+    <!-- Required from GoodRx -->
+    <p ion-text >
+      <br><a href="https://www.goodrx.com" class="highlight-goodrx">Powered by GoodRx</a>
+    </p>
 </ion-content>
-
-
-<!-- Michael's backup code left here incase we need it again-->
-<!--<h1>{{productToGetDetails}}</h1>
-    <ion-list>
-      <ion-item item-left *ngFor="let price of combinedArray" >
-        <p>Costs $ {{price}}</p>
-      </ion-item>   
-</ion-list>-->
-
-<!--
-<ion-content padding>
-  <ion-list>
-    <ion-item item-left *ngFor="let store of stores">
-      <p>Store: {{ store }} Price: {{ prices }}</p>
-    </ion-item>
-  </ion-list>
-</ion-content>
--->

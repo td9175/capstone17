@@ -10,6 +10,11 @@ page-product-detail{
     color: map-get($colors, secondary);
   }
 
+  .highlight-goodrx {
+    color: map-get($colors, dark);
+    font-size: 10px;
+  }
+
   /*
   ion-grid {
     height: 100%;

@@ -14,8 +14,8 @@
   </ion-searchbar>
   
   <p ion-text class="alert-empty-search-bar" *ngIf="(searchEmpty == true)">Search for prescription drugs<br>and compare prices.</p>
+  <p ion-text class="alert-empty-search-bar" *ngIf="(success == false)">Invalid search, please try again.</p>
   
-  <!--<ion-list class="padding-horizontal">-->
   <ion-list no-padding>
     <a button ion-item item-left (click)="loadProductDetail(product)" *ngFor="let product of searchJson" detail-push>
       <h2>{{product}}</h2>

@@ -6,8 +6,6 @@ export class UserApi {
 
     private baseUrl = 'https://capstone.td9175.com';
     private userid = 'umbcapstone17@gmail.com';
-    // for user id.
-    // encodeURI(userid);
     baseid = encodeURIComponent(this.userid)
     
     public drugToSearch: any;
@@ -19,7 +17,7 @@ export class UserApi {
 
     getUserData(){
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}ci/index.php/HealthAccount/hsa/email/umbcapstone17${this.baseid}`)
+            this.http.get(`${this.baseUrl}ci/index.php/HealthAccount/hsa/email/${this.baseid}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
