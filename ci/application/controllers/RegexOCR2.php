@@ -459,7 +459,7 @@ class RegexOCR2 extends REST_Controller {
     // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
 
     if (preg_match_all($regex, $string, $matches)) {
-      print_r $matches[1]);
+      print_r ($matches[1]);
     } else {
       echo "An error occured. \n";
     }
