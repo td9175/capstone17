@@ -48,6 +48,9 @@ export class UserApi {
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
     }
 
+    
+    
+    /*Getting Account Details*/
     getHsaTransaction(){
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${this.baseid}`)
@@ -61,6 +64,21 @@ export class UserApi {
                 .subscribe(res => resolve(res.json()));
         });
     }
+
+    getHsaBalance(){
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_balance/email/${this.baseid}`)
+                .subscribe(res => resolve(res.json()));
+        });
+    }
+
+    getFsaBalance(){
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${this.baseid}`)
+                .subscribe(res => resolve(res.json()));
+        });
+    }
+    
     
     // Firebase test data:
     // private baseUrl = 'https://capstone17-umbhealth-i2.firebaseio.com';

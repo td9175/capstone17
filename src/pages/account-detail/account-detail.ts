@@ -16,7 +16,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class AccountDetailPage {
   
   accountType: any;
-
+  remainingBalance: any;
   transactions: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {
@@ -25,12 +25,17 @@ export class AccountDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountDetailPage');
+    this.getTransactionDetails();
+  }
 
+  getTransactionDetails(){
     if (this.accountType == "HSA"){
       this.userApi.getHsaTransaction().then(data => this.transactions = data);
+      this.userApi.getHsaBalance().then(data => this.remainingBalance = data);
     }
     else{
       this.userApi.getFsaTransaction().then(data => this.transactions = data);
+      this.userApi.getFsaBalance().then(data => this.remainingBalance = data);
     }
   }
 
