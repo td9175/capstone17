@@ -18,9 +18,6 @@ export class YelpResultPage {
     this.result = navParams.get('result');
   }
 
-
-  
-
   ionViewDidLoad() {
           this.cats = this.result.categories;
           console.log('categories load: ', this.cats);

@@ -10,37 +10,50 @@
   
   
   <ion-list>
-    <!--
-    <ion-item *ngIf="(userhsa?.account_number===0)" *ngFor="let userhsa of userhsas">
-      <p>Please add your HSA account info</p>
-    </ion-item>
-    -->
-    <ion-card padding>
+    <ion-card>
       <button ion-item (click)="loadUserSettingsDetails()">
-        <ion-icon name="person" item-left></ion-icon>Hello, Kenny
+        <!--<ion-icon name="person" item-left></ion-icon>-->Hello, Shit
       </button>
     <!--HSA Card Area-->
     </ion-card>
-    <ion-card padding *ngFor="let userhsa of userhsas">
-      <div *ngIf="(userhsa?.account_number>=1)">
-        <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Service Account</h3>
-        <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
-      </div>
+    <ion-card *ngFor="let userhsa of userhsas">
+      <button ion-item *ngIf="(userhsa?.account_number>=1)" (click)="loadHsaAccountDetails($event, accountType)">
+        <div>
+          <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Service Account</h3>
+          <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
+        </div>
+      </button>
       <!--Probably will change to another type of check..-->
-      <div *ngIf="(userhsa?.account_number==0)">
-        <button ion-button block outline>
-            Add HSA Account
-            <!--<ion-icon name="add-circle"></ion-icon>-->
-        </button>
-      </div>
+      <button ion-item *ngIf="(userhsa?.account_number==NULL)">
+        <div>
+          <h4 class="account-number">Click Here To Add HSA</h4>
+        </div>
+      </button>
     </ion-card>
+    
+    <ion-card *ngFor="let userfsa of userfsas">
+      <button ion-item *ngIf="(userfsa?.account_number>=1)" (click)="loadFsaAccountDetails($event, accountType)">
+        <div>
+          <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Service Account</h3>
+          <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>
+        </div>
+      </button>
+      <!--Probably will change to another type of check..-->
+      <button ion-item *ngIf="(userfsa?.account_number==NULL)">
+        <div>
+          <h4 class="account-number">Click Here To Add FSA</h4>
+        </div>
+      </button>
+    </ion-card>
+
   </ion-list>
 
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
   
-  <!--Keeping these for Michael-->
+  <!--
   <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
+  -->
   <!--Broken right now-->
   <button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
   
