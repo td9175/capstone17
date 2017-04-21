@@ -154,7 +154,7 @@ export class AuthService {
     } else {
       return Observable.create(observer => {
        this.postRegister(email, password, first_name, last_name).subscribe(
-          data => this.registerReturn = data.session,
+          data => this.registerReturn = data.success,
           err => console.log('error: ', err),
           () => {console.log('registerReturn: ', this.registerReturn);
                 //this.currentUser.session = this.registerReturn;

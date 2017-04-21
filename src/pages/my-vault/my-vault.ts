@@ -2,7 +2,7 @@ import { AccountsPage } from './../accounts/accounts';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
-import { ReceiptPoster } from './../shared/receipt-post.service';
+//import { ReceiptPoster } from './../shared/receipt-post.service';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
 
