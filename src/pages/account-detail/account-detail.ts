@@ -15,13 +15,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AccountDetailPage {
   
-  accountType = "HSA";
+  accountType: any;
   user = "umbcapstone17%40gmail.com";
 
   transactions: any;
   success: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {
+    this.accountType = navParams.get('accountType');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountDetailPage');
