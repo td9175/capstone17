@@ -13,6 +13,8 @@ export class UserSettingsPage {
     console.log('ionViewDidLoad UserSettingsPage');
   }
 
-  
+  goBack() {
+    this.navCtrl.pop();
+  }
 
 }
