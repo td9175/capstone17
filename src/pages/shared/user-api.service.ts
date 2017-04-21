@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HHttp, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -101,13 +101,26 @@ export class AuthService {
   currentUser: User;
 
   constructor(private http: Http) { }
+
+  public postLogin(email, password){ 
+        let body = new URLSearchParams();
+            body.set('email', email);
+            body.set('password', password);
+        console.log('body: ', body);
+        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let options = new RequestOptions({ headers: headers })
+
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/login/', body, options)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
  
   public appLogin(email, password) {
     if (email === null || password === null) {
       return Observable.throw("Please put in your credentials.");
     } else {
       return Observable.create(observer => {
-        this.http.post("https://capstone.td9175.com/ci/index.php/UserAccount/login/", body, options);
+        this.postLogin(email, password);
         this.currentUser = new User(email, session);
         observer.complete();
       });
