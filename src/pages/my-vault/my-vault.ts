@@ -1,6 +1,7 @@
+import { Page1 } from './../page1/page1';
 import { AccountsPage } from './../accounts/accounts';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ModalController, ViewController, NavController, NavParams } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ReceiptPoster } from './../shared/receipt-post.service';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
@@ -16,13 +17,14 @@ import { ActionSheetController } from 'ionic-angular';
   selector: 'page-my-vault',
   templateUrl: 'my-vault.html'
 })
+
 export class MyVaultPage {
 
   receipts: any;
 
   filteredReceipts: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public actionSheet: ActionSheet) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public actionSheet: ActionSheet, public modalCtrl: ModalController) {
     this.receipts = [
       {
         receiptsId: 1,
@@ -86,4 +88,12 @@ export class MyVaultPage {
       }
     });
   }
+
+  presentProfileModal() {
+   let profileModal = this.modalCtrl.create(Page1, { userId: 8675309 });
+   profileModal.onDidDismiss(data => {
+     console.log(data);
+   });
+   profileModal.present();
+ }
 }
