@@ -27,7 +27,7 @@
 
   <ion-list>
     <ion-item item-left *ngFor="let transaction of transactions">
-      <h2>Date of transaction: {{ transaction.date_time_stamp }}</h2>
+      <h2>Date of transaction: {{ transaction.date_time_stamp.substring(0,10) }}</h2>
       <p>Amount of transaction:  {{ transaction.amount }} </p>
     </ion-item>
   </ion-list>

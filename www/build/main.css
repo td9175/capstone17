@@ -21326,6 +21326,11 @@ page-login ion-item {
   font-size: 0.9em;
 }
 
+page-page1 ion-content {
+  padding: 100px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 page-product-detail .card {
   box-shadow: 0 0px 0px transparent;
 }

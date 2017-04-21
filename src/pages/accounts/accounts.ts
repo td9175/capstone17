@@ -19,15 +19,21 @@ export class AccountsPage {
 
   userhsas: any;
   userfsas: any;
+
+  userhsabalance: any;
+  // userfsabalance: any;
   // accountType: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { 
   }
 
   ionViewDidLoad() {
-    // get HSA Data
+    // get HSA-FSA Data
     this.userApi.getUserHSAData().then(data => this.userhsas = data);
     this.userApi.getUserFSAData().then(data => this.userfsas = data);
+    // would it be redundant to show balance here? Would we rather have them click on the account.
+    //this.userApi.getHsaBalance().then(data => this.userhsabalance);
+    //this.userApi.getFsaBalance().then(data => this.userfsabalance);
   }
 
   // for debugging.

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { ModalController, ViewController, NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'page-page1',
@@ -8,12 +8,17 @@ import { NavController } from 'ionic-angular';
 })
 export class Page1 {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController) {
     
   }
 
   helloTest(){
     console.log('Hello, World!');
   }
+
+  dismiss() {
+   let data = { 'foo': 'bar' };
+   this.viewCtrl.dismiss(data);
+ }
 
 }
