@@ -43,7 +43,7 @@
     <ion-row>
       <ion-col>
         <!--Currently (click) is goToHome, should be loginState (once ready)-->
-        <button ion-button class="login-button" (click)="goToHome()">Sign In</button>
+        <button ion-button class="login-button" (click)="loginClicked($event, data)">Sign In</button>
       </ion-col>
       <ion-col>
         <button ion-button class="enroll-button" (click)="enrollNow()">Enroll</button>

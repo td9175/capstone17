@@ -31,7 +31,7 @@ export class LoginPage {
     //this.navCtrl.push(AccountsPage);
     //this.navCtrl.popToRoot();
     //this.navCtrl.push(HomePage);
-    this.authService.appLogin(email, password);
+    this.authService.appLogin(this.navParams.data.email, this.navParams.data.password);
   }
 
   enrollNow(){

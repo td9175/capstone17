@@ -25,7 +25,7 @@ import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
 // APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
-import { ReceiptPoster } from './../pages/shared/receipt-post.service';
+//import { ReceiptPoster } from './../pages/shared/receipt-post.service';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 
 import { MyApp } from './app.component';
@@ -89,6 +89,6 @@ import { ActionSheetController } from 'ionic-angular';
     ProductDetail,
     AccountDetailPage
   ],
-  providers: [YelpPoster, ReceiptPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController]
+  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController]
 })
 export class AppModule {}
