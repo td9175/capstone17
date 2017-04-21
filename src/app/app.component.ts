@@ -1,4 +1,3 @@
-import { ProductDetail } from './../pages/product-detail/product-detail';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -22,9 +21,11 @@ import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 // import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
+// import { Page2 } from '../pages/page2/page2';
 import { MyVaultPage } from './../pages/my-vault/my-vault';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
+import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';
+import { ProductDetail } from './../pages/product-detail/product-detail';
 
 // API Imports
 import { UserApi } from '../pages/shared/shared';
@@ -93,11 +94,11 @@ export class MyApp {
   goToHelp() {
     this.nav.push(HelpPage);
   }
-
+  /*
   goToUserSettings() {
     this.nav.push(UserSettingsPage);
   }
-
+  */
   signOut(){
     this.nav.push(LoginPage)
   }

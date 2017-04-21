@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   
   
   <ion-list>
@@ -15,9 +15,16 @@
       <p>Please add your HSA account info</p>
     </ion-item>
     -->
-    <ion-item *ngFor="let userhsa of userhsas">
+    <ion-card padding>
+      <button ion-item (click)="loadUserSettingsDetails()">
+        <ion-icon name="person" item-left></ion-icon>Hello, Kenny
+      </button>
+    <!--HSA Card Area-->
+    </ion-card>
+    <ion-card padding *ngFor="let userhsa of userhsas">
       <div *ngIf="(userhsa?.account_number>=1)">
-        <p>{{userhsa.account_type}}</p>
+        <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Service Account</h3>
+        <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
       </div>
       <!--Probably will change to another type of check..-->
       <div *ngIf="(userhsa?.account_number==0)">
@@ -26,7 +33,7 @@
             <!--<ion-icon name="add-circle"></ion-icon>-->
         </button>
       </div>
-    </ion-item>
+    </ion-card>
   </ion-list>
 
   <!--Return to login page-->
@@ -34,6 +41,7 @@
   
   <!--Keeping these for Michael-->
   <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
+  <!--Broken right now-->
   <button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
   
 </ion-content>

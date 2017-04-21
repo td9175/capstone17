@@ -1,3 +1,11 @@
 page-accounts {
+    .account-header{
+        font-size: 20px;
+        color: map-get($colors, primary);
 
+    }
+
+    .account-number{
+        color: map-get($colors, dark);
+    }
 }

@@ -1,11 +1,9 @@
-import { AccountDetailPage } from './../pages/account-detail/account-detail';
-import { ProductDetail } from './../pages/product-detail/product-detail';
-import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import io from 'socket.io-client';
 window["io"] = io;
 
+// Page Imports
 import { HomePage } from './../pages/home/home';
 import { UserSettingsPage } from './../pages/user-settings/user-settings';
 import { VaultPage } from './../pages/vault/vault';
@@ -20,7 +18,12 @@ import { ReportsPage } from './../pages/reports/reports';
 import { AboutPage } from './../pages/about/about';
 import { AccountsPage } from './../pages/accounts/accounts';
 import { MyVaultPage } from './../pages/my-vault/my-vault'; 
+import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';
+import { AccountDetailPage } from './../pages/account-detail/account-detail';
+import { ProductDetail } from './../pages/product-detail/product-detail';
+import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
+// APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
 import { ReceiptPoster } from './../pages/shared/receipt-post.service';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
@@ -56,7 +59,8 @@ import { ActionSheetController } from 'ionic-angular';
     MyVaultPage,
     AddReceiptPage,
     ProductDetail,
-    AccountDetailPage
+    AccountDetailPage,
+    ReceiptFormPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
