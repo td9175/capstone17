@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HHttp, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -99,6 +99,8 @@ export class User {
 @Injectable()
 export class AuthService {
   currentUser: User;
+  loginReturn: any;
+  registerReturn: any;
 
   constructor(private http: Http) { }
 
@@ -114,14 +116,33 @@ export class AuthService {
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  public postRegister(email, password, first_name, last_name) { 
+        let body = new URLSearchParams();
+            body.set('email', email);
+            body.set('password', password);
+            body.set('first_name', first_name);
+            body.set('last_name', last_name);
+        console.log('body: ', body);
+        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let options = new RequestOptions({ headers: headers })
+
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/register/', body, options)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
  
   public appLogin(email, password) {
     if (email === null || password === null) {
       return Observable.throw("Please put in your credentials.");
     } else {
       return Observable.create(observer => {
-        this.postLogin(email, password);
-        this.currentUser = new User(email, session);
+        this.postLogin(email, password).subscribe(
+          data => this.loginReturn = data.session,
+          err => console.log('error: ', err),
+          () => {console.log('loginReturn: ', this.loginReturn);
+                this.currentUser.session = this.loginReturn;}
+        );
         observer.complete();
       });
     }
@@ -132,13 +153,19 @@ export class AuthService {
       return Observable.throw("Please fill out the form.");
     } else {
       return Observable.create(observer => {
-        this.http.post("https://capstone.td9175.com/ci/index.php/UserAccount/register/", body, options);
+       this.postRegister(email, password, first_name, last_name).subscribe(
+          data => this.registerReturn = data.session,
+          err => console.log('error: ', err),
+          () => {console.log('registerReturn: ', this.registerReturn);
+                //this.currentUser.session = this.registerReturn;
+        });
         observer.complete();
       });
     }
   }
  
   public appGetUser() : User {
+    console.log("currentUser is: ", this.currentUser);
     return this.currentUser;
   }
  

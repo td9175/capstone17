@@ -3,10 +3,10 @@ import { AddReceiptPage } from './../add-receipt/add-receipt';
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
-import { ReceiptPoster } from './../shared/receipt-post.service';
+//import { ReceiptPoster } from './../shared/receipt-post.service';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
-import { OcrUploadImageModel } from './../../models/ocruploadimage.model';
+//import { OcrUploadImageModel } from './../../models/ocruploadimage.model';
 import { File } from '@ionic-native/file';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http'
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
@@ -25,11 +25,8 @@ import { Injectable } from '@angular/core';
 export class VaultPage {
 
   receiptImage: any;
-  model = new OcrUploadImageModel('');
-  
-  ocrreply: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController, private http: Http) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController, private http: Http) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
