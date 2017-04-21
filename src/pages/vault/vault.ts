@@ -8,7 +8,9 @@ import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
 import { OcrUploadImageModel } from './../../models/ocruploadimage.model';
 import { File } from '@ionic-native/file';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http'
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { Injectable } from '@angular/core';
 
 /*
   Generated class for the Vault page.
@@ -27,7 +29,7 @@ export class VaultPage {
   
   ocrreply: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public receiptPoster: ReceiptPoster, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController, private http: Http) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
@@ -48,14 +50,20 @@ export class VaultPage {
     console.log("targetPath: ", targetPath);
     console.log("currentName: ", currentName);
     console.log("correctPath: ", correctPath);
-  
+
     var options = {
-      fileKey: "file",
+      fileKey: "userfile",
       fileName: filename,
-      chunkedMode: false,
-      mimeType: "multipart/form-data",
-      params : {'userfile': targetPath}
+      httpMode: "POST",
+      chunkedMode: true,
+      params : {}
     };
+
+    // let body = new URLSearchParams();
+    //     body.set('uri', ocrUploadModel.localURI);
+    //     console.log('body: ', body);
+    //     let headers = new Headers({ 'Content-Type': 'image/jpeg' });
+    //     let reqOptions = new RequestOptions({ headers: headers })
   
     const fileTransfer: TransferObject = new TransferObject();
   

@@ -25,9 +25,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->model('ReceiptModel');
 
 
-			//$email = $_SESSION['email'];
+			$email = $_SESSION['email'];
 			
-			$email = "umbcapstone17@gmail.com";
+			//$email = "umbcapstone17@gmail.com";
 			echo "Email: ". $email; 
 
 
@@ -74,8 +74,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 	
 
-			
-				$path = 'umbcapstone17%40gmail.com/';
+				$path = urlencode(email);
+				//$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
