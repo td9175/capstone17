@@ -11,525 +11,442 @@ class RegexOCR extends REST_Controller {
 
   function receipt_regex_get() {
       $string = '{
-  "language": "en",
-  "textAngle": 0,
-  "orientation": "Up",
-  "regions": [
-    {
-      "boundingBox": "156,822,550,333",
-      "lines": [
-        {
-          "boundingBox": "158,822,546,35",
-          "words": [
-            {
-              "boundingBox": "158,822,64,33",
-              "text": "NGA"
-            },
-            {
-              "boundingBox": "245,822,106,34",
-              "text": "USIOO"
-            },
-            {
-              "boundingBox": "434,824,270,33",
-              "text": "008680087310H"
-            }
-          ]
-        },
-        {
-          "boundingBox": "158,863,547,36",
-          "words": [
-            {
-              "boundingBox": "158,863,232,35",
-              "text": "SPTSUNBLOCK"
-            },
-            {
-              "boundingBox": "433,865,272,34",
-              "text": "007874214229H"
-            }
-          ]
-        },
-        {
-          "boundingBox": "156,905,549,37",
-          "words": [
-            {
-              "boundingBox": "156,905,65,36",
-              "text": "MSO"
-            },
-            {
-              "boundingBox": "242,906,85,34",
-              "text": "ALOE"
-            },
-            {
-              "boundingBox": "349,906,62,33",
-              "text": "GEL"
-            },
-            {
-              "boundingBox": "433,906,272,36",
-              "text": "085758100358H"
-            }
-          ]
-        },
-        {
-          "boundingBox": "538,948,167,46",
-          "words": [
-            {
-              "boundingBox": "538,948,167,46",
-              "text": "SUBTOTAL"
-            }
-          ]
-        },
-        {
-          "boundingBox": "347,990,316,35",
-          "words": [
-            {
-              "boundingBox": "347,990,103,35",
-              "text": "TAXI"
-            },
-            {
-              "boundingBox": "517,990,146,35",
-              "text": "8.9751%"
-            }
-          ]
-        },
-        {
-          "boundingBox": "601,1031,104,40",
-          "words": [
-            {
-              "boundingBox": "601,1031,104,40",
-              "text": "TOTAL"
-            }
-          ]
-        },
-        {
-          "boundingBox": "473,1076,233,36",
-          "words": [
-            {
-              "boundingBox": "473,1076,104,36",
-              "text": "DEBIT"
-            },
-            {
-              "boundingBox": "622,1076,84,36",
-              "text": "TEND"
-            }
-          ]
-        },
-        {
-          "boundingBox": "494,1119,212,36",
-          "words": [
-            {
-              "boundingBox": "494,1119,127,35",
-              "text": "CHANGE"
-            },
-            {
-              "boundingBox": "642,1120,64,35",
-              "text": "DUE"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "boundingBox": "176,277,759,839",
-      "lines": [
-        {
-          "boundingBox": "176,277,703,47",
-          "words": [
-            {
-              "boundingBox": "176,277,61,32",
-              "text": "See"
-            },
-            {
-              "boundingBox": "258,280,79,32",
-              "text": "back"
-            },
-            {
-              "boundingBox": "360,284,39,29",
-              "text": "of"
-            },
-            {
-              "boundingBox": "421,289,138,34",
-              "text": "receipt"
-            },
-            {
-              "boundingBox": "582,290,58,29",
-              "text": "for"
-            },
-            {
-              "boundingBox": "661,299,79,25",
-              "text": "your"
-            },
-            {
-              "boundingBox": "760,293,119,29",
-              "text": "chance"
-            }
-          ]
-        },
-        {
-          "boundingBox": "176,319,244,35",
-          "words": [
-            {
-              "boundingBox": "176,319,39,28",
-              "text": "to"
-            },
-            {
-              "boundingBox": "237,319,61,32",
-              "text": "win"
-            },
-            {
-              "boundingBox": "318,319,102,35",
-              "text": "$1000"
-            }
-          ]
-        },
-        {
-          "boundingBox": "213,428,530,109",
-          "words": [
-            {
-              "boundingBox": "213,428,530,109",
-              "text": "Walmart"
-            }
-          ]
-        },
-        {
-          "boundingBox": "222,548,535,51",
-          "words": [
-            {
-              "boundingBox": "222,548,101,37",
-              "text": "Save"
-            },
-            {
-              "boundingBox": "337,560,157,39",
-              "text": "money."
-            },
-            {
-              "boundingBox": "510,554,85,35",
-              "text": "Live"
-            },
-            {
-              "boundingBox": "609,554,148,36",
-              "text": "better."
-            }
-          ]
-        },
-        {
-          "boundingBox": "417,621,326,34",
-          "words": [
-            {
-              "boundingBox": "417,621,61,32",
-              "text": "573"
-            },
-            {
-              "boundingBox": "502,622,12,31",
-              "text": ")"
-            },
-            {
-              "boundingBox": "539,622,61,31",
-              "text": "499"
-            },
-            {
-              "boundingBox": "623,622,20,29",
-              "text": "-1"
-            },
-            {
-              "boundingBox": "663,623,80,32",
-              "text": "4935"
-            }
-          ]
-        },
-        {
-          "boundingBox": "333,659,452,36",
-          "words": [
-            {
-              "boundingBox": "333,659,144,34",
-              "text": "MANAGER"
-            },
-            {
-              "boundingBox": "499,661,141,33",
-              "text": "TIMOTHY"
-            },
-            {
-              "boundingBox": "663,663,122,32",
-              "text": "TEMPLE"
-            }
-          ]
-        },
-        {
-          "boundingBox": "416,701,267,34",
-          "words": [
-            {
-              "boundingBox": "416,701,61,32",
-              "text": "415"
-            },
-            {
-              "boundingBox": "498,701,121,33",
-              "text": "CONLEY"
-            },
-            {
-              "boundingBox": "642,702,41,33",
-              "text": "RD"
-            }
-          ]
-        },
-        {
-          "boundingBox": "374,741,348,35",
-          "words": [
-            {
-              "boundingBox": "374,741,164,34",
-              "text": "COLUMBIA"
-            },
-            {
-              "boundingBox": "560,742,40,33",
-              "text": "MO"
-            },
-            {
-              "boundingBox": "622,741,100,35",
-              "text": "65201"
-            }
-          ]
-        },
-        {
-          "boundingBox": "246,781,689,36",
-          "words": [
-            {
-              "boundingBox": "246,781,105,33",
-              "text": "00159"
-            },
-            {
-              "boundingBox": "456,783,124,32",
-              "text": "009050"
-            },
-            {
-              "boundingBox": "684,784,41,32",
-              "text": "50"
-            },
-            {
-              "boundingBox": "830,785,105,32",
-              "text": "03870"
-            }
-          ]
-        },
-        {
-          "boundingBox": "812,951,106,34",
-          "words": [
-            {
-              "boundingBox": "812,951,106,34",
-              "text": "22.92"
-            }
-          ]
-        },
-        {
-          "boundingBox": "813,1037,108,35",
-          "words": [
-            {
-              "boundingBox": "813,1037,108,35",
-              "text": "24.98"
-            }
-          ]
-        },
-        {
-          "boundingBox": "814,1080,108,36",
-          "words": [
-            {
-              "boundingBox": "814,1080,108,36",
-              "text": "24.98"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "boundingBox": "142,1249,721,226",
-      "lines": [
-        {
-          "boundingBox": "492,1249,343,40",
-          "words": [
-            {
-              "boundingBox": "492,1249,63,39",
-              "text": "PAY"
-            },
-            {
-              "boundingBox": "578,1249,87,39",
-              "text": "FROM"
-            },
-            {
-              "boundingBox": "686,1251,149,38",
-              "text": "PRIMARY"
-            }
-          ]
-        },
-        {
-          "boundingBox": "146,1250,193,37",
-          "words": [
-            {
-              "boundingBox": "146,1250,65,36",
-              "text": "EFT"
-            },
-            {
-              "boundingBox": "234,1250,105,37",
-              "text": "DEBIT"
-            }
-          ]
-        },
-        {
-          "boundingBox": "210,1295,456,40",
-          "words": [
-            {
-              "boundingBox": "210,1295,108,37",
-              "text": "24.98"
-            },
-            {
-              "boundingBox": "363,1296,106,39",
-              "text": "TOTAL"
-            },
-            {
-              "boundingBox": "491,1296,175,39",
-              "text": "PURCHASE"
-            }
-          ]
-        },
-        {
-          "boundingBox": "145,1338,167,42",
-          "words": [
-            {
-              "boundingBox": "145,1338,42,36",
-              "text": "US"
-            },
-            {
-              "boundingBox": "207,1340,105,40",
-              "text": "DEBIT"
-            }
-          ]
-        },
-        {
-          "boundingBox": "778,1343,84,38",
-          "words": [
-            {
-              "boundingBox": "778,1343,84,38",
-              "text": "1034"
-            }
-          ]
-        },
-        {
-          "boundingBox": "143,1384,392,44",
-          "words": [
-            {
-              "boundingBox": "143,1384,64,37",
-              "text": "REF"
-            },
-            {
-              "boundingBox": "230,1387,19,35",
-              "text": "#"
-            },
-            {
-              "boundingBox": "273,1387,262,41",
-              "text": "711000190280"
-            }
-          ]
-        },
-        {
-          "boundingBox": "142,1429,721,46",
-          "words": [
-            {
-              "boundingBox": "142,1429,150,38",
-              "text": "NETWORK"
-            },
-            {
-              "boundingBox": "315,1432,57,38",
-              "text": "ID."
-            },
-            {
-              "boundingBox": "401,1435,88,40",
-              "text": "0082"
-            },
-            {
-              "boundingBox": "512,1437,88,36",
-              "text": "APPR"
-            },
-            {
-              "boundingBox": "623,1433,87,37",
-              "text": "CODE"
-            },
-            {
-              "boundingBox": "733,1433,130,37",
-              "text": "452660"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "boundingBox": "831,825,139,555",
-      "lines": [
-        {
-          "boundingBox": "831,825,127,34",
-          "words": [
-            {
-              "boundingBox": "831,825,83,33",
-              "text": "9.97"
-            },
-            {
-              "boundingBox": "937,826,21,33",
-              "text": "x"
-            }
-          ]
-        },
-        {
-          "boundingBox": "832,867,128,34",
-          "words": [
-            {
-              "boundingBox": "832,867,84,33",
-              "text": "5.98"
-            },
-            {
-              "boundingBox": "938,868,22,33",
-              "text": "x"
-            }
-          ]
-        },
-        {
-          "boundingBox": "832,908,128,35",
-          "words": [
-            {
-              "boundingBox": "832,908,85,34",
-              "text": "6.97"
-            },
-            {
-              "boundingBox": "939,910,21,33",
-              "text": "x"
-            }
-          ]
-        },
-        {
-          "boundingBox": "834,993,86,36",
-          "words": [
-            {
-              "boundingBox": "834,993,86,36",
-              "text": "2.06"
-            }
-          ]
-        },
-        {
-          "boundingBox": "836,1123,87,37",
-          "words": [
-            {
-              "boundingBox": "836,1123,87,37",
-              "text": "0.00"
-            }
-          ]
-        },
-        {
-          "boundingBox": "904,1342,66,38",
-          "words": [
-            {
-              "boundingBox": "904,1342,66,38",
-              "text": "10"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
+        "language": "en",
+        "textAngle": 0,
+        "orientation": "Up",
+        "regions": [
+          {
+            "boundingBox": "177,100,175,104",
+            "lines": [
+              {
+                "boundingBox": "177,100,175,17",
+                "words": [
+                  {
+                    "boundingBox": "177,100,80,17",
+                    "text": "HEALTH"
+                  },
+                  {
+                    "boundingBox": "266,100,48,17",
+                    "text": "AND"
+                  },
+                  {
+                    "boundingBox": "323,100,29,17",
+                    "text": "GO"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "185,129,159,17",
+                "words": [
+                  {
+                    "boundingBox": "185,130,58,16",
+                    "text": "12345"
+                  },
+                  {
+                    "boundingBox": "253,129,57,17",
+                    "text": "MAIN"
+                  },
+                  {
+                    "boundingBox": "319,129,25,17",
+                    "text": "ST"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "207,158,115,17",
+                "words": [
+                  {
+                    "boundingBox": "207,158,115,17",
+                    "text": "COLUMBIA"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "177,187,174,17",
+                "words": [
+                  {
+                    "boundingBox": "177,187,106,17",
+                    "text": "MISSOURI"
+                  },
+                  {
+                    "boundingBox": "293,188,58,16",
+                    "text": "65201"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "boundingBox": "53,257,134,189",
+            "lines": [
+              {
+                "boundingBox": "101,257,45,16",
+                "words": [
+                  {
+                    "boundingBox": "101,257,45,16",
+                    "text": "0019"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "53,285,63,17",
+                "words": [
+                  {
+                    "boundingBox": "53,285,63,17",
+                    "text": "ADVIL"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "54,314,107,17",
+                "words": [
+                  {
+                    "boundingBox": "54,314,107,17",
+                    "text": "SHAMPOO"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "55,342,107,17",
+                "words": [
+                  {
+                    "boundingBox": "55,342,107,17",
+                    "text": "BANDAIDS"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "53,371,134,17",
+                "words": [
+                  {
+                    "boundingBox": "53,371,64,17",
+                    "text": "VIDEO"
+                  },
+                  {
+                    "boundingBox": "127,371,60,17",
+                    "text": "GAME"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "53,400,111,17",
+                "words": [
+                  {
+                    "boundingBox": "53,400,39,17",
+                    "text": "ACE"
+                  },
+                  {
+                    "boundingBox": "100,400,64,17",
+                    "text": "WRAP"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "54,429,106,17",
+                "words": [
+                  {
+                    "boundingBox": "54,429,54,17",
+                    "text": "COKE"
+                  },
+                  {
+                    "boundingBox": "116,430,44,16",
+                    "text": "120z"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "boundingBox": "198,285,119,190",
+            "lines": [
+              {
+                "boundingBox": "205,285,111,17",
+                "words": [
+                  {
+                    "boundingBox": "205,285,111,17",
+                    "text": "00154885H"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "205,314,112,17",
+                "words": [
+                  {
+                    "boundingBox": "205,314,112,17",
+                    "text": "00285566H"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "205,342,106,17",
+                "words": [
+                  {
+                    "boundingBox": "205,342,106,17",
+                    "text": "0017442314"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "203,372,96,16",
+                "words": [
+                  {
+                    "boundingBox": "203,372,96,16",
+                    "text": "00856487"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "205,400,108,17",
+                "words": [
+                  {
+                    "boundingBox": "205,400,108,17",
+                    "text": "001846221-1"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "205,430,94,16",
+                "words": [
+                  {
+                    "boundingBox": "205,430,94,16",
+                    "text": "00125498"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "198,458,104,17",
+                "words": [
+                  {
+                    "boundingBox": "198,458,104,17",
+                    "text": "SUBTOTAL"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "boundingBox": "125,486,191,133",
+            "lines": [
+              {
+                "boundingBox": "125,486,142,17",
+                "words": [
+                  {
+                    "boundingBox": "125,486,52,17",
+                    "text": "TAXI"
+                  },
+                  {
+                    "boundingBox": "188,487,53,16",
+                    "text": "8.250"
+                  },
+                  {
+                    "boundingBox": "249,486,18,17",
+                    "text": "%"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "238,515,63,17",
+                "words": [
+                  {
+                    "boundingBox": "238,515,63,17",
+                    "text": "TOTAL"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "198,573,118,17",
+                "words": [
+                  {
+                    "boundingBox": "198,573,54,17",
+                    "text": "CASH"
+                  },
+                  {
+                    "boundingBox": "261,573,55,17",
+                    "text": "TEND"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "175,602,138,17",
+                "words": [
+                  {
+                    "boundingBox": "175,602,87,17",
+                    "text": "CHANGE"
+                  },
+                  {
+                    "boundingBox": "272,602,41,17",
+                    "text": "DUE"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "boundingBox": "339,286,114,333",
+            "lines": [
+              {
+                "boundingBox": "414,286,38,16",
+                "words": [
+                  {
+                    "boundingBox": "414,286,38,16",
+                    "text": "2.67"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "403,315,50,16",
+                "words": [
+                  {
+                    "boundingBox": "403,315,50,16",
+                    "text": "13.24"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "410,343,39,16",
+                "words": [
+                  {
+                    "boundingBox": "410,343,39,16",
+                    "text": "1.05"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "397,372,51,16",
+                "words": [
+                  {
+                    "boundingBox": "397,372,51,16",
+                    "text": "42.65"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "398,401,47,16",
+                "words": [
+                  {
+                    "boundingBox": "398,401,47,16",
+                    "text": "11.23"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "404,430,39,16",
+                "words": [
+                  {
+                    "boundingBox": "404,430,39,16",
+                    "text": "2.45"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "382,459,50,16",
+                "words": [
+                  {
+                    "boundingBox": "382,459,50,16",
+                    "text": "73.29"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "391,487,40,16",
+                "words": [
+                  {
+                    "boundingBox": "391,487,40,16",
+                    "text": "6.05"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "382,516,51,16",
+                "words": [
+                  {
+                    "boundingBox": "382,516,51,16",
+                    "text": "79.34"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "339,574,55,16",
+                "words": [
+                  {
+                    "boundingBox": "339,574,55,16",
+                    "text": "80.00"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "350,603,40,16",
+                "words": [
+                  {
+                    "boundingBox": "350,603,40,16",
+                    "text": "0.66"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "boundingBox": "101,665,310,115",
+            "lines": [
+              {
+                "boundingBox": "114,665,259,26",
+                "words": [
+                  {
+                    "boundingBox": "114,666,23,25",
+                    "text": "#"
+                  },
+                  {
+                    "boundingBox": "151,665,96,26",
+                    "text": "ITEMS"
+                  },
+                  {
+                    "boundingBox": "260,665,83,26",
+                    "text": "SOLD"
+                  },
+                  {
+                    "boundingBox": "357,667,16,24",
+                    "text": "6"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "101,729,310,25",
+                "words": [
+                  {
+                    "boundingBox": "101,729,64,19",
+                    "text": "Thank"
+                  },
+                  {
+                    "boundingBox": "173,735,37,19",
+                    "text": "you"
+                  },
+                  {
+                    "boundingBox": "219,729,30,19",
+                    "text": "for"
+                  },
+                  {
+                    "boundingBox": "257,735,47,19",
+                    "text": "your"
+                  },
+                  {
+                    "boundingBox": "312,730,99,18",
+                    "text": "business!"
+                  }
+                ]
+              },
+              {
+                "boundingBox": "131,759,84,21",
+                "words": [
+                  {
+                    "boundingBox": "131,759,84,21",
+                    "text": "04\/20\/17"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
 ';
 
   // Get the Y cordinate for everything
@@ -554,7 +471,7 @@ class RegexOCR extends REST_Controller {
     if (preg_match_all($regex, $string, $matches)) {
       $lines = array_unique($matches[1]);
       foreach ($lines as $line) {
-        echo "$line ";
+        echo "$line \n";
       }
       // var_dump($matches[1]);
     } else {
