@@ -8,91 +8,17 @@
 
 <ion-content padding>
   
-  <!--
+  
   <ion-list>
-    <ion-item *ngFor="let user of users">
-        <h2>Account Email = {{user.email}}</h2>
-        <h2>Account # = {{user.account_number}}</h2>
-        <h2>Account Type = {{user.account_type}}</h2>
+    <ion-item *ngFor="let userhsa of userhsas">
+      <p>{{userhsa.account_type}}</p>
     </ion-item>
   </ion-list>
-  -->
 
-  <ion-list>
-    <ion-item-group>
-      <ion-item-divider color="light">HSA Accounts</ion-item-divider>
-      <ion-item-sliding>
-        <ion-item *ngFor="let user of users">
-          <!--
-          <h2>{{user.email}}'s Account - {{user.account_number}}</h2>
-          -->
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="primary">
-            <ion-icon name="information-circle"></ion-icon>
-            Details
-          </button>
-          <button ion-button color="secondary">
-            <ion-icon name="remove-circle"></ion-icon>
-            Delete
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-      
-      <ion-item>
-        Add HSA Account
-        <ion-icon name="add-circle" item-right></ion-icon>
-      </ion-item>
-    </ion-item-group>
-  </ion-list>
-
-  <ion-list no-lines>
-    <h4>HSA Accounts</h4>
-    <button ion-item>
-      <h2>"Account Name" - "Account Number"</h2>
-      <p>"Balance"</p>
-    </button>
-
-    <br>
-    <br>
-
-    <h4>FSA Accounts</h4>
-    <button ion-item>
-      <h2>"Account Name" - "Account Number"</h2>
-      <p>"Balance"</p>
-    </button>
-
-    <button ion-item>
-      Add FSA Account
-      <ion-icon name="add-circle" item-right></ion-icon>
-    </button>
-  </ion-list>
-  
-  
-  <!-- Who commented out the above stuff???-->
-  
-  <!--
-  <ion-list no-lines>
-    <h4>HSA Accounts</h4>
-    <button ion-item *ngFor="let user of users">
-      <h2>{{ user.user_id }}'s Account' - Account #: {{ user.account_number }}</h2>
-      <p>Balance - {{ user.balance }}</p>
-    </button>
-  </ion-list>
-  -->
-
-  <!--These will switch to entire divs hopefully-->
-  <!--
-  <button ion-button (click)="fsaTest()">FSA Test</button>
-  <button ion-button (click)="hsaTest()">HSA Test</button>
-  -->
-  
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
+  <!--
   <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
   <button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
-  
-  <!--Leaving this here for now, but only temp, incase we want to use later-->
-  <!--<button ion-button (click)="presentActionSheet()">Action Sheet Test</button>-->
-
+  -->
 </ion-content>

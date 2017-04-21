@@ -5,6 +5,7 @@ import { Http, Response } from '@angular/http';
 export class UserApi {
 
     private baseUrl = 'https://capstone.td9175.com';
+    // hard coded email for right now.
     private userid = 'umbcapstone17@gmail.com';
     baseid = encodeURIComponent(this.userid)
     
@@ -15,9 +16,23 @@ export class UserApi {
 
     constructor(private http: Http) { }
 
-    getUserData(){
+    getUserHSAData(){
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}ci/index.php/HealthAccount/hsa/email/${this.baseid}`)
+            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${this.baseid}`)
+                .subscribe(res => resolve(res.json()));
+        });
+    }
+
+    getUserFSAData(){
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/fsa/email/${this.baseid}`)
+                .subscribe(res => resolve(res.json()));
+        });
+    }
+
+    getUserInfoData(){
+        return new Promise(resolve => {
+            this.http.get(`${this.baseUrl}/ci/index.php/UserAccount/user/${this.baseid}`)
                 .subscribe(res => resolve(res.json()));
         });
     }

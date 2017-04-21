@@ -14,87 +14,34 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class AccountsPage {
 
-  users: any;
-  accountType: any;
+  userhsas: any;
+  userfsas: any;
+  // accountType: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { }
-
-  /*
-  ionViewDidEnter() {
-    console.log('ionViewDidEnter AccountsPage')
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { 
   }
-  */
- 
+
   ionViewDidLoad() {
-    this.userApi.getUserData().then(data => this.users = data);
+    // get HSA Data
+    this.userApi.getUserHSAData().then(data => this.userhsas = data);
+    this.userApi.getUserFSAData().then(data => this.userfsas = data);
   }
 
-  
-  // all of these console logs are just tests, delete in later versions please.
-  // using ionViewDidLoad for userData
-  /*
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad AccountsPage');
-  }
-  */
-
-  /*
-  hsaTest() {
-    this.navCtrl.push(HSAPage);
-  }
-
-  fsaTest() {
-    this.navCtrl.push(FSAPage);
-  }
-  */
-
+  // for debugging.
   loginTest() {
     this.navCtrl.push(LoginPage);
   }
 
+  // Commented out michael's code for now, causing some errors.
+  /*
   loadHsaAccountDetails(event, accountType){
     accountType = "HSA";
     this.navCtrl.push(AccountDetailPage, { accountType: accountType });
-
   }
 
   loadFsaAccountDetails(event, accountType){
     accountType = "FSA";
     this.navCtrl.push(AccountDetailPage, { accountType: accountType });
-
-  }
-
-  // action sheet popup test, 
-  // left here just incase we want to use later.
-  /*
-  presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Test Action Sheet',
-      buttons: [
-        {
-          text: 'FSA Page',
-          role: 'destructive',
-          handler: () => {
-            console.log('Destructive Option 1 clicked');
-            this.navCtrl.push(HSAPage);
-          }
-        },{
-          text: 'FSA Page',
-          handler: () => {
-            console.log('Regular Option 2 clicked');
-            this.navCtrl.push(FSAPage);
-          }
-        },{
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-
   }
   */
 }
