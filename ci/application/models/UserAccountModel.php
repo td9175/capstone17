@@ -81,7 +81,7 @@ class UserAccountModel extends CI_Model {
       // Execute the query
 	    $result = $this->db->query($query, $email);
       // Check if any results are returned from the query
-      if ($query->num_rows() > 0) {
+      if ($result->num_rows() > 0) {
         // Build the data array
         foreach ($result->result_array() as $row) {
   			$data[] = array(
