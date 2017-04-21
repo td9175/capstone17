@@ -16,10 +16,8 @@ import { NavController, NavParams } from 'ionic-angular';
 export class AccountDetailPage {
   
   accountType: any;
-  user = "umbcapstone17%40gmail.com";
 
   transactions: any;
-  success: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {
     this.accountType = navParams.get('accountType');
@@ -27,7 +25,6 @@ export class AccountDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccountDetailPage');
-    this.userApi.user = this.user;
 
     if (this.accountType == "HSA"){
       this.userApi.getHsaTransaction().then(data => this.transactions = data);
@@ -35,8 +32,6 @@ export class AccountDetailPage {
     else{
       this.userApi.getFsaTransaction().then(data => this.transactions = data);
     }
-    
-    
   }
 
   goBack() {

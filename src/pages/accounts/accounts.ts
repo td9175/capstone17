@@ -33,7 +33,7 @@ export class AccountsPage {
   }
 
   // Commented out michael's code for now, causing some errors.
-  /*
+  
   loadHsaAccountDetails(event, accountType){
     accountType = "HSA";
     this.navCtrl.push(AccountDetailPage, { accountType: accountType });
@@ -43,5 +43,5 @@ export class AccountsPage {
     accountType = "FSA";
     this.navCtrl.push(AccountDetailPage, { accountType: accountType });
   }
-  */
+  
 }
