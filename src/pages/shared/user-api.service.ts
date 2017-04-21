@@ -9,7 +9,7 @@ export class UserApi {
     private baseUrl = 'https://capstone.td9175.com';
     // hard coded email for right now.
     private userid = 'umbcapstone17@gmail.com';
-    baseid = encodeURIComponent(this.userid)
+    baseid = encodeURIComponent(this.userid);
     
     public drugToSearch: any;
     public drugToGetDetails: any;
