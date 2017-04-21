@@ -25,12 +25,12 @@
       <ion-col>
         <ion-item>
           <ion-label>Username:</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" id="email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Password:</ion-label>
           <!--Password might be better than the original Passcode?-->
-          <ion-input type="password"></ion-input>
+          <ion-input type="password" id="password"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Remember Me</ion-label>
@@ -43,7 +43,7 @@
     <ion-row>
       <ion-col>
         <!--Currently (click) is goToHome, should be loginState (once ready)-->
-        <button ion-button class="login-button" (click)="loginClicked($event, data)">Sign In</button>
+        <button ion-button class="login-button" (click)="loginFire($event, data)">Sign In</button>
       </ion-col>
       <ion-col>
         <button ion-button class="enroll-button" (click)="enrollNow()">Enroll</button>

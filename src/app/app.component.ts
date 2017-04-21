@@ -28,13 +28,14 @@ import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';
 import { ProductDetail } from './../pages/product-detail/product-detail';
 
 // API Imports
-import { UserApi } from '../pages/shared/shared';
+import { UserApi, User, AuthService } from '../pages/shared/shared';
 
 @Component({
   templateUrl: 'app.html',
   providers: [
     UserApi,
-    HttpModule
+    HttpModule,
+    AuthService
   ]
 })
 export class MyApp {

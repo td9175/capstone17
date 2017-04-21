@@ -90,10 +90,7 @@ export class User {
   email: string;
   session: string;
  
-  constructor(email: string, session: string) {
-    this.email = email;
-    this.session = session;
-  }
+  constructor() { }
 }
  
 @Injectable()
