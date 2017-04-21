@@ -10,15 +10,30 @@
   
   
   <ion-list>
+    <!--
+    <ion-item *ngIf="(userhsa?.account_number===0)" *ngFor="let userhsa of userhsas">
+      <p>Please add your HSA account info</p>
+    </ion-item>
+    -->
     <ion-item *ngFor="let userhsa of userhsas">
-      <p>{{userhsa.account_type}}</p>
+      <div *ngIf="(userhsa?.account_number>=1)">
+        <p>{{userhsa.account_type}}</p>
+      </div>
+      <!--Probably will change to another type of check..-->
+      <div *ngIf="(userhsa?.account_number==0)">
+        <button ion-button block outline>
+            Add HSA Account
+            <!--<ion-icon name="add-circle"></ion-icon>-->
+        </button>
+      </div>
     </ion-item>
   </ion-list>
 
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
-  <!--
+  
+  <!--Keeping these for Michael-->
   <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
   <button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
-  -->
+  
 </ion-content>
