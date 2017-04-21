@@ -8,14 +8,14 @@
 
 <ion-content>
   
-  
-  <ion-list>
+    <!--Hello Card-->
     <ion-card>
       <button ion-item (click)="loadUserSettingsDetails()">
         <!--<ion-icon name="person" item-left></ion-icon>-->Hello, Shit
       </button>
-    <!--HSA Card Area-->
     </ion-card>
+    
+    <!--HSA Card Area-->
     <ion-card *ngFor="let userhsa of userhsas">
       <button ion-item *ngIf="(userhsa?.account_number>=1)" (click)="loadHsaAccountDetails($event, accountType)">
         <div>
@@ -31,6 +31,7 @@
       </button>
     </ion-card>
     
+    <!--FSA Card Area-->
     <ion-card *ngFor="let userfsa of userfsas">
       <button ion-item *ngIf="(userfsa?.account_number>=1)" (click)="loadFsaAccountDetails($event, accountType)">
         <div>
@@ -46,7 +47,15 @@
       </button>
     </ion-card>
 
-  </ion-list>
+     <!--Support Card Area-->
+    <ion-card>
+      <ion-card-header color="primary">
+        <ion-icon item-left name="call"></ion-icon> Support
+      </ion-card-header>
+      <button ion-item (click)="loadUserSettingsDetails()">
+        <ion-icon name="help"></ion-icon>
+      </button>
+    </ion-card>
 
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
@@ -54,7 +63,9 @@
   <!--
   <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
   -->
-  <!--Broken right now-->
-  <button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
+  <!--FSA Broken right now for user umbcapstone17@gmail.com
+  -->
+  <!--<button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
+  -->
   
 </ion-content>
