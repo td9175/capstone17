@@ -537,11 +537,11 @@ class RegexOCR extends REST_Controller {
 
   // Put the matches array into a named variable
   $yPosition = $matches[1];
-  // var_dump($yPosition);
+  // Sort ascending
+  $sortedPositions = asort($yPosition);
 
-  foreach ($yPosition as $position) {
-    $sorted = asort($position);
-    echo "$sorted \n";
+  foreach ($sortedPositions as $position) {
+    echo "$position \n";
   }
 
   // Remove duplicate Y values
