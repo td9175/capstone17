@@ -545,6 +545,7 @@ class RegexOCR extends REST_Controller {
     array_push($positions, $integerPosition);
   }
 
+  var_dump($positions);
   // Sort ascending
   $sortedPositions = sort($positions, SORT_NUMERIC);
   var_dump($sortedPositions);
