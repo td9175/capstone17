@@ -25,7 +25,7 @@ import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
 // APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
-import { User, UserApi, AuthService } from './../pages/shared/user-api.service';
+import { User, UserApi, AuthService, UserGlobals } from './../pages/shared/user-api.service';
 //import { ReceiptPoster } from './../pages/shared/receipt-post.service';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 
@@ -92,6 +92,6 @@ import { NgForm } from '@angular/forms/src/directives';
     ProductDetail,
     AccountDetailPage
   ],
-  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, NgForm]
+  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
-import { UserApi } from './../shared/user-api.service';
+import { UserApi, UserGlobals } from './../shared/user-api.service';
 
 // Page Imports
 import { UserSettingsPage } from './../user-settings/user-settings';
@@ -24,7 +24,7 @@ export class AccountsPage {
   // userfsabalance: any;
   // accountType: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals) { 
   }
 
   ionViewDidLoad() {

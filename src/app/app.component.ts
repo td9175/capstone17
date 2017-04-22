@@ -29,14 +29,15 @@ import { ProductDetail } from './../pages/product-detail/product-detail';
 import { NgForm } from '@angular/forms/src/directives';
 
 // API Imports
-import { UserApi, User, AuthService } from '../pages/shared/shared';
+import { UserApi, User, AuthService, UserGlobals } from '../pages/shared/shared';
 
 @Component({
   templateUrl: 'app.html',
   providers: [
     UserApi,
     HttpModule,
-    AuthService
+    AuthService,
+    UserGlobals
   ]
 })
 export class MyApp {

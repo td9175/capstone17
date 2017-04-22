@@ -4,6 +4,43 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
+export class UserGlobals {
+    public globalEmail: string;
+    public globalSession: string;
+  
+  constructor() {
+    this.globalEmail = "";
+    this.globalSession = "";
+  }
+
+  setGlobalEmail(email) {
+    this.globalEmail = email;
+  }
+
+  setGlobalSession(session) {
+      this.globalSession = session;
+  }
+
+  getGlobalEmail() {
+    return this.globalEmail;
+  }
+
+  getGlobalSession() {
+      return this.globalSession;
+  }
+
+  isLoggedIn() {
+      if(this.getGlobalSession() === "") {
+          return false;
+      }
+      else {
+          return true;
+      }
+  }
+
+}
+
+@Injectable()
 export class UserApi {
 
     private baseUrl = 'https://capstone.td9175.com';
@@ -96,11 +133,10 @@ export class User {
  
 @Injectable()
 export class AuthService {
-  currentUser: User;
   loginReturn: any;
   registerReturn: any;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private userGlobals: UserGlobals) { }
 
   public postLogin(email, password){ 
       console.log("postLoginBegin");
@@ -130,20 +166,17 @@ export class AuthService {
   }
  
   public appLogin(email, password) {
-    this.currentUser.email = "";
-    this.currentUser.ci_session = "";
-    console.log(email);
-    console.log(password);
     if (email === null || password === null) {
-      return this.currentUser;
+      return null;
+    } else if (this.userGlobals.isLoggedIn()) {
+        return this.userGlobals.getGlobalSession();
     } else {
-        console.log("appLoginBegin");
       this.postLogin(email, password).subscribe(
-          data => this.currentUser.ci_session = data.ci_session,
+          data =>  this.userGlobals.setGlobalSession(data.ci_session),
           err => console.log('error: ', err),
-          () => console.log('currentUser.ci_session: ', this.currentUser.ci_session)
+          () => console.log('Global session: ', this.userGlobals.getGlobalSession())
         );
-        return this.currentUser;
+        return this.userGlobals.getGlobalSession();
     }
   }
  
@@ -162,16 +195,11 @@ export class AuthService {
     }
   }
  
-  public appGetUser() : User {
-    console.log("currentUser is: ", this.currentUser);
-    return this.currentUser;
-  }
- 
-  public appLogout() {
-    return new Promise(resolve => {
-        this.currentUser = null;
-        this.http.get(`https://capstone.td9175.com/ci/index.php/UserAccount/logout`)
-            .subscribe(res => resolve(res.json()));
-    });
-  }
+//   public appLogout() {
+//     return new Promise(resolve => {
+//         this.currentUser = null;
+//         this.http.get(`https://capstone.td9175.com/ci/index.php/UserAccount/logout`)
+//             .subscribe(res => resolve(res.json()));
+//     });
+//   }
 }

@@ -3,7 +3,7 @@ import { AccountsPage } from './../accounts/accounts';
 import { MyVaultPage } from './../my-vault/my-vault';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { UserApi, User, AuthService } from './../shared/user-api.service';
+import { UserApi, User, AuthService, UserGlobals } from './../shared/user-api.service';
 import { NgForm } from '@angular/forms/src/directives';
 import { LoginModel } from './../../models/login.model';
 
@@ -22,7 +22,7 @@ import { LoginModel } from './../../models/login.model';
 export class LoginPage {
   model = new LoginModel("", "");
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals) { }
 
   // Test console log below, should be deleted in further versions.
   ionViewDidLoad() {
