@@ -559,9 +559,13 @@ class RegexOCR extends REST_Controller {
     $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
 
     // Match for the words
-    if (preg_match_all($regex, $string, $matches)) {
+    preg_match_all($regex, $string, $matches);
       $words = $matches[1];
-      var_dump($words);
+      // var_dump($words);
+
+      foreach ($words as $word) {
+        echo "$word \n";
+      }
 
       // Build a string from the array
       // $string = "";
@@ -583,9 +587,6 @@ class RegexOCR extends REST_Controller {
       //   $total += (Int) $qualifiedAmount;
       // }
       // echo "Total: $total \n";
-    } else {
-      echo "An error occured. \n";
-    }
 
 
 
