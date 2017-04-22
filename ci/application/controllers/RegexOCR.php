@@ -564,18 +564,24 @@ class RegexOCR extends REST_Controller {
 
 
       // Build a string from the array
-      $itemsString = "";
+      $string = "";
       foreach ($words as $word) {
-        $itemsString = $word . " ";
+        $string = $word . " ";
       }
-      echo "$itemsString";
+      echo "$string";
 
-      // Match for qualified items, capture the amount
-      // preg_match_all($regex, $words, $matches);
+      // // Match for qualified items, capture the amount
+      // $regex = '\d{12}H\s(\d+\.\d+)[^\d]';
+      // preg_match_all($regex, $string, $matches);
       //
-      // foreach ($lines as $line) {
-      //   echo "$line \n";
+      // $qualifiedAmounts = $matches[1];
+      //
+      // // Add up the amounts for the total qualified amount
+      // $total = 0;
+      // foreach ($qualifiedAmounts as $qualifiedAmount) {
+      //   $total += (Int) $qualifiedAmount;
       // }
+      // echo "Total: $total \n";
     } else {
       echo "An error occured. \n";
     }
