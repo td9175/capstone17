@@ -57,22 +57,23 @@ export class LoginPage {
       return new Promise((resolve) => setTimeout(resolve, time));
     }
 
-    sleep(1200).then(() => {
-      loader.dismissAll();
-      console.log(this.userGlobals.getGlobalEmail());
-      console.log(this.userGlobals.getGlobalSession());
-      //this.presentToast('Logged in and redirecting you now...');
+    sleep(1600).then(() => {
+      if(this.userGlobals.isLoggedIn()) {
+        loader.dismissAll();
+        console.log(this.userGlobals.getGlobalEmail());
+        console.log(this.userGlobals.getGlobalSession());
+        //this.presentToast('Logged in and redirecting you now...');
+        this.navCtrl.push(HomePage);
+      }
+      else {
+        loader.dismissAll();
+        console.log("Login error.");
+      }
     }, err => {
       loader.dismissAll();
       //this.presentToast('Invalid username or password.');
+      console.log("err: ", err);
     });
-
-    // if( === "") {
-    //   console.log("Couldn't log you in. Bad username or password, or you didn't fill in the fields.");
-    // }
-    // else {
-    //   console.log("We got a session token for you. Redirect or something");
-    // }
   }
 
 }

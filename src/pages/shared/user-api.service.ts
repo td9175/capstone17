@@ -7,12 +7,10 @@ import 'rxjs/add/operator/map';
 export class UserGlobals {
     public globalEmail: string;
     public globalSession: string;
-    public nli: boolean;
   
   constructor() {
-    this.globalEmail = "";
-    this.globalSession = "";
-    this.nli = true;
+    this.globalEmail = null;
+    this.globalSession = null;
   }
 
   setGlobalEmail(email) {
@@ -24,24 +22,20 @@ export class UserGlobals {
   }
 
   getGlobalEmail() {
-    this.nli = false;
     return this.globalEmail;
   }
 
   getGlobalSession() {
-      this.nli = false;
       return this.globalSession;
   }
 
-  neverLoggedIn() {
-      return this.nli;
-  }
-
   isLoggedIn() {
-      if(this.getGlobalEmail() === "" || this.neverLoggedIn() === true) {
+      if(this.getGlobalEmail() == null || this.getGlobalSession() == null) {
+          console.log("isloggedin returning false");
           return false;
       }
       else {
+          console.log("isloggedin returning true");
           return true;
       }
   }
@@ -173,8 +167,8 @@ export class AuthService {
   }
  
   public appLogin(email, password) {
-    if (email === null || password === null) {
-      return "";
+    if (email == null || password == null || email == "" || password == "") {
+      return null;
     } else if (this.userGlobals.isLoggedIn()) {
         return this.userGlobals.getGlobalSession();
     } else {
