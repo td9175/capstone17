@@ -27,6 +27,7 @@ import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';
 import { ProductDetail } from './../pages/product-detail/product-detail';
 import { NgForm } from '@angular/forms/src/directives';
+//import { Toast } from '@ionic-native/toast';
 
 // API Imports
 import { UserApi, User, AuthService, UserGlobals } from '../pages/shared/shared';
