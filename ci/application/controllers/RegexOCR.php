@@ -566,7 +566,7 @@ class RegexOCR extends REST_Controller {
       $string = "";
       foreach ($words as $word) {
         // echo "$word \n";
-        $string .= $word . " ";
+        $string = $string . $word . " ";
       }
       echo "$string ";
 
