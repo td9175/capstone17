@@ -563,13 +563,13 @@ class RegexOCR extends REST_Controller {
       $words = $matches[1];
       // var_dump($words);
 
-      $string = array();
+      $finalString = array();
       $i = 0;
       foreach ($words as $word) {
-        array_push($string, $word);
+        array_push($finalString, $word);
         // echo "$word ";
       }
-      var_dump($string);
+      var_dump($finalString);
 
       // Build a string from the array
       // $string = "";
