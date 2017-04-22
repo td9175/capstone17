@@ -530,8 +530,6 @@ class RegexOCR extends REST_Controller {
     }
   ]
 }
-
-
 ';
 
   // Get the Y cordinate for everything
@@ -539,36 +537,37 @@ class RegexOCR extends REST_Controller {
 
   // Put the matches array into a named variable
   $yPosition = $matches[1];
+  var_dump($yPosition);
 
   // Remove duplicate Y values
-  $positions = array_unique($yPosition);
+  // $positions = array_unique($yPosition);
+  //
+  // foreach ($positions as $position) {
+  //   $positionPlusOne = $position + 1;
+  //   $positionMinusOne = $position - 1;
+  //   $regex = '/\d{1,3},(?:'.$position.'|'.$positionPlusOne.'|'.$positionMinusOne.'),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
+  //   // echo "$regex \n";
+  //
+  //   //   /\d{1,3},(?:100|101|99)\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
+  //   //   /\d{1,3},(?:100|101|99),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
+  //   // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
+  //
+  //   if (preg_match_all($regex, $string, $matches)) {
+  //     $lines = array_unique($matches[1]);
+  //     foreach ($lines as $line) {
+  //       echo "$line \n";
+  //     }
+  //     // var_dump($matches[1]);
+  //   } else {
+  //     echo "An error occured. \n";
+  //   }
+  //
+  //
+  //
+  // }
 
-  foreach ($positions as $position) {
-    $positionPlusOne = $position + 1;
-    $positionMinusOne = $position - 1;
-    $regex = '/\d{1,3},(?:'.$position.'|'.$positionPlusOne.'|'.$positionMinusOne.'),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
-    // echo "$regex \n";
-
-    //   /\d{1,3},(?:100|101|99)\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
-    //   /\d{1,3},(?:100|101|99),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
-    // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
-
-    if (preg_match_all($regex, $string, $matches)) {
-      $lines = array_unique($matches[1]);
-      foreach ($lines as $line) {
-        echo "$line \n";
-      }
-      // var_dump($matches[1]);
-    } else {
-      echo "An error occured. \n";
-    }
 
 
-
-  }
-
-
-
-  }
+  } //
 
 }
