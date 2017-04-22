@@ -38,6 +38,7 @@ import { Camera } from '@ionic-native/camera';
 
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
+import { NgForm } from '@angular/forms/src/directives';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,6 @@ import { ActionSheetController } from 'ionic-angular';
     ProductDetail,
     AccountDetailPage
   ],
-  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi]
+  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, NgForm]
 })
 export class AppModule {}

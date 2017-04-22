@@ -15,13 +15,13 @@
     <!--Login Header and bar-->
     <ion-row>
       <ion-col>
-        <h3>UMBC Sign-In</h3>
+        <h3>UMB Sign-In</h3>
         <!--<img src="assets/img/loginlogo.png">-->
       </ion-col>
     </ion-row>
 
     <!--Login Main Input--> 
-    <ion-row>
+    <!--<ion-row>
       <ion-col>
         <ion-item>
           <ion-label>Username:</ion-label>
@@ -29,7 +29,7 @@
         </ion-item>
         <ion-item>
           <ion-label>Password:</ion-label>
-          <!--Password might be better than the original Passcode?-->
+
           <ion-input type="password" id="password"></ion-input>
         </ion-item>
         <ion-item>
@@ -42,13 +42,51 @@
 
     <ion-row>
       <ion-col>
-        <!--Currently (click) is goToHome, should be loginState (once ready)-->
+        Currently (click) is goToHome, should be loginState (once ready)
         <button ion-button class="login-button" (click)="loginFire($event, data)">Sign In</button>
       </ion-col>
       <ion-col>
         <button ion-button class="enroll-button" (click)="enrollNow()">Enroll</button>
       </ion-col>
-    </ion-row>
+    </ion-row>-->
+
+    <!--<form (ngSubmit)="loginForm(form)">
+      <ion-item>
+        <ion-label>Email address:</ion-label>
+        <ion-input type="email" [(ngModel)]="login.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password:</ion-label>
+        <ion-input type="password" [(ngModel)]="login.password" name="password"></ion-input>
+      </ion-item>
+      <button ion-button type="submit" block>Log in</button>
+    </form>-->
+
+  <form #form="ngForm" (ngSubmit)="loginForm(form)">
+    <ion-item>
+      <ion-label>Email address:</ion-label>
+      <ion-input 
+      #email="ngModel" 
+      required type="email" 
+      class="form-container" 
+      name="email" 
+      [ngModel]="model.email" 
+      (ngModelChange)="model.email=$event">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password:</ion-label>
+      <ion-input 
+      #password="ngModel" 
+      required type="password" 
+      class="form-container" 
+      name="password" 
+      [ngModel]="model.password" 
+      (ngModelChange)="model.password=$event">
+      </ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Search</button>
+  </form>
   </div>
 
 

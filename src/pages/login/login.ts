@@ -4,6 +4,8 @@ import { MyVaultPage } from './../my-vault/my-vault';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserApi, User, AuthService } from './../shared/user-api.service';
+import { NgForm } from '@angular/forms/src/directives';
+import { LoginModel } from './../../models/login.model';
 
 /*
   Generated class for the Login page.
@@ -11,28 +13,14 @@ import { UserApi, User, AuthService } from './../shared/user-api.service';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 
-@Component({
-  template: `
-    <form (ngSubmit)="loginForm()">
-      <ion-item>
-        <ion-label>Email address:</ion-label>
-        <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Description</ion-label>
-        <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
-      </ion-item>
-      <button ion-button type="submit" block>Add Todo</button>
-    </form>
-  `,
-})
-
 export class LoginPage {
+  model = new LoginModel('', '');
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User) { }
 
@@ -44,15 +32,25 @@ export class LoginPage {
     console.log('interesting use of console logs sami');
   }
 
+  login = {
+    email: '',
+    password: ''
+  };
+
   loginFire(){
     //this.navCtrl.push(AccountsPage);
     //this.navCtrl.popToRoot();
     //this.navCtrl.push(HomePage);
-    this.authService.appLogin(this.data.email, this.data.password);
   }
 
   enrollNow(){
     this.navCtrl.push(MyVaultPage);
   }
+
+  loginForm(form: NgForm) {
+    console.log("form.value.email: ", form.value.email);
+    console.log("form.value.password: ", form.value.password);
+    console.log(this.authService.appLogin(form.value.email, form.value.password));
+  };
 
 }

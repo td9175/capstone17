@@ -26,6 +26,7 @@ import { MyVaultPage } from './../pages/my-vault/my-vault';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';
 import { ProductDetail } from './../pages/product-detail/product-detail';
+import { NgForm } from '@angular/forms/src/directives';
 
 // API Imports
 import { UserApi, User, AuthService } from '../pages/shared/shared';

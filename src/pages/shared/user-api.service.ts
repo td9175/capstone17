@@ -88,9 +88,12 @@ export class UserApi {
  
 export class User {
   email: string;
-  session: string;
+  ci_session: string;
  
-  constructor() { }
+  constructor(email: string, ci_session: string) {
+    this.email = email;
+    this.ci_session = ci_session;
+  }
 }
  
 @Injectable()
@@ -102,14 +105,14 @@ export class AuthService {
   constructor(private http: Http) { }
 
   public postLogin(email, password){ 
+      console.log("postLoginBegin");
         let body = new URLSearchParams();
             body.set('email', email);
             body.set('password', password);
-        console.log('body: ', body);
         let headers = new Headers({ 'Content-Type': 'application/form-data' });
-        let options = new RequestOptions({ headers: headers })
+        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/login/', body, options)
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/login/', body)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -120,28 +123,29 @@ export class AuthService {
             body.set('password', password);
             body.set('first_name', first_name);
             body.set('last_name', last_name);
-        console.log('body: ', body);
         let headers = new Headers({ 'Content-Type': 'application/form-data' });
-        let options = new RequestOptions({ headers: headers })
+        let options = new RequestOptions({ headers: headers });
 
-        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/register/', body, options)
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/register/', body)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
  
   public appLogin(email, password) {
+    this.currentUser.email = "";
+    this.currentUser.ci_session = "";
+    console.log(email);
+    console.log(password);
     if (email === null || password === null) {
-      return Observable.throw("Please put in your credentials.");
+      return this.currentUser;
     } else {
-      return Observable.create(observer => {
-        this.postLogin(email, password).subscribe(
-          data => this.loginReturn = data.session,
+        console.log("appLoginBegin");
+      this.postLogin(email, password).subscribe(
+          data => this.currentUser.ci_session = data.ci_session,
           err => console.log('error: ', err),
-          () => {console.log('loginReturn: ', this.loginReturn);
-                this.currentUser.session = this.loginReturn;}
+          () => console.log('currentUser.ci_session: ', this.currentUser.ci_session)
         );
-        observer.complete();
-      });
+        return this.currentUser;
     }
   }
  
@@ -153,9 +157,8 @@ export class AuthService {
        this.postRegister(email, password, first_name, last_name).subscribe(
           data => this.registerReturn = data.success,
           err => console.log('error: ', err),
-          () => {console.log('registerReturn: ', this.registerReturn);
-                //this.currentUser.session = this.registerReturn;
-        });
+          () => console.log('registerReturn: ', this.registerReturn)
+        );
         observer.complete();
       });
     }
