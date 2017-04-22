@@ -576,7 +576,8 @@ class RegexOCR extends REST_Controller {
     // $regex = '/100,.*\n.*text":\s"(.*)"/gi';
 
     if (preg_match_all($regex, $string, $matches)) {
-      $lines = array_unique($matches[1]);
+      $lines = $matches[1];
+      // $lines = array_unique($matches[1]);
       // $words = preg_match_all();
       foreach ($lines as $line) {
         echo "$line \n";
