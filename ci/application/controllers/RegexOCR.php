@@ -564,10 +564,11 @@ class RegexOCR extends REST_Controller {
       var_dump($words);
 
       // Build a string from the array
-      // $string = "";
-      // foreach ($words as $word) {
-      //   $string .= $word . " ";
-      // }
+      $string = "";
+      foreach ($words as $word) {
+        echo "$word ";
+        // $string .= $word . " ";
+      }
       // echo "$string";
 
       // // Match for qualified items, capture the amount
