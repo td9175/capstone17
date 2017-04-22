@@ -537,7 +537,11 @@ class RegexOCR extends REST_Controller {
 
   // Put the matches array into a named variable
   $yPosition = $matches[1];
-  var_dump($yPosition);
+  // var_dump($yPosition);
+
+  foreach ($yPosition as $position) {
+    echo "$positon \n";
+  }
 
   // Remove duplicate Y values
   // $positions = array_unique($yPosition);
