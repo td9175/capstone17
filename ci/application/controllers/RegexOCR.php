@@ -562,13 +562,20 @@ class RegexOCR extends REST_Controller {
     if (preg_match_all($regex, $string, $matches)) {
       $words = $matches[1];
 
-      // Match for qualified items, capture the amount
-      preg_match_all($regex, $words, $matches);
 
+      // Build a string from the array
+      $itemsString = "";
       foreach ($words as $word) {
-        echo "$word ";
+        $itemsString = $word . " ";
       }
-      // var_dump($matches[1]);
+      echo "$itemsString \n";
+
+      // Match for qualified items, capture the amount
+      // preg_match_all($regex, $words, $matches);
+      //
+      // foreach ($lines as $line) {
+      //   echo "$line \n";
+      // }
     } else {
       echo "An error occured. \n";
     }
