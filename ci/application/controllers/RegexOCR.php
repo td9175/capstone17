@@ -538,7 +538,7 @@ class RegexOCR extends REST_Controller {
   // Put the matches array into a named variable
   $yPosition = $matches[1];
   // Sort ascending
-  $sortedPositions = asort($yPosition);
+  $sortedPositions = sort($yPosition, SORT_NUMERIC);
 
   foreach ($sortedPositions as $position) {
     echo "$position \n";
