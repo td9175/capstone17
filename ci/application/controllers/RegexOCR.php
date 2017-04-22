@@ -561,15 +561,12 @@ class RegexOCR extends REST_Controller {
     // Match for the words
     preg_match_all($regex, $string, $matches);
       $words = $matches[1];
-      // var_dump($words);
 
-      $finalString = array();
-      $i = 0;
+      $wordString = "";
       foreach ($words as $word) {
-        array_push($finalString, $word);
-        // echo "$word ";
+        $wordString .= $word . " ";
       }
-      var_dump($finalString);
+      echo "$wordString";
 
       // Build a string from the array
       // $string = "";
