@@ -542,7 +542,7 @@ class RegexOCR extends REST_Controller {
 
   foreach ($yPosition as $position) {
     $integerPosition = (Int) $position;
-    $sortedPositions = array_push($integerPosition);
+    array_push($sortedPositions, $integerPosition);
   }
 
   var_dump($sortedPositions);
