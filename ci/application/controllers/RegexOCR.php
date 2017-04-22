@@ -569,7 +569,7 @@ class RegexOCR extends REST_Controller {
       }
 
       // Match for qualified items, capture the amount
-      $regex = '\d{12}H\s(\d+\.\d+)[^\d]';
+      $regex = '/\d{12}H\s(\d+\.\d+)[^\d]/';
       preg_match_all($regex, $wordString, $matches);
 
       $qualifiedAmounts = $matches[1];
