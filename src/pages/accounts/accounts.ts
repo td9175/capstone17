@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
-import { UserApi, UserGlobals } from './../shared/user-api.service';
+import { UserApi, UserGlobals, AuthService } from './../shared/user-api.service';
 
 // Page Imports
 import { UserSettingsPage } from './../user-settings/user-settings';
@@ -26,7 +26,7 @@ export class AccountsPage {
   // userfsabalance: any;
   // accountType: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals, public authService: AuthService) { 
   }
 
   ionViewDidLoad() {
@@ -47,6 +47,10 @@ export class AccountsPage {
   // for debugging.
   loginTest() {
     this.navCtrl.push(LoginPage);
+  }
+
+  logoutTest() {
+    this.authService.appLogout();
   }
   
   loadHsaAccountDetails(event, accountType){

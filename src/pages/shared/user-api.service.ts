@@ -181,26 +181,26 @@ export class AuthService {
     }
   }
  
-  public appRegisterUser(email, password, first_name, last_name) {
-    if (email === null || password === null || first_name === null || last_name === null) {
-      return Observable.throw("Please fill out the form.");
+  public appRegister(email, password, first_name, last_name) {
+    if (email == null || password == null || first_name == null || last_name == null || email == "" || password == "" || first_name == "" || last_name == "") {
+      //return Observable.throw("Please fill out the form.");
+      return null;
     } else {
-      return Observable.create(observer => {
-       this.postRegister(email, password, first_name, last_name).subscribe(
-          data => this.registerReturn = data.success,
-          err => console.log('error: ', err),
-          () => console.log('registerReturn: ', this.registerReturn)
-        );
-        observer.complete();
-      });
+        this.postRegister(email, password, first_name, last_name).subscribe(
+        data => this.userGlobals.setGlobalEmail(data.message),
+        err => console.log('error: ', err),
+        () => console.log('this is a thing')
+      );
+      return this.userGlobals.getGlobalEmail();
     }
   }
  
-//   public appLogout() {
-//     return new Promise(resolve => {
-//         this.currentUser = null;
-//         this.http.get(`https://capstone.td9175.com/ci/index.php/UserAccount/logout`)
-//             .subscribe(res => resolve(res.json()));
-//     });
-//   }
+  public appLogout() {
+    return new Promise(resolve => {
+        this.userGlobals.setGlobalEmail = null;
+        this.userGlobals.setGlobalSession = null;
+        this.http.get(`https://capstone.td9175.com/ci/index.php/UserAccount/logout`);
+        //reload the app somehow
+    });
+  }
 }

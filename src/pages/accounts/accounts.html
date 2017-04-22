@@ -11,7 +11,7 @@
     <!--Hello Card-->
     <ion-card>
       <button ion-item (click)="loadUserSettingsDetails()">
-        <div *ngIf="userLoggedIn==true">Hello, loggedinuser</div>
+        <div *ngIf="userLoggedIn==true">Hello, {{loggedInUser}}</div>
         <!--<ion-icon name="person" item-left></ion-icon>-->
         <div *ngIf="userLoggedIn==false">Hello, Shit</div>
       </button>
@@ -61,6 +61,7 @@
 
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
+  <button ion-button (click)="logoutTest()">Debug Logout</button>
   
   <!--
   <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
