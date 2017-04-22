@@ -31,6 +31,9 @@
 		A164161AD83D4977AD4972B4 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 323141E75685481A824D8EE9 /* CDVAssetLibraryFilesystem.m */; };
 		C137168270BB4DC292C22F4E /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2573DA90A2F243DC8FF776D5 /* CDVFileTransfer.m */; };
 		42905B006A2D47E9BC93FC51 /* ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = B2400DF9779344E2BA5614B0 /* ActionSheet.m */; };
+		09DD27A28F034CA7A703987A /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA6A451E279E4AA289FAFA90 /* Toast+UIView.m */; };
+		7DB054AE40944DA394BC2123 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 321BEF131097473F96F431A7 /* Toast.m */; };
+		D53D838CBF374478BF5CD027 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81AA6FEA879B44C9B4A5015B /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +108,11 @@
 		33D4EE63731C4DFAAEFF26BC /* CDVFileTransfer.h */ = {isa = PBXFileReference; name = "CDVFileTransfer.h"; path = "cordova-plugin-file-transfer/CDVFileTransfer.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		B2400DF9779344E2BA5614B0 /* ActionSheet.m */ = {isa = PBXFileReference; name = "ActionSheet.m"; path = "cordova-plugin-actionsheet/ActionSheet.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		9FE95980BD394785A1E22FC8 /* ActionSheet.h */ = {isa = PBXFileReference; name = "ActionSheet.h"; path = "cordova-plugin-actionsheet/ActionSheet.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BA6A451E279E4AA289FAFA90 /* Toast+UIView.m */ = {isa = PBXFileReference; name = "Toast+UIView.m"; path = "cordova-plugin-x-toast/Toast+UIView.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		321BEF131097473F96F431A7 /* Toast.m */ = {isa = PBXFileReference; name = "Toast.m"; path = "cordova-plugin-x-toast/Toast.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		EE0EEBCD45F647F6B9444FAC /* Toast+UIView.h */ = {isa = PBXFileReference; name = "Toast+UIView.h"; path = "cordova-plugin-x-toast/Toast+UIView.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		3EED99CBAF044DC9B3836D5B /* Toast.h */ = {isa = PBXFileReference; name = "Toast.h"; path = "cordova-plugin-x-toast/Toast.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		81AA6FEA879B44C9B4A5015B /* QuartzCore.framework */ = {isa = PBXFileReference; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,7 @@
 				E3F8A9884CF84B41A94B38AB /* ImageIO.framework in Frameworks */,
 				E8D090A4A66A4938A48941D6 /* CoreLocation.framework in Frameworks */,
 				4453FE8EEE04493998E85E52 /* AVFoundation.framework in Frameworks */,
+				D53D838CBF374478BF5CD027 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +198,7 @@
 				AE16B6A94ADE44D98A6FD8BD /* ImageIO.framework */,
 				CE6B7EDA9D614228827452C5 /* CoreLocation.framework */,
 				75824C845D7C49F19FB64DBB /* AVFoundation.framework */,
+				81AA6FEA879B44C9B4A5015B /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,6 +255,10 @@
 				33D4EE63731C4DFAAEFF26BC /* CDVFileTransfer.h */,
 				B2400DF9779344E2BA5614B0 /* ActionSheet.m */,
 				9FE95980BD394785A1E22FC8 /* ActionSheet.h */,
+				BA6A451E279E4AA289FAFA90 /* Toast+UIView.m */,
+				321BEF131097473F96F431A7 /* Toast.m */,
+				EE0EEBCD45F647F6B9444FAC /* Toast+UIView.h */,
+				3EED99CBAF044DC9B3836D5B /* Toast.h */,
 			);
 			name = Plugins;
 			path = "umb-health-v02/Plugins";
@@ -380,6 +394,8 @@
 				A164161AD83D4977AD4972B4 /* CDVAssetLibraryFilesystem.m in Sources */,
 				C137168270BB4DC292C22F4E /* CDVFileTransfer.m in Sources */,
 				42905B006A2D47E9BC93FC51 /* ActionSheet.m in Sources */,
+				09DD27A28F034CA7A703987A /* Toast+UIView.m in Sources */,
+				7DB054AE40944DA394BC2123 /* Toast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
