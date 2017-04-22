@@ -548,10 +548,11 @@ class RegexOCR extends REST_Controller {
   // Remove duplicate Y values
   $positions = array_unique($positions);
 
-  var_dump($positions);
+
 
   // Sort ascending
-  // $sortedPositions = array_multisort($positions, SORT_ASC);
+  array_multisort($positions, SORT_ASC);
+  var_dump($positions);
   // var_dump($sortedPositions);
 
   // foreach ($sortedPositions as $position) {
