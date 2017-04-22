@@ -540,7 +540,7 @@ class RegexOCR extends REST_Controller {
   // var_dump($yPosition);
 
   foreach ($yPosition as $position) {
-    echo "$positon \n";
+    echo "$position \n";
   }
 
   // Remove duplicate Y values
