@@ -536,21 +536,18 @@ class RegexOCR extends REST_Controller {
   preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
   // Put the matches array into a named variable
-  $yPosition = $matches[1];
+  $yPositions = $matches[1];
 
-  $sortedPositions = array();
+  $positions = array();
 
-  foreach ($yPosition as $position) {
+  foreach ($yPositions as $position) {
     $integerPosition = (Int) $position;
-    array_push($sortedPositions, $integerPosition);
+    array_push($positions, $integerPosition);
   }
 
-  var_dump($sortedPositions);
-
   // Sort ascending
-  // var_dump($yPosition);
-  // $sortedPositions = sort($yPosition, SORT_NUMERIC);
-  // var_dump($sortedPositions);
+  $sortedPositions = sort($positions, SORT_NUMERIC);
+  var_dump($sortedPositions);
 
   // foreach ($sortedPositions as $position) {
   //   echo "$position \n";
