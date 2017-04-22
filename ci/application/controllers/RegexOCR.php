@@ -559,6 +559,7 @@ class RegexOCR extends REST_Controller {
 
 
   // var_dump($sortedPositions);
+  for
 
 
 
@@ -567,7 +568,8 @@ class RegexOCR extends REST_Controller {
   foreach ($positions as $position) {
     $positionPlusOne = $position + 1;
     $positionMinusOne = $position - 1;
-    $regex = '/\d{1,3},(?:'.$position.'|'.$positionPlusOne.'|'.$positionMinusOne.'),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
+    $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
+    // $regex = '/\d{1,3},(?:'.$position.'|'.$positionPlusOne.'|'.$positionMinusOne.'),\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
     // echo "$regex \n";
 
     //   /\d{1,3},(?:100|101|99)\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/
@@ -576,6 +578,7 @@ class RegexOCR extends REST_Controller {
 
     if (preg_match_all($regex, $string, $matches)) {
       $lines = array_unique($matches[1]);
+      $words = preg_match_all();
       foreach ($lines as $line) {
         echo "$line \n";
       }
