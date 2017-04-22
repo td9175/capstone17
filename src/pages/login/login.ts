@@ -48,9 +48,12 @@ export class LoginPage {
   }
 
   loginForm(form: NgForm) {
-    console.log("form.value.email: ", form.value.email);
-    console.log("form.value.password: ", form.value.password);
-    console.log(this.authService.appLogin(form.value.email, form.value.password));
+    if(this.authService.appLogin(form.value.email, form.value.password) === "") {
+      console.log("Couldn't log you in. Bad username or password, or you didn't fill in the fields.");
+    }
+    else {
+      console.log("We got a session token for you. Redirect or something");
+    }
   };
 
 }

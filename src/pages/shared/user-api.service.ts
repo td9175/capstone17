@@ -139,7 +139,6 @@ export class AuthService {
   constructor(private http: Http, private userGlobals: UserGlobals) { }
 
   public postLogin(email, password){ 
-      console.log("postLoginBegin");
         let body = new URLSearchParams();
             body.set('email', email);
             body.set('password', password);
@@ -167,7 +166,7 @@ export class AuthService {
  
   public appLogin(email, password) {
     if (email === null || password === null) {
-      return null;
+      return "";
     } else if (this.userGlobals.isLoggedIn()) {
         return this.userGlobals.getGlobalSession();
     } else {
