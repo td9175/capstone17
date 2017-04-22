@@ -21292,6 +21292,15 @@ sub {
   }
 }
 
+page-accounts .account-header {
+  font-size: 20px;
+  color: #003c6e;
+}
+
+page-accounts .account-number {
+  color: #747678;
+}
+
 page-login .scroll-content {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21317,13 +21326,9 @@ page-login ion-item {
   font-size: 0.9em;
 }
 
-page-product-detail {
-  /*
-  ion-grid {
-    height: 100%;
-    justify-content: center;
-  }
-  */
+page-page1 ion-content {
+  padding: 100px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 page-product-detail .card {
@@ -21341,6 +21346,13 @@ page-product-detail .highlight-secondary {
 page-product-detail .highlight-goodrx {
   color: #747678;
   font-size: 10px;
+}
+
+page-product-detail .goodrx-img {
+  background-color: transparent;
+  border: none;
+  float: right;
+  position: static;
 }
 
 page-products .padding-horizontal {
@@ -21361,6 +21373,13 @@ page-products .alert-empty-search-bar {
   font-size: 1.4em;
 }
 
+page-yelp-result {
+  /*
+  .card {
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0); }
+  */
+}
+
 page-yelp-result .object-fit_cover {
   object-fit: cover;
 }
@@ -21373,10 +21392,6 @@ page-yelp-result img {
 
 page-yelp-result img[class] {
   width: 100%;
-}
-
-page-yelp-result .card {
-  box-shadow: 0 0px 0px transparent;
 }
 
 page-yelp-result .yelpResult-tag-badge {

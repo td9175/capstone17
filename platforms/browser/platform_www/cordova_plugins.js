@@ -314,6 +314,19 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-x-toast/www/Toast.js",
+        "id": "cordova-plugin-x-toast.Toast",
+        "pluginId": "cordova-plugin-x-toast",
+        "clobbers": [
+            "window.plugins.toast"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-x-toast/test/tests.js",
+        "id": "cordova-plugin-x-toast.tests",
+        "pluginId": "cordova-plugin-x-toast"
     }
 ];
 module.exports.metadata = 
@@ -331,7 +344,8 @@ module.exports.metadata =
     "cordova-plugin-file": "4.3.2",
     "cordova-plugin-file-transfer": "1.6.2",
     "cordova-plugin-filepath": "1.0.2",
-    "cordova-plugin-actionsheet": "2.3.3"
+    "cordova-plugin-actionsheet": "2.3.3",
+    "cordova-plugin-x-toast": "2.6.0"
 }
 // BOTTOM OF METADATA
 });

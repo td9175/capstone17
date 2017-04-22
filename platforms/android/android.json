@@ -55,6 +55,10 @@
                         {
                             "xml": "<feature name=\"ActionSheet\"><param name=\"android-package\" value=\"nl.xservices.plugins.actionsheet.ActionSheet\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -119,6 +123,9 @@
             "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
         },
         "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
+        },
+        "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.ionicframework.umbhealthv02200651"
         }
     },
@@ -402,6 +409,19 @@
             "clobbers": [
                 "window.plugins.actionsheet"
             ]
+        },
+        {
+            "id": "cordova-plugin-x-toast.Toast",
+            "file": "plugins/cordova-plugin-x-toast/www/Toast.js",
+            "pluginId": "cordova-plugin-x-toast",
+            "clobbers": [
+                "window.plugins.toast"
+            ]
+        },
+        {
+            "id": "cordova-plugin-x-toast.tests",
+            "file": "plugins/cordova-plugin-x-toast/test/tests.js",
+            "pluginId": "cordova-plugin-x-toast"
         }
     ],
     "plugin_metadata": {
@@ -417,6 +437,7 @@
         "cordova-plugin-file": "4.3.2",
         "cordova-plugin-file-transfer": "1.6.2",
         "cordova-plugin-filepath": "1.0.2",
-        "cordova-plugin-actionsheet": "2.3.3"
+        "cordova-plugin-actionsheet": "2.3.3",
+        "cordova-plugin-x-toast": "2.6.0"
     }
 }
