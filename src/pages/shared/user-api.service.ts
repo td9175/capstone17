@@ -173,9 +173,9 @@ export class AuthService {
       this.postLogin(email, password).subscribe(
           data =>  this.userGlobals.setGlobalSession(data.ci_session),
           err => console.log('error: ', err),
-          () => console.log('Global session: ', this.userGlobals.getGlobalSession())
+          () => this.userGlobals.setGlobalEmail(email)
         );
-        return this.userGlobals.getGlobalSession();
+        return this.userGlobals.getGlobalEmail();
     }
   }
  

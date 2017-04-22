@@ -37,12 +37,6 @@ export class LoginPage {
     password: ''
   };
 
-  loginFire(){
-    //this.navCtrl.push(AccountsPage);
-    //this.navCtrl.popToRoot();
-    //this.navCtrl.push(HomePage);
-  }
-
   enrollNow(){
     this.navCtrl.push(MyVaultPage);
   }
@@ -50,6 +44,8 @@ export class LoginPage {
   loginForm(form: NgForm) {
     if(this.authService.appLogin(form.value.email, form.value.password) === "") {
       console.log("Couldn't log you in. Bad username or password, or you didn't fill in the fields.");
+    } else if(this.userGlobals.getGlobalSession() === "") {
+      console.log("Couldn't start your session or store your token.");
     }
     else {
       console.log("We got a session token for you. Redirect or something");

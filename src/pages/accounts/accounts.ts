@@ -19,6 +19,7 @@ export class AccountsPage {
 
   userhsas: any;
   userfsas: any;
+  loggedInUser: any;
 
   userhsabalance: any;
   // userfsabalance: any;
@@ -31,6 +32,7 @@ export class AccountsPage {
     // get HSA-FSA Data
     this.userApi.getUserHSAData().then(data => this.userhsas = data);
     this.userApi.getUserFSAData().then(data => this.userfsas = data);
+    this.loggedInUser = this.userGlobals.getGlobalEmail();
     // would it be redundant to show balance here? Would we rather have them click on the account.
     //this.userApi.getHsaBalance().then(data => this.userhsabalance);
     //this.userApi.getFsaBalance().then(data => this.userfsabalance);
