@@ -1,5 +1,46 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+@Injectable()
+export class UserGlobals {
+    public globalEmail: string;
+    public globalSession: string;
+  
+  constructor() {
+    this.globalEmail = null;
+    this.globalSession = null;
+  }
+
+  setGlobalEmail(email) {
+    this.globalEmail = email;
+  }
+
+  setGlobalSession(session) {
+      this.globalSession = session;
+  }
+
+  getGlobalEmail() {
+    return this.globalEmail;
+  }
+
+  getGlobalSession() {
+      return this.globalSession;
+  }
+
+  isLoggedIn() {
+      if(this.getGlobalEmail() == null || this.getGlobalSession() == null) {
+          console.log("isloggedin returning false");
+          return false;
+      }
+      else {
+          console.log("isloggedin returning true");
+          return true;
+      }
+  }
+
+}
 
 @Injectable()
 export class UserApi {
@@ -7,7 +48,7 @@ export class UserApi {
     private baseUrl = 'https://capstone.td9175.com';
     // hard coded email for right now.
     private userid = 'umbcapstone17@gmail.com';
-    baseid = encodeURIComponent(this.userid)
+    baseid = encodeURIComponent(this.userid);
     
     public drugToSearch: any;
     public drugToGetDetails: any;
@@ -82,4 +123,84 @@ export class UserApi {
     
     // Firebase test data:
     // private baseUrl = 'https://capstone17-umbhealth-i2.firebaseio.com';
-} 
+}
+ 
+export class User {
+  email: string;
+  ci_session: string;
+ 
+  constructor() {
+  }
+}
+ 
+@Injectable()
+export class AuthService {
+  loginReturn: any;
+  registerReturn: any;
+
+  constructor(private http: Http, private userGlobals: UserGlobals) { }
+
+  public postLogin(email, password){ 
+        let body = new URLSearchParams();
+            body.set('email', email);
+            body.set('password', password);
+        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/login/', body)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  public postRegister(email, password, first_name, last_name) { 
+        let body = new URLSearchParams();
+            body.set('email', email);
+            body.set('password', password);
+            body.set('first_name', first_name);
+            body.set('last_name', last_name);
+        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/register/', body)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+ 
+  public appLogin(email, password) {
+    if (email == null || password == null || email == "" || password == "") {
+      return null;
+    } else if (this.userGlobals.isLoggedIn()) {
+        return this.userGlobals.getGlobalSession();
+    } else {
+      this.postLogin(email, password).subscribe(
+          data =>  this.userGlobals.setGlobalSession(data.ci_session),
+          err => console.log('error: ', err),
+          () => this.userGlobals.setGlobalEmail(email)
+        );
+        return this.userGlobals.getGlobalEmail();
+    }
+  }
+ 
+  public appRegisterUser(email, password, first_name, last_name) {
+    if (email === null || password === null || first_name === null || last_name === null) {
+      return Observable.throw("Please fill out the form.");
+    } else {
+      return Observable.create(observer => {
+       this.postRegister(email, password, first_name, last_name).subscribe(
+          data => this.registerReturn = data.success,
+          err => console.log('error: ', err),
+          () => console.log('registerReturn: ', this.registerReturn)
+        );
+        observer.complete();
+      });
+    }
+  }
+ 
+//   public appLogout() {
+//     return new Promise(resolve => {
+//         this.currentUser = null;
+//         this.http.get(`https://capstone.td9175.com/ci/index.php/UserAccount/logout`)
+//             .subscribe(res => resolve(res.json()));
+//     });
+//   }
+}

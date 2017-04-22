@@ -25,8 +25,10 @@ import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
 // APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
-import { ReceiptPoster } from './../pages/shared/receipt-post.service';
+import { User, UserApi, AuthService, UserGlobals } from './../pages/shared/user-api.service';
+//import { ReceiptPoster } from './../pages/shared/receipt-post.service';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
+
 
 import { MyApp } from './app.component';
 import { Page1 } from '../pages/page1/page1';
@@ -36,6 +38,7 @@ import { Camera } from '@ionic-native/camera';
 
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
+import { NgForm } from '@angular/forms/src/directives';
 
 @NgModule({
   declarations: [
@@ -89,6 +92,6 @@ import { ActionSheetController } from 'ionic-angular';
     ProductDetail,
     AccountDetailPage
   ],
-  providers: [YelpPoster, ReceiptPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController]
+  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
 })
 export class AppModule {}

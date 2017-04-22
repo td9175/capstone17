@@ -31,6 +31,10 @@ export class YelpPoster {
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers })
 
+        console.log("testing yelp: ", this.http.post('https://capstone.td9175.com/ci/index.php/YelpHealthServiceRequest/search_query', body, options)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error')))
+
         return this.http.post('https://capstone.td9175.com/ci/index.php/YelpHealthServiceRequest/search_query', body, options)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));

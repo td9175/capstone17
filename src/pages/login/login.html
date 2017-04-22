@@ -15,40 +15,40 @@
     <!--Login Header and bar-->
     <ion-row>
       <ion-col>
-        <h3>UMBC Sign-In</h3>
+        <h3>UMB Sign-In</h3>
         <!--<img src="assets/img/loginlogo.png">-->
       </ion-col>
     </ion-row>
 
-    <!--Login Main Input--> 
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label>Username:</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Password:</ion-label>
-          <!--Password might be better than the original Passcode?-->
-          <ion-input type="password"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Remember Me</ion-label>
-          <ion-checkbox></ion-checkbox>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+  <!--Login Main Input--> 
+  <form #form="ngForm" (ngSubmit)="loginForm(form)">
+    <ion-item>
+      <ion-label>Email address:</ion-label>
+      <ion-input 
+      #email="ngModel" 
+      required type="email" 
+      class="form-container" 
+      name="email" 
+      [ngModel]="model.email" 
+      (ngModelChange)="model.email=$event">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password:</ion-label>
+      <ion-input 
+      #password="ngModel" 
+      required type="password" 
+      class="form-container" 
+      name="password" 
+      [ngModel]="model.password" 
+      (ngModelChange)="model.password=$event">
+      </ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Log in</button>
+  </form>
 
-
-    <ion-row>
-      <ion-col>
-        <!--Currently (click) is goToHome, should be loginState (once ready)-->
-        <button ion-button class="login-button" (click)="goToHome()">Sign In</button>
-      </ion-col>
-      <ion-col>
-        <button ion-button class="enroll-button" (click)="enrollNow()">Enroll</button>
-      </ion-col>
-    </ion-row>
+  <button ion-button type="button" (click)="enrollNow()" block>Register</button>
+  <button ion-button type="button" (click)="twelveBitDebug()" block>Debug Home</button>
   </div>
 
 

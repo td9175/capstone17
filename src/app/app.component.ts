@@ -26,15 +26,18 @@ import { MyVaultPage } from './../pages/my-vault/my-vault';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';
 import { ProductDetail } from './../pages/product-detail/product-detail';
+import { NgForm } from '@angular/forms/src/directives';
 
 // API Imports
-import { UserApi } from '../pages/shared/shared';
+import { UserApi, User, AuthService, UserGlobals } from '../pages/shared/shared';
 
 @Component({
   templateUrl: 'app.html',
   providers: [
     UserApi,
-    HttpModule
+    HttpModule,
+    AuthService,
+    UserGlobals
   ]
 })
 export class MyApp {
@@ -43,7 +46,7 @@ export class MyApp {
   // It would probably be smarter to use HomePage as root,
   // Attempting to Change it back to homepage to fix navigation, will look into,
   // using overlay for Login.
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 

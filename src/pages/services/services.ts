@@ -28,7 +28,7 @@ export class ServicesPage {
     });
 
     loader.present().then(() => {
-        console.log(form.value);
+        console.log("this is services", form.value);
         this.yelpPoster.postYelpSearchForm(this.model)
         .subscribe(
           data => this.results = data.businesses,

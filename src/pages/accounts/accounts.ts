@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
-import { UserApi } from './../shared/user-api.service';
+import { UserApi, UserGlobals } from './../shared/user-api.service';
 
 // Page Imports
 import { UserSettingsPage } from './../user-settings/user-settings';
@@ -19,18 +19,26 @@ export class AccountsPage {
 
   userhsas: any;
   userfsas: any;
+  loggedInUser: any;
+  userLoggedIn: any;
 
   userhsabalance: any;
   // userfsabalance: any;
   // accountType: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals) { 
   }
 
   ionViewDidLoad() {
     // get HSA-FSA Data
     this.userApi.getUserHSAData().then(data => this.userhsas = data);
     this.userApi.getUserFSAData().then(data => this.userfsas = data);
+    this.loggedInUser = this.userGlobals.getGlobalEmail();
+    if(this.userGlobals.isLoggedIn()==true) {
+      this.userLoggedIn = true;
+    } else {
+      this.userLoggedIn = false;
+    }
     // would it be redundant to show balance here? Would we rather have them click on the account.
     //this.userApi.getHsaBalance().then(data => this.userhsabalance);
     //this.userApi.getFsaBalance().then(data => this.userfsabalance);

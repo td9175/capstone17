@@ -11,7 +11,9 @@
     <!--Hello Card-->
     <ion-card>
       <button ion-item (click)="loadUserSettingsDetails()">
-        <!--<ion-icon name="person" item-left></ion-icon>-->Hello, Shit
+        <div *ngIf="userLoggedIn==true">Hello, loggedinuser</div>
+        <!--<ion-icon name="person" item-left></ion-icon>-->
+        <div *ngIf="userLoggedIn==false">Hello, Shit</div>
       </button>
     </ion-card>
     
@@ -19,14 +21,14 @@
     <ion-card *ngFor="let userhsa of userhsas">
       <button ion-item *ngIf="(userhsa?.account_number>=1)" (click)="loadHsaAccountDetails($event, accountType)">
         <div>
-          <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Service Account</h3>
+          <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Spending Account</h3>
           <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
         </div>
       </button>
       <!--Probably will change to another type of check..-->
       <button ion-item *ngIf="(userhsa?.account_number==NULL)">
         <div>
-          <h4 class="account-number">Click Here To Add HSA</h4>
+          <h4 class="account-number">Click here to add an HSA</h4>
         </div>
       </button>
     </ion-card>
@@ -35,14 +37,14 @@
     <ion-card *ngFor="let userfsa of userfsas">
       <button ion-item *ngIf="(userfsa?.account_number>=1)" (click)="loadFsaAccountDetails($event, accountType)">
         <div>
-          <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Service Account</h3>
+          <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Spending Account</h3>
           <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>
         </div>
       </button>
       <!--Probably will change to another type of check..-->
       <button ion-item *ngIf="(userfsa?.account_number==NULL)">
         <div>
-          <h4 class="account-number">Click Here To Add FSA</h4>
+          <h4 class="account-number">Click here to add an FSA</h4>
         </div>
       </button>
     </ion-card>
