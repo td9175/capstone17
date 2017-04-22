@@ -559,7 +559,6 @@ class RegexOCR extends REST_Controller {
 
 
   // var_dump($sortedPositions);
-  for
 
 
 
