@@ -554,7 +554,7 @@ class RegexOCR extends REST_Controller {
   array_multisort($positions, SORT_ASC);
 
   $wordString = "";
-  
+
   // Loop through the Y positions
   foreach ($positions as $position) {
     // Build regular expression
@@ -572,18 +572,18 @@ class RegexOCR extends REST_Controller {
   echo "$wordString";
 
   // Match for qualified items, capture the amount
-  // $regex = '/\d{12}H\s(\d+\.\d+)[^\d]/';
-  // preg_match_all($regex, $wordString, $matches);
-  //
-  // $qualifiedAmounts = $matches[1];
-  // var_dump($qualifiedAmounts);
-  //
-  // // Add up the amounts for the total qualified amount
-  // $total = 0;
-  // foreach ($qualifiedAmounts as $qualifiedAmount) {
-  //   $total += (Int) $qualifiedAmount;
-  // }
-  // echo "Total: $total \n";
+  $regex = '/\d{12}H\s(\d+\.\d+)[^\d]/';
+  preg_match_all($regex, $wordString, $matches);
+
+  $qualifiedAmounts = $matches[1];
+  var_dump($qualifiedAmounts);
+
+  // Add up the amounts for the total qualified amount
+  $total = 0;
+  foreach ($qualifiedAmounts as $qualifiedAmount) {
+    $total += (Int) $qualifiedAmount;
+  }
+  echo "Total: $total \n";
 
 
   } //
