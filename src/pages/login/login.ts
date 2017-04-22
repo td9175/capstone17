@@ -20,7 +20,7 @@ import { LoginModel } from './../../models/login.model';
 })
 
 export class LoginPage {
-  model = new LoginModel('', '');
+  model = new LoginModel("", "");
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User) { }
 

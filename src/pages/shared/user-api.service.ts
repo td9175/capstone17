@@ -90,9 +90,7 @@ export class User {
   email: string;
   ci_session: string;
  
-  constructor(email: string, ci_session: string) {
-    this.email = email;
-    this.ci_session = ci_session;
+  constructor() {
   }
 }
  
