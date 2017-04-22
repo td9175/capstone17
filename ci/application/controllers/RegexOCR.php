@@ -581,7 +581,7 @@ class RegexOCR extends REST_Controller {
   // Add up the amounts for the total qualified amount
   $total = 0;
   foreach ($qualifiedAmounts as $qualifiedAmount) {
-    $total += (Int) $qualifiedAmount;
+    $total += $qualifiedAmount;
   }
   echo "Total: $total \n";
 
