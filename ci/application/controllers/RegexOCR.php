@@ -545,17 +545,20 @@ class RegexOCR extends REST_Controller {
     array_push($positions, $integerPosition);
   }
 
+  // Remove duplicate Y values
+  $positions = array_unique($positions);
+
   var_dump($positions);
+
   // Sort ascending
-  $sortedPositions = array_multisort($positions, SORT_ASC);
-  var_dump($sortedPositions);
+  // $sortedPositions = array_multisort($positions, SORT_ASC);
+  // var_dump($sortedPositions);
 
   // foreach ($sortedPositions as $position) {
   //   echo "$position \n";
   // }
 
-  // Remove duplicate Y values
-  // $positions = array_unique($yPosition);
+
   //
   // foreach ($positions as $position) {
   //   $positionPlusOne = $position + 1;
