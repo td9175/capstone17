@@ -561,14 +561,14 @@ class RegexOCR extends REST_Controller {
     // Match for the words
     if (preg_match_all($regex, $string, $matches)) {
       $words = $matches[1];
-
+      var_dump($words);
 
       // Build a string from the array
-      $string = "";
-      foreach ($words as $word) {
-        $string = $word . " ";
-      }
-      echo "$string";
+      // $string = "";
+      // foreach ($words as $word) {
+      //   $string = $word . " ";
+      // }
+      // echo "$string";
 
       // // Match for qualified items, capture the amount
       // $regex = '\d{12}H\s(\d+\.\d+)[^\d]';
