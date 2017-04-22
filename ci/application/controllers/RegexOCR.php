@@ -568,7 +568,7 @@ class RegexOCR extends REST_Controller {
       foreach ($words as $word) {
         $itemsString = $word . " ";
       }
-      echo "$itemsString \n";
+      echo "$itemsString";
 
       // Match for qualified items, capture the amount
       // preg_match_all($regex, $words, $matches);
