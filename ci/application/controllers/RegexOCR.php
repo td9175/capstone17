@@ -562,32 +562,25 @@ class RegexOCR extends REST_Controller {
     preg_match_all($regex, $string, $matches);
       $words = $matches[1];
 
+      // Turn the array into a string
       $wordString = "";
       foreach ($words as $word) {
         $wordString .= $word . " ";
       }
-      echo "$wordString";
 
-      // Build a string from the array
-      // $string = "";
-      // foreach ($words as $word) {
-      //   echo "$word ";
-      //   // $string .= $word . " ";
-      // }
-      // echo "$string";
+      // Match for qualified items, capture the amount
+      $regex = '\d{12}H\s(\d+\.\d+)[^\d]';
+      preg_match_all($regex, $wordString, $matches);
 
-      // // Match for qualified items, capture the amount
-      // $regex = '\d{12}H\s(\d+\.\d+)[^\d]';
-      // preg_match_all($regex, $string, $matches);
-      //
-      // $qualifiedAmounts = $matches[1];
-      //
-      // // Add up the amounts for the total qualified amount
-      // $total = 0;
-      // foreach ($qualifiedAmounts as $qualifiedAmount) {
-      //   $total += (Int) $qualifiedAmount;
-      // }
-      // echo "Total: $total \n";
+      $qualifiedAmounts = $matches[1];
+      var_dump($qualifiedAmounts);
+
+      // Add up the amounts for the total qualified amount
+      $total = 0;
+      foreach ($qualifiedAmounts as $qualifiedAmount) {
+        $total += (Int) $qualifiedAmount;
+      }
+      echo "Total: $total \n";
 
 
 
