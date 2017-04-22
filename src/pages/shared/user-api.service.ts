@@ -7,10 +7,12 @@ import 'rxjs/add/operator/map';
 export class UserGlobals {
     public globalEmail: string;
     public globalSession: string;
+    public nli: boolean;
   
   constructor() {
     this.globalEmail = "";
     this.globalSession = "";
+    this.nli = true;
   }
 
   setGlobalEmail(email) {
@@ -22,15 +24,21 @@ export class UserGlobals {
   }
 
   getGlobalEmail() {
+    this.nli = false;
     return this.globalEmail;
   }
 
   getGlobalSession() {
+      this.nli = false;
       return this.globalSession;
   }
 
+  neverLoggedIn() {
+      return this.nli;
+  }
+
   isLoggedIn() {
-      if(this.getGlobalSession() === "") {
+      if(this.getGlobalEmail() === "" || this.neverLoggedIn() === true) {
           return false;
       }
       else {

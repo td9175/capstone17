@@ -46,7 +46,7 @@ export class MyApp {
   // It would probably be smarter to use HomePage as root,
   // Attempting to Change it back to homepage to fix navigation, will look into,
   // using overlay for Login.
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 

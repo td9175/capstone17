@@ -2,7 +2,7 @@ import { HomePage } from './../home/home';
 import { AccountsPage } from './../accounts/accounts';
 import { MyVaultPage } from './../my-vault/my-vault';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UserApi, User, AuthService, UserGlobals } from './../shared/user-api.service';
 import { NgForm } from '@angular/forms/src/directives';
 import { LoginModel } from './../../models/login.model';
@@ -22,7 +22,7 @@ import { LoginModel } from './../../models/login.model';
 export class LoginPage {
   model = new LoginModel("", "");
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) { }
 
   // Test console log below, should be deleted in further versions.
   ionViewDidLoad() {
@@ -37,19 +37,42 @@ export class LoginPage {
     password: ''
   };
 
-  enrollNow(){
+  enrollNow() {
     this.navCtrl.push(MyVaultPage);
   }
 
+  twelveBitDebug() {
+    this.navCtrl.push(HomePage);
+  }
+
   loginForm(form: NgForm) {
-    if(this.authService.appLogin(form.value.email, form.value.password) === "") {
-      console.log("Couldn't log you in. Bad username or password, or you didn't fill in the fields.");
-    } else if(this.userGlobals.getGlobalSession() === "") {
-      console.log("Couldn't start your session or store your token.");
+
+    let loader = this.loadingController.create({
+      content: 'Logging in...',
+    });
+    loader.present();
+    this.authService.appLogin(form.value.email, form.value.password);
+
+    function sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
     }
-    else {
-      console.log("We got a session token for you. Redirect or something");
-    }
-  };
+
+    sleep(1200).then(() => {
+      loader.dismissAll();
+      console.log(this.userGlobals.getGlobalEmail());
+      console.log(this.userGlobals.getGlobalSession());
+      //this.presentToast('Logged in and redirecting you now...');
+    }, err => {
+      loader.dismissAll();
+      //this.presentToast('Invalid username or password.');
+    });
+
+    // if( === "") {
+    //   console.log("Couldn't log you in. Bad username or password, or you didn't fill in the fields.");
+    // }
+    // else {
+    //   console.log("We got a session token for you. Redirect or something");
+    // }
+  }
 
 }
