@@ -51,6 +51,7 @@ export class AccountsPage {
 
   logoutTest() {
     this.authService.appLogout();
+    this.navCtrl.popToRoot();
   }
   
   loadHsaAccountDetails(event, accountType){

@@ -6,7 +6,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UserApi, User, AuthService, UserGlobals } from './../shared/user-api.service';
 import { NgForm } from '@angular/forms/src/directives';
 import { LoginModel } from './../../models/login.model';
-import { Toast } from '@ionic-native/toast';
+//import { Toast } from '@ionic-native/toast';
 
 /*
   Generated class for the Login page.
@@ -23,7 +23,7 @@ import { Toast } from '@ionic-native/toast';
 export class LoginPage {
   model = new LoginModel("", "");
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController, private toast: Toast) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) { }
 
   // Test console log below, should be deleted in further versions.
   ionViewDidLoad() {
@@ -63,17 +63,17 @@ export class LoginPage {
         loader.dismissAll();
         console.log(this.userGlobals.getGlobalEmail());
         console.log(this.userGlobals.getGlobalSession());
-        this.toast.show("Successfully logged in! Redirecting you now...", "1800", "bottom");
+        //this.toast.show("Successfully logged in! Redirecting you now...", "1800", "bottom");
         this.navCtrl.push(HomePage);
       }
       else {
         loader.dismissAll();
-        this.toast.show("Invalid username or password.", "1800", "center");
+        //this.toast.show("Invalid username or password.", "1800", "center");
         console.log("Login error.");
       }
     }, err => {
       loader.dismissAll();
-      this.toast.show("Invalid username or password.", "1800", "center");
+      //this.toast.show("Invalid username or password.", "1800", "center");
       console.log("err: ", err);
     });
   }
