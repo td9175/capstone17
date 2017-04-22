@@ -577,7 +577,7 @@ class RegexOCR extends REST_Controller {
 
     if (preg_match_all($regex, $string, $matches)) {
       $lines = array_unique($matches[1]);
-      $words = preg_match_all();
+      // $words = preg_match_all();
       foreach ($lines as $line) {
         echo "$line \n";
       }
