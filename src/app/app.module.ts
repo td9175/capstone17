@@ -5,6 +5,7 @@ window["io"] = io;
 
 // Page Imports
 import { HomePage } from './../pages/home/home';
+import { RegisterPage } from './../pages/register/register';
 import { UserSettingsPage } from './../pages/user-settings/user-settings';
 import { VaultPage } from './../pages/vault/vault';
 import { ServicesPage } from './../pages/services/services';
@@ -43,6 +44,7 @@ import { NgForm } from '@angular/forms/src/directives';
 @NgModule({
   declarations: [
     HomePage,
+    RegisterPage,
     MyApp,
     AccountsPage,
     Page1,
@@ -72,6 +74,7 @@ import { NgForm } from '@angular/forms/src/directives';
   entryComponents: [
     MyApp,
     HomePage,
+    RegisterPage,
     AccountsPage,
     Page1,
     AboutPage,

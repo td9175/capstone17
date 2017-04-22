@@ -13,6 +13,7 @@ import { ActionSheetController } from 'ionic-angular';
 
 import { HomePage } from './../pages/home/home';
 import { LoginPage } from './../pages/login/login';
+import { RegisterPage } from './../pages/register/register';
 import { UserSettingsPage } from './../pages/user-settings/user-settings';
 import { HelpPage } from './../pages/help/help';
 import { TaxInfoPage } from './../pages/tax-info/tax-info';

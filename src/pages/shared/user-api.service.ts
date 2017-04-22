@@ -7,10 +7,12 @@ import 'rxjs/add/operator/map';
 export class UserGlobals {
     public globalEmail: string;
     public globalSession: string;
+    public didRegister: boolean;
   
   constructor() {
     this.globalEmail = null;
     this.globalSession = null;
+    this.didRegister = false;
   }
 
   setGlobalEmail(email) {
@@ -38,6 +40,14 @@ export class UserGlobals {
           console.log("isloggedin returning true");
           return true;
       }
+  }
+
+  getDidRegister() {
+      return this.didRegister;
+  }
+
+  setDidRegister(reg) {
+      this.didRegister = reg;
   }
 
 }
@@ -161,7 +171,7 @@ export class AuthService {
         let headers = new Headers({ 'Content-Type': 'application/form-data' });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/register/', body)
+        return this.http.post('https://capstone.td9175.com/ci/index.php/UserAccount/registration', body)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -187,11 +197,20 @@ export class AuthService {
       return null;
     } else {
         this.postRegister(email, password, first_name, last_name).subscribe(
-        data => this.userGlobals.setGlobalEmail(data.message),
+        data => this.userGlobals.setDidRegister(
+            function(data) {
+                if(data.success == "Much success! Account created. Go login.\n") { 
+                    console.log("data.success matched");
+                    return true;
+                }
+                else { console.log("data.success did not match");
+                return false; }
+            }
+        ),
         err => console.log('error: ', err),
         () => console.log('this is a thing')
       );
-      return this.userGlobals.getGlobalEmail();
+      return this.userGlobals.getDidRegister();
     }
   }
  
@@ -199,6 +218,7 @@ export class AuthService {
     return new Promise(resolve => {
         this.userGlobals.setGlobalEmail(null);
         this.userGlobals.setGlobalSession(null);
+        this.userGlobals.setDidRegister(false);
         this.http.get(`https://capstone.td9175.com/ci/index.php/UserAccount/logout`);
         //reload the app somehow
     });

@@ -7,5 +7,52 @@
 </ion-header>
 
 <ion-content padding>
-    <p>Hello World.</p>
+    <!--Register Main Input--> 
+  <form #form="ngForm" (ngSubmit)="registerForm(form)">
+    <ion-item>
+      <ion-label>First name:</ion-label>
+      <ion-input 
+      #fname="ngModel" 
+      required type="text" 
+      class="form-container" 
+      name="fname" 
+      [ngModel]="model.fname" 
+      (ngModelChange)="model.fname=$event">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Last name:</ion-label>
+      <ion-input 
+      #fname="ngModel" 
+      required type="text" 
+      class="form-container" 
+      name="lname" 
+      [ngModel]="model.lname" 
+      (ngModelChange)="model.lname=$event">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email address:</ion-label>
+      <ion-input 
+      #email="ngModel" 
+      required type="email" 
+      class="form-container" 
+      name="email" 
+      [ngModel]="model.email" 
+      (ngModelChange)="model.email=$event">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password:</ion-label>
+      <ion-input 
+      #password="ngModel" 
+      required type="password" 
+      class="form-container" 
+      name="password" 
+      [ngModel]="model.password" 
+      (ngModelChange)="model.password=$event">
+      </ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Sign up</button>
+  </form>
 </ion-content>

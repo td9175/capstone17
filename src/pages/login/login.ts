@@ -1,4 +1,5 @@
 import { HomePage } from './../home/home';
+import { RegisterPage } from './../register/register';
 import { AccountsPage } from './../accounts/accounts';
 import { MyVaultPage } from './../my-vault/my-vault';
 import { Component } from '@angular/core';
@@ -39,7 +40,7 @@ export class LoginPage {
   };
 
   enrollNow() {
-    this.navCtrl.push(MyVaultPage);
+    this.navCtrl.push(RegisterPage);
   }
 
   twelveBitDebug() {
