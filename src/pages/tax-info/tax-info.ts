@@ -23,5 +23,9 @@ export class TaxInfoPage {
     
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
+
 
 }

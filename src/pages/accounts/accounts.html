@@ -28,7 +28,7 @@
       <!--Probably will change to another type of check..-->
       <button ion-item *ngIf="(userhsa?.account_number==NULL)">
         <div>
-          <h4 class="account-number">Click here to add an HSA</h4>
+          <h4 class="account-number">Tap here to add an HSA</h4>
         </div>
       </button>
     </ion-card>
@@ -44,7 +44,7 @@
       <!--Probably will change to another type of check..-->
       <button ion-item *ngIf="(userfsa?.account_number==NULL)">
         <div>
-          <h4 class="account-number">Click here to add an FSA</h4>
+          <h4 class="account-number">Tap here to add an FSA</h4>
         </div>
       </button>
     </ion-card>
@@ -54,8 +54,15 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="call"></ion-icon> Support
       </ion-card-header>
-      <button ion-item (click)="loadUserSettingsDetails()">
-        <ion-icon name="help"></ion-icon>
+      <button ion-item (click)="loadHelpPage()">
+        <div>
+          <h4 class="account-support">Tap here for general help</h4>
+        </div>
+      </button>
+      <button ion-item (click)="loadAboutPage()">
+        <div>
+          <h4 class="account-support">About this app</h4>
+        </div>
       </button>
     </ion-card>
 

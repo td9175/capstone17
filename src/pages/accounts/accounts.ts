@@ -9,7 +9,8 @@ import { AccountDetailPage } from './../account-detail/account-detail';
 import { HSAPage } from '../hsa/hsa';
 import { FSAPage } from './../fsa/fsa';
 import { LoginPage } from '../login/login';
-
+import { AboutPage } from '../about/about';
+import { HelpPage } from './../help/help';
 
 @Component({
   selector: 'page-accounts',
@@ -68,4 +69,12 @@ export class AccountsPage {
     this.navCtrl.push(UserSettingsPage);
   }
   
+  loadHelpPage(){
+    this.navCtrl.push(HelpPage);
+  }
+
+  loadAboutPage(){
+    this.navCtrl.push(AboutPage);
+  }
+
 }
