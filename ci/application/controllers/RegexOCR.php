@@ -553,6 +553,8 @@ class RegexOCR extends REST_Controller {
   // Sort ascending
   array_multisort($positions, SORT_ASC);
 
+  $wordString = "";
+  
   // Loop through the Y positions
   foreach ($positions as $position) {
     // Build regular expression
@@ -563,7 +565,6 @@ class RegexOCR extends REST_Controller {
       $words = $matches[1];
 
       // Turn the array into a string
-      $wordString = "";
       foreach ($words as $word) {
         $wordString .= $word . " ";
       }
