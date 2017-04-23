@@ -157,7 +157,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$_SESSION['path'] = $path;
 				echo "<Br>Path: " . $path;
 				//redirect('OCR/ocr_request');
-				$parsed = ocr_request();
+				$parsed = $this->ocr_request();
 				if($parsed) {
 					echo "Success\n";
 				} else {
