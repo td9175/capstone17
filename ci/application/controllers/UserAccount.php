@@ -3,7 +3,7 @@
 		@Author: Robert Fink
 		12bit - UMB Bank Health Spending App
 */
-
+session_start();
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
