@@ -9,9 +9,12 @@ header("Access-Control-Allow-Origin: *");
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
-	class Receipt extends CI_Controller {
+	class Receipt extends REST_Controller {
 
-
+		public function __construct(){
+	        parent::__construct();
+					$this->load->model('ReceiptModel');
+	  }
 
 
 		function upload_it() {
@@ -23,7 +26,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			$this->load->helper('url');
 			$this->load->helper('string');
-			$this->load->model('ReceiptModel');
 
 
 			$email = $_SESSION['email'];
@@ -88,6 +90,32 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		$this->load->view('upload_form', $data);
 
+	}
+
+	function user_receipts_get() {
+		// Check if a user is logged in
+		// is_logged_in();
+		if ($this->post('email') == NULL) {
+      $this->response("Email is required.", 400);
+    } else {
+			// Call the model
+			$response = $this->ReceiptModel->user_receipts_get($this->post('email'));
+			// Respond
+			$this->response($response, 200);
+		}
+	}
+
+	function receipt_post() {
+		// Check if a user is logged in
+		// is_logged_in();
+		if ($this->post('email') == NULL || $this->post('receipt_path') == NULL) {
+			$this->response("Email and receipt_path are required.", 200);
+    } else {
+			// Call the model
+			$response = $this->ReceiptModel->receipt_post($this->post('receipt_path'), $this->post('email'));
+			// Respond
+			$this->response($response, 200);
+		}
 	}
 
 
