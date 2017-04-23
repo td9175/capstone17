@@ -9,7 +9,6 @@ header("Access-Control-Allow-Origin: *");
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
-<<<<<<< HEAD
 	class Receipt extends REST_Controller {
 
 		public function __construct(){
@@ -17,7 +16,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					$this->load->model('ReceiptModel');
 	  }
 
-=======
+
 	class Receipt extends CI_Controller {
 
 		function qualified_receipt_regex_post($results) {
@@ -150,7 +149,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			}
 
 		}
->>>>>>> origin/master
 
 		function upload_it() {
 			// Check if a user is logged in
