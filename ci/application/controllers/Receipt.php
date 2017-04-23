@@ -84,13 +84,13 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  //
 				  // array_push($response, $total);
 
-				} else 
+				} else {
 				  $response = "No reimbursement qualified items.";
-				
+				}
 
 				$this->response($response, 200);
 			  }
-	
+
 		public function ocr_request() {
 			echo "In OCR request\n";
 			//imagePath should be the email/name of the file
@@ -129,12 +129,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$newurl .= "'}";
 			echo "url: "  . $newurl;
 			echo "<br><Br>";
-		
-			
-			
-			
+
+
+
+
 			$request->setBody($newurl);
-			
+
 
 			try {
 				$response = $request->send();
@@ -225,8 +225,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				} else {
 					echo "No results\n";
 				}
-				
-				
+
+
 			}
 
 			// load the view/upload.php
