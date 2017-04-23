@@ -108,6 +108,7 @@ function indent($json) {
         foreach ($words as $word) {
           $wordString .= $word . " ";
         }
+        echo "\nWordstring: $wordString";
     }
 
     // Match for qualified items, capture the amount
