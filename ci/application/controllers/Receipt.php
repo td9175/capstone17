@@ -242,6 +242,10 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$data = array('msg' => "Upload success!");
 
 
+			$db_path = $email . '/' . $f_name . '.jpg';
+			$receiptResponse = $this->ReceiptModel->receipt_post($db_path, $email);
+				
+				
 				$path = urlencode($email);
 
 				$path .= '/';
