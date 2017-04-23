@@ -69,7 +69,10 @@ export class UserApi {
     constructor(private http: Http, private userGlobals: UserGlobals) { }
 
     getUserHSAData(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        //asdf   + expires=Sun, 23-Apr-2017 22:07:12 GMT; Max-Age=7200; path=/; HttpOnly
+        let options = new Headers({'ci_session': this.userGlobals.getGlobalSession()});
+        console.log(options);
+        console.log("herpderp getUserHSAData");
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
