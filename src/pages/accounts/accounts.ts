@@ -53,7 +53,7 @@ export class AccountsPage {
   loadUserHsa(){
     this.userApi.getUserHSAData().then(
       data => {
-        if (data == `No HSA account exists for clark@gmail.com. Add an HSA account now.`) {
+        if (data == `No HSA account exists.`) {
           this.userHasHsa = false;
           console.log('userHasHSA: ', this.userHasHsa);
         } else {
