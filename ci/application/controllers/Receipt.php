@@ -119,7 +119,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$qualifiedAmounts = $matches[2];
 
 			if (count($qualifiedItems) > 0) {
-			  for ($i=1; $i < count($qualifiedItems); $i++) {
+			  for ($i=0; $i < count($qualifiedItems); $i++) {
 				$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
 			  }
 
