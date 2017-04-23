@@ -60,6 +60,8 @@ export class VaultPage {
   
     // Use the FileTransfer to upload the image
     fileTransfer.upload(targetPath, url, options).then(data => {
+      console.log("this is what we are getting back: ");
+      console.dir(data);
       loader.dismissAll();
       //this.presentToast('Image succesful uploaded.');
     }, err => {
@@ -70,7 +72,7 @@ export class VaultPage {
 
   image_fire() {
     const options = {
-      quality: 50,
+      quality: 65,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       sourceType: this.camera.PictureSourceType.CAMERA,
@@ -94,7 +96,7 @@ export class VaultPage {
 
   image_pick() {
     const options = {
-      quality: 50,
+      quality: 65,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
 			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
