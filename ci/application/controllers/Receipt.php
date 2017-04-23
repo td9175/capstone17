@@ -77,6 +77,7 @@ function indent($json) {
 
 				// Get the Y cordinate for everything
 				preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
+				
 
 				// Put the matches array into a named variable
 				$yPositions = $matches[1];
