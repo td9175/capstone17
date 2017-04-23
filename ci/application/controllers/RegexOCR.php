@@ -14,7 +14,7 @@ class RegexOCR extends REST_Controller {
   // POST variable to send: receiptString
   function qualified_receipt_regex_post() {
     // Check if a user is logged in
-    //is_logged_in();
+    is_logged_in();
 
     if ($this->post('receiptString') == NULL ) {
       $this->response("OCR result string required.");

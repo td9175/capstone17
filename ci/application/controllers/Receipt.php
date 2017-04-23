@@ -15,9 +15,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		public function __construct(){
 	        parent::__construct();
 					$this->load->model('ReceiptModel');
-
-
-
 		}
 
 		function qualified_receipt_regex_post($results) {
@@ -152,7 +149,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		function upload_it() {
 			// Check if a user is logged in
-			//is_logged_in();
+			is_logged_in();
 
 			//$logged_in = is_logged_in();
 			$this->load->helper('form');
@@ -184,7 +181,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			echo "<br><br>";
 			echo "File name: " . $config['file_name'];
 
-		// set the filter image types
+			// set the filter image types
 			$config['allowed_types'] = 'jpg';
 
 
@@ -200,7 +197,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			//if not successful, set the error message
 			if (!$this->upload->do_upload('userfile')) {
 				$data = array('msg' => $this->upload->display_errors());
-
 			} else { //else, set the success message
 				$data = array('msg' => "Upload success!");
 
@@ -210,12 +206,13 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 
 
-				$path = urlencode($email);
-				$path .= '/';
+				$path = urlencode(email);
+				//$path = 'umbcapstone17%40gmail.com/';
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				echo "<Br>Path: " . $path;
+
 				//redirect('OCR/ocr_request');
 				$parsed = $this->ocr_request();
 				if($parsed) {
@@ -225,8 +222,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				} else {
 					echo "No results\n";
 				}
-
-
 			}
 
 			// load the view/upload.php
@@ -239,8 +234,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		// Check if a user is logged in
 		// is_logged_in();
 		if ($this->post('email') == NULL) {
-      $this->response("Email is required.", 400);
-    } else {
+			$this->response("Email is required.", 400);
+    	} else {
 			// Call the model
 			$response = $this->ReceiptModel->user_receipts_get($this->post('email'));
 			// Respond
@@ -260,11 +255,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->response($response, 200);
 			}
 	}
-
-
-
-
-
 }
 
 ?>

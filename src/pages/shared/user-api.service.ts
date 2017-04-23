@@ -131,20 +131,8 @@ export class UserApi {
         });
     }
 
-
-    /* Will change after Bobby gets functions made */
-    getListOfReceipts(){
-        return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`)
-                .subscribe(res => resolve(res.json()));
-        });
-    }
-
     getSpecificReceiptImage(){
-        return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`)
-                .subscribe(res => resolve(res.json()));
-        });
+
     }
     
     
