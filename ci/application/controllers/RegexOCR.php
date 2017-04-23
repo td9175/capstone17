@@ -578,7 +578,7 @@ class RegexOCR extends REST_Controller {
 
   if (count($qualifiedItems) > 0) {
     for ($i=0; $i < count($qualifiedItems); $i++) {
-      $response = array($qualifiedItems[$i] => $qualifiedAmounts[$i]);
+      $response .= array($qualifiedItems[$i] => $qualifiedAmounts[$i]);
     }
 
     // Add up the amounts for the total qualified amount
