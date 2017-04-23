@@ -11,12 +11,13 @@ import { ModalController, ViewController, NavController, NavParams } from 'ionic
 export class Page1 {
 
   receipt: any;
+  receiptImage: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {
     this.receipt = navParams.get('receipt');
-    console.log('Page1 loaded')
-    console.log(this.receipt)
+    this.receiptImage = 'https://capstone.td9175.com/ci/application/receipts/' + this.receipt.image;
+    console.log('Page1 loaded');
   }
 
   dismiss() {
