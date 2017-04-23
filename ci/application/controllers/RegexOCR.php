@@ -13,6 +13,8 @@ class RegexOCR extends REST_Controller {
   // Make POST requests too https://capstone.td9175.com/ci/index.php/RegexOCR/qualified_receipt_regex
   // POST variable to send: receiptString
   function qualified_receipt_regex_post() {
+    // Check if a user is logged in
+    is_logged_in();
 
     if ($this->post('receiptString') == NULL ) {
       $this->response("OCR result string required.");

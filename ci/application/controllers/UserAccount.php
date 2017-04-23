@@ -94,7 +94,7 @@ require('application/libraries/REST_Controller.php');
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
 		function user_get() {
 			// Check if a user is logged in
-			// is_logged_in();
+			is_logged_in();
 			// Check for the email variable
 			if(!$this->get('email')){
 	      $this->response(NULL, 400);

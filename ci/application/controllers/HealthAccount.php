@@ -13,6 +13,8 @@ class HealthAccount extends REST_Controller {
   // Send GET requests to https://capstone.td9175.com/ci/index.php/HealthAccount/hsa
   // GET variable: email
   function hsa_get() {
+    // Check if a user is logged in
+    is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->get('email')){
@@ -31,6 +33,8 @@ class HealthAccount extends REST_Controller {
   // Send POST requests to https://capstone.td9175.com/ci/index.php/HealthAccount/hsa
   // POST variables: account_number, email
   function hsa_post() {
+    // Check if a user is logged in
+    is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->post('account_number')){
@@ -50,6 +54,8 @@ class HealthAccount extends REST_Controller {
   // Send GET requests to https://capstone.td9175.com/ci/index.php/HealthAccount/fsa
   // GET variable: email
   function fsa_get() {
+    // Check if a user is logged in
+    is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->get('email')){
@@ -67,6 +73,8 @@ class HealthAccount extends REST_Controller {
   // Send POST requests to https://capstone.td9175.com/ci/index.php/HealthAccount/fsa
   // POST variables: account_number, email
   function fsa_post() {
+    // Check if a user is logged in
+    is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->post('account_number')){

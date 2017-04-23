@@ -165,6 +165,8 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 @param    $longitude   The location of the business to query (Required)
   */
 	function auto_complete(){
+		// Check if a user is logged in
+		is_logged_in();
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
 		$autoCompletePath = $this->config->item('autoCompletePath');
@@ -202,6 +204,9 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 @param    $limit 			The number to limit search results by (optional, default=20 MAX=50)
    */
    function search_query() {
+		 // Check if a user is logged in
+		 is_logged_in();
+
 		 // Yelp Fusion API constants
      $apiHost = $this->config->item('apiHost');
      $searchPath = $this->config->item('searchPath');
@@ -243,6 +248,9 @@ class YelpHealthServiceRequest extends CI_Controller {
   	@param    $id        	The selected business id to query (Required)
    */
 	function business_info(){
+		// Check if a user is logged in
+		is_logged_in();
+
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
 		$businessPath = $this->config->item('businessPath');
@@ -266,6 +274,9 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 @param    $id        	The selected business id to query (Required)
 	 */
 	function business_reviews(){
+		// Check if a user is logged in
+		is_logged_in();
+		
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
 		$reviewsPath = $this->config->item('reviewsPath');
