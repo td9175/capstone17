@@ -235,11 +235,11 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	function user_receipts_get() {
 		// Check if a user is logged in
 		// is_logged_in();
-		if ($this->post('email') == NULL) {
+		if ($this->get('email') == NULL) {
 			$this->response("Email is required.", 400);
     	} else {
 			// URL decode
-			$decodedEmail = urldecode($this->post('email'));
+			$decodedEmail = urldecode($this->get('email'));
 			// Call the model
 			$response = $this->ReceiptModel->user_receipts_get($decodedEmail);
 			// Respond
