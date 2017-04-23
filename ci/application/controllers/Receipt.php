@@ -238,8 +238,10 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		if ($this->post('email') == NULL) {
 			$this->response("Email is required.", 400);
     	} else {
+			// URL decode
+			$decodedEmail = urldecode($this->post('email'));
 			// Call the model
-			$response = $this->ReceiptModel->user_receipts_get($this->post('email'));
+			$response = $this->ReceiptModel->user_receipts_get($decodedEmail);
 			// Respond
 			$this->response($response, 200);
 		}
