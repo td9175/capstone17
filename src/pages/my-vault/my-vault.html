@@ -21,13 +21,13 @@
 
 
 <ion-content>
-  <ion-searchbar
+  <!--<ion-searchbar
   (ionInput)="getReceipt($event)"
   [showCancelButton]="shouldShowCancel">
-  </ion-searchbar>
+  </ion-searchbar>-->
 
   <ion-list>
-    <button ion-item item-left (click)="loadReceiptImage($event, receipt)" *ngFor="let receipt of filteredReceipts">
+    <button ion-item item-left (click)="loadReceiptImage($event, receipt)" *ngFor="let receipt of receipts">
       <h2> Date: {{ receipt.date_time_stamp }}</h2>
       <p> URL: {{ receipt.image }} </p>
     </button>

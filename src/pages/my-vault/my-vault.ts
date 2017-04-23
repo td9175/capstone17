@@ -65,7 +65,7 @@ export class MyVaultPage {
     this.navCtrl.pop();
   }
 
-  initializeItems(): void {
+/*  initializeItems(): void {
     this.filteredReceipts = this.receipts;
   }
 
@@ -90,10 +90,11 @@ export class MyVaultPage {
         return false;
       }
     });
-  }
+  }*/
 
   loadReceipts(){
     this.userApi.getReceipts().then(data => this.receipts = data);
+    console.log(this.receipts);
   }
 
   loadReceiptImage(event, receipt){
