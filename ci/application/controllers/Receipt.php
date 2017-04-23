@@ -71,6 +71,7 @@ function indent($json) {
     is_logged_in();
 
   	$string = $results;
+  	echo $string;
     // Get the Y cordinate for everything
     preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
