@@ -93,7 +93,7 @@ export class MyVaultPage {
   }
 
   loadReceipts(){
-    this.userApi.getReceipts().then(data => this.receipts = data);
+    this.userApi.getReceiptsTwo().then(data => this.receipts = data);
   }
 
   loadReceiptImage(event, receipt){
