@@ -572,17 +572,21 @@ class RegexOCR extends REST_Controller {
   echo "$wordString";
 
   // Match for qualified items, capture the amount
-  $regex = '/\d{12}H\s(\d+\.\d+)[^\d]/';
+  $regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
   preg_match_all($regex, $wordString, $matches);
+  $qualifiedItems = $matches[1];
+  $qualifiedAmounts = $matches[2];
 
-  $qualifiedAmounts = $matches[1];
-  var_dump($qualifiedAmounts);
+  for ($i=0; $i < count($qualifiedItems); $i++) {
+    echo "$qualifiedItems[$i] . " " . $qualifiedAmounts[$i] \n";
+  }
 
   // Add up the amounts for the total qualified amount
   $total = 0;
   foreach ($qualifiedAmounts as $qualifiedAmount) {
     $total += $qualifiedAmount;
   }
+
   echo "Total: $total \n";
 
 
