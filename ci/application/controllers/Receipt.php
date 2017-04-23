@@ -1,6 +1,6 @@
 <?php
 /*
-		@Author: Sami Holder
+		@Author: Sami Holder and Bobby Fink
 		12bit - UMB Bank Health Spending App
 */
 
@@ -180,12 +180,11 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			try {
 				$response = $request->send();
 				$answer = $response->getBody();
-				//$newanswer = $response->getBody();
 				$json_string = $this->indent($answer);
-				//echo "<br><Br>";
+
 				return $json_string;
 
-				}//end try
+				}
 			catch (HttpException $ex) {
 				echo $ex;
 			}
@@ -205,8 +204,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			$email = $_SESSION['email'];
 
-			//$email = "umbcapstone17@gmail.com";
-			echo "Email: ". $email;
 
 
 			//create the unique file name
@@ -245,9 +242,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$data = array('msg' => "Upload success!");
 
 
-
-
-
 				$path = urlencode($email);
 
 				$path .= '/';
@@ -258,7 +252,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 				//redirect('OCR/ocr_request');
 				$parsed = $this->ocr_request();
-				echo "<BR>Parsed data: " . $parsed;
+		
 				if($parsed) {
 
 					$results = $this->qualified_receipt_regex_post($parsed);
