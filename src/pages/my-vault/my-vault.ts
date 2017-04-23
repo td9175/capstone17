@@ -59,10 +59,6 @@ export class MyVaultPage {
     this.navCtrl.pop();
   }
 
-  loadReciept(){
-    this.navCtrl.push(AccountsPage);
-  }
-
   initializeItems(): void {
     this.filteredReceipts = this.receipts;
   }
