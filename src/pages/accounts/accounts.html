@@ -19,14 +19,14 @@
     
     <!--HSA Card Area-->
     <ion-card *ngFor="let userhsa of userhsas">
-      <button ion-item *ngIf="(userhsa?.account_number>=1)" (click)="loadHsaAccountDetails($event, accountType)">
+      <button ion-item *ngIf="userHasHSA==true" (click)="loadHsaAccountDetails($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Spending Account</h3>
           <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
         </div>
       </button>
       <!--Probably will change to another type of check..-->
-      <button ion-item *ngIf="(userhsa?.account_number==NULL)">
+      <button ion-item *ngIf="userHasHSA==false">
         <div>
           <h4 class="account-number">Tap here to add an HSA</h4>
         </div>

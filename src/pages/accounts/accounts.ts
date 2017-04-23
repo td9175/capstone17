@@ -20,6 +20,8 @@ import { TaxInfoPage } from './../tax-info/tax-info';
 export class AccountsPage {
 
   userhsas: any;
+  userHasHsa: boolean;
+
   userfsas: any;
   userinfos: any;
   loggedInUser: any;
@@ -34,18 +36,34 @@ export class AccountsPage {
 
   ionViewDidLoad() {
     // get HSA-FSA Data
-    this.userApi.getUserHSAData().then(data => this.userhsas = data);
-    this.userApi.getUserFSAData().then(data => this.userfsas = data);
+    // this.userApi.getUserHSAData().then(data => this.userhsas = data);
+    // this.userApi.getUserFSAData().then(data => this.userfsas = data);
     this.userApi.getUserInfoData().then(data => this.userinfos = data);
     this.loggedInUser = this.userGlobals.getGlobalEmail();
     if(this.userGlobals.isLoggedIn()==true) {
       this.userLoggedIn = true;
+      this.loadJsonFiles();
     } else {
       this.userLoggedIn = false;
     }
     // would it be redundant to show balance here? Would we rather have them click on the account.
     //this.userApi.getHsaBalance().then(data => this.userhsabalance);
     //this.userApi.getFsaBalance().then(data => this.userfsabalance);
+  }
+  loadJsonFiles(){
+    this.userApi.getUserHSAData().then(
+      data => {
+        if (data == `No HSA account exists for clark@gmail.com. Add an HSA account now.`) {
+          this.userHasHsa = false;
+          console.log('userHasHSA: ', this.userHasHsa);
+        } else {
+          this.userHasHsa = true;
+          this.userhsas = data;
+          console.log('userHasHSA: ', this.userHasHsa);
+          console.log('userHasHSA: ', this.userhsas);
+        }
+      },
+    );
   }
 
   // for debugging.
