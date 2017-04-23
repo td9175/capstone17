@@ -212,7 +212,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$parsed = $this->ocr_request();
 				if($parsed) {
 					echo "Success\n";
-					$this->qualified_receipt_regex_post($parsed)
+					$this->qualified_receipt_regex_post($parsed);
 				} else {
 					echo "No results\n";
 				}
