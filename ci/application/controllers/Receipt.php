@@ -99,7 +99,7 @@ function indent($json) {
     foreach ($positions as $position) {
     	echo "\n $position";
       // Build regular expression
-      $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
+      $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":"(.*)"/';
 
       // Match for the words
       preg_match_all($regex, $string, $matches);
