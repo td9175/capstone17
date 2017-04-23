@@ -13,7 +13,28 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ReceiptFormPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  searchJson: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.searchJson = [
+      {
+        item: 'Product something',
+        amount: '$4.99'
+      },
+      {
+        item: 'Something Product',
+        amount: '$2.59'
+      },
+      {
+        item: 'This is Stupid',
+        amount: '$4.36'
+      },
+      {
+        item: 'Almost done with this shit!',
+        amount: '$5.99'
+      }
+    ];
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReceiptFormPage');
