@@ -8,12 +8,27 @@
 
 <ion-content>
   
+  <div *ngIf="userLoggedIn==false">
+    <ion-card>
+      <ion-item text-wrap>
+        <div>
+          <p>Oops, something went wrong. You're not logged in, please restart the app and try to login again.</p>
+        </div>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <div *ngIf="userLoggedIn==true">
+
     <!--Hello Card-->
     <ion-card>
       <button ion-item (click)="loadUserSettingsDetails()">
-        <div *ngIf="userLoggedIn==true">Hello, {{loggedInUser}}</div>
+        <div>
+          <h4 class="account-name">Hello, {{loggedInUser}}</h4>
+        </div>
+        <!--<div *ngIf="userLoggedIn==true">Hello, {{loggedInUser}}</div>-->
         <!--<ion-icon name="person" item-left></ion-icon>-->
-        <div *ngIf="userLoggedIn==false">Hello, Shit</div>
+        <!--<div *ngIf="userLoggedIn==false">Hello, Not logged in user</div>-->
       </button>
     </ion-card>
     
@@ -29,6 +44,8 @@
         </div>
       </button>
     </ion-card>
+
+    <!--No HSA-->
     <ion-card *ngIf="(userHasHsa == false)">
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No HSA Accounts Found
@@ -39,24 +56,31 @@
         </div>
       </button>
     </ion-card>
-    
+
     <!--FSA Card Area-->
-    <!--
-    <ion-card *ngFor="let userfsa of userfsas">
-      <button ion-item *ngIf="(userfsa?.account_number>=1)" (click)="loadFsaAccountDetails($event, accountType)">
+    <ion-card *ngIf="(userHasFsa == true)">
+      <ion-card-header color="primary">
+        <ion-icon item-left name="paper"></ion-icon> Flexible Service Accounts
+      </ion-card-header>
+      <button ion-item *ngFor="let userfsa of userfsas" (click)="loadFsaAccountDetails($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Spending Account</h3>
           <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>
         </div>
       </button>
+    </ion-card>
 
-      <button ion-item *ngIf="(userfsa?.account_number==NULL)">
+    <!--No FSA-->
+    <ion-card *ngIf="(userHasFsa == false)">
+      <ion-card-header color="primary">
+        <ion-icon item-left name="paper"></ion-icon> No FSA Accounts Found
+      </ion-card-header>
+      <button ion-item>
         <div>
           <h4 class="account-number">Tap here to add an FSA</h4>
         </div>
       </button>
     </ion-card>
-    -->
 
      <!--Support Card Area-->
     <ion-card>
@@ -85,6 +109,8 @@
         </div>
       </button>
     </ion-card>
+  
+  </div>
 
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>

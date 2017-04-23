@@ -23,6 +23,8 @@ export class AccountsPage {
   userHasHsa: boolean;
 
   userfsas: any;
+  userHasFsa: boolean;
+
   userinfos: any;
   loggedInUser: any;
   userLoggedIn: any;
@@ -43,6 +45,7 @@ export class AccountsPage {
     if(this.userGlobals.isLoggedIn()==true) {
       this.userLoggedIn = true;
       this.loadUserHsa();
+      this.loadUserFsa();
     } else {
       this.userLoggedIn = false;
     }
@@ -59,8 +62,24 @@ export class AccountsPage {
         } else {
           this.userHasHsa = true;
           this.userhsas = data;
-          console.log('userHasHSA: ', this.userHasHsa);
-          console.log('userHasHSA: ', this.userhsas);
+          console.log('userHasHsa: ', this.userHasHsa);
+          console.log('user HSA Data: ', this.userhsas);
+        }
+      },
+    );
+  }
+
+  loadUserFsa(){
+    this.userApi.getUserFSAData().then(
+      data => {
+        if (data == `No FSA account exists.`) {
+          this.userHasFsa = false;
+          console.log('userHasFsa: ', this.userHasFsa);
+        } else {
+          this.userHasFsa = true;
+          this.userfsas = data;
+          console.log('userHasFsa: ', this.userHasFsa);
+          console.log('user FSA Data: ', this.userfsas);
         }
       },
     );
