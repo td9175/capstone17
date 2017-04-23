@@ -16,7 +16,56 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	        parent::__construct();
 					$this->load->model('ReceiptModel');
 		}
+function indent($json) {
 
+    $result      = '';
+    $pos         = 0;
+    $strLen      = strlen($json);
+    $indentStr   = '  ';
+    $newLine     = "\n";
+    $prevChar    = '';
+    $outOfQuotes = true;
+
+    for ($i=0; $i<=$strLen; $i++) {
+
+        // Grab the next character in the string.
+        $char = substr($json, $i, 1);
+
+        // Are we inside a quoted string?
+        if ($char == '"' && $prevChar != '\\') {
+            $outOfQuotes = !$outOfQuotes;
+
+        // If this character is the end of an element,
+        // output a new line and indent the next line.
+        } else if(($char == '}' || $char == ']') && $outOfQuotes) {
+            $result .= $newLine;
+            $pos --;
+            for ($j=0; $j<$pos; $j++) {
+                $result .= $indentStr;
+            }
+        }
+
+        // Add the character to the result string.
+        $result .= $char;
+
+        // If the last character was the beginning of an element,
+        // output a new line and indent the next line.
+        if (($char == ',' || $char == '{' || $char == '[') && $outOfQuotes) {
+            $result .= $newLine;
+            if ($char == '{' || $char == '[') {
+                $pos ++;
+            }
+
+            for ($j = 0; $j < $pos; $j++) {
+                $result .= $indentStr;
+            }
+        }
+
+        $prevChar = $char;
+    }
+
+    return $result;
+}
 		function qualified_receipt_regex_post($results) {
 				// Check if a user is logged in
 				//is_logged_in();
@@ -52,13 +101,13 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				// Loop through the Y positions
 				foreach ($positions as $position) {
 				  // Build regular expression
-				  	echo "\n $position";
+				  	
 				  $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
 
 				  // Match for the words
 				  preg_match_all($regex, $string, $matches);
 					$words = $matches[1];
-					echo "\n $words";
+				
 
 					// Turn the array into a string
 					foreach ($words as $word) {
@@ -142,7 +191,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$response = $request->send();
 				$answer = $response->getBody();
 				//$newanswer = $response->getBody();
-				$json_string = json_encode($answer, JSON_PRETTY_PRINT);
+				$json_string = $this->indent($answer);
 				//echo "<br><Br>";
 				return $json_string;
 
