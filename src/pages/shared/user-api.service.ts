@@ -84,7 +84,7 @@ export class UserApi {
 
     getUserInfoData(){
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/UserAccount/user/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`)
+            this.http.get(`${this.baseUrl}/ci/index.php/UserAccount/user?email=${encodeURIComponent(this.userGlobals.getGlobalEmail())}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
