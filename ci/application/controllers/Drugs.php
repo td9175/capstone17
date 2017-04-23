@@ -22,7 +22,7 @@ class Drugs extends CI_Controller {
 
 	public function search_for_drug($searchQuery){
 			// Check if a user is logged in
-			is_logged_in();
+			//is_logged_in();
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
@@ -64,7 +64,7 @@ class Drugs extends CI_Controller {
 
     public function price_comparison($name){
 			// Check if a user is logged in
-			is_logged_in();
+			//is_logged_in();
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
