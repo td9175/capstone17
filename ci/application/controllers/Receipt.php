@@ -17,7 +17,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	  }
 
 
-	class Receipt extends CI_Controller {
+
 
 		function qualified_receipt_regex_post($results) {
 				// Check if a user is logged in
