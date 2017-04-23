@@ -92,6 +92,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			echo "In OCR request\n";
 			//imagePath should be the email/name of the file
 			$imagePath = $_SESSION['path'];
+			echo "session path = " . $imagePath;
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
 			$path = 'https://capstone.td9175.com/ci/application/receipts/';
