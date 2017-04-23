@@ -586,7 +586,8 @@ class RegexOCR extends REST_Controller {
     foreach ($qualifiedAmounts as $qualifiedAmount) {
       $total += $qualifiedAmount;
     }
-    echo "Total: $total \n";
+
+    array_push($response, $total);
 
   } else {
     $response = "No reimbursement qualified items.";
