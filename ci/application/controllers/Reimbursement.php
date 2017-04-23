@@ -16,8 +16,8 @@ require('application/libraries/REST_Controller.php');
     }
 
     // Gets the amount to reimburse from parsed OCR data and handles the reimbursement transaction
-    // Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
-    // POST variables: receipt_id, amount, account_number
+    // Make POST requests to https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_hsa_account
+    // POST variables: email, amount
     function reimburse_hsa_account_post(){
       // Required: email, amount
       // Check if a user is logged in
@@ -42,9 +42,9 @@ require('application/libraries/REST_Controller.php');
       }
     }
 
-    // Gets the amount to reimburse from parsed OCR data and handles the reimbursement transaction
-    // Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
-    // POST variables: receipt_id, amount, account_number
+		// Gets the amount to reimburse from parsed OCR data and handles the reimbursement transaction
+		// Make POST requests to https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_fsa_account
+		// POST variables: email, amount
     function reimburse_fsa_account_post(){
       // Check if a user is logged in
 			is_logged_in();
