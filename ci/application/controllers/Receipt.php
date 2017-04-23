@@ -84,9 +84,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  //
 				  // array_push($response, $total);
 
-				} else {
+				} else 
 				  $response = "No reimbursement qualified items.";
-				}
+				
 
 				$this->response($response, 200);
 			  }
