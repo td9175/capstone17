@@ -206,7 +206,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 
 
-				$path = urlencode(email);
+				$path = urlencode($email);
 				//$path = 'umbcapstone17%40gmail.com/';
 				$path .= '/';
 				$path .= $f_name;
