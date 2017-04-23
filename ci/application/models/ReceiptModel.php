@@ -34,4 +34,19 @@ class ReceiptModel extends CI_Model {
       return $data;
   }
 
+  function user_last_receipt_get($email) {
+      $this->load->database();
+
+      $query = "SELECT receipt_id FROM Receipt WHERE email = ? ORDER BY date_time_stamp DESC LIMIT 1";
+      $result = $this->db->query($query, $email);
+      if ($result->num_rows() > 0) {
+        foreach ($result->result_array() as $row) {
+          $data = $row['receipt_id'];
+        }
+      } else {
+        $data = "No user receipts exist";
+      }
+      return $data;
+  }
+
 }

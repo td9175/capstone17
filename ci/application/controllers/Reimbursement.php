@@ -18,17 +18,48 @@ require('application/libraries/REST_Controller.php');
     // Gets the amount to reimburse from parsed OCR data and handles the reimbursement transaction
     // Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
     // POST variables: receipt_id, amount, account_number
-    function reimburse_account_post(){
-			// Check if a user is logged in
+    function reimburse_hsa_account_post(){
+      // Required: email, amount
+      // Check if a user is logged in
 			is_logged_in();
+      $this->load->model('AccountTransactionModel');
+      $this->load->model('ReceiptModel');
 
       // Get the input for amount to reimburse
-			$receipt_id = $this->post('receipt_id');
+      $email = $this->post('email');
+      $acct_num = $this->AccountTransactionModel->get_hsa_account_num($email);
+			$receipt_id = $this->ReceiptModel->user_last_receipt_get($email);
 			$amount = $this->post('amount');
-      $acct_num = $this->post('account_number');
 
       // Pass the user input to the model to make the transaction query in the database
       $result = $this->ReimbursementModel->reimburse_account($receipt_id, $amount, $acct_num);
+      $result2 = $this->AccountTransactionModel->post_transaction($amount, $acct_num);
+      // If response has data respond with data and success, or 404
+      if($result){
+        $this->response($result, 200); // 200 Success
+      } else {
+        $this->response(NULL, 404); // 404 Not found
+      }
+    }
+
+    // Gets the amount to reimburse from parsed OCR data and handles the reimbursement transaction
+    // Make POST requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/reimburse_account
+    // POST variables: receipt_id, amount, account_number
+    function reimburse_fsa_account_post(){
+      // Check if a user is logged in
+			is_logged_in();
+      $this->load->model('AccountTransactionModel');
+      $this->load->model('ReceiptModel');
+
+      // Get the input for amount to reimburse
+      $email = $this->post('email');
+      $acct_num = $this->AccountTransactionModel->get_fsa_account_num($email);
+			$receipt_id = $this->ReceiptModel->user_last_receipt_get($email);
+			$amount = $this->post('amount');
+
+      // Pass the user input to the model to make the transaction query in the database
+      $result = $this->ReimbursementModel->reimburse_account($receipt_id, $amount, $acct_num);
+      $result2 = $this->AccountTransactionModel->post_transaction($amount, $acct_num);
       // If response has data respond with data and success, or 404
       if($result){
         $this->response($result, 200); // 200 Success

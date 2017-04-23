@@ -266,8 +266,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					echo "No results\n";
 				}
 			}
-
-
 	}
 
 	function user_receipts_get() {
@@ -280,6 +278,21 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$decodedEmail = urldecode($this->get('email'));
 			// Call the model
 			$response = $this->ReceiptModel->user_receipts_get($decodedEmail);
+			// Respond
+			$this->response($response, 200);
+		}
+	}
+
+	function user_last_receipt_get() {
+		// Check if a user is logged in
+		// is_logged_in();
+		if ($this->get('email') == NULL) {
+			$this->response("Email is required.", 400);
+    	} else {
+			// URL decode
+			$decodedEmail = urldecode($this->get('email'));
+			// Call the model
+			$response = $this->ReceiptModel->user_last_receipt_get($decodedEmail);
 			// Respond
 			$this->response($response, 200);
 		}

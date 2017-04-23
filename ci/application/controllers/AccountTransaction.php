@@ -29,6 +29,26 @@ require('application/libraries/REST_Controller.php');
 			$this->response($response, 200);
 		}
 
+
+		function transaction_post() {
+			if ($this->post('amount')==NULL || $this->post('account_number')) {
+				$this->response('Amount and account_number are required.');
+			} else {
+				// Check if a user is logged in
+				// is_logged_in();
+				// Load the model
+				$this->load->model('AccountTransactionModel');
+				// Check if the email get variable was passed
+				if(!$this->get('email')) {
+					$this->response(NULL, 400);
+				}
+				// Call the transaction_history function in the model
+				$response = $this->AccountTransactionModel->post_transaction($this->post('amount'), $this->post('account_number'));
+				// Respond
+				$this->response($response, 200);
+			}
+		}
+
 		// RESTful API to get a user's FSA transaction history
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/fsa_transaction
 		// GET variable to send: email
