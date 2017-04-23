@@ -217,6 +217,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 				//redirect('OCR/ocr_request');
 				$parsed = $this->ocr_request();
+				echo "<BR>Parsed data: " . $parsed;
 				if($parsed) {
 					echo "Success\n";
 					$results = $this->qualified_receipt_regex_post($parsed);
