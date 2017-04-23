@@ -65,7 +65,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				}
 
 				// Match for qualified items, capture the amount
-				$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
+				$regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*?text":"(.*?)"/';
 				preg_match_all($regex, $wordString, $matches);
 				$qualifiedItems = $matches[1];
 				$qualifiedAmounts = $matches[2];
