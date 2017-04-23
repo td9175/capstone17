@@ -12,6 +12,7 @@ import { LoginPage } from '../login/login';
 import { AboutPage } from '../about/about';
 import { HelpPage } from './../help/help';
 import { TaxInfoPage } from './../tax-info/tax-info';
+import { ReceiptFormPage } from './../receipt-form/receipt-form';
 
 @Component({
   selector: 'page-accounts',
@@ -119,6 +120,10 @@ export class AccountsPage {
 
   loadAboutPage(){
     this.navCtrl.push(AboutPage);
+  }
+
+  receiptForm(){
+    this.navCtrl.push(ReceiptFormPage)
   }
 
 }

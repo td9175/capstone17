@@ -93,7 +93,8 @@ import { NgForm } from '@angular/forms/src/directives';
     MyVaultPage,
     AddReceiptPage,
     ProductDetail,
-    AccountDetailPage
+    AccountDetailPage,
+    ReceiptFormPage
   ],
   providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
 })
