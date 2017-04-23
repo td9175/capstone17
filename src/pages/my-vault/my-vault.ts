@@ -26,7 +26,7 @@ export class MyVaultPage {
   filteredReceipts: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public actionSheet: ActionSheet, public userApi: UserApi) {
-    this.receipts = [
+    /*this.receipts = [
       {
         receiptsId: 1,
         title: 'April 04, 2017 @ 4:54p.m.',
@@ -51,20 +51,18 @@ export class MyVaultPage {
         amount: '$5.79',
         url: 'http://animal-dream.com/data_images/tiger/tiger8.jpg'
       }
-    ];
+    ];*/
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyVaultPage');
+    this.loadReceipts();
     this.filteredReceipts = this.receipts;
+    console.log (this.receipts);
   }
 
   goBack() {
     this.navCtrl.pop();
-  }
-
-  loadReciept(){
-    this.navCtrl.push(AccountsPage);
   }
 
   initializeItems(): void {
@@ -94,8 +92,11 @@ export class MyVaultPage {
     });
   }
 
+  loadReceipts(){
+    this.userApi.getReceipts().then(data => this.receipts = data);
+  }
+
   loadReceiptImage(event, receipt){
-    //this.userApi.getSpecificReceiptImage = receipt.title;
     this.navCtrl.push(Page1, {receipt : receipt });
   }
 }
