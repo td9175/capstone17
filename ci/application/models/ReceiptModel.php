@@ -4,27 +4,27 @@ class ReceiptModel extends CI_Model {
     function get_receipts_by_user_id($id) {
         //http://capstone.td9175.com/ci/index.php/rest/receipts/1
 
-    $this->load->database();
+        $this->load->database();
 
-		 $query = 'SELECT * from Receipt WHERE user_id = ?';
-         $result = $this->db->query($query, $id);
+            $query = 'SELECT * from Receipt WHERE user_id = ?';
+            $result = $this->db->query($query, $id);
 
-         if($result !== FALSE && $result->num_rows() > 0){
-             foreach ($result->result_array() as $row) {
+            if($result !== FALSE && $result->num_rows() > 0){
+                foreach ($result->result_array() as $row) {
 
-                $data[] = array(
-                    'receipt_id' => $row['receipt_id'],
-                    'user_id' => $row['user_id'],
-                    'image' => $row['image'],
-                    'amount' => $row['amount'],
-                    'date_time_stamp' => $row['date_time_stamp']
-                    );
-              }
-          }else{
-                $data = 'There are no receipts at this user id.';
-          }
+                    $data[] = array(
+                        'receipt_id' => $row['receipt_id'],
+                        'user_id' => $row['user_id'],
+                        'image' => $row['image'],
+                        'amount' => $row['amount'],
+                        'date_time_stamp' => $row['date_time_stamp']
+                        );
+                }
+            } else{
+                    $data = 'There are no receipts at this user id.';
+            }
 
-          return $data;
+            return $data;
     }
 
     function get_receipt_by_id($id) {
@@ -64,8 +64,6 @@ class ReceiptModel extends CI_Model {
       }
       return $data;
     }
-
-  }
 
   function user_receipts_get($email) {
       $this->load->database();
