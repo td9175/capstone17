@@ -6,6 +6,7 @@ import { Camera } from '@ionic-native/camera';
 //import { ReceiptPoster } from './../shared/receipt-post.service';
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
+import { UserApi } from './../shared/user-api.service';
 
 /*
   Generated class for the MyVault page.
@@ -24,7 +25,7 @@ export class MyVaultPage {
 
   filteredReceipts: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public actionSheet: ActionSheet, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, public actionSheet: ActionSheet, public userApi: UserApi) {
     this.receipts = [
       {
         receiptsId: 1,
@@ -63,8 +64,8 @@ export class MyVaultPage {
   }
 
   initializeItems(): void {
-  this.filteredReceipts = this.receipts;
-}
+    this.filteredReceipts = this.receipts;
+  }
 
   getReceipt(searchbar) {
     // Reset items back to all of the items
@@ -89,11 +90,8 @@ export class MyVaultPage {
     });
   }
 
-  presentProfileModal() {
-   let profileModal = this.modalCtrl.create(Page1, { userId: 8675309 });
-   profileModal.onDidDismiss(data => {
-     console.log(data);
-   });
-   profileModal.present();
- }
+  loadReceiptImage(receipt){
+    this.userApi.getSpecificReceiptImage = receipt.title;
+    this.navCtrl.push(Page1);
+  }
 }

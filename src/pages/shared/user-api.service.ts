@@ -64,6 +64,7 @@ export class UserApi {
     public drugToGetDetails: any;
     public fullData: any;
     public user: any;
+    public receiptImageToGet: any;
 
     constructor(private http: Http, private userGlobals: UserGlobals) { }
 
@@ -128,6 +129,10 @@ export class UserApi {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`)
                 .subscribe(res => resolve(res.json()));
         });
+    }
+
+    getSpecificReceiptImage(){
+
     }
     
     

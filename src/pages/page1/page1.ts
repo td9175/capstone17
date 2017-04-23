@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UserApi } from './../shared/user-api.service';
+
 
 import { ModalController, ViewController, NavController, NavParams } from 'ionic-angular';
 
@@ -8,17 +10,19 @@ import { ModalController, ViewController, NavController, NavParams } from 'ionic
 })
 export class Page1 {
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController) {
-    
+  public receiptTitle: any;
+
+  constructor(public navCtrl: NavController, public userApi: UserApi) {
+    this.receiptTitle = this.userApi.getSpecificReceiptImage;
+    this.helloTest();
   }
 
   helloTest(){
-    console.log('Hello, World!');
+    console.log('Loaded receiptImagePage. ReceiptTitle: ', this.receiptTitle);
   }
 
   dismiss() {
-   let data = { 'foo': 'bar' };
-   this.viewCtrl.dismiss(data);
+   this.navCtrl.pop();
  }
 
 }

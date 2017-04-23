@@ -1,5 +1,20 @@
+<ion-header>
+
+  <ion-navbar>
+  </ion-navbar>
+  <ion-toolbar color="secondary">
+    <ion-title>Receipt</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
 
 <ion-content padding>
-  <h3>Testing Modal</h3>
-  <button ion-button (click)="dismiss()">Close</button>
+  <h2> Receipt Title is: {{receiptTitle}} </h2>
+  <img src="https://i.ytimg.com/vi/lt0WQ8JzLz4/maxresdefault.jpg"/>
 </ion-content>
