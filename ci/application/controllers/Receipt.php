@@ -140,8 +140,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$response = $request->send();
 				$answer = $response->getBody();
 				//$newanswer = $response->getBody();
+				$json_string = json_encode($answer, JSON_PRETTY_PRINT);
 				//echo "<br><Br>";
-				return $answer;
+				return $json_string;
 
 				}//end try
 			catch (HttpException $ex) {
