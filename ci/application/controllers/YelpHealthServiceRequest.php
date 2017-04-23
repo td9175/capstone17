@@ -166,7 +166,7 @@ class YelpHealthServiceRequest extends CI_Controller {
   */
 	function auto_complete(){
 		// Check if a user is logged in
-		is_logged_in();
+		// is_logged_in();
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
 		$autoCompletePath = $this->config->item('autoCompletePath');
@@ -205,7 +205,7 @@ class YelpHealthServiceRequest extends CI_Controller {
    */
    function search_query() {
 		 // Check if a user is logged in
-		 is_logged_in();
+		//  is_logged_in();
 
 		 // Yelp Fusion API constants
      $apiHost = $this->config->item('apiHost');
@@ -249,7 +249,7 @@ class YelpHealthServiceRequest extends CI_Controller {
    */
 	function business_info(){
 		// Check if a user is logged in
-		is_logged_in();
+		// is_logged_in();
 
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
@@ -275,8 +275,8 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 */
 	function business_reviews(){
 		// Check if a user is logged in
-		is_logged_in();
-		
+		// is_logged_in();
+
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
 		$reviewsPath = $this->config->item('reviewsPath');

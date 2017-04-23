@@ -14,7 +14,7 @@ class HealthAccount extends REST_Controller {
   // GET variable: email
   function hsa_get() {
     // Check if a user is logged in
-    is_logged_in();
+    // is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->get('email')){
@@ -34,7 +34,7 @@ class HealthAccount extends REST_Controller {
   // POST variables: account_number, email
   function hsa_post() {
     // Check if a user is logged in
-    is_logged_in();
+    // is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->post('account_number')){
@@ -55,7 +55,7 @@ class HealthAccount extends REST_Controller {
   // GET variable: email
   function fsa_get() {
     // Check if a user is logged in
-    is_logged_in();
+    // is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->get('email')){
@@ -74,7 +74,7 @@ class HealthAccount extends REST_Controller {
   // POST variables: account_number, email
   function fsa_post() {
     // Check if a user is logged in
-    is_logged_in();
+    // is_logged_in();
     $this->load->model('HealthAccountModel');
 
     if(!$this->post('account_number')){

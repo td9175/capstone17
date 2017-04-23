@@ -16,7 +16,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	        parent::__construct();
 					$this->load->model('ReceiptModel');
 		}
-			
+
 		public function indent($json) {
 
 				$result      = '';
@@ -67,11 +67,11 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 				return $result;
 			}
-			
-			
+
+
   	public function qualified_receipt_regex_post($results) {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 
 			$string = $results;
 			// Get the Y cordinate for everything
@@ -194,7 +194,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		function upload_it_post() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 
 			//$logged_in = is_logged_in();
 			$this->load->helper('form');
@@ -260,7 +260,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$parsed = $this->ocr_request();
 				echo "<BR>Parsed data: " . $parsed;
 				if($parsed) {
-					
+
 					$results = $this->qualified_receipt_regex_post($parsed);
 					//echo "Parsed results: " . $results;
 					return $results;

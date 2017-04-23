@@ -14,7 +14,7 @@ require('application/libraries/REST_Controller.php');
 		// GET variable to send: email
 		function hsa_transaction_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 			// Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
@@ -34,7 +34,7 @@ require('application/libraries/REST_Controller.php');
 		// GET variable to send: email
 		function fsa_transaction_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 			// Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
@@ -54,7 +54,7 @@ require('application/libraries/REST_Controller.php');
 		// GET variable to send: email
 		function hsa_balance_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 			//Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
@@ -74,7 +74,7 @@ require('application/libraries/REST_Controller.php');
 		// GET variable to send: email
 		function fsa_balance_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 			//Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed

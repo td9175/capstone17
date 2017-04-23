@@ -83,7 +83,7 @@ require('application/libraries/REST_Controller.php');
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/session_user
     function session_user_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 			// Get a user from the model by email
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);
 			// Respond
@@ -94,7 +94,7 @@ require('application/libraries/REST_Controller.php');
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
 		function user_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			// is_logged_in();
 			// Check for the email variable
 			if(!$this->get('email')){
 	      $this->response(NULL, 400);
@@ -111,7 +111,7 @@ require('application/libraries/REST_Controller.php');
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/users
     	function users_get() {
 				// Check if a user is logged in
-				is_logged_in();
+				// is_logged_in();
 				// Call the model function
   			$users = $this->UserAccountModel->get_users();
 				// Respond
@@ -124,7 +124,7 @@ require('application/libraries/REST_Controller.php');
 			// POST variable to send: email
 			function disable_user_post() {
 				// Check if a user is logged in
-				is_logged_in();
+				// is_logged_in();
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
 				}
@@ -139,7 +139,7 @@ require('application/libraries/REST_Controller.php');
 			// POST variable to send: email
 			function enable_user_post() {
 				// Check if a user is logged in
-				is_logged_in();
+				// is_logged_in();
 				// Check if an email was included in the POST request
 				if(!$this->post('email')){
 					$this->response(NULL, 400); // 400 Bad request
@@ -154,7 +154,7 @@ require('application/libraries/REST_Controller.php');
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/enabled_users
 			function enabled_users_get() {
 				// Check if a user is logged in
-				is_logged_in();
+				// is_logged_in();
 				// Call the model function
 				$response = $this->UserAccountModel->get_enabled_users();
 				// Respond
@@ -165,7 +165,7 @@ require('application/libraries/REST_Controller.php');
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/disabled_users
 			function disabled_users_get() {
 				// Check if a user is logged in
-				is_logged_in();
+				// is_logged_in();
 				// Call the model function
 				$response = $this->UserAccountModel->get_disabled_users();
 				// Respond
@@ -176,7 +176,7 @@ require('application/libraries/REST_Controller.php');
 			// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/logout
 			function logout_get(){
 				// Check if a user is logged in
-				is_logged_in();
+				// is_logged_in();
 				// Unset all of the session variables
 				$_SESSION = array();
 				// Destroy the session
