@@ -6,6 +6,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 header("Access-Control-Allow-Origin: *");
+require('application/libraries/REST_Controller.php');
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
