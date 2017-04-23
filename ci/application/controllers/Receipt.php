@@ -71,7 +71,6 @@ function indent($json) {
     is_logged_in();
 
   	$string = $results;
-  	echo $string;
     // Get the Y cordinate for everything
     preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
@@ -97,7 +96,6 @@ function indent($json) {
 
     // Loop through the Y positions
     foreach ($positions as $position) {
-    	echo "\n $position";
       // Build regular expression
       $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":"(.*)"/';
 
@@ -109,7 +107,6 @@ function indent($json) {
         foreach ($words as $word) {
           $wordString .= $word . " ";
         }
-        echo "\nWordstring: $wordString";
     }
 
     // Match for qualified items, capture the amount
@@ -272,7 +269,8 @@ function indent($json) {
 				if($parsed) {
 					echo "Success\n";
 					$results = $this->qualified_receipt_regex_post($parsed);
-					echo "Parsed results: " . $results;
+					//echo "Parsed results: " . $results;
+					return $results;
 				} else {
 					echo "No results\n";
 				}
