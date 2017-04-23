@@ -12,7 +12,83 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	class Receipt extends CI_Controller {
 
 
+	
+		public function ocr_request() {
+			echo "In OCR request\n";
+			//imagePath should be the email/name of the file
+			$imagePath = $_SESSION['path'];
+			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
+			$url = $request->getUrl();
+			$path = 'https://capstone.td9175.com/ci/application/receipts/';
+			$path .= $imagePath;
 
+			$request->setConfig(array(
+				'ssl_verify_peer'   => FALSE,
+				'ssl_verify_host'   => FALSE
+			));
+
+			$headers = array(
+			// Request headers
+				'Content-Type' => 'application/json',
+				'Ocp-Apim-Subscription-Key' => '16eb25ebbaeb430695f63f2b23f22606 ',
+			);
+
+			$request->setHeader($headers);
+
+			$parameters = array(
+			// Request parameters
+				'language' => 'en',
+				'detectOrientation ' => 'true',
+			);
+
+			$url->setQueryVariables($parameters);
+
+			$request->setMethod(HTTP_Request2::METHOD_POST);
+
+
+			$newurl = "{'url': '";
+			$newurl .= $path;
+			$newurl .= "'}";
+			echo "url: "  . $newurl;
+			echo "<br><Br>";
+		
+			
+			
+			
+			$request->setBody($newurl);
+			
+
+			try {
+				$response = $request->send();
+				echo $response->getBody();
+				$newanswer = $response->getBody();
+				echo "<br><Br>";
+				return $newanswer;
+		
+
+			   $jsonIterator = new RecursiveIteratorIterator(
+			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
+			RecursiveIteratorIterator::SELF_FIRST);
+
+			foreach ($jsonIterator as $key => $val) {
+					if(is_array($val)) {
+						echo "$key:";
+						echo "<br>";
+					} else {
+						echo "$key => $val";
+						echo "<br>";
+					}
+			}
+			
+
+
+
+				}//end try
+			catch (HttpException $ex) {
+				echo $ex;
+			}
+
+		}
 
 		function upload_it() {
 			// Check if a user is logged in
@@ -96,83 +172,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		$this->load->view('upload_form', $data);
 
 	}
-	
-		public function ocr_request() {
-			echo "In OCR request\n";
-			//imagePath should be the email/name of the file
-			$imagePath = $_SESSION['path'];
-			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
-			$url = $request->getUrl();
-			$path = 'https://capstone.td9175.com/ci/application/receipts/';
-			$path .= $imagePath;
 
-			$request->setConfig(array(
-				'ssl_verify_peer'   => FALSE,
-				'ssl_verify_host'   => FALSE
-			));
-
-			$headers = array(
-			// Request headers
-				'Content-Type' => 'application/json',
-				'Ocp-Apim-Subscription-Key' => '16eb25ebbaeb430695f63f2b23f22606 ',
-			);
-
-			$request->setHeader($headers);
-
-			$parameters = array(
-			// Request parameters
-				'language' => 'en',
-				'detectOrientation ' => 'true',
-			);
-
-			$url->setQueryVariables($parameters);
-
-			$request->setMethod(HTTP_Request2::METHOD_POST);
-
-
-			$newurl = "{'url': '";
-			$newurl .= $path;
-			$newurl .= "'}";
-			echo "url: "  . $newurl;
-			echo "<br><Br>";
-		
-			
-			
-			
-			$request->setBody($newurl);
-			
-
-			try {
-				$response = $request->send();
-				echo $response->getBody();
-				$newanswer = $response->getBody();
-				echo "<br><Br>";
-				return $newanswer;
-		
-
-			   $jsonIterator = new RecursiveIteratorIterator(
-			new RecursiveArrayIterator(json_decode($newanswer, TRUE)),
-			RecursiveIteratorIterator::SELF_FIRST);
-
-			foreach ($jsonIterator as $key => $val) {
-					if(is_array($val)) {
-						echo "$key:";
-						echo "<br>";
-					} else {
-						echo "$key => $val";
-						echo "<br>";
-					}
-			}
-			
-
-
-
-				}//end try
-			catch (HttpException $ex) {
-				echo $ex;
-			}
-
-		}
 
 
 
