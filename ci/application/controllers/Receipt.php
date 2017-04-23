@@ -72,7 +72,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  for ($i=0; $i < count($qualifiedItems); $i++) {
 					$response[$i] = array($qualifiedItems[$i] => $qualifiedAmounts[$i]);
 				  }
-
+						return $response;
 				  // Add up the amounts for the total qualified amount
 				  // $total = 0;
 				  // foreach ($qualifiedAmounts as $qualifiedAmount) {
