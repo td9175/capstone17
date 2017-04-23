@@ -169,7 +169,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			$request->setMethod(HTTP_Request2::METHOD_POST);
 
-
 			$newurl = "{'url': '";
 			$newurl .= $path;
 			$newurl .= "'}";
@@ -201,15 +200,11 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->load->helper('url');
 			$this->load->helper('string');
 
-
 			$email = $_SESSION['email'];
-
-
 
 			//create the unique file name
 			$date = date('d-m-y');
 			$rand = random_string('alnum', 3);
-			echo "<br>Date:" . $date;
 			$f_name = $date;
 			$f_name .= $rand;
 			//set file name
@@ -218,10 +213,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			//set upload path to unique email
 			$config['upload_path'] = '/var/www/html/ci/application/receipts/';
 			$config['upload_path'] .= $email;
-
-			echo "Upload path: " . $config['upload_path'];
-			echo "<br><br>";
-			echo "File name: " . $config['file_name'];
 
 			// set the filter image types
 			$config['allowed_types'] = 'jpg';
@@ -244,19 +235,18 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			$db_path = $email . '/' . $f_name . '.jpg';
 			$receiptResponse = $this->ReceiptModel->receipt_post($db_path, $email);
-				
-				
+
+
 				$path = urlencode($email);
 
 				$path .= '/';
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
-				echo "<Br>Path: " . $path;
 
 				//redirect('OCR/ocr_request');
 				$parsed = $this->ocr_request();
-		
+
 				if($parsed) {
 
 					$results = $this->qualified_receipt_regex_post($parsed);
