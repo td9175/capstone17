@@ -123,14 +123,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
 			  }
 
-			  // Add up the amounts for the total qualified amount
-			  // $total = 0;
-			  // foreach ($qualifiedAmounts as $qualifiedAmount) {
-			  //   $total += $qualifiedAmount;
-			  // }
-			  //
-			  // array_push($response, $total);
-
 			} else {
 			  $response = "No reimbursement qualified items.";
 			}
