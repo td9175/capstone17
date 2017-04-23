@@ -69,7 +69,7 @@ export class UserApi {
     constructor(private http: Http, private userGlobals: UserGlobals) { }
 
     getUserHSAData(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
@@ -77,7 +77,7 @@ export class UserApi {
     }
 
     getUserFSAData(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/fsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
@@ -85,7 +85,7 @@ export class UserApi {
     }
 
     getUserInfoData(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/UserAccount/user?email=${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
@@ -107,7 +107,7 @@ export class UserApi {
     
     /*Getting Account Details*/
     getHsaTransaction(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
@@ -115,7 +115,7 @@ export class UserApi {
     }
 
     getFsaTransaction(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_transaction/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
@@ -123,7 +123,7 @@ export class UserApi {
     }
 
     getHsaBalance(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
@@ -131,7 +131,7 @@ export class UserApi {
     }
 
     getFsaBalance(){
-        let options = new Headers({'Set-Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
+        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
             this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
                 .subscribe(res => resolve(res.json()));
