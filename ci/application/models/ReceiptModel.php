@@ -23,9 +23,9 @@ class ReceiptModel extends CI_Model {
       if ($result->num_rows() > 0) {
         foreach ($result->result_array() as $row) {
           $data[] = array(
-            'receipt_id' = $row['receipt_id'],
-            'image' = $row['image'],
-            'date_time_stamp' = $row['date_time_stamp']
+            'receipt_id' => $row['receipt_id'],
+            'image' => $row['image'],
+            'date_time_stamp' => $row['date_time_stamp']
           );
         }
       } else {
