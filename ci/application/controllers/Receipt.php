@@ -15,20 +15,20 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 		function upload_it() {
-		
-		
+
+
 			//$logged_in = is_logged_in();
 			$this->load->helper('form');
-			
+
 			$this->load->helper('url');
 			$this->load->helper('string');
 			$this->load->model('ReceiptModel');
 
 
 			$email = $_SESSION['email'];
-			
+
 			//$email = "umbcapstone17@gmail.com";
-			echo "Email: ". $email; 
+			echo "Email: ". $email;
 
 
 			//create the unique file name
@@ -37,7 +37,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			echo "<br>Date:" . $date;
 			$f_name = $date;
 			$f_name .= $rand;
-			//set file name 
+			//set file name
 			$config['file_name'] = $f_name;
 
 			//set upload path to unique email
@@ -50,7 +50,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		// set the filter image types
 			$config['allowed_types'] = 'jpg';
-			
+
 
 			//load the upload library
 			$this->load->library('upload', $config);
@@ -72,7 +72,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 				//insert into DB
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
-	
+
 
 				$path = urlencode(email);
 				//$path = 'umbcapstone17%40gmail.com/';
@@ -91,8 +91,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 
-
-
-	}
+}
 
 ?>
