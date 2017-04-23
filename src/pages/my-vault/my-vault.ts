@@ -57,7 +57,7 @@ export class MyVaultPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyVaultPage');
     this.loadReceipts();
-    this.filteredReceipts = this.receipts;
+    //this.filteredReceipts = this.receipts;
     console.log (this.receipts);
   }
 
@@ -83,8 +83,8 @@ export class MyVaultPage {
     }
 
     this.filteredReceipts = this.receipts.filter((v) => {
-      if(v.title && q) {
-        if (v.title.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+      if(v.date_time_stamp && q) {
+        if (v.date_time_stamp.toLowerCase().indexOf(q.toLowerCase()) > -1) {
           return true;
         }
         return false;
@@ -93,7 +93,7 @@ export class MyVaultPage {
   }
 
   loadReceipts(){
-    this.userApi.getReceiptsTwo().then(data => this.receipts = data);
+    this.userApi.getReceipts().then(data => this.receipts = data);
   }
 
   loadReceiptImage(event, receipt){

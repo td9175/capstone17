@@ -148,13 +148,6 @@ export class UserApi {
                 .subscribe(res => resolve(res.json()));
         });
     }
-
-    getReceiptsTwo(){
-        return new Promise(resolve => {
-            this.http.get(`https://capstone.td9175.com/ci/index.php/Receipt/user_receipts/email/umbcapstone17%40gmail.com`)
-                .subscribe(res => resolve(res.json()));
-        });
-    }
     
     
     // Firebase test data:
