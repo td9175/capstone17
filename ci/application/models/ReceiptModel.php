@@ -57,7 +57,7 @@ class ReceiptModel extends CI_Model {
 
       $query = "INSERT INTO Receipt (email, image) VALUES (?, ?)";
       $result = $this->db->query($query, $user_email, $receipt_path);
-      if ($result->affected_rows() == 1) {
+      if ($this->db->affected_rows() == 1) {
         $data = "Receipt recorded in database.";
       } else {
         $data = "Error: receipt not recorded in database. Try again.";
