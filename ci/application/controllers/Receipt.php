@@ -22,7 +22,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//is_logged_in();
 
 				echo "<br>qualifed_receipt_regex";
+				
 				$string = $results;
+				echo "\nString: " . $string;
 
 				// Get the Y cordinate for everything
 				preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
