@@ -576,17 +576,23 @@ class RegexOCR extends REST_Controller {
   $qualifiedItems = $matches[1];
   $qualifiedAmounts = $matches[2];
 
-  for ($i=0; $i < count($qualifiedItems); $i++) {
-    echo "$qualifiedItems[$i]" . " " . $qualifiedAmounts[$i] . "\n";
+  if (count($qualifiedItems) > 0) {
+    for ($i=0; $i < count($qualifiedItems); $i++) {
+      $response = array($qualifiedItems[$i] => $qualifiedAmounts[$i]);
+    }
+
+    // Add up the amounts for the total qualified amount
+    $total = 0;
+    foreach ($qualifiedAmounts as $qualifiedAmount) {
+      $total += $qualifiedAmount;
+    }
+    echo "Total: $total \n";
+
+  } else {
+    $response = "No reimbursement qualified items.";
   }
 
-  // Add up the amounts for the total qualified amount
-  $total = 0;
-  foreach ($qualifiedAmounts as $qualifiedAmount) {
-    $total += $qualifiedAmount;
-  }
-
-  echo "Total: $total \n";
+  $this->response($response, 200);
 
 
   } //
