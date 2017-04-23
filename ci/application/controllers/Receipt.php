@@ -66,6 +66,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  for ($i=0; $i < count($qualifiedItems); $i++) {
 					$response[$i] = array($qualifiedItems[$i] => $qualifiedAmounts[$i]);
 				  }
+				  return $response;
 
 				  // Add up the amounts for the total qualified amount
 				  // $total = 0;
@@ -79,7 +80,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				  $response = "No reimbursement qualified items.";
 				}
 
-				$this->response($response, 200);
+				//$this->response($response, 200);
 			  }
 	
 		public function ocr_request() {
