@@ -129,7 +129,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			try {
 				$response = $request->send();
-				$answer = response->getBody();
+				$answer = $response->getBody();
 				//$newanswer = $response->getBody();
 				//echo "<br><Br>";
 				return $answer;
