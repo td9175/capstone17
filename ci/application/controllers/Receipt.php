@@ -15,10 +15,10 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		public function __construct(){
 	        parent::__construct();
 					$this->load->model('ReceiptModel');
-	  }
 
 
 
+		}
 
 		function qualified_receipt_regex_post($results) {
 				// Check if a user is logged in
@@ -253,12 +253,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		// is_logged_in();
 		if ($this->post('email') == NULL || $this->post('receipt_path') == NULL) {
 			$this->response("Email and receipt_path are required.", 200);
-    } else {
+    		} else {
 			// Call the model
 			$response = $this->ReceiptModel->receipt_post($this->post('receipt_path'), $this->post('email'));
 			// Respond
 			$this->response($response, 200);
-		}
+			}
 	}
 
 
