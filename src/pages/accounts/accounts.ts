@@ -42,7 +42,7 @@ export class AccountsPage {
     this.loggedInUser = this.userGlobals.getGlobalEmail();
     if(this.userGlobals.isLoggedIn()==true) {
       this.userLoggedIn = true;
-      this.loadJsonFiles();
+      this.loadUserHsa();
     } else {
       this.userLoggedIn = false;
     }
@@ -50,7 +50,7 @@ export class AccountsPage {
     //this.userApi.getHsaBalance().then(data => this.userhsabalance);
     //this.userApi.getFsaBalance().then(data => this.userfsabalance);
   }
-  loadJsonFiles(){
+  loadUserHsa(){
     this.userApi.getUserHSAData().then(
       data => {
         if (data == `No HSA account exists for clark@gmail.com. Add an HSA account now.`) {

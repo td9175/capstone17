@@ -18,15 +18,22 @@
     </ion-card>
     
     <!--HSA Card Area-->
-    <ion-card *ngFor="let userhsa of userhsas">
-      <button ion-item *ngIf="userHasHSA==true" (click)="loadHsaAccountDetails($event, accountType)">
+    <ion-card *ngIf="(userHasHsa == true)">
+      <ion-card-header color="primary">
+        <ion-icon item-left name="paper"></ion-icon> Health Service Accounts
+      </ion-card-header>
+      <button ion-item *ngFor="let userhsa of userhsas" (click)="loadHsaAccountDetails($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Spending Account</h3>
           <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
         </div>
       </button>
-      <!--Probably will change to another type of check..-->
-      <button ion-item *ngIf="userHasHSA==false">
+    </ion-card>
+    <ion-card *ngIf="(userHasHsa == false)">
+      <ion-card-header color="primary">
+        <ion-icon item-left name="paper"></ion-icon> No HSA Accounts Found
+      </ion-card-header>
+      <button ion-item>
         <div>
           <h4 class="account-number">Tap here to add an HSA</h4>
         </div>
@@ -34,6 +41,7 @@
     </ion-card>
     
     <!--FSA Card Area-->
+    <!--
     <ion-card *ngFor="let userfsa of userfsas">
       <button ion-item *ngIf="(userfsa?.account_number>=1)" (click)="loadFsaAccountDetails($event, accountType)">
         <div>
@@ -41,13 +49,14 @@
           <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>
         </div>
       </button>
-      <!--Probably will change to another type of check..-->
+
       <button ion-item *ngIf="(userfsa?.account_number==NULL)">
         <div>
           <h4 class="account-number">Tap here to add an FSA</h4>
         </div>
       </button>
     </ion-card>
+    -->
 
      <!--Support Card Area-->
     <ion-card>
