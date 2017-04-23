@@ -11,7 +11,7 @@ class RegexOCR extends REST_Controller {
 
   function receipt_regex_post() {
 
-    if (!isset($this->post('receiptString')) ) {
+    if ($this->post('receiptString') == NULL ) {
       $this->response("OCR result string required.");
     }
 
