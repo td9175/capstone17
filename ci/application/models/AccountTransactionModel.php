@@ -18,7 +18,7 @@
 						$data = $row['account_number'];
 					}
 			} else {
-				$data = "No HSA account exists for $email. Add an HSA account now.";
+				$data = "No HSA account exists.";
 			}
 			return $data;
 		}
@@ -34,7 +34,7 @@
 						$data = $row['account_number'];
 					}
 			} else {
-				$data = "No FSA account exists for $email. Add an HSA account now.";
+				$data = "No FSA account exists.";
 			}
 			return $data;
 		}
@@ -59,7 +59,7 @@
 					);
 				}
 			} else {
-				$data = "No HSA transaction history exists for $email.";
+				$data = "No HSA transaction history exists.";
 			}
 			// Pass back the data
 			return $data;
@@ -104,7 +104,7 @@
 					);
 				}
 			} else {
-				$data = "No FSA transaction history exists for $email.";
+				$data = "No FSA transaction history exists.";
 			}
 			// Pass back the data
 			return $data;

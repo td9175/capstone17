@@ -22,7 +22,7 @@
 					);
 				}
 		} else {
-			$data = "No HSA account exists for $email. Add an HSA account now.";
+			$data = "No HSA account exists.";
 		}
 
 		return $data;
@@ -70,7 +70,7 @@
 					);
 				}
 		} else {
-			$data = "No FSA account exists for $email. Add an FSA account now.";
+			$data = "No FSA account exists.";
 		}
 
 		return $data;
