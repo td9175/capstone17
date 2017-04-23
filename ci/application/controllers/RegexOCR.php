@@ -569,7 +569,6 @@ class RegexOCR extends REST_Controller {
         $wordString .= $word . " ";
       }
   }
-  echo "$wordString";
 
   // Match for qualified items, capture the amount
   $regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
