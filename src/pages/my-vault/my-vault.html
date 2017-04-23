@@ -27,7 +27,7 @@
   </ion-searchbar>
 
   <ion-list>
-    <button ion-item item-left (click)="loadReceiptImage(receipt)" *ngFor="let receipt of filteredReceipts">
+    <button ion-item item-left (click)="loadReceiptImage($event, receipt)" *ngFor="let receipt of filteredReceipts">
       <h2> Date: {{ receipt.title }}</h2>
       <p>Amount of Purchase: {{ receipt.amount }}</p>
     </button>

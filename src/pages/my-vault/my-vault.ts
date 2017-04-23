@@ -30,22 +30,26 @@ export class MyVaultPage {
       {
         receiptsId: 1,
         title: 'April 04, 2017 @ 4:54p.m.',
-        amount: '$4.99'
+        amount: '$4.99',
+        url: 'https://i.ytimg.com/vi/lt0WQ8JzLz4/maxresdefault.jpg'
       },
       {
         receiptsId: 2,
         title: 'April 06, 2017 @ 1:54p.m.',
-        amount: '$1.59'
+        amount: '$1.59',
+        url: 'https://s-media-cache-ak0.pinimg.com/236x/a2/34/89/a234898de7bb54fb4eac0b3f1c229746.jpg'
       },
       {
         receiptsId: 3,
         title: 'April 03, 2017 @ 2:54p.m.',
-        amount: '$5.79'
+        amount: '$5.79',
+        url: 'https://s-media-cache-ak0.pinimg.com/736x/d7/b1/d0/d7b1d0a193528a8d41d00a3a53c3bb63.jpg'
       },
       {
         receiptsId: 4,
         title: 'March 03, 2017 @ 2:54p.m.',
-        amount: '$5.79'
+        amount: '$5.79',
+        url: 'http://animal-dream.com/data_images/tiger/tiger8.jpg'
       }
     ];
   }
@@ -90,8 +94,8 @@ export class MyVaultPage {
     });
   }
 
-  loadReceiptImage(receipt){
-    this.userApi.getSpecificReceiptImage = receipt.title;
-    this.navCtrl.push(Page1);
+  loadReceiptImage(event, receipt){
+    //this.userApi.getSpecificReceiptImage = receipt.title;
+    this.navCtrl.push(Page1, {receipt : receipt });
   }
 }

@@ -10,15 +10,13 @@ import { ModalController, ViewController, NavController, NavParams } from 'ionic
 })
 export class Page1 {
 
-  public receiptTitle: any;
+  receipt: any;
 
-  constructor(public navCtrl: NavController, public userApi: UserApi) {
-    this.receiptTitle = this.userApi.getSpecificReceiptImage;
-    this.helloTest();
-  }
 
-  helloTest(){
-    console.log('Loaded receiptImagePage. ReceiptTitle: ', this.receiptTitle);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {
+    this.receipt = navParams.get('receipt');
+    console.log('Page1 loaded')
+    console.log(this.receipt)
   }
 
   dismiss() {
