@@ -1,22 +1,38 @@
 <ion-header>
-
-  <ion-navbar color="primary">
-    <ion-title>Tax Info</ion-title>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+  <ion-navbar class="show-back-button">
   </ion-navbar>
-
+  <ion-toolbar color="secondary">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Tax Help</ion-title>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
-  <h1>Tax Information</h1>
-  <h3>Placeholder</h3>
+<ion-content>
+  
   <ion-card>
-      <a ion-text button href="https://hsa.umb.com/individuals/home"ion-button clear small color="primary" icon-left>
-                <ion-icon name='information-circle'></ion-icon>
-                  Tap here for tax help from UMB.
-      </a>
+    <ion-card-header color="primary">
+      HSA Tax Help
+    </ion-card-header>
+    <a ion-item href="https://hsa.umb.com/individuals/education-tools/faq/health+savings+account/tax+and+filing+requirements/tax+and+filing+requirements">
+      <div>
+        <h4>Tax and Filing Requirements</h4>
+      </div>
+    </a>
+    <a ion-item href="https://hsa.umb.com/individuals/forms">
+      <div>
+        <h4>HSA Forms</h4>
+      </div>
+    </a>
+    <a ion-item href="https://hsa.umb.com/contact-us">
+      <div>
+        <h4>Contact Us</h4>
+      </div>
+    </a>
   </ion-card>
+
 </ion-content>

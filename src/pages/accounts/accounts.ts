@@ -11,6 +11,7 @@ import { FSAPage } from './../fsa/fsa';
 import { LoginPage } from '../login/login';
 import { AboutPage } from '../about/about';
 import { HelpPage } from './../help/help';
+import { TaxInfoPage } from './../tax-info/tax-info';
 
 @Component({
   selector: 'page-accounts',
@@ -71,6 +72,10 @@ export class AccountsPage {
   
   loadHelpPage(){
     this.navCtrl.push(HelpPage);
+  }
+
+  loadTaxHelpPage(){
+    this.navCtrl.push(TaxInfoPage);
   }
 
   loadAboutPage(){

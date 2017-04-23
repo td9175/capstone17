@@ -59,9 +59,20 @@
           <h4 class="account-support">Tap here for general help</h4>
         </div>
       </button>
+      <button ion-item (click)="loadTaxHelpPage()">
+        <div>
+          <h4 class="account-support">Tap here for tax help</h4>
+        </div>
+      </button>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header color="primary">
+        <ion-icon item-left name="information-circle"></ion-icon> About
+      </ion-card-header>
       <button ion-item (click)="loadAboutPage()">
         <div>
-          <h4 class="account-support">About this app</h4>
+          <h4 class="account-support">Tap here for more info about this app</h4>
         </div>
       </button>
     </ion-card>
