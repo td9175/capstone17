@@ -1,11 +1,7 @@
 /*
-$colors: (
-  primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
-);
+h1, h2, h3, h4, h5, p {
+  color: map-get($colors, primary);
+}
 */
 .ion-ios-add:before {
   content: "\f102";
@@ -21324,11 +21320,6 @@ page-login ion-row {
 
 page-login ion-item {
   font-size: 0.9em;
-}
-
-page-page1 ion-content {
-  padding: 100px;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 page-product-detail .card {

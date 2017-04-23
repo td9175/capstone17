@@ -20,7 +20,7 @@ require('application/libraries/REST_Controller.php');
     // POST variables: receipt_id, amount, account_number
     function reimburse_account_post(){
 			// Check if a user is logged in
-			is_logged_in();
+			//is_logged_in();
 
       // Get the input for amount to reimburse
 			$receipt_id = $this->post('receipt_id');
@@ -42,7 +42,7 @@ require('application/libraries/REST_Controller.php');
     // GET variables: email
 		function user_reimbursements_get() {
 			// Check if a user is logged in
-			is_logged_in();
+			//is_logged_in();
 
 			// Check for the get variable
 			if (!$this->get('email')) {

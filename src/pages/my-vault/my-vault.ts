@@ -52,15 +52,12 @@ export class MyVaultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyVaultPage');
+    //this.loadListOfReceipts();
     this.filteredReceipts = this.receipts;
   }
 
   goBack() {
     this.navCtrl.pop();
-  }
-
-  loadReciept(){
-    this.navCtrl.push(AccountsPage);
   }
 
   initializeItems(): void {
@@ -88,6 +85,10 @@ export class MyVaultPage {
         return false;
       }
     });
+  }
+
+  loadListOfReceipts(){
+    this.userApi.getListOfReceipts().then(data => this.receipts = data);
   }
 
   loadReceiptImage(receipt){

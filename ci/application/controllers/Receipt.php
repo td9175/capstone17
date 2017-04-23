@@ -9,6 +9,7 @@ header("Access-Control-Allow-Origin: *");
 require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
+<<<<<<< HEAD
 	class Receipt extends REST_Controller {
 
 		public function __construct(){
@@ -16,10 +17,143 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					$this->load->model('ReceiptModel');
 	  }
 
+=======
+	class Receipt extends CI_Controller {
+
+		function qualified_receipt_regex_post($results) {
+				// Check if a user is logged in
+				//is_logged_in();
+
+				echo "<br>qualifed_receipt_regex";
+				$string = $results;
+
+				// Get the Y cordinate for everything
+				preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
+
+				// Put the matches array into a named variable
+				$yPositions = $matches[1];
+
+				// Initialize an empty array to hold the positions
+				$positions = array();
+
+				// Cast the array of strings to Int
+				foreach ($yPositions as $position) {
+				  $integerPosition = (Int) $position;
+				  array_push($positions, $integerPosition);
+				}
+
+				// Remove duplicate Y values
+				$positions = array_unique($positions);
+
+				// Sort ascending
+				array_multisort($positions, SORT_ASC);
+
+				$wordString = "";
+
+				// Loop through the Y positions
+				foreach ($positions as $position) {
+				  // Build regular expression
+				  $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
+
+				  // Match for the words
+				  preg_match_all($regex, $string, $matches);
+					$words = $matches[1];
+
+					// Turn the array into a string
+					foreach ($words as $word) {
+					  $wordString .= $word . " ";
+					}
+				}
+
+				// Match for qualified items, capture the amount
+				$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
+				preg_match_all($regex, $wordString, $matches);
+				$qualifiedItems = $matches[1];
+				$qualifiedAmounts = $matches[2];
+
+				if (count($qualifiedItems) > 0) {
+				  for ($i=0; $i < count($qualifiedItems); $i++) {
+					$response[$i] = array($qualifiedItems[$i] => $qualifiedAmounts[$i]);
+				  }
+
+				  // Add up the amounts for the total qualified amount
+				  // $total = 0;
+				  // foreach ($qualifiedAmounts as $qualifiedAmount) {
+				  //   $total += $qualifiedAmount;
+				  // }
+				  //
+				  // array_push($response, $total);
+
+				} else {
+				  $response = "No reimbursement qualified items.";
+				}
+
+				$this->response($response, 200);
+			  }
+	
+		public function ocr_request() {
+			echo "In OCR request\n";
+			//imagePath should be the email/name of the file
+			$imagePath = $_SESSION['path'];
+			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
+			$url = $request->getUrl();
+			$path = 'https://capstone.td9175.com/ci/application/receipts/';
+			$path .= $imagePath;
+
+			$request->setConfig(array(
+				'ssl_verify_peer'   => FALSE,
+				'ssl_verify_host'   => FALSE
+			));
+
+			$headers = array(
+			// Request headers
+				'Content-Type' => 'application/json',
+				'Ocp-Apim-Subscription-Key' => '16eb25ebbaeb430695f63f2b23f22606 ',
+			);
+
+			$request->setHeader($headers);
+
+			$parameters = array(
+			// Request parameters
+				'language' => 'en',
+				'detectOrientation ' => 'true',
+			);
+
+			$url->setQueryVariables($parameters);
+
+			$request->setMethod(HTTP_Request2::METHOD_POST);
+
+
+			$newurl = "{'url': '";
+			$newurl .= $path;
+			$newurl .= "'}";
+			echo "url: "  . $newurl;
+			echo "<br><Br>";
+		
+			
+			
+			
+			$request->setBody($newurl);
+			
+
+			try {
+				$response = $request->send();
+				$answer = $response->getBody();
+				//$newanswer = $response->getBody();
+				//echo "<br><Br>";
+				return $answer;
+
+				}//end try
+			catch (HttpException $ex) {
+				echo $ex;
+			}
+
+		}
+>>>>>>> origin/master
 
 		function upload_it() {
 			// Check if a user is logged in
-			is_logged_in();
+			//is_logged_in();
 
 			//$logged_in = is_logged_in();
 			$this->load->helper('form');
@@ -77,13 +211,22 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				//$path = $this->ReceiptModel->receiptData_post($data['upload_data'], $email);
 
 
-				$path = urlencode(email);
-				//$path = 'umbcapstone17%40gmail.com/';
+				$path = urlencode($email);
+				$path .= '/';
 				$path .= $f_name;
 				$path .= '.jpg';
 				$_SESSION['path'] = $path;
 				echo "<Br>Path: " . $path;
-				redirect('OCR/ocr_request');
+				//redirect('OCR/ocr_request');
+				$parsed = $this->ocr_request();
+				if($parsed) {
+					echo "Success\n";
+					$this->qualified_receipt_regex_post($parsed);
+				} else {
+					echo "No results\n";
+				}
+				
+				
 			}
 
 			// load the view/upload.php
@@ -117,6 +260,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			$this->response($response, 200);
 		}
 	}
+
+
 
 
 
