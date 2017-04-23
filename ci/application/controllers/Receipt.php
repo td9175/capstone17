@@ -97,6 +97,7 @@ function indent($json) {
 
     // Loop through the Y positions
     foreach ($positions as $position) {
+    	echo "\n $position";
       // Build regular expression
       $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
 
