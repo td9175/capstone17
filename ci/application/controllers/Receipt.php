@@ -108,7 +108,7 @@ function indent($json) {
 				  // Match for the words
 				  preg_match_all($regex, $string, $matches);
 					$words = $matches[1];
-				
+					var_dump($words);
 
 					// Turn the array into a string
 					foreach ($words as $word) {
