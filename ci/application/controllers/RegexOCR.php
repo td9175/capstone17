@@ -15,6 +15,8 @@ class RegexOCR extends REST_Controller {
       $this->response("OCR result string required.");
     }
 
+    $string = $this->post('receiptString');
+
 //       $string = '{
 //   "language": "en",
 //   "textAngle": 0,
