@@ -52,11 +52,13 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				// Loop through the Y positions
 				foreach ($positions as $position) {
 				  // Build regular expression
+				  	echo "\n $position";
 				  $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":\s"(.*)"/';
 
 				  // Match for the words
 				  preg_match_all($regex, $string, $matches);
 					$words = $matches[1];
+					echo "\n $words";
 
 					// Turn the array into a string
 					foreach ($words as $word) {
