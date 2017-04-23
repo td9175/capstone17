@@ -582,12 +582,12 @@ class RegexOCR extends REST_Controller {
     }
 
     // Add up the amounts for the total qualified amount
-    $total = 0;
-    foreach ($qualifiedAmounts as $qualifiedAmount) {
-      $total += $qualifiedAmount;
-    }
-
-    array_push($response, $total);
+    // $total = 0;
+    // foreach ($qualifiedAmounts as $qualifiedAmount) {
+    //   $total += $qualifiedAmount;
+    // }
+    //
+    // array_push($response, $total);
 
   } else {
     $response = "No reimbursement qualified items.";
