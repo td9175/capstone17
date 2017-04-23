@@ -11,9 +11,12 @@
     <!--Hello Card-->
     <ion-card>
       <button ion-item (click)="loadUserSettingsDetails()">
-        <div *ngIf="userLoggedIn==true">Hello, {{loggedInUser}}</div>
+        <!--Will Fix after I get Pizza-->
+        <!--<div *ngIf="userLoggedIn==true">Hello, {{userdata.first_name}}</div>-->
         <!--<ion-icon name="person" item-left></ion-icon>-->
-        <div *ngIf="userLoggedIn==false">Hello, Shit</div>
+       
+        <div *ngIf="userLoggedIn==false">You're not logged in please go back</div>
+        </div>
       </button>
     </ion-card>
     
