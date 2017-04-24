@@ -11,6 +11,8 @@ import { AboutPage } from '../about/about';
 import { HelpPage } from './../help/help';
 import { TaxInfoPage } from './../tax-info/tax-info';
 import { ReceiptFormPage } from './../receipt-form/receipt-form';
+import { AddHSAPage } from './../add-hsa/add-hsa';
+import { AddFSAPage } from './../add-fsa/add-fsa';
 
 import { App } from 'ionic-angular';
 
@@ -115,7 +117,17 @@ export class AccountsPage {
     this.navCtrl.push(UserSettingsPage, { userinfo: userinfo });
     //console.log("Userinfo to pass: ", userinfo);
   }
+
+  loadAddHsa(event, userinfo){
+    this.navCtrl.push(UserSettingsPage, { userinfo: userinfo });
+    console.log("Userinfo to pass to Add-Hsa: ", userinfo);
+  }
   
+  loadAddFsa(event, userinfo){
+    this.navCtrl.push(UserSettingsPage, { userinfo: userinfo });
+    console.log("Userinfo to pass to Add-Fsa: ", userinfo);
+  }
+
   loadHelpPage(){
     this.navCtrl.push(HelpPage);
   }

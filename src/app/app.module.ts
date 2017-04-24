@@ -22,6 +22,9 @@ import { AccountDetailPage } from './../pages/account-detail/account-detail';
 import { ProductDetail } from './../pages/product-detail/product-detail';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
+import { AddFSAPage } from './../pages/add-fsa/add-fsa';
+import { AddHSAPage } from './../pages/add-hsa/add-hsa';
+
 // Page 1 Dev Page
 import { Page1 } from '../pages/page1/page1';
 

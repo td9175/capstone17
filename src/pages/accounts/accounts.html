@@ -48,7 +48,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No HSA Accounts Found
       </ion-card-header>
-      <button ion-item detail-push>
+      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadUserSettingsDetails($event, userinfo)">
         <div>
           <h4 class="account-number">Tap here to add an HSA</h4>
         </div>
@@ -73,7 +73,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No FSA Accounts Found
       </ion-card-header>
-      <button detail-push ion-item>
+      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadUserSettingsDetails($event, userinfo)">
         <div>
           <h4 class="account-number">Tap here to add an FSA</h4>
         </div>
