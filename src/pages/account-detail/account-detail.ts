@@ -19,8 +19,11 @@ export class AccountDetailPage {
   remainingBalance: any;
   transactions: any;
 
-  userHasHsa: boolean;
-  userHasFsa: boolean;
+  userHasTransaction: boolean;
+  userHasBalance: boolean;
+
+  userHasHSA: boolean = false;
+  userHasFSA: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userApi: UserApi) {
     this.accountType = navParams.get('accountType');
@@ -36,14 +39,14 @@ export class AccountDetailPage {
   loadHSATransaction(){
     this.userApi.getHsaTransaction().then(
       data => {
-        if (data == `No HSA account exists.`) {
-          this.userHasHsa = false;
-          console.log('userHasHsa: ', this.userHasHsa);
+        if (data == `No HSA transaction history exists.`) {
+          this.userHasTransaction = false;
+          console.log('userHasTransaction HSA: ', this.userHasTransaction);
         } else {
-          this.userHasHsa = true;
+          this.userHasTransaction = true;
           this.transactions = data;
           console.log('HSA Transactions: ', this.transactions)
-          console.log('userHasHsa: ', this.userHasHsa);
+          console.log('userHasTransaction HSA: ', this.userHasTransaction);
         }
       },
     );
@@ -53,13 +56,13 @@ export class AccountDetailPage {
     this.userApi.getFsaTransaction().then(
       data => {
         if (data == `No FSA transaction history exists.`) {
-          this.userHasFsa = false;
-          console.log('userHasFsa: ', this.userHasFsa);
+          this.userHasTransaction = false;
+          console.log('userHasTransaction FSA: ', this.userHasTransaction);
         } else {
-          this.userHasFsa = true;
+          this.userHasTransaction = true;
           this.transactions = data;
           console.log('FSA Transactions: ', this.transactions)
-          console.log('userHasFsa: ', this.userHasFsa);
+          console.log('userHasTransaction FSA: ', this.userHasTransaction);
         }
       },
     );
@@ -70,14 +73,14 @@ export class AccountDetailPage {
   loadHSABalance(){
     this.userApi.getHsaBalance().then(
       data => {
-        if (data == `No HSA account exists.`) {
-          this.userHasHsa = false;
-          console.log('userHasHsa: ', this.userHasHsa);
+        if (data == `Error: could not calculate HSA account balance.`) {
+          this.userHasBalance = false;
+          console.log('userHasBalance HSA: ', this.userHasBalance);
         } else {
-          this.userHasHsa = true;
+          this.userHasBalance = true;
           this.remainingBalance = data;
-          console.log('HSA Balance: ', this.transactions)
-          console.log('userHasHsa: ', this.userHasHsa);
+          console.log('HSA Balance: ', this.remainingBalance)
+          console.log('userHasBalance HSA: ', this.userHasBalance);
         }
       },
     );
@@ -87,13 +90,13 @@ export class AccountDetailPage {
     this.userApi.getFsaBalance().then(
       data => {
         if (data == `Error: could not calculate FSA account balance.`) {
-          this.userHasFsa = false;
-          console.log('userHasFsa: ', this.userHasFsa);
+          this.userHasBalance = false;
+          console.log('userHasBalance FSA: ', this.userHasBalance);
         } else {
-          this.userHasFsa = true;
+          this.userHasBalance = true;
           this.remainingBalance = data;
-          console.log('FSA Balance: ', this.transactions)
-          console.log('userHasFsa: ', this.userHasFsa);
+          console.log('FSA Balance: ', this.remainingBalance)
+          console.log('userHasBalance FSA: ', this.userHasBalance);
         }
       },
     );
@@ -101,12 +104,16 @@ export class AccountDetailPage {
 
   getTransactionDetails(){
     if (this.accountType == "HSA"){
+      this.userHasHSA = true;
       this.loadHSABalance();
       this.loadHSATransaction();
+      console.log("userHasHsa: ", this.userHasHSA)
     }
     else{
+      this.userHasFSA = true;
       this.loadFSABalance();
       this.loadFSATransaction();
+      console.log("userHasHsa: ", this.userHasFSA)
     }
   }
 
