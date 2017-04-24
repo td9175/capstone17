@@ -115,23 +115,32 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				}
 				
 			}
+			
+			//(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]
 			echo "\nwordstring: $wordString";
 			// Match for qualified items, capture the amount
-			$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
+			//$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
+			$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/';
 			preg_match_all($regex, $wordString, $matches);
 				
+			
 			$qualifiedItems = $matches[1];
 			$qualifiedAmounts = $matches[2];
+			echo "\nQualified items1:" 
+			var_dump($matches[1]);
+			echo "\nQualified items2:" 
+			var_dump($matches[2]);
+			
 
-			if (count($qualifiedItems) > 0) {
-			  for ($i=0; $i < count($qualifiedItems); $i++) {
-				$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
-			  }
+			//if (count($qualifiedItems) > 0) {
+			  //for ($i=0; $i < count($qualifiedItems); $i++) {
+			//	$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
+			  //}
 
-			} else {
-			  $response = "No reimbursement qualified items.";
-			}
-			return $response;
+			//} else {
+			  //$response = "No reimbursement qualified items.";
+			
+			//return $response;
 			// $this->response($response, 200);
   		}
 
