@@ -7,7 +7,7 @@ use Lcobucci\JWT\Builder;
                         ->getToken(); // Retrieves the generated token
             $tokenSecret = "superdupersecret2017";
             $token = hash_hmac('sha256',$builttoken,$tokenSecret);
-            $tokenFinal = $tokenForHash . $token;
+            $tokenFinal = $builttoken . $token;
             echo $tokenFinal;
         }
 ?>
