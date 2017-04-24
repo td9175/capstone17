@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require '/var/www/html/vendor/autoload.php';
 use Lcobucci\JWT\Builder;
 // if(isset($_POST['jwtSubject'])) //if the form has been submitted
 // 		{
