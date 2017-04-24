@@ -12,6 +12,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { Injectable } from '@angular/core';
 import { UserGlobals } from './../shared/user-api.service';
+import { ReceiptFormPage } from './../receipt-form/receipt-form';
 
 /*
   Generated class for the Vault page.
@@ -90,7 +91,7 @@ export class VaultPage {
     loader.present().then(() => {
           this.camera.getPicture(options).then((imageData) => {
           this.uploadImage(imageData);
-          this.userGlobals.sleep(2500).then(() => {console.dir(this.userGlobals.getParsedPrices())});
+          this.userGlobals.sleep(2500).then(() => {this.navCtrl.push(ReceiptFormPage)});
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
@@ -114,7 +115,7 @@ export class VaultPage {
     loader.present().then(() => {
           this.camera.getPicture(options).then((imageData) => {
           this.uploadImage(imageData);
-          this.userGlobals.sleep(2500).then(() => {console.dir(this.userGlobals.getParsedPrices())});
+          this.userGlobals.sleep(2500).then(() => {this.navCtrl.push(ReceiptFormPage)});
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
