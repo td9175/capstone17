@@ -116,9 +116,9 @@ export class ReceiptFormPage {
   CalculateTotal(): string{
     var total = 0;
     for (let item of this.searchJson){
-      total += Number(item.amount);
+      total += Number(item.item);
       console.log(total);
-      console.log(item.amount);
+      console.log(item.item);
     }
     console.log("final total: ",total);
     return total.toString();

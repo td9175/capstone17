@@ -10,15 +10,15 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor= "let product of searchJson">
-      <h2>Product Name: {{ product.item }}</h2>
-      <p>Product Price: {{ product.amount }}</p>
+      <h2>Product Name: {{ product.amount }}</h2>
+      <p>Product Price: {{ product.item }}</p>
     </ion-item>
   </ion-list>
 
    <!--Receipt Confirm--> 
   <form #form="ngForm" (ngSubmit)="receiptForm(form)">
     <ion-item>
-      <ion-label>Total Receipt:</ion-label>
+      <ion-label>Enter your receipt's total:</ion-label>
       <ion-input 
       #totalPrice="ngModel" 
       required type="string" 
@@ -28,9 +28,9 @@
       (ngModelChange)="model.totalPrice=$event">
       </ion-input>
     </ion-item>
-    <ion-list-header>Type of Transaction: </ion-list-header>
+    <ion-list-header>Type of Transaction:</ion-list-header>
     <ion-item>
-      <ion-label>HSA/FSA</ion-label>
+      <ion-label>Enter HSA or FSA:</ion-label>
       <ion-input 
       #totalPrice="ngModel" 
       required type="string" 

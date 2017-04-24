@@ -65,7 +65,7 @@ export class VaultPage {
     fileTransfer.upload(targetPath, url, options).then(data => {
       console.log("this is what we are getting back: ");
       console.dir(data);
-      this.userGlobals.setParsedPrices(data.response);
+      this.userGlobals.setParsedPrices(JSON.parse(data.response));
       loader.dismissAll();
       //this.presentToast('Image succesful uploaded.');
     }, err => {
@@ -91,7 +91,7 @@ export class VaultPage {
     loader.present().then(() => {
           this.camera.getPicture(options).then((imageData) => {
           this.uploadImage(imageData);
-          this.userGlobals.sleep(2500).then(() => {this.navCtrl.push(ReceiptFormPage)});
+          this.userGlobals.sleep(2500).then(() => this.navCtrl.push(ReceiptFormPage));
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
@@ -115,7 +115,7 @@ export class VaultPage {
     loader.present().then(() => {
           this.camera.getPicture(options).then((imageData) => {
           this.uploadImage(imageData);
-          this.userGlobals.sleep(2500).then(() => {this.navCtrl.push(ReceiptFormPage)});
+          this.userGlobals.sleep(2500).then(() => this.navCtrl.push(ReceiptFormPage));
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
