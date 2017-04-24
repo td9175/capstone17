@@ -214,11 +214,11 @@ export class AuthService {
         return this.userGlobals.getGlobalSession();
     } else {
       this.postLogin(email, password).subscribe(
-          data =>  this.userGlobals.setGlobalSession(data.ci_session),
+          data =>  this.userGlobals.setGlobalSession(data.token),
           err => console.log('error: ', err),
           () => this.userGlobals.setGlobalEmail(email)
         );
-        return this.userGlobals.getGlobalEmail();
+        //return this.userGlobals.getGlobalEmail();
     }
   }
  
