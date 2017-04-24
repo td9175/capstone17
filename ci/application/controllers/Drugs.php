@@ -5,9 +5,10 @@
 */
 
 header("Access-Control-Allow-Origin: *");
+require('application/libraries/REST_Controller.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Drugs extends CI_Controller {
+class Drugs extends REST_Controller {
 
 	public function __construct(){
         parent::__construct();
@@ -20,9 +21,16 @@ class Drugs extends CI_Controller {
     	return strtr(base64_encode($data), '+/', '__');
 	}
 
-	public function search_for_drug($searchQuery){
+	public function search_for_drug_post(){
 			// Check if a user is logged in
-			// is_logged_in();
+			is_logged_in();
+
+			if ($this->post('searchQuery') == NULL) {
+				echo "Search for something";
+			}
+
+			$searchQuery = $this->post('searchQuery');
+
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
@@ -62,9 +70,16 @@ class Drugs extends CI_Controller {
     }
 
 
-    public function price_comparison($name){
+    public function price_comparison_post(){
 			// Check if a user is logged in
-			// is_logged_in();
+			is_logged_in();
+
+			if ($this->post('name') == NULL) {
+				echo "Name of drug required.";
+			}
+
+			$name = $this->post('name');
+
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
