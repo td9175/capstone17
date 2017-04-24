@@ -1,3 +1,4 @@
+import { HsaTransactionPoster } from './../shared/receipt-HSAtransaction-post.service';
 import { Component, ElementRef } from '@angular/core';
 import { ModalController, ViewController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { VaultPage } from './../vault/vault';
@@ -17,12 +18,13 @@ import { ReceiptModel } from './../../models/receiptForm.model';
 })
 export class ReceiptFormPage {
 
-  model = new ReceiptModel(this.userGlobals.getGlobalEmail(), this.userGlobals.getGlobalSession(), 0);
+  model = new ReceiptModel(this.userGlobals.getGlobalEmail(), this.userGlobals.getGlobalSession(), '0');
 
   searchJson: any;
   total: any;
+  results: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController, public hsaTransactionPoster: HsaTransactionPoster) {
     this.searchJson = [
       {
         item: 'Product something',
@@ -57,21 +59,37 @@ export class ReceiptFormPage {
   };
 
   receiptForm(form: NgForm) {
-    this.total =this.CalculateTotal();
-    this.PostToHsaTransactions();
+    this.model.totalPrice =this.CalculateTotal();
+
+    console.log("Yay you hit submit");
+    console.log("Total after changes: ", this.model.totalPrice);
+
+    let loader = this.loadingController.create({
+      content: 'Adding Account...'
+    });
+
+    loader.present().then(() => {
+        console.log("this is the add", form.value);
+        this.hsaTransactionPoster.postHsaAddForm(this.model)
+        .subscribe(
+          data => this.results = data,
+          //err => console.log('error: ', err),
+          () => console.log('results: ', this.results),
+        );
+        loader.dismiss();
+        this.goBack();
+    });
   }
 
-  CalculateTotal(): number{
+  goBack() {
+    this.navCtrl.pop();
+  }
+
+  CalculateTotal(): string{
     var total = 0;
     for (let item of this.searchJson){
       total += Number(item.amount);
     }
-    return total;
-  }
-
-  PostToHsaTransactions(){
-    console.log("Yay you hit submit");
-    console.log("Total without changes: ", this.total);
-    console.log("Total after changes: ", this.model.totalPrice);
+    return total.toString();
   }
 }
