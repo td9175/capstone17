@@ -60,35 +60,42 @@ require('application/libraries/REST_Controller.php');
 				$this->response($disabled_msg, 403); // 403 Forbidden
 				// Check if email and password match
 			} elseif (password_verify($password, $login_response['hash_pass'])){
-				// $tokenId = base64_encode(mcrypt_create_iv(32));
-        $tokenId = random_bytes(32);
+        use \Firebase\JWT\JWT;
+        // $tokenId = base64_encode(mcrypt_create_iv(32));
+        // $tokenId = random_bytes(32);
         $issuedAt   = time();
         $notBefore  = $issuedAt + 10;  //Adding 10 seconds
-        $expire     = $notBefore + 7200; // Adding 60 seconds
+        // $expire     = $notBefore + 7200; // Adding 60 seconds
         $serverName = 'https://capstone.td9175.com'; /// set your domain name
 
         /*
          * Create the token as an array
          */
-        $data = [
-            'iat'  => $issuedAt,         // Issued at: time when the token was generated
-            'jti'  => $tokenId,          // Json Token Id: an unique identifier for the token
+        $token = array(
             'iss'  => $serverName,       // Issuer
+            'aud' => $serverName,
+            'iat'  => $issuedAt,         // Issued at: time when the token was generated
             'nbf'  => $notBefore,        // Not before
-            'exp'  => $expire,           // Expire
-            'data' => [                  // Data related to the logged user you can set your required data
-						 'email'  => $email          // User's email
-                      ]
-	        ];
-        $secretKey = base64_decode($this->config->item("SECRET_KEY"));
+            // 'exp'  => $expire,           // Expire
+            // 'data' => [                  // Data related to the logged user you can set your required data
+						//  'email'  => $email          // User's email
+            //           ]
+	        );
+
+        $secretKey = $this->config->item("SECRET_KEY");
         /// Here we will transform this array into JWT:
         $jwt = JWT::encode(
-                  $data, //Data to be encoded in the JWT
-                  $secretKey, // The signing key
-                  $this->config->item("ALGORITHM")
+                  // $data, //Data to be encoded in the JWT
+                  $token,
+                  $secretKey // The signing key
+                  // $this->config->item("ALGORITHM")
                  );
-        $unencodedArray = ['jwt' => $jwt];
-        echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}";
+        // $unencodedArray = ['jwt' => $jwt];
+        print_r($encoded);
+        echo "\n\n";
+        $decoded = JWT::decode($jwt, $secretKey, array('HS256'));
+        print_r($decoded);
+        // echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}";
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
           $this->response($error_msg, 400);
