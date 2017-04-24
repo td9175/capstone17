@@ -21355,16 +21355,37 @@ page-products .alert-empty-search-bar {
   text-align: center;
 }
 
-.alert-validation {
+page-products .goodrx-img {
+  background-color: transparent;
+  border: none;
+  float: right;
+  position: static;
+}
+
+page-services .alert-validation {
   text-align: center;
 }
 
-.alert-noresult {
+page-services .alert-noresult {
   text-align: center;
   font-size: 1.4em;
 }
 
+page-services .yelp-img {
+  background-color: transparent;
+  border: none;
+  float: right;
+  position: static;
+}
+
 page-yelp-result {
+  /*
+  img { height: 230px; background-color: #444; background-image:url(http://placehold.it/350x250);}
+
+  img[class] { 
+    width: 100%;
+  }
+  */
   /*
   .card {
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0); }
@@ -21373,15 +21394,9 @@ page-yelp-result {
 
 page-yelp-result .object-fit_cover {
   object-fit: cover;
-}
-
-page-yelp-result img {
   height: 230px;
   background-color: #444;
   background-image: url(http://placehold.it/350x250);
-}
-
-page-yelp-result img[class] {
   width: 100%;
 }
 
@@ -21389,4 +21404,11 @@ page-yelp-result .yelpResult-tag-badge {
   -webkit-margin-end: 5px;
   -moz-margin-end: 5px;
   margin-inline-end: 5px;
+}
+
+page-yelp-result .yelp-img {
+  background-color: transparent;
+  border: none;
+  float: right;
+  position: static;
 }
