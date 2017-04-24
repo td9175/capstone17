@@ -141,14 +141,12 @@
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
 				foreach ($result->result_array() as $row) {
-					if (strcmp($row, NULL) == 0) {
+					if (strcmp($row['balance'], NULL) == 0) {
 						// Error
 						$data = "Error: could not calculate FSA account balance.";
 					} else {
 						$data = $row['balance'];
 					}
-					echo "checkpoint \n";
-
 				}
 			// Pass back the data
 			return $data;
