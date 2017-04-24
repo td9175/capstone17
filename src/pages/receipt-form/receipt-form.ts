@@ -22,7 +22,7 @@ export class ReceiptFormPage {
   searchJson: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) {
-    this.searchJson = [
+    /*this.searchJson = [
       {
         item: 'Product something',
         amount: '4.99'
@@ -40,54 +40,14 @@ export class ReceiptFormPage {
         amount: '5.99'
       }
     ];
+    */
+    this.searchJson = this.userGlobals.getParsedPrices();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReceiptFormPage');
+    console.log(this.searchJson);
   }
-
-  /*totalUp(){
-    var total= 0;
-    var totalTwo;
-    var counter = 0;
-    var temp;
-    var x, xx, xxx;
-
-    var hElement: HTMLElement = this.elementRef.nativeElement;
-
-
-    /*for (let item of this.searchJson) {
-      console.log(parseFloat(item.amount));
-      total += parseFloat(item.amount);
-    }
-    console.log(total);
-
-    //console.log((<HTMLScriptElement[]><any>document.getElementsByClassName("getThis")).length);
-    //console.log(hElement.getElementsByClassName("getThis")[0]
-
-    while (counter < hElement.getElementsByClassName("getThis").length){
-      if(hElement.getElementsByClassName("getThis")[counter].childNodes[1].attributes[0].nodeValue == "text-input text-input-md ng-untouched ng-pristine ng-valid"){
-        temp= (parseFloat(hElement.getElementsByClassName("getThis")[counter].childNodes[1].attributes[3].value).toFixed(2));
-        totalTwo += parseFloat(temp).toFixed(2);
-        console.log(counter, totalTwo);
-      }
-      ++counter;
-    }
-
-    /*while (counter < (<HTMLScriptElement[]><any>document.getElementsByClassName("getThis")).length){
-      if(toString((<HTMLScriptElement[]><any>document.getElementsByClassName("getThis")[counter].childNodes[1].attributes[0].nodeValue)) == "text-input text-input-md ng-untouched ng-pristine ng-valid"){
-        temp = (<HTMLScriptElement[]><any>document.getElementsByClassName("getThis")[counter].childNodes[1].attributes[3].nodeValue);
-        console.log(temp);
-        totalTwo.push(parseFloat(temp).toFixed(2));
-      }
-      ++counter;
-    }
-
-    console.log(totalTwo);
-    
-  }
-  */
-
 
   receipt = {
     totalPrice: 0
