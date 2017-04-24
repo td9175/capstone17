@@ -13,8 +13,8 @@ require('application/libraries/REST_Controller.php');
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/hsa_transaction
 		// GET variable to send: email
 		function hsa_transaction_get() {
-			// Check if a user is logged in
-			// is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->get('token'));
 			// Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
@@ -34,8 +34,8 @@ require('application/libraries/REST_Controller.php');
 			if ($this->post('amount')==NULL || $this->post('account_number')) {
 				$this->response('Amount and account_number are required.');
 			} else {
-				// Check if a user is logged in
-				// is_logged_in();
+				// Check for a valid JSON web token
+				verifyJWT($this->post('token'));
 				// Load the model
 				$this->load->model('AccountTransactionModel');
 				// Check if the email get variable was passed
@@ -53,8 +53,8 @@ require('application/libraries/REST_Controller.php');
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/fsa_transaction
 		// GET variable to send: email
 		function fsa_transaction_get() {
-			// Check if a user is logged in
-			// is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->get('token'));
 			// Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
@@ -73,8 +73,8 @@ require('application/libraries/REST_Controller.php');
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/hsa_balance
 		// GET variable to send: email
 		function hsa_balance_get() {
-			// Check if a user is logged in
-			// is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->get('token'));
 			//Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
@@ -93,8 +93,8 @@ require('application/libraries/REST_Controller.php');
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/fsa_balance
 		// GET variable to send: email
 		function fsa_balance_get() {
-			// Check if a user is logged in
-			// is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->get('token'));
 			//Load the model
 			$this->load->model('AccountTransactionModel');
 			// Check if the email get variable was passed
