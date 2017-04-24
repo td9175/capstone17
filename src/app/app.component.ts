@@ -55,15 +55,15 @@ export class MyApp {
   constructor(public platform: Platform, public camera: Camera) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    // we should add the logout as a function to the navbar
+    // Frontend decided to remove Navbar and put those functions elsewhere
+    /*
     this.pages = [
       { title: 'Reports', component: ReportsPage},
       { title: 'Tax Info', component: TaxInfoPage },
       { title: 'Help', component: HelpPage },
       { title: 'About', component: AboutPage },
       { title: 'Settings', component: UserSettingsPage }, ];
-
+    */
   }
 
   initializeApp() {
