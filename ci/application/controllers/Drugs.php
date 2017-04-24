@@ -5,6 +5,7 @@
 */
 
 header("Access-Control-Allow-Origin: *");
+require('application/libraries/REST_Controller.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Drugs extends REST_Controller {
