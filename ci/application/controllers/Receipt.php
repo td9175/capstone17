@@ -77,7 +77,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			// is_logged_in();
 
 			$string = $results;
-			echo $string;
+			//echo $string;
 			// Get the Y cordinate for everything
 			preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
@@ -126,9 +126,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			
 			$qualifiedItems = $matches[1];
 			$qualifiedAmounts = $matches[2];
-			echo "\nQualified items1:" 
+			echo "\nQualified items1:" ;
 			var_dump($matches[1]);
-			echo "\nQualified items2:" 
+			echo "\nQualified items2:" ;
 			var_dump($matches[2]);
 			
 
