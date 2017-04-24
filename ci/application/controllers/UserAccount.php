@@ -14,6 +14,7 @@ require('application/libraries/REST_Controller.php');
     function __construct() {
       parent::__construct();
       $this->load->model('UserAccountModel');
+			$this->config->load('jwt');
     }
 
 		// Register a user account
@@ -59,20 +60,57 @@ require('application/libraries/REST_Controller.php');
 				$this->response($disabled_msg, 403); // 403 Forbidden
 				// Check if email and password match
 			} elseif (password_verify($password, $login_response['hash_pass'])){
-          // Set the session variable
-					$_SESSION['logged_in'] = TRUE;
-          $_SESSION['email'] = $email;
-					// If the account has admin priviledge set the admin session variable
-					if ($login_response['is_admin']) {
-						$_SESSION['is_admin'] = TRUE;
-					}
-					$session_name = session_name();
-					$session_id = session_id();
-					$session_path = '/';
-					$session_domain = "capstone.td9175.com";
-					$session_data = array($session_name => $session_id, 'path' => $session_path, 'domain' => $session_domain);
-          // Send back a response with session data, 200 Success
-          $this->response($session_data, 200);
+				$tokenId = base64_encode(mcrypt_create_iv(32));
+        $issuedAt   = time();
+        $notBefore  = $issuedAt + 10;  //Adding 10 seconds
+        $expire     = $notBefore + 7200; // Adding 60 seconds
+        $serverName = 'https://capstone.td9175.com'; /// set your domain name
+
+
+        /*
+         * Create the token as an array
+         */
+        $data = [
+            'iat'  => $issuedAt,         // Issued at: time when the token was generated
+            'jti'  => $tokenId,          // Json Token Id: an unique identifier for the token
+            'iss'  => $serverName,       // Issuer
+            'nbf'  => $notBefore,        // Not before
+            'exp'  => $expire,           // Expire
+            'data' => [                  // Data related to the logged user you can set your required data
+						 'id'  => $row[0]['id'], // id from the users table
+						'name' => $row[0]['name'], //  name
+                      ]
+	        ];
+      $secretKey = base64_decode($this->config->item("SECRET_KEY"));
+      /// Here we will transform this array into JWT:
+      $jwt = JWT::encode(
+                $data, //Data to be encoded in the JWT
+                $secretKey, // The signing key
+                 $this->config->item("ALGORITHM");
+               );
+     $unencodedArray = ['jwt' => $jwt];
+      echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}"
+
+
+
+
+
+
+
+          // // Set the session variable
+					// $_SESSION['logged_in'] = TRUE;
+          // $_SESSION['email'] = $email;
+					// // If the account has admin priviledge set the admin session variable
+					// if ($login_response['is_admin']) {
+					// 	$_SESSION['is_admin'] = TRUE;
+					// }
+					// $session_name = session_name();
+					// $session_id = session_id();
+					// $session_path = '/';
+					// $session_domain = "capstone.td9175.com";
+					// $session_data = array($session_name => $session_id, 'path' => $session_path, 'domain' => $session_domain);
+          // // Send back a response with session data, 200 Success
+          // $this->response($session_data, 200);
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
           $this->response($error_msg, 400);
