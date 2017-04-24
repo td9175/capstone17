@@ -84,6 +84,7 @@ use Lcobucci\JWT\Builder;
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/session_user
     function session_user_get() {
 			// Check if a user is logged in
+			verifyJWT($this->get('token'));
 			// is_logged_in();
 			// Get a user from the model by email
 			$user = $this->UserAccountModel->get_user($_SESSION['email']);

@@ -11,10 +11,9 @@ function is_logged_in() {
 
   }
 
-  function verifyJWT_post() {
+  function verifyJWT($token) {
 
-    if ($this->post('token') !== NULL) {
-      $token = $this->post('token');
+    if ($token !== NULL) {
 
       $token = (new Parser())->parse((string) $token); // Parses from a string
       $token->getHeaders(); // Retrieves the token header
@@ -37,7 +36,8 @@ function is_logged_in() {
       //
       // var_dump($token->validate($data)); // false, because token is expired since current time is greater than exp
     } else {
-      $this->response("Valid token is required.", 400);
+      die("Valid token is required.");
+      // $this->response("Valid token is required.", 400);
     }
 
   }
