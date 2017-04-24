@@ -24,7 +24,7 @@ class Drugs extends CI_Controller {
 			// Check if a user is logged in
 			is_logged_in();
 
-			if (!isset($this->post('searchQuery'))) {
+			if ($this->post('searchQuery') == NULL) {
 				echo "Search for something";
 			}
 
@@ -73,7 +73,7 @@ class Drugs extends CI_Controller {
 			// Check if a user is logged in
 			is_logged_in();
 
-			if (!isset($this->post('name'))) {
+			if ($this->post('name') == NULL) {
 				echo "Name of drug required.";
 			}
 
