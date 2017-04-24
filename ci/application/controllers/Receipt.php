@@ -151,9 +151,10 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
   		}
 
 
-		public function ocr_request() {
+		public function ocr_request($passedPath) {
 		//purpose: take the image of the receipt and extract text
-			$imagePath = $_SESSION['path'];
+		
+			$imagePath = $passedPath;
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
 			$path = 'https://capstone.td9175.com/ci/application/receipts/';
@@ -206,16 +207,13 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		function upload_it_post() {
 		//purpose: upload a receipt
 
-			// Check if a user is logged in
-			// is_logged_in();
-
-			//$logged_in = is_logged_in();
+		
 			$this->load->helper('form');
 
 			$this->load->helper('url');
 			$this->load->helper('string');
 
-			$email = $_SESSION['email'];
+			$email = $_POST['email'];
 
 			//create the unique file name
 			$date = date('d-m-y');
@@ -257,17 +255,17 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$path .= '/';
 				$path .= $f_name;
 				$path .= '.jpg';
-				$_SESSION['path'] = $path;
+				
 
 				//redirect('OCR/ocr_request');
-				$parsed = $this->ocr_request();
+				$parsed = $this->ocr_request($path);
 
 				if($parsed) {
 
 					$results = $this->qualified_receipt_regex_post($parsed);
 					//echo "Parsed results: " . $results;
 					// return $results;
-					$this->response(json_encode($results), 200);
+					$this->response($results, 200);
 				} else {
 					echo "No results\n";
 				}
