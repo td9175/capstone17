@@ -98,6 +98,6 @@ import { NgForm } from '@angular/forms/src/directives';
     AccountDetailPage,
     ReceiptFormPage
   ],
-  providers: [YelpPoster, HsaPoster, FsaPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
+  providers: [YelpPoster, HsaPoster, FsaPoster, HsaTransactionPoster , {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
 })
 export class AppModule {}
