@@ -142,7 +142,7 @@
 			// Check if any rows were returned
 			// var_dump($result);
 			$temp = $result->row_array();
-			$count = $temp['COUNT(*)'];
+			$count = count($temp);
 			echo "$count \n";
 			if (!empty($num_rows)) {
 				foreach ($result->result_array() as $row) {
