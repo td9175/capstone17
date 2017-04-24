@@ -1,4 +1,7 @@
 <?php
+require '/var/www/html/vendor/autoload.php';
+use Lcobucci\JWT\ValidationData;
+use Lcobucci\JWT\Parser;
 
 function is_logged_in() {
   if (isset($_SESSION['logged_in'])) {
@@ -38,7 +41,7 @@ function is_logged_in() {
     }
 
   }
-  
+
   function verifyJWT_post() {
 
     if ($this->post('token') !== NULL) {
