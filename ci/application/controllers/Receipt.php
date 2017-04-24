@@ -138,7 +138,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			if (count($qualifiedItems) > 0) {
 			  for ($i=0; $i < count($qualifiedItems); $i++) {
-				$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
+				$response[$i] = array('item' => $qualifiedAmounts[$i], 'amount' => $qualifiedItems[$i]);
 			  }
 
 			} else { 
