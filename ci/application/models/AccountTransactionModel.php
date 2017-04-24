@@ -119,14 +119,14 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
-					$data = $row['balance'];
+					if (strcmp($row['balance'], NULL) == 0) {
+						// Error
+						$data = "Error: could not calculate HSA account balance.";
+					} else {
+						$data = $row['balance'];
+					}
 				}
-			} else {
-				// Error
-				$data = "Error: could not calculate HSA account balance.";
-			}
 			// Pass back the data
 			return $data;
 		}
