@@ -4,7 +4,7 @@ use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\ValidationData;
 
 // RESTful API for User Account functions
-class UserAccount2 extends REST_Controller {
+class JWT extends REST_Controller {
 
   function buildJWT_get() {
     if(isset($_GET['jwtSubject'])) //if the form has been submitted
