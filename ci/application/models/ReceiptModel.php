@@ -30,6 +30,8 @@ class ReceiptModel extends CI_Model {
             'date_time_stamp' => $row['date_time_stamp']
           );
         }
+        $data['date_time_stamp'] = 'poopy';
+        echo $data['date_time_stamp'];
       } else {
         $data = "No user receipts exist";
       }
