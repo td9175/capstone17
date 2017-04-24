@@ -18,7 +18,7 @@ CREATE TABLE HealthAccount (
 
 CREATE TABLE AccountTransaction (
 	transaction_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	amount DECIMAL NOT NULL,
+	amount DECIMAL(65,2) NOT NULL,
 	account_number INT NOT NULL,
 	date_time_stamp DATETIME NOT NULL DEFAULT NOW(),
 	FOREIGN KEY (account_number) REFERENCES HealthAccount (account_number) ON DELETE CASCADE
@@ -34,8 +34,8 @@ CREATE TABLE Receipt (
 
 CREATE TABLE Reimbursement (
 	reimbursement_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	receipt_id INT NOT NULL,
-	amount INT NOT NULL,
+	receipt_id INT NOT NULL UNIQUE,
+	amount DECIMAL(65,2) NOT NULL,
 	account_number INT NOT NULL,
 	date_time_stamp DATETIME NOT NULL DEFAULT NOW(),
 	FOREIGN KEY (receipt_id) REFERENCES Receipt (receipt_id) ON DELETE CASCADE,

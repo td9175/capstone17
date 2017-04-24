@@ -62,6 +62,9 @@ require('application/libraries/REST_Controller.php');
 			$receipt_id = $this->ReceiptModel->user_last_receipt_get($email);
 			$amount = $this->post('amount');
 
+			$amount = (Double) $amount;
+			$amount = ($amount * -1);
+
       // Pass the user input to the model to make the transaction query in the database
       $result = $this->ReimbursementModel->reimburse_account($receipt_id, $amount, $acct_num);
       $result2 = $this->AccountTransactionModel->post_transaction($amount, $acct_num);
