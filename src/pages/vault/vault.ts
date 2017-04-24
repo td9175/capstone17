@@ -11,6 +11,7 @@ import { File } from '@ionic-native/file';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http'
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { Injectable } from '@angular/core';
+import { UserGlobals } from './../shared/user-api.service';
 
 /*
   Generated class for the Vault page.
@@ -25,8 +26,9 @@ import { Injectable } from '@angular/core';
 export class VaultPage {
 
   receiptImage: any;
+  parsedPrices: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController, private http: Http) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController, private http: Http, private userGlobals: UserGlobals) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VaultPage');
@@ -62,10 +64,12 @@ export class VaultPage {
     fileTransfer.upload(targetPath, url, options).then(data => {
       console.log("this is what we are getting back: ");
       console.dir(data);
+      this.userGlobals.setParsedPrices(data.response);
       loader.dismissAll();
       //this.presentToast('Image succesful uploaded.');
     }, err => {
       loader.dismissAll();
+      this.userGlobals.setParsedPrices([{"item": "error", "price": "error"}]);
       //this.presentToast('Error while uploading file.');
     });
   }
@@ -85,8 +89,8 @@ export class VaultPage {
 
     loader.present().then(() => {
           this.camera.getPicture(options).then((imageData) => {
-          //console.log("imageData from image_fire() here: ", imageData);
           this.uploadImage(imageData);
+          this.userGlobals.sleep(2500).then(() => {console.dir(this.userGlobals.getParsedPrices())});
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });
@@ -109,8 +113,8 @@ export class VaultPage {
 
     loader.present().then(() => {
           this.camera.getPicture(options).then((imageData) => {
-          console.log("imageData from image_pick() here: ", imageData);
           this.uploadImage(imageData);
+          this.userGlobals.sleep(2500).then(() => {console.dir(this.userGlobals.getParsedPrices())});
         }, (err) => {
             console.log("We couldn't grab the picture. Probably running in a browser or the camera failed. Error follows: ", err);
         });

@@ -8,11 +8,17 @@ export class UserGlobals {
     public globalEmail: string;
     public globalSession: string;
     public didRegister: boolean;
+    public parsedPrices: any;
   
   constructor() {
     this.globalEmail = null;
     this.globalSession = null;
     this.didRegister = false;
+    this.parsedPrices = null;
+  }
+
+  sleep (time) {
+      return new Promise((resolve) => setTimeout(resolve, time));
   }
 
   setGlobalEmail(email) {
@@ -48,6 +54,14 @@ export class UserGlobals {
 
   setDidRegister(reg) {
       this.didRegister = reg;
+  }
+
+  setParsedPrices(parsedPrices) {
+      this.parsedPrices = parsedPrices;
+  }
+
+  getParsedPrices() {
+      return this.parsedPrices;
   }
 
 }
