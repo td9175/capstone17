@@ -107,11 +107,11 @@ export class UserApi {
     // https://capstone.td9175.com/ci/index.php/HealthAccount/hsa/email/umbcapstone17%40gmail.com
     
     getProductData(){
-        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}/token/${this.userGlobals.getGlobalSession()}`).map(res => res.json());
+        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/searchQuery/${this.drugToSearch}/token/${this.userGlobals.getGlobalSession()}`).map(res => res.json());
     }
 
     getProductPrices(){
-        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}/token/${this.userGlobals.getGlobalSession()}`).map(res => res.json());
+        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/name/${this.drugToGetDetails}/token/${this.userGlobals.getGlobalSession()}`).map(res => res.json());
     }
     
     /*Getting Account Details*/
