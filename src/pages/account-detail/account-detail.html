@@ -12,31 +12,17 @@
 </ion-header>
 
 <ion-content>
+  
   <!--HSA Detail Card-->
-  <!--Fix later-->
-  <!--
-  <ion-card *ngIf="(userHasHsa == false)">
-    <ion-card-header color="primary">
-        <ion-icon item-left name="paper"></ion-icon> Health Service Account Details
-        <p>Remaining Balance: ${{remainingBalance}}</p>
-    </ion-card-header>
-    <ion-item text-wrap>
-        <div>
-          <p ion-text>No Account Transaction History Found</p>
-        </div>
-    </ion-item>
-  </ion-card>
-  -->
-
   <ion-card *ngIf="(userHasHSA == true)">
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> Health Service Account Details
-        <p>Remaining Balance: ${{remainingBalance}}</p>
+        <p *ngIf="(userHasBalance == true)">Remaining Balance: ${{remainingBalance}}</p>
       </ion-card-header>
           <ion-list>
             <ion-item item-left text-wrap *ngFor="let transaction of transactions">
-              <h2>Date: {{transaction.date_time_stamp.substring(0,10)}}</h2>
-              <p>Amount: {{transaction.amount}}</p>
+              <h2 *ngIf="(userHasTransaction == true)">Date: {{transaction.date_time_stamp.substring(0,10)}}</h2>
+              <p *ngIf="(userHasTransaction == true)">Amount: ${{transaction.amount}}</p>
             </ion-item>
           </ion-list>
   </ion-card>
@@ -45,14 +31,37 @@
   <ion-card *ngIf="(userHasFSA == true)">
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> Flexible Service Account Details
-        <p>Remaining Balance: ${{remainingBalance}}</p>
+        <p *ngIf="(userHasBalance == true)">Remaining Balance: ${{remainingBalance}}</p>
       </ion-card-header>
           <ion-list>
             <ion-item item-left text-wrap *ngFor="let transaction of transactions">
-              <h2>Date: {{transaction.date_time_stamp.substring(0,10)}}</h2>
-              <p>Amount: {{transaction.amount}} </p>
+              <h2 *ngIf="(userHasTransaction == true)">Date: {{transaction.date_time_stamp.substring(0,10)}}</h2>
+              <p *ngIf="(userHasTransaction == true)">Amount: ${{transaction.amount}} </p>
             </ion-item>
           </ion-list>
+  </ion-card>
+
+  <!--Error Checks-->
+  <ion-card *ngIf="(userHasTransaction == false)">
+    <ion-card-header color="primary">
+        <ion-icon item-left name="paper"></ion-icon> No Transaction Data
+    </ion-card-header>
+    <ion-item text-wrap>
+        <div>
+          <p ion-text>No account transaction history found.</p>
+        </div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="(userHasBalance == false)">
+    <ion-card-header color="primary">
+        <ion-icon item-left name="paper"></ion-icon> No Balance Data
+    </ion-card-header>
+    <ion-item text-wrap>
+        <div>
+          <p ion-text>No account balance data found.</p>
+        </div>
+    </ion-item>
   </ion-card>
 
 </ion-content>

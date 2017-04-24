@@ -7,6 +7,12 @@ page-products{
     color: map-get($colors, dark);
     text-align: center;
   }
+  .goodrx-img{
+    background-color: transparent;
+    border: none;
+    float: right; 
+    position: static;
+  }
 }
 
 
