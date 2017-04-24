@@ -19,19 +19,19 @@ export class ReceiptFormPage {
     this.searchJson = [
       {
         item: 'Product something',
-        amount: '$4.99'
+        amount: '4.99'
       },
       {
         item: 'Something Product',
-        amount: '$2.59'
+        amount: '2.59'
       },
       {
         item: 'This is Stupid',
-        amount: '$4.36'
+        amount: '4.36'
       },
       {
         item: 'Almost done with this shit!',
-        amount: '$5.99'
+        amount: '5.99'
       }
     ];
   }
@@ -39,5 +39,18 @@ export class ReceiptFormPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReceiptFormPage');
   }
+
+  totalUp(){
+    var total= 0;
+    var totalTwo =0;
+
+    for (let item of this.searchJson) {
+      console.log(parseFloat(item.amount));
+      total += parseFloat(item.amount);
+    }
+    console.log(total);
+  }
+
+  
 
 }

@@ -15,12 +15,19 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item item-left *ngFor="let product of searchJson">
-      <h2>Product name: {{product.item}}</h2>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
+  <ion-list no-lines>
+    <div *ngFor="let product of searchJson">
+      <ion-item item-left>
+        <h2>Product name: {{product.item}}</h2>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>${{product.amount}}</ion-label>
+        <ion-input type="text" value= {{product.amount}}></ion-input>
+      </ion-item>
+    </div>
   </ion-list>
+
+  <button ion-button (click)="totalUp()">Click Me to Total Up!</button>
+
 
 </ion-content>
