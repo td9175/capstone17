@@ -8,7 +8,7 @@ header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
 
 	// RESTful API for User Account functions
-	class UserAccount extends REST_Controller {
+	class UserAccount2 extends REST_Controller {
 
 		// Load the model for every call
     function __construct() {
@@ -90,7 +90,6 @@ require('application/libraries/REST_Controller.php');
                  );
         $unencodedArray = ['jwt' => $jwt];
         echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}";
-
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
           $this->response($error_msg, 400);
