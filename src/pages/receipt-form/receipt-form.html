@@ -43,6 +43,10 @@
     <button ion-button type="submit" block> Confirm </button>
 
   </form>
+  
+  <ion-item text-wrap *ngIf="(inputcorrect == false)">
+      <p>Wrong Input!</p>
+  </ion-item>
 
   
 

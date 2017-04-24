@@ -59,7 +59,7 @@ export class ReceiptFormPage {
     totalPrice: this.total
   };
 
-  imputcorrect: any;
+  inputcorrect: any;
 
   receiptForm(form: NgForm) {
     //this.model.totalPrice = this.CalculateTotal();
@@ -100,7 +100,7 @@ export class ReceiptFormPage {
       });
     }
     else{
-      this.imputcorrect = false;
+      this.inputcorrect = false;
     }
 
     
