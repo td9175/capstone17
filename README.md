@@ -31,11 +31,14 @@ Ionic setup: [ionic](http://www.ionicframework.com)
 ```ionic serve```
 
 - Build the app for your platform
-```ionic build android
+```
+ionic build android
 ionic build ios
-ionic build browser```
+ionic build browser
+```
 
-- To host the browser build, set the ```DocumentRoot``` to: ```/platforms/browser/www```
+- To host the browser build, set the
+```DocumentRoot``` to: ```/platforms/browser/www```
 
 ### For the team:
 - Clone the git repository
