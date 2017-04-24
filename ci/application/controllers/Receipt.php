@@ -111,6 +111,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				// Turn the array into a string
 				foreach ($words as $word) {
 				  $wordString .= $word . " ";
+				  echo "\nwordstring: $wordString";
 				  
 				}
 			}
@@ -118,7 +119,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			// Match for qualified items, capture the amount
 			$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
 			preg_match_all($regex, $wordString, $matches);
-				var_dump($matches[1]);
+				
 			$qualifiedItems = $matches[1];
 			$qualifiedAmounts = $matches[2];
 
