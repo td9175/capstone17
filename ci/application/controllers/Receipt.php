@@ -126,8 +126,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			if (empty($matches[1])){
 				$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; 
 				preg_match_all($regex, $wordString, $matches);
-				$qualifiedAmounts = $matches[1]; //amount
-				$qualifiedItems = $matches[2]; //item
+				$qualifiedAmounts = $matches[2]; //amount
+				$qualifiedItems = $matches[1]; //item
 				
 			}	
 			
