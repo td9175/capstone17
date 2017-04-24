@@ -19,7 +19,6 @@ git clone https://github.com/td9175/capstone17.git
 ```npm install -g ionic cordova``` 
 - Navigate to the root of where you downloaded capstone17
 - Install cordova plugins
-``````
 - Check ionic info 
   ```ionic info```
 - Running the app to test in browser (I recommend chrome)
