@@ -104,7 +104,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			foreach ($positions as $position) {
 			  // Build regular expression
 			  $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":"(.*)"/';
-				echo "\n$regex";
 			  // Match for the words
 			  preg_match_all($regex, $string, $matches);
 				$words = $matches[1];
@@ -112,7 +111,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				// Turn the array into a string
 				foreach ($words as $word) {
 				  $wordString .= $word . " ";
-				  echo "\nWordstring: $wordstring";
+				  echo "\nWordstring: $wordString";
 				}
 			}
 
