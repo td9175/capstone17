@@ -153,7 +153,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 		public function ocr_request($passedPath) {
 		//purpose: take the image of the receipt and extract text
-		
+
 			$imagePath = $passedPath;
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
@@ -207,7 +207,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		function upload_it_post() {
 		//purpose: upload a receipt
 
-		
+			// Check for a valid JSON web token
+		 verifyJWT($this->post('token'));
+
 			$this->load->helper('form');
 
 			$this->load->helper('url');
@@ -255,7 +257,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$path .= '/';
 				$path .= $f_name;
 				$path .= '.jpg';
-				
+
 
 				//redirect('OCR/ocr_request');
 				$parsed = $this->ocr_request($path);
@@ -275,7 +277,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	function user_receipts_get() {
 		// Check for a valid JSON web token
 		verifyJWT($this->get('token'));
-		
+
 		if ($this->get('email') == NULL) {
 			$this->response("Email is required.", 400);
     	} else {
@@ -306,7 +308,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 	function receipt_post() {
 		// Check for a valid JSON web token
-		verifyJWT($this->get('token'));
+		verifyJWT($this->post'token'));
 
 		if ($this->post('email') == NULL || $this->post('receipt_path') == NULL) {
 			$this->response("Email and receipt_path are required.", 200);
