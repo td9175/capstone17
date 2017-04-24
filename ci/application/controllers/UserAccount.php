@@ -86,7 +86,7 @@ require('application/libraries/REST_Controller.php');
       $jwt = JWT::encode(
                 $data, //Data to be encoded in the JWT
                 $secretKey, // The signing key
-                 $this->config->item("ALGORITHM");
+                 $this->config->item("ALGORITHM")
                );
      $unencodedArray = ['jwt' => $jwt];
       echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}"
