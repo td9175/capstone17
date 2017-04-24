@@ -8,10 +8,10 @@ if(isset($_POST['jwtSubject'])) //if the form has been submitted
             $tokenForHash = base64_encode($tokenHeader) . "." . base64_encode($tokenPayload) . "." . $tokenSecret;
             $token = hash_hmac("sha256",$tokenForHash,$tokenSecret);
 
-            echo $tokenHeader;
-            echo $tokenPayload;
-            echo $tokenSecret;
-            echo $tokenForHash;
+            echo $tokenHeader . "\n";
+            echo $tokenPayload . "\n";
+            echo $tokenSecret . "\n";
+            echo $tokenForHash . "\n";
             echo $token;
 		}
 ?>
