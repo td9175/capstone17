@@ -36,12 +36,12 @@ Ionic setup: [ionic](http://www.ionicframework.com)
 ```ionic serve```
 
 - Build the app for your platform
+- - Note: you will need Xcode installed and run the command on a Mac to build the iOS app locally, as well as the Java JDK + Android Studio to build for Android.
 ```
 ionic build android
 ionic build ios
 ionic build browser
 ```
-Note: you will need Xcode installed and run the command on a Mac to build the iOS app locally, as well as the Java JDK + Android Studio to build for Android.
 
 - To host the browser build, set the
 ```DocumentRoot``` to: ```/platforms/browser/www```
