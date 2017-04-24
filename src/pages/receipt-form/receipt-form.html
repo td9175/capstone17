@@ -1,13 +1,7 @@
-<!--
-  Generated template for the ReceiptForm page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ReceiptForm</ion-title>
+    <ion-title>Receipt Form</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,19 +9,35 @@
 
 <ion-content padding>
 
-  <ion-list no-lines>
+  <!--<ion-list no-lines>
     <div *ngFor="let product of searchJson">
       <ion-item item-left>
         <h2>Product name: {{product.item}}</h2>
       </ion-item>
       <ion-item>
         <ion-label floating>${{product.amount}}</ion-label>
-        <ion-input type="text" value= {{product.amount}}></ion-input>
+        <ion-input class = "getThis" type="number" value= {{product.amount}}></ion-input>
       </ion-item>
     </div>
   </ion-list>
 
-  <button ion-button (click)="totalUp()">Click Me to Total Up!</button>
+  <button ion-button (click)="totalUp()">Click Me to Total Up!</button>-->
+
+   <!--Receipt Confirm--> 
+  <form #form="ngForm" (ngSubmit)="receiptForm(form)">
+    <ion-item>
+      <ion-label>Total Receipt:</ion-label>
+      <ion-input 
+      #totalPrice="ngModel" 
+      required type="number" 
+      class="form-container" 
+      name="totalPrice" 
+      [ngModel]="model.totalPrice" 
+      (ngModelChange)="model.totalPrice=$event">
+      </ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Confirm</button>
+  </form>
 
 
 </ion-content>
