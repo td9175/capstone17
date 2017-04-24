@@ -6,6 +6,7 @@
 
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
+use \Firebase\JWT\JWT;
 
 	// RESTful API for User Account functions
 	class UserAccount2 extends REST_Controller {
@@ -60,7 +61,7 @@ require('application/libraries/REST_Controller.php');
 				$this->response($disabled_msg, 403); // 403 Forbidden
 				// Check if email and password match
 			} elseif (password_verify($password, $login_response['hash_pass'])){
-        use \Firebase\JWT\JWT;
+
         // $tokenId = base64_encode(mcrypt_create_iv(32));
         // $tokenId = random_bytes(32);
         $issuedAt   = time();
