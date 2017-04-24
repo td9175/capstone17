@@ -20,9 +20,16 @@ class Drugs extends CI_Controller {
     	return strtr(base64_encode($data), '+/', '__');
 	}
 
-	public function search_for_drug($searchQuery){
+	public function search_for_drug(){
 			// Check if a user is logged in
-			// is_logged_in();
+			is_logged_in();
+
+			if (!isset($this->post('searchQuery'))) {
+				echo "Search for something";
+			}
+
+			$searchQuery = $this->post('searchQuery');
+
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
@@ -62,9 +69,16 @@ class Drugs extends CI_Controller {
     }
 
 
-    public function price_comparison($name){
+    public function price_comparison(){
 			// Check if a user is logged in
-			// is_logged_in();
+			is_logged_in();
+
+			if (!isset($this->post('name'))) {
+				echo "Name of drug required."
+			}
+
+			$name = $this->post('name');
+
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
       $secretKey = $this->config->item('secretKey');
