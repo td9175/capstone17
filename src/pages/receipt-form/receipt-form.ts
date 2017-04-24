@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { UserGlobals } from './../shared/user-api.service';
 
 /*
   Generated class for the ReceiptForm page.
@@ -15,29 +16,16 @@ export class ReceiptFormPage {
 
   searchJson: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.searchJson = [
-      {
-        item: 'Product something',
-        amount: '4.99'
-      },
-      {
-        item: 'Something Product',
-        amount: '2.59'
-      },
-      {
-        item: 'This is Stupid',
-        amount: '4.36'
-      },
-      {
-        item: 'Almost done with this shit!',
-        amount: '5.99'
-      }
-    ];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userGlobals: UserGlobals) {
+    this.searchJson = this.userGlobals.getParsedPrices();
+    //this.searchJson = [{"item":" NGA USIOO","amount":"9.97"},{"item":" SPTSUNBLOCK","amount":"5.98"},{"item":" ALOE GEL","amount":"6.97"}];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReceiptFormPage');
+    //this.searchJson = this.userGlobals.getParsedPrices();
+    console.log(this.searchJson);
+    //console.log(this.userGlobals.getParsedPrices());
   }
 
   totalUp(){

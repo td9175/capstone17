@@ -12,6 +12,7 @@ import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angul
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 import { Injectable } from '@angular/core';
 import { UserGlobals } from './../shared/user-api.service';
+import { ReceiptFormPage } from './../receipt-form/receipt-form';
 
 /*
   Generated class for the Vault page.
@@ -27,6 +28,7 @@ export class VaultPage {
 
   receiptImage: any;
   parsedPrices: any;
+  result: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public camera: Camera, private actionSheet: ActionSheet, private actionSheetCtrl: ActionSheetController, private loadingController: LoadingController, private http: Http, private userGlobals: UserGlobals) {}
 
@@ -162,6 +164,10 @@ export class VaultPage {
 
   loadUploadPage(){
 
+  }
+
+  loadSomeShitDebug() {
+    this.navCtrl.push(ReceiptFormPage);
   }
 
   loadMyVaultPage(){

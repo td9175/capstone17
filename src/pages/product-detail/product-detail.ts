@@ -26,7 +26,7 @@ export class ProductDetail {
   }
   
   loadJsonFiles(){
-    this.userApi.getProductPrices().subscribe(
+    this.userApi.getProductPricesPost().subscribe(
       result => {
         if (result.success === true) {
           this.drug=result;

@@ -14,7 +14,6 @@ export class UserGlobals {
     this.globalEmail = null;
     this.globalSession = null;
     this.didRegister = false;
-    this.parsedPrices = null;
   }
 
   sleep (time) {
@@ -113,11 +112,33 @@ export class UserApi {
     // https://capstone.td9175.com/ci/index.php/HealthAccount/hsa/email/umbcapstone17%40gmail.com
     
     getProductData(){
+        //searchQuery
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
     }
 
     getProductPrices(){
+        //name
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
+    }
+
+    getProductPricesPost() {
+        let body = new URLSearchParams();
+            body.set('name', this.drugToGetDetails);
+        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('https://capstone.td9175.com/ci/index.php/Drugs/price_comparison/', body, options)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    }
+
+    getProductDataPost() {
+        let body = new URLSearchParams();
+            body.set('searchQuery', this.drugToSearch);
+        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post('https://capstone.td9175.com/ci/index.php/Drugs/search_for_drug/', body, options)
+                    .map((res:Response) => res.json())
+                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
     

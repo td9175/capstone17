@@ -61,7 +61,7 @@ export class ProductsPage {
   }
 
   loadsearch(){
-    this.userApi.getProductData().subscribe(
+    this.userApi.getProductDataPost().subscribe(
       result => {
         if (result.success === true) {
           this.searchJson=result.data.candidates;
