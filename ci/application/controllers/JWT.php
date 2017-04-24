@@ -7,7 +7,7 @@ use Lcobucci\JWT\ValidationData;
 class JWT extends REST_Controller {
 
   function buildJWT_get() {
-    if(isset($_GET['jwtSubject'])) //if the form has been submitted
+    if($_GET['jwtSubject'] !== NULL) //if the form has been submitted
        {
                $builttoken = (new Builder())->set('sub', $_GET['jwtSubject']) // Configures a new claim, called "uid"
                            ->getToken(); // Retrieves the generated token
@@ -20,7 +20,7 @@ class JWT extends REST_Controller {
 
   function verifyJWT_get() {
 
-    if (isset($this->get('token'))) {
+    if ($this->get('token') !== NULL) {
       $token = $this->get('token');
       $data = new ValidationData(); // It will use the current time to validate (iat, nbf and exp)
       // $data->setIssuer('http://example.com');
