@@ -43,11 +43,16 @@
       (ngModelChange)="model.password=$event">
       </ion-input>
     </ion-item>
+    <ion-item text-wrap *ngIf="(LoginStatus == false)">
+      <p>Incorrect username or password.</p>
+    </ion-item>
     <button ion-button type="submit" block>Log in</button>
   </form>
 
   <button ion-button type="button" (click)="enrollNow()" block>Register</button>
-  <button ion-button type="button" (click)="twelveBitDebug()" block>Debug Home</button>
+  <!--Debug to skip login-->
+  <!--This should return an error login, and wont let anything appear on-->
+  <!--<button ion-button type="button" (click)="twelveBitDebug()" block>Debug Home</button>-->
   </div>
 
 

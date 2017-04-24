@@ -21,16 +21,17 @@ import { LoginModel } from './../../models/login.model';
   templateUrl: 'login.html'
 })
 
+
 export class LoginPage {
   model = new LoginModel("", "");
 
+  LoginStatus: any;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) { }
 
-  // Test console log below, should be deleted in further versions.
+  //Test console log below, should be deleted in further versions.
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
-    console.log('sami is here');
-    // added cheeky response here.
     console.log('interesting use of console logs sami');
   }
 
@@ -66,11 +67,16 @@ export class LoginPage {
         console.log(this.userGlobals.getGlobalSession());
         //this.toast.show("Successfully logged in! Redirecting you now...", "1800", "bottom");
         this.navCtrl.push(HomePage);
+        this.LoginStatus = true;
+        console.log("Login Status: ", this.LoginStatus)
       }
       else {
         loader.dismissAll();
         //this.toast.show("Invalid username or password.", "1800", "center");
+
         console.log("Login error.");
+        this.LoginStatus = false;
+        console.log("Login Status: ", this.LoginStatus)
       }
     }, err => {
       loader.dismissAll();
