@@ -1,7 +1,7 @@
 <?php
 use Lcobucci\JWT\Builder;
-if(isset($_POST['jwtSubject'])) //if the form has been submitted
-		{
+// if(isset($_POST['jwtSubject'])) //if the form has been submitted
+// 		{
 
             $builttoken = (new Builder())->setIssuer('http://example.com') // Configures the issuer (iss claim)
                         ->setAudience('http://example.org') // Configures the audience (aud claim)
@@ -9,7 +9,7 @@ if(isset($_POST['jwtSubject'])) //if the form has been submitted
                         ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
                         ->setNotBefore(time() + 60) // Configures the time that the token can be used (nbf claim)
                         ->setExpiration(time() + 3600) // Configures the expiration time of the token (nbf claim)
-                        ->set('sub', $_POST['jwtSubject']) // Configures a new claim, called "uid"
+                        ->set('sub', 'test') // Configures a new claim, called "uid"
                         ->getToken(); // Retrieves the generated token
 
 
@@ -30,5 +30,5 @@ if(isset($_POST['jwtSubject'])) //if the form has been submitted
             // echo $tokenFinal . "\n";
             // echo "Dale";
             echo $builttoken;
-		}
+		// }
 ?>
