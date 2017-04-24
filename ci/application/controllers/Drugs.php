@@ -74,7 +74,7 @@ class Drugs extends CI_Controller {
 			is_logged_in();
 
 			if (!isset($this->post('name'))) {
-				echo "Name of drug required."
+				echo "Name of drug required.";
 			}
 
 			$name = $this->post('name');
