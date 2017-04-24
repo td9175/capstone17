@@ -10,13 +10,12 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
+  
   accountsTab = AccountsPage;
   vaultTab = VaultPage;
   productsTab = ProductsPage;
   servicesTab = ServicesPage;
   
-  //backand just didn't play nice with iponic, looking at alternatives.
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {

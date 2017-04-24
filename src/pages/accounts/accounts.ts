@@ -41,18 +41,17 @@ export class AccountsPage {
     // get HSA-FSA Data
     // this.userApi.getUserHSAData().then(data => this.userhsas = data);
     // this.userApi.getUserFSAData().then(data => this.userfsas = data);
-    this.userApi.getUserInfoData().then(data => this.userinfos = data);
     this.loggedInUser = this.userGlobals.getGlobalEmail();
     if(this.userGlobals.isLoggedIn()==true) {
       this.userLoggedIn = true;
       this.loadUserHsa();
       this.loadUserFsa();
+      this.userApi.getUserInfoData().then(data => this.userinfos = data);
+      console.log("userinfo = ", this.userinfos);
     } else {
       this.userLoggedIn = false;
     }
-    // would it be redundant to show balance here? Would we rather have them click on the account.
-    //this.userApi.getHsaBalance().then(data => this.userhsabalance);
-    //this.userApi.getFsaBalance().then(data => this.userfsabalance);
+
   }
   loadUserHsa(){
     this.userApi.getUserHSAData().then(
@@ -96,6 +95,7 @@ export class AccountsPage {
     this.navCtrl.popToRoot();
   }
   
+  // Helpers for passing HSA or FSA type to account-detail page.
   loadHsaAccountDetails(event, accountType){
     accountType = "HSA";
     this.navCtrl.push(AccountDetailPage, { accountType: accountType });

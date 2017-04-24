@@ -51,7 +51,7 @@
       more results, but currently top 20.
   -->
 
-  <!--For future reference use the ? elvis operator with *ngIf,-->
+  <!--For future reference use the ? elvis operator with *ngIf(data?.keyvalue-->
   <p ion-text color="danger" class="alert-noresult" *ngIf="(results?.length==0)">No Health Services Found.</p>
   <ion-list>
     <a button ion-item *ngFor="let result of results" (click)="serviceClicked($event, result)" detail-push>
