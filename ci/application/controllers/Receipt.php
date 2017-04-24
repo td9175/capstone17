@@ -17,7 +17,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					$this->load->model('ReceiptModel');
 		}
 
+		
 		public function indent($json) {
+		//purpose: put response from OCR in format that the regex can go through
 
 				$result      = '';
 				$pos         = 0;
@@ -70,6 +72,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
   	public function qualified_receipt_regex_post($results) {
+  	//purpose: take response from OCR and pull out qualifying HSA items and their amounts
 			// Check if a user is logged in
 			// is_logged_in();
 
@@ -131,7 +134,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
   		}
 
 		public function ocr_request() {
-			//imagePath should be the email/name of the file
+		//purpose: take the image of the receipt and extract text 
 			$imagePath = $_SESSION['path'];
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
@@ -183,6 +186,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		}
 
 		function upload_it_post() {
+		//purpose: upload a receipt 
+		
 			// Check if a user is logged in
 			// is_logged_in();
 
@@ -252,6 +257,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	}
 
 	function user_receipts_get() {
+	//purpose: retreive receipt information
 		// Check if a user is logged in
 		// is_logged_in();
 		if ($this->get('email') == NULL) {
@@ -282,6 +288,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	}
 
 	function receipt_post() {
+	//purpose: add new receipt info to DB 
 		// Check if a user is logged in
 		// is_logged_in();
 		if ($this->post('email') == NULL || $this->post('receipt_path') == NULL) {
