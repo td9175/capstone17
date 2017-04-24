@@ -10,7 +10,7 @@ git clone https://github.com/td9175/capstone17.git
 
 - Navigate to the repo
 ```cd capstone17```
--Install node.js 
+- Install node.js 
   Download: https://nodejs.org/en/download/
  ```npm install node.js?```
 - Make sure to update your npm to the latest version
