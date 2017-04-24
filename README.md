@@ -5,11 +5,31 @@
 
 Ionic setup: [ionic](http://www.ionicframework.com)
 **NOTE: Ionic current development using version ^2.2.1**
+- Clone git repository 
+git clone https://github.com/td9175/capstone17.git
 
+- Navigate to the repo
+```cd capstone17```
+-Install node.js 
+  Download: https://nodejs.org/en/download/
+ ```npm install node.js?```
+- Make sure to update your npm to the latest version
+```npm install npm@latest -g```
+- Install ionic
+```npm install -g ionic cordova``` 
+- Navigate to the root of where you downloaded capstone17
+- Install cordova plugins
+``````
+- Check ionic info 
+  ```ionic info```
+- Running the app to test in browser (I recommend chrome)
+
+ionic serve 
 ### For the team:
-
-- Firstly, I recommend checking the Ionic 2 setup documentation, it's really simple, but useful.
-- You'll probably need to run sudo
+- Clone the git repository
+```
+git clone https://github.com/td9175/capstone17.git
+```
 
 - Make sure to update your npm to the latest version.
 ```bash
