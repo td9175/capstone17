@@ -17,6 +17,15 @@ class ReceiptModel extends CI_Model {
 
   function user_receipts_get($email) {
       $this->load->database();
+      
+
+
+
+$date=date_create("2013-03-15");
+echo date_format($date,"M/d/y H:i:s");
+
+</body>
+</html>
 
       $query = "SELECT * FROM Receipt WHERE email = ?";
       $result = $this->db->query($query, $email);
@@ -31,6 +40,8 @@ class ReceiptModel extends CI_Model {
       } else {
         $data = "No user receipts exist";
       }
+      date_format($data['date_time_stamp',"M/d/y h:ia");
+
       return $data;
   }
 
