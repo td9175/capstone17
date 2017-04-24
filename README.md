@@ -3,9 +3,10 @@
 
 ## Current Dev Readme
 
-This guide assumes you have a working MySQL database on localhost:3306 and are running the web server for the app on localhost as well.
+This guide assumes you have a working MySQL database on localhost:3306, a [CodeIgniter 3 installation](https://www.codeigniter.com/download) unzipped to ```DocumentRoot/ci/```, and are running the web server for the app on localhost as well. The development database is ```umb```; username and password are in the ```/ci/application/config/database.php```.
 
 Add the DDL in the ```/ddl``` folder to populate tables
+```mysql -u username -p umb < /ddl/ddl.sql```
 
 Ionic setup: [ionic](http://www.ionicframework.com)
 **NOTE: Ionic current development using version ^2.2.1**
