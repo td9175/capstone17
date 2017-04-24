@@ -14,7 +14,6 @@ require('application/libraries/REST_Controller.php');
     function __construct() {
       parent::__construct();
       $this->load->model('UserAccountModel');
-			$this->config->load('jwt');
     }
 
 		// Register a user account
