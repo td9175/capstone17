@@ -1,8 +1,17 @@
-.alert-validation {
-    text-align: center;
-}
+page-services {
+    .alert-validation {
+        text-align: center;
+    }
 
-.alert-noresult {
-    text-align: center;
-    font-size: 1.4em;
+    .alert-noresult {
+        text-align: center;
+        font-size: 1.4em;
+    }
+
+    .yelp-img{
+        background-color: transparent;
+        border: none;
+        float: right; 
+        position: static;
+    }
 }

@@ -1,17 +1,31 @@
 page-yelp-result{
-  .object-fit_cover { object-fit: cover }
-
+  .object-fit_cover { 
+    object-fit: cover;
+    height: 230px; 
+    background-color: #444; 
+    background-image:url(http://placehold.it/350x250);
+    width: 100%;
+  }
+  /*
   img { height: 230px; background-color: #444; background-image:url(http://placehold.it/350x250);}
 
   img[class] { 
     width: 100%;
   }
+  */
   /*
   .card {
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0); }
   */
   .yelpResult-tag-badge {
     margin-inline-end: 5px;
+  }
+
+  .yelp-img{
+    background-color: transparent;
+    border: none;
+    float: right; 
+    position: static;
   }
   
 }
