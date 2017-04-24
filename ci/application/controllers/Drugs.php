@@ -9,7 +9,7 @@ header("Access-Control-Allow-Credentials: true");
 require('application/libraries/REST_Controller.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Drugs extends CI_Controller {
+class Drugs extends REST_Controller {
 
 	public function __construct(){
         parent::__construct();
@@ -22,7 +22,11 @@ class Drugs extends CI_Controller {
     	return strtr(base64_encode($data), '+/', '__');
 	}
 
-	public function search_for_drug($searchQuery, $token){
+	public function search_for_drug_get(){
+
+		$searchQuery = $this->get('searchQuery');
+		$token = $this->get('token');
+
 		// Check for a valid JSON web token
 		verifyJWT($token);
 
@@ -64,7 +68,11 @@ class Drugs extends CI_Controller {
     }
 
 
-    public function price_comparison($name, $token){
+    public function price_comparison_get(){
+
+			$name = $this->get('name');
+			$token = $this->get('token');
+
 			// Check for a valid JSON web token
 			verifyJWT($token);
 
