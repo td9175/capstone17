@@ -27,14 +27,18 @@ class ReceiptModel extends CI_Model {
           $data[] = array(
             'receipt_id' => $row['receipt_id'],
             'image' => $row['image'],
-            'date_time_stamp' => $row['date_time_stamp'];
+            'date_time_stamp' => date("F jS, Y", strtotime($row['date_time_stamp']));
             
             
             
           );
         }
         
-
+        echo data['date_time_stamp'];
+        $grabDate= $data['date_time_stamp'];
+         $data['date_time_stamp'] = date("F jS, Y", strtotime($grabDate));
+         
+        	echo $data['date_time_stamp'];
       } else {
         $data = "No user receipts exist";
       }

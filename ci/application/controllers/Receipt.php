@@ -308,7 +308,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 	function receipt_post() {
 		// Check for a valid JSON web token
-		verifyJWT($this->post'token'));
+		verifyJWT($this->post('token'));
 
 		if ($this->post('email') == NULL || $this->post('receipt_path') == NULL) {
 			$this->response("Email and receipt_path are required.", 200);
