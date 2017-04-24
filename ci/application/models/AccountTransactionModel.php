@@ -140,10 +140,10 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			var_dump($result);
-
+			// var_dump($result);
+			$num_rows = mysqli_num_rows($result);
 			// $num_rows = $result->num_rows();
-			// echo "$num_rows \n";
+			echo "$num_rows \n";
 			if (!empty($num_rows)) {
 				foreach ($result->result_array() as $row) {
 					echo "checkpoint \n";
