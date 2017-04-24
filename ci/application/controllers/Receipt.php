@@ -116,13 +116,16 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				
 			}
 			
-			//(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]
-			//echo "\nwordstring: $wordString";
+		
 			// Match for qualified items, capture the amount
 			$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/'; //bobby
 			//$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; sami
 			preg_match_all($regex, $wordString, $matches);
-				
+			var_dump($matches)
+			//if (!$matches[1]){
+			//	$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; 
+		//		preg_match_all($regex, $wordString, $matches);
+		//	}	
 			
 			$qualifiedItems = $matches[1]; //item
 			$qualifiedAmounts = $matches[2]; //amount
@@ -134,13 +137,15 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
 			  }
 
-			} else {
-			  $response = "No reimbursement qualified items.";
+			} else { 
+			 
 			
   			}
   			return $response;
 			//$this->response($response, 200);
   		}
+ $response = "No reimbursement qualified items.";
+
 
 		public function ocr_request() {
 		//purpose: take the image of the receipt and extract text 
