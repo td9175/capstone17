@@ -38,7 +38,7 @@ class JWT extends REST_Controller {
   function verifyJWT_post() {
 
     if ($this->post('token') !== NULL) {
-      $token = $this->get('token');
+      $token = $this->post('token');
 
       $token = (new Parser())->parse((string) $token); // Parses from a string
       $token->getHeaders(); // Retrieves the token header
