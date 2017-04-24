@@ -7,7 +7,7 @@ if(isset($_POST['jwtSubject'])) //if the form has been submitted
             $tokenSecret = "superdupersecret2017";
             $tokenForHash = base64_encode($tokenHeader) . "." . base64_encode($tokenPayload);
             $token = hash_hmac("sha256",$tokenForHash,$tokenSecret);
-            $tokenFinal = $tokenForHash . $token;
+            $tokenFinal = $tokenForHash . "." . $token;
 
             echo $tokenHeader . "\n";
             echo $tokenPayload . "\n";
