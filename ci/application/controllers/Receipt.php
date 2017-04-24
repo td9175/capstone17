@@ -119,8 +119,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			//(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]
 			echo "\nwordstring: $wordString";
 			// Match for qualified items, capture the amount
-			//$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
-			$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/';
+			$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/'; //bobby
+			//$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; sami
 			preg_match_all($regex, $wordString, $matches);
 				
 			
@@ -137,8 +137,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			} else {
 			  $response = "No reimbursement qualified items.";
 			
-			return $response;
-			// $this->response($response, 200);
   			}
   			return $response;
 			//$this->response($response, 200);
