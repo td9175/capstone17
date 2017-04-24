@@ -26,5 +26,5 @@ use Lcobucci\JWT\Builder;
             // echo "Dale";
             echo $builttoken;
             echo $tokenFinal;
-		// }
+        }
 ?>
