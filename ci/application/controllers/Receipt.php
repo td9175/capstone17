@@ -77,7 +77,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			// is_logged_in();
 
 			$string = $results;
-			echo $string;
 			// Get the Y cordinate for everything
 			preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
@@ -105,7 +104,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			foreach ($positions as $position) {
 			  // Build regular expression
 			  $regex = '/\d{1,3},'.$position.',\d{1,3},\d{1,3}.*\n.*text":"(.*)"/';
-
+				echo "\n$regex";
 			  // Match for the words
 			  preg_match_all($regex, $string, $matches);
 				$words = $matches[1];
