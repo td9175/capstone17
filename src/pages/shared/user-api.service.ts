@@ -149,17 +149,6 @@ export class UserApi {
                 .subscribe(res => resolve(res.json()));
         });
     }
-
-    postTransaction(amount){ 
-        let body = new URLSearchParams();
-            body.set('amount', amount);
-        let headers = new Headers({ 'Content-Type': 'application/form-data' });
-        let options = new RequestOptions({ headers: headers });
-
-        return this.http.post('https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_hsa_account/', body)
-                    .map((res:Response) => res.json())
-                    .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
-  }
     
     
     // Firebase test data:

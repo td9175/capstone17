@@ -17,7 +17,7 @@ import { ReceiptModel } from './../../models/receiptForm.model';
 })
 export class ReceiptFormPage {
 
-  model = new ReceiptModel(0);
+  model = new ReceiptModel(this.userGlobals.getGlobalEmail(), this.userGlobals.getGlobalSession(), 0);
 
   searchJson: any;
   total: any;
