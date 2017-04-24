@@ -22,9 +22,9 @@ class Drugs extends CI_Controller {
     	return strtr(base64_encode($data), '+/', '__');
 	}
 
-	public function search_for_drug($searchQuery){
+	public function search_for_drug($searchQuery, $token){
 		// Check for a valid JSON web token
-		verifyJWT($this->get('token'));
+		verifyJWT($token);
 
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
@@ -64,9 +64,9 @@ class Drugs extends CI_Controller {
     }
 
 
-    public function price_comparison($name){
+    public function price_comparison($name, $token){
 			// Check for a valid JSON web token
-			verifyJWT($this->get('token'));
+			verifyJWT($token);
 
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');

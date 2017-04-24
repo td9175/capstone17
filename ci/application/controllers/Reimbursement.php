@@ -20,8 +20,9 @@ require('application/libraries/REST_Controller.php');
     // POST variables: email, amount
     function reimburse_hsa_account_post(){
       // Required: email, amount
-      // Check if a user is logged in
-			is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->post('token'));
+
       $this->load->model('AccountTransactionModel');
       $this->load->model('ReceiptModel');
 
@@ -46,8 +47,9 @@ require('application/libraries/REST_Controller.php');
 		// Make POST requests to https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_fsa_account
 		// POST variables: email, amount
     function reimburse_fsa_account_post(){
-      // Check if a user is logged in
-			is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->post('token'));
+
       $this->load->model('AccountTransactionModel');
       $this->load->model('ReceiptModel');
 
@@ -72,8 +74,8 @@ require('application/libraries/REST_Controller.php');
 		// Make GET requests to https://capstone.td9175.com/ci/index.php/AccountTransaction/user_reimbursements
     // GET variables: email
 		function user_reimbursements_get() {
-			// Check if a user is logged in
-			is_logged_in();
+			// Check for a valid JSON web token
+			verifyJWT($this->get('token'));
 
 			// Check for the get variable
 			if (!$this->get('email')) {
