@@ -77,6 +77,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			// is_logged_in();
 
 			$string = $results;
+			echo $string;
 			// Get the Y cordinate for everything
 			preg_match_all('/\d+,(\d+),\d+,\d+/i', $string, $matches);
 
