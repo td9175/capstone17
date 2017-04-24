@@ -81,7 +81,7 @@ import { NgForm } from '@angular/forms/src/directives';
     TaxInfoPage,
     VaultPage,
     UserSettingsPage,
-    Page2,
+    Page1,
     MyVaultPage,
     AddReceiptPage,
     ProductDetail,
