@@ -12,17 +12,31 @@ git clone https://github.com/td9175/capstone17.git
 ```cd capstone17```
 - Install node.js 
   Download: https://nodejs.org/en/download/
- ```npm install node.js?```
 - Make sure to update your npm to the latest version
-```npm install npm@latest -g```
+```sudo npm install npm@latest -g```
 - Install ionic
-```npm install -g ionic cordova``` 
+```sudo npm install -g ionic cordova``` 
 - Navigate to the root of where you downloaded capstone17
+- Add Cordova Platforms
+```ionic platform add browser android ios```
 - Install cordova plugins
+```ionic plugin add cordova-plugin-actionsheet cordova-plugin-camera cordova-plugin-compat cordova-plugin-console cordova-plugin-device cordova-plugin-file cordova-plugin-file-transfer cordova-plugin-filepath cordova-plugin-inappbrowser cordova-plugin-splashscreen cordova-plugin-statusbar cordova-plugin-whitelist cordova-plugin-x-toast ionic-plugin-keyboard```
 - Check ionic info 
   ```ionic info```
+- Check ionic plugins
+```ionic plugin```
+- Check ionic platforms
+```ionic platforms```
 - Running the app to test in browser (I recommend chrome)
-```ionic serve``` 
+```ionic serve```
+
+- Build the app for your platform
+```ionic build android
+ionic build ios
+ionic build browser```
+
+- To host the browser build, set the ```DocumentRoot``` to: ```/platforms/browser/www```
+
 ### For the team:
 - Clone the git repository
 ```
