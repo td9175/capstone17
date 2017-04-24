@@ -81,36 +81,16 @@ require('application/libraries/REST_Controller.php');
 						'name' => $row[0]['name'], //  name
                       ]
 	        ];
-      $secretKey = base64_decode($this->config->item("SECRET_KEY"));
-      /// Here we will transform this array into JWT:
-      $jwt = JWT::encode(
-                $data, //Data to be encoded in the JWT
-                $secretKey, // The signing key
-                 $this->config->item("ALGORITHM")
-               );
-     $unencodedArray = ['jwt' => $jwt];
-      echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}"
+        $secretKey = base64_decode($this->config->item("SECRET_KEY"));
+        /// Here we will transform this array into JWT:
+        $jwt = JWT::encode(
+                  $data, //Data to be encoded in the JWT
+                  $secretKey, // The signing key
+                  $this->config->item("ALGORITHM")
+                 );
+        $unencodedArray = ['jwt' => $jwt];
+        echo  "{'status' : 'success','resp':".json_encode($unencodedArray)."}";
 
-
-
-
-
-
-
-          // // Set the session variable
-					// $_SESSION['logged_in'] = TRUE;
-          // $_SESSION['email'] = $email;
-					// // If the account has admin priviledge set the admin session variable
-					// if ($login_response['is_admin']) {
-					// 	$_SESSION['is_admin'] = TRUE;
-					// }
-					// $session_name = session_name();
-					// $session_id = session_id();
-					// $session_path = '/';
-					// $session_domain = "capstone.td9175.com";
-					// $session_data = array($session_name => $session_id, 'path' => $session_path, 'domain' => $session_domain);
-          // // Send back a response with session data, 200 Success
-          // $this->response($session_data, 200);
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
           $this->response($error_msg, 400);
