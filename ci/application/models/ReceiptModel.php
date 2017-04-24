@@ -40,7 +40,8 @@ echo date_format($date,"M/d/y H:i:s");
       } else {
         $data = "No user receipts exist";
       }
-      date_format($data['date_time_stamp',"M/d/y h:ia");
+      $formatDate = date_format($data['date_time_stamp',"M/d/y h:ia");
+      $data['date_time_stamp'] = $formatDate;
 
       return $data;
   }
