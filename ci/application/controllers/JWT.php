@@ -10,7 +10,7 @@ class JWT extends REST_Controller {
   function buildJWT_post() {
     if($this->post('jwtSubject') !== NULL) //if the form has been submitted
        {
-               $builttoken = (new Builder())->set('sub', $_GET['jwtSubject']) // Configures a new claim, called "uid"
+               $builttoken = (new Builder())->set('sub', $this->post('jwtSubject')) // Configures a new claim, called "uid"
                            ->getToken(); // Retrieves the generated token
                $tokenSecret = "superdupersecret2017";
                $token = hash_hmac('sha256',$builttoken,$tokenSecret);
