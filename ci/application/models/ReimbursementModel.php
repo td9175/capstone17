@@ -42,7 +42,7 @@
 							'image' => $row['image'],
 							'amount' => $row['amount'],
 							'account_number' => $row['account_number'],
-							'date_time_stamp' => $row['date_time_stamp']
+							'date_time_stamp' => date("F jS, Y", strtotime($row['date_time_stamp']))
 						);
 					}
 			} else { $data = "No reimbursment records found."; }
