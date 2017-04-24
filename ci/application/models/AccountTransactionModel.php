@@ -140,6 +140,7 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
+			var_dump($result);
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
 					echo "checkpoint \n";
