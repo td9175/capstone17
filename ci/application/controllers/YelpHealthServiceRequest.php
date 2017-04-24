@@ -166,7 +166,7 @@ class YelpHealthServiceRequest extends CI_Controller {
   */
 	function auto_complete(){
 		// Check for a valid JSON web token
-		verifyJWT($this->input-post('token'));
+	 verifyJWT($this->input->post('token'));
 
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
@@ -206,7 +206,7 @@ class YelpHealthServiceRequest extends CI_Controller {
    */
    function search_query() {
 		 // Check for a valid JSON web token
- 		verifyJWT($this->post('token'));
+ 		verifyJWT($this->input->post('token'));
 
 		 // Yelp Fusion API constants
      $apiHost = $this->config->item('apiHost');
@@ -250,7 +250,7 @@ class YelpHealthServiceRequest extends CI_Controller {
    */
 	function business_info(){
 		// Check for a valid JSON web token
-		verifyJWT($this->post('token'));
+	 verifyJWT($this->input->post('token'));
 
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
@@ -276,7 +276,7 @@ class YelpHealthServiceRequest extends CI_Controller {
 	 */
 	function business_reviews(){
 		// Check for a valid JSON web token
-		verifyJWT($this->post('token'));
+	 verifyJWT($this->input->post('token'));
 
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
