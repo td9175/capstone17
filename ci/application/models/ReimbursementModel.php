@@ -17,7 +17,10 @@
       // Build the query
       $query = "INSERT INTO Reimbursement (receipt_id, amount, account_number) VALUES (?,?,?)";
       // Build the parameter array
+			$amount = (Double) $amount;
+			$amount = ($amount * -1);
       $params = array($receipt_id, $amount, $acct_num);
+			var_dump($params);
       // Execute the query
       $result = $this->db->query($query, $params);
       // Check if the insert was successful
