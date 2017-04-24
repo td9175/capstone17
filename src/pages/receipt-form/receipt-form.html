@@ -8,21 +8,6 @@
 
 
 <ion-content padding>
-
-  <!--<ion-list no-lines>
-    <div *ngFor="let product of searchJson">
-      <ion-item item-left>
-        <h2>Product name: {{product.item}}</h2>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>${{product.amount}}</ion-label>
-        <ion-input class = "getThis" type="number" value= {{product.amount}}></ion-input>
-      </ion-item>
-    </div>
-  </ion-list>
-
-  <button ion-button (click)="totalUp()">Click Me to Total Up!</button>-->
-
   <ion-list>
     <ion-item *ngFor= "let product of searchJson">
       <h2>Product Name: {{ product.item }}</h2>
@@ -43,8 +28,23 @@
       (ngModelChange)="model.totalPrice=$event">
       </ion-input>
     </ion-item>
-    <button ion-button type="submit" block>Confirm</button>
+    <ion-list-header>Type of Transaction: </ion-list-header>
+    <ion-item>
+      <ion-label>HSA/FSA</ion-label>
+      <ion-input 
+      #totalPrice="ngModel" 
+      required type="string" 
+      class="form-container" 
+      name="accountType" 
+      [ngModel]="model.accountType" 
+      (ngModelChange)="model.accountType=$event">
+      </ion-input>
+    </ion-item>
+    <button ion-button type="submit" block> Confirm </button>
+
   </form>
+
+  
 
 
 </ion-content>

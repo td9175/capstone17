@@ -1,3 +1,4 @@
+import { FsaTransactionPoster } from './../shared/receipt-FSAtransaction-post.service';
 import { HsaTransactionPoster } from './../shared/receipt-HSAtransaction-post.service';
 import { Component, ElementRef } from '@angular/core';
 import { ModalController, ViewController, NavController, NavParams, LoadingController } from 'ionic-angular';
@@ -18,13 +19,13 @@ import { ReceiptModel } from './../../models/receiptForm.model';
 })
 export class ReceiptFormPage {
 
-  model = new ReceiptModel(this.userGlobals.getGlobalEmail(), this.userGlobals.getGlobalSession(), '0');
+  model = new ReceiptModel(this.userGlobals.getGlobalEmail(), this.userGlobals.getGlobalSession(), '', '0');
 
   searchJson: any;
   total: any;
   results: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController, public hsaTransactionPoster: HsaTransactionPoster) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController, public hsaTransactionPoster: HsaTransactionPoster, public fsaTransactionPoster: FsaTransactionPoster) {
     this.searchJson = [
       {
         item: 'Product something',
@@ -58,18 +59,19 @@ export class ReceiptFormPage {
     totalPrice: this.total
   };
 
+  imputcorrect: any;
+
   receiptForm(form: NgForm) {
-    this.model.totalPrice =this.CalculateTotal();
+    //this.model.totalPrice = this.CalculateTotal();
+    this.model.accountType = this.model.accountType.toLocaleLowerCase();
 
-    console.log("Yay you hit submit");
-    console.log("Total after changes: ", this.model.totalPrice);
+    if(this.model.accountType == "hsa"){
+      let loader = this.loadingController.create({
+        content: 'Adding Account...'
+      });
 
-    let loader = this.loadingController.create({
-      content: 'Adding Account...'
-    });
-
-    loader.present().then(() => {
-        console.log("this is the add", form.value);
+      loader.present().then(() => {
+        console.log("this is the add", form.value.totalPrice);
         this.hsaTransactionPoster.postHsaAddForm(this.model)
         .subscribe(
           data => this.results = data,
@@ -78,7 +80,33 @@ export class ReceiptFormPage {
         );
         loader.dismiss();
         this.goBack();
-    });
+      });
+    }
+    else if (this.model.accountType == "fsa"){
+      let loader = this.loadingController.create({
+        content: 'Adding Account...'
+      });
+
+      loader.present().then(() => {
+        console.log("this is the add", form.value.totalPrice);
+        this.fsaTransactionPoster.postFsaAddForm(this.model)
+        .subscribe(
+          data => this.results = data,
+          //err => console.log('error: ', err),
+          () => console.log('results: ', this.results),
+        );
+        loader.dismiss();
+        this.goBack();
+      });
+    }
+    else{
+      this.imputcorrect = false;
+    }
+
+    
+    console.log("Yay you hit submit");
+    console.log("Total after changes: ", this.model.totalPrice);
+    console.log("You selected: ", this.model.accountType)
   }
 
   goBack() {
@@ -89,7 +117,10 @@ export class ReceiptFormPage {
     var total = 0;
     for (let item of this.searchJson){
       total += Number(item.amount);
+      console.log(total);
+      console.log(item.amount);
     }
+    console.log("final total: ",total);
     return total.toString();
   }
 }

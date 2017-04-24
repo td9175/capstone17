@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class HsaTransactionPoster {
+export class FsaTransactionPoster {
 
     constructor(private http: Http){
     }
@@ -20,7 +20,7 @@ export class HsaTransactionPoster {
         return Observable.throw(error.statusText);
     }
     
-    postHsaAddForm(addRecieptTransaction: ReceiptModel){ 
+    postFsaAddForm(addRecieptTransaction: ReceiptModel){ 
         let body = new URLSearchParams();
             body.set('email', addRecieptTransaction.email);
             body.set('token', addRecieptTransaction.token);
@@ -32,11 +32,11 @@ export class HsaTransactionPoster {
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers })
 
-        console.log("Testing Add Hsa: ", this.http.post('https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_hsa_account', body, options)
+        console.log("Testing Add Hsa: ", this.http.post('https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_fsa_account', body, options)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error')))
 
-        return this.http.post('https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_hsa_account', body, options)
+        return this.http.post('https://capstone.td9175.com/ci/index.php/Reimbursement/reimburse_fsa_account', body, options)
                     .map((res:Response) => res.json())
                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
