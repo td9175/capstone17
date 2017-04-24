@@ -141,8 +141,9 @@
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
 			// var_dump($result);
-			echo "$result->num_rows()\n";
-			if ($result->num_rows() > 0) {
+			$num_rows = $result->num_rows();
+			echo "$num_rows \n";
+			if (!empty($num_rows)) {
 				foreach ($result->result_array() as $row) {
 					echo "checkpoint \n";
 					$data = $row['balance'];
