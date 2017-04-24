@@ -83,28 +83,22 @@ export class UserApi {
     constructor(private http: Http, private userGlobals: UserGlobals) { }
 
     getUserHSAData(){
-        //asdf   + expires=Sun, 23-Apr-2017 22:07:12 GMT; Max-Age=7200; path=/; HttpOnly
-        let options = new Headers({'ci_session': this.userGlobals.getGlobalSession()});
-        console.log(options);
-        console.log("herpderp getUserHSAData");
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/hsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
 
     getUserFSAData(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/fsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/HealthAccount/fsa/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
 
     getUserInfoData(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/UserAccount/user?email=${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/UserAccount/user/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
@@ -113,50 +107,45 @@ export class UserApi {
     // https://capstone.td9175.com/ci/index.php/HealthAccount/hsa/email/umbcapstone17%40gmail.com
     
     getProductData(){
-        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}`).map(res => res.json());
+        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/search_for_drug/${this.drugToSearch}/token/${this.userGlobals.getGlobalSession()}`).map(res => res.json());
     }
 
     getProductPrices(){
-        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
+        return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}/token/${this.userGlobals.getGlobalSession()}`).map(res => res.json());
     }
     
     /*Getting Account Details*/
     getHsaTransaction(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_transaction/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
 
     getFsaTransaction(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_transaction/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_transaction/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
 
     getHsaBalance(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/hsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
 
     getFsaBalance(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/AccountTransaction/fsa_balance/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
 
     getReceipts(){
-        let options = new Headers({'Cookie': 'PHPSESSID=' + this.userGlobals.getGlobalSession()});
         return new Promise(resolve => {
-            this.http.get(`${this.baseUrl}/ci/index.php/Receipt/user_receipts/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}`, options)
+            this.http.get(`${this.baseUrl}/ci/index.php/Receipt/user_receipts/email/${encodeURIComponent(this.userGlobals.getGlobalEmail())}/token/${this.userGlobals.getGlobalSession()}`)
                 .subscribe(res => resolve(res.json()));
         });
     }
