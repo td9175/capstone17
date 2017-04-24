@@ -123,9 +123,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			preg_match_all($regex, $wordString, $matches);
 			var_dump($matches);
 			if (empty($matches[1])){
-				echo "\n need to try sami";
-				//$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; 
-				//preg_match_all($regex, $wordString, $matches);
+				$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; 
+				preg_match_all($regex, $wordString, $matches);
 			}	
 			
 			$qualifiedItems = $matches[1]; //item
