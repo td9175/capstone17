@@ -22,7 +22,6 @@ git clone https://github.com/td9175/capstone17.git
 - Check ionic info 
   ```ionic info```
 - Running the app to test in browser (I recommend chrome)
-
 ```ionic serve``` 
 ### For the team:
 - Clone the git repository
