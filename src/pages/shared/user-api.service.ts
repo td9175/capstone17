@@ -123,8 +123,9 @@ export class UserApi {
 
     getProductPricesPost() {
         let body = new URLSearchParams();
+            body.set('Set-Cookie', 'ci_session='+this.userGlobals.getGlobalSession());
             body.set('name', this.drugToGetDetails);
-        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
         return this.http.post('https://capstone.td9175.com/ci/index.php/Drugs/price_comparison/', body, options)
                     .map((res:Response) => res.json())
@@ -134,7 +135,7 @@ export class UserApi {
     getProductDataPost() {
         let body = new URLSearchParams();
             body.set('searchQuery', this.drugToSearch);
-        let headers = new Headers({ 'Content-Type': 'application/form-data' });
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
         return this.http.post('https://capstone.td9175.com/ci/index.php/Drugs/search_for_drug/', body, options)
                     .map((res:Response) => res.json())
