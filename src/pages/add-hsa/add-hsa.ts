@@ -38,7 +38,7 @@ export class AddHSAPage {
         console.log("this is the add", form.value);
         this.hsaPoster.postHsaAddForm(this.model)
         .subscribe(
-          data => this.results = data,
+          data => {this.results = data; console.dir(data);},
           //err => console.log('error: ', err),
           () => console.log('results: ', this.results),
         );

@@ -1,26 +1,57 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Http, Headers } from '@angular/http';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { UserApi, User, AuthService, UserGlobals } from './../shared/user-api.service';
+import { NgForm } from '@angular/forms/src/directives';
+import { FsaPoster } from './../shared/fsa-post.service';
+import { addFsaModel } from './../../models/addfsa.model';
 
-/*
-  Generated class for the AddFSA page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-add-fsa',
   templateUrl: 'add-fsa.html'
 })
 export class AddFSAPage {
+  
+  userinfo: any;
+  results: any;
+  model = new addFsaModel(this.userGlobals.getGlobalEmail(), "", this.userGlobals.getGlobalSession());
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public loadingController: LoadingController, public fsaPoster: FsaPoster, public userGlobals: UserGlobals) {
+    this.userinfo = navParams.get('userinfo');
+    console.log("userinfo passed from accounts: ", this.userinfo);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddFSAPage');
+
+  }
+
+  addFsaForm(form: NgForm) {
+    let loader = this.loadingController.create({
+      content: 'Adding Account...'
+    });
+
+    loader.present().then(() => {
+        console.log("this is the add", form.value);
+        this.fsaPoster.postFsaAddForm(this.model)
+        .subscribe(
+          data => this.results = data,
+          //err => console.log('error: ', err),
+          () => console.log('results: ', this.results),
+        );
+        loader.dismiss();
+        this.goBack();
+    });
   }
 
   goBack() {
     this.navCtrl.pop();
   }
+  /*
+  goBackSuccess() {
+    this.navCtrl.pop();
+    location.reload();
+  }
+  */
 
 }
