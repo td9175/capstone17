@@ -119,7 +119,7 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() === 1) {
+			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
 					$data = $row['balance'];
 				}
@@ -140,7 +140,7 @@
 			// Execute the query
 			$result = $this->db->query($query, $email);
 			// Check if any rows were returned
-			if ($result->num_rows() === 1) {
+			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
 					$data = $row['balance'];
 				}
