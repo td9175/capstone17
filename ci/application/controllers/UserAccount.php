@@ -6,6 +6,7 @@
 
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
+use Lcobucci\JWT\Builder;
 
 	// RESTful API for User Account functions
 	class UserAccount extends REST_Controller {
