@@ -142,6 +142,7 @@
 			// Check if any rows were returned
 			if ($result->num_rows() > 0) {
 				foreach ($result->result_array() as $row) {
+					echo "checkpoint \n";
 					$data = $row['balance'];
 				}
 			} else {
