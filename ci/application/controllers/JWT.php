@@ -7,8 +7,8 @@ use Lcobucci\JWT\ValidationData;
 // RESTful API for User Account functions
 class JWT extends REST_Controller {
 
-  function buildJWT_get() {
-    if($_GET['jwtSubject'] !== NULL) //if the form has been submitted
+  function buildJWT_post() {
+    if($this->post('jwtSubject') !== NULL) //if the form has been submitted
        {
                $builttoken = (new Builder())->set('sub', $_GET['jwtSubject']) // Configures a new claim, called "uid"
                            ->getToken(); // Retrieves the generated token
@@ -19,9 +19,9 @@ class JWT extends REST_Controller {
        }
   }
 
-  function verifyJWT_get() {
+  function verifyJWT_post() {
 
-    if ($this->get('token') !== NULL) {
+    if ($this->post('token') !== NULL) {
       $token = $this->get('token');
       $data = new ValidationData(); // It will use the current time to validate (iat, nbf and exp)
       // $data->setIssuer('http://example.com');
