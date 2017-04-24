@@ -50,7 +50,7 @@ export class AddFSAPage {
           
         );
         loader.dismiss();
-        this.userGlobals.sleep(5000).then(() => {
+        this.userGlobals.sleep(3500).then(() => {
           this.goBack();
         });
     });

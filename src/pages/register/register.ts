@@ -14,6 +14,7 @@ import { RegisterModel } from './../../models/register.model';
 export class RegisterPage {
 
   model = new RegisterModel("", "", "", "");
+  registerStatus: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) { }
 
@@ -45,6 +46,7 @@ export class RegisterPage {
       if(this.userGlobals.getDidRegister()) {
         loader.dismissAll();
         console.log("user did register, yay");
+        this.registerStatus = true;
         //this.toast.show("Successfully logged in! Redirecting you now...", "1800", "bottom");
         this.navCtrl.push(LoginPage);
       }
@@ -52,6 +54,7 @@ export class RegisterPage {
         loader.dismissAll();
         //this.toast.show("Invalid username or password.", "1800", "center");
         console.log("Login error.");
+        this.registerStatus = false;
       }
     }, err => {
       loader.dismissAll();
