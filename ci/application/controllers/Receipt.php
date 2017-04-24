@@ -126,8 +126,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			} else {
 			  $response = "No reimbursement qualified items.";
 			}
-
-			$this->response($response, 200);
+			return $response;
+			// $this->response($response, 200);
   		}
 
 		public function ocr_request() {
@@ -243,7 +243,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 					$results = $this->qualified_receipt_regex_post($parsed);
 					//echo "Parsed results: " . $results;
-					return $results;
+					// return $results;
+					$this->response($results, 200);
 				} else {
 					echo "No results\n";
 				}
