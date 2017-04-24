@@ -139,12 +139,12 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 			} else { 
 			 
-			
+			 $response = "No reimbursement qualified items.";
+
   			}
   			return $response;
 			//$this->response($response, 200);
   		}
- $response = "No reimbursement qualified items.";
 
 
 		public function ocr_request() {
