@@ -14,6 +14,7 @@ require('application/libraries/REST_Controller.php');
     function __construct() {
       parent::__construct();
       $this->load->model('UserAccountModel');
+			$this->config->load('jwt');
     }
 
 		// Register a user account
@@ -59,20 +60,18 @@ require('application/libraries/REST_Controller.php');
 				$this->response($disabled_msg, 403); // 403 Forbidden
 				// Check if email and password match
 			} elseif (password_verify($password, $login_response['hash_pass'])){
-          // Set the session variable
-					$_SESSION['logged_in'] = TRUE;
-          $_SESSION['email'] = $email;
-					// If the account has admin priviledge set the admin session variable
-					if ($login_response['is_admin']) {
-						$_SESSION['is_admin'] = TRUE;
-					}
-					$session_name = session_name();
-					$session_id = session_id();
-					$session_path = '/';
-					$session_domain = "capstone.td9175.com";
-					$session_data = array($session_name => $session_id, 'path' => $session_path, 'domain' => $session_domain);
-          // Send back a response with session data, 200 Success
-          $this->response($session_data, 200);
+				$builttoken = (new Builder())
+										 ->setIssuer('https://capstone.td9175.com') // Configures the issuer (iss claim)
+										 ->setIssuedAt(time()) // Configures the time that the token was issue (iat claim)
+										 ->setExpiration(time() + 3600) // Configures the expiration time of the token (nbf claim)
+										 ->set('sub', $this->post('jwtSubject')) // Configures a new claim, called "uid"
+										->getToken(); // Retrieves the generated token
+				$tokenSecret = $this->config->item('SECRET_KEY');
+				$token = hash_hmac('sha256', $builttoken, $tokenSecret);
+				$tokenFinal = $builttoken . $token;
+				$session_data = array('token' => $tokenFinal);
+        // Send back a response with session data, 200 Success
+        $this->response($session_data, 200);
         } else {
           // Password does not match, send back a response with $error_message, 400 Bad request
           $this->response($error_msg, 400);

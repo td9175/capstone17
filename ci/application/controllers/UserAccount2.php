@@ -62,6 +62,19 @@ use \Firebase\JWT\JWT;
 				// Check if email and password match
 			} elseif (password_verify($password, $login_response['hash_pass'])){
 
+
+          // // Set the session variable
+					// $_SESSION['logged_in'] = TRUE;
+          // $_SESSION['email'] = $email;
+					// // If the account has admin priviledge set the admin session variable
+					// if ($login_response['is_admin']) {
+					// 	$_SESSION['is_admin'] = TRUE;
+					// }
+					// $session_name = session_name();
+					// $session_id = session_id();
+					// $session_path = '/';
+					// $session_domain = "capstone.td9175.com";
+
         // $tokenId = base64_encode(mcrypt_create_iv(32));
         // $tokenId = random_bytes(32);
         $issuedAt   = time();
