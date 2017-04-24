@@ -14,5 +14,6 @@ if(isset($_POST['jwtSubject'])) //if the form has been submitted
             echo $tokenSecret . "\n";
             echo $tokenForHash . "\n";
             echo $token;
+            echo $tokenFinal;
 		}
 ?>
