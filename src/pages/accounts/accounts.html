@@ -22,13 +22,11 @@
 
     <!--Hello Card-->
     <ion-card>
-      <button ion-item (click)="loadUserSettingsDetails()">
+      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadUserSettingsDetails($event, userinfo)">
         <div>
-          <h4 class="account-name">Hello, {{loggedInUser}}</h4>
+          <h4 class="account-name">Hello, {{userinfo.first_name}}</h4>
         </div>
-        <!--<div *ngIf="userLoggedIn==true">Hello, {{loggedInUser}}</div>-->
         <!--<ion-icon name="person" item-left></ion-icon>-->
-        <!--<div *ngIf="userLoggedIn==false">Hello, Not logged in user</div>-->
       </button>
     </ion-card>
     
@@ -37,7 +35,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> Health Service Accounts
       </ion-card-header>
-      <button ion-item *ngFor="let userhsa of userhsas" (click)="loadHsaAccountDetails($event, accountType)">
+      <button ion-item detail-push *ngFor="let userhsa of userhsas" (click)="loadHsaAccountDetails($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userhsa?.account_type=='HSA')">Health Spending Account</h3>
           <h4 class="account-number">Account#: {{userhsa.account_number}}</h4>
@@ -50,7 +48,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No HSA Accounts Found
       </ion-card-header>
-      <button ion-item>
+      <button ion-item detail-push>
         <div>
           <h4 class="account-number">Tap here to add an HSA</h4>
         </div>
@@ -62,7 +60,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> Flexible Service Accounts
       </ion-card-header>
-      <button ion-item *ngFor="let userfsa of userfsas" (click)="loadFsaAccountDetails($event, accountType)">
+      <button ion-item detail-push *ngFor="let userfsa of userfsas" (click)="loadFsaAccountDetails($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Spending Account</h3>
           <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>
@@ -75,7 +73,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No FSA Accounts Found
       </ion-card-header>
-      <button ion-item>
+      <button detail-push ion-item>
         <div>
           <h4 class="account-number">Tap here to add an FSA</h4>
         </div>
@@ -87,12 +85,12 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="call"></ion-icon> Support
       </ion-card-header>
-      <button ion-item (click)="loadHelpPage()">
+      <button ion-item detail-push (click)="loadHelpPage()">
         <div>
           <h4 class="account-support">Tap here for general help</h4>
         </div>
       </button>
-      <button ion-item (click)="loadTaxHelpPage()">
+      <button ion-item detail-push (click)="loadTaxHelpPage()">
         <div>
           <h4 class="account-support">Tap here for tax help</h4>
         </div>
@@ -103,26 +101,17 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="information-circle"></ion-icon> About
       </ion-card-header>
-      <button ion-item (click)="loadAboutPage()">
+      <button ion-item detail-push (click)="loadAboutPage()">
         <div>
           <h4 class="account-support">Tap here for more info about this app</h4>
         </div>
       </button>
     </ion-card>
   
-  </div>
+  </div> 
 
   <!--Return to login page-->
   <button ion-button (click)="loginTest()">Debug Login Back</button>
   <button ion-button (click)="logoutTest()">Debug Logout</button>
   <button ion-button (click)="receiptForm()">Debug Receipt From</button>
-  
-  <!--
-  <button ion-button (click)="loadHsaAccountDetails($event, accountType)">Load HSA Details Page</button>
-  -->
-  <!--FSA Broken right now for user umbcapstone17@gmail.com
-  -->
-  <!--<button ion-button (click)="loadFsaAccountDetails($event, accountType)">Load FSA Details Page</button>
-  -->
-  
 </ion-content>

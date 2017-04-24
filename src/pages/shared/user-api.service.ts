@@ -119,8 +119,6 @@ export class UserApi {
     getProductPrices(){
         return this.http.get(`${this.baseUrl}/ci/index.php/Drugs/price_comparison/${this.drugToGetDetails}`).map(res => res.json());
     }
-
-    
     
     /*Getting Account Details*/
     getHsaTransaction(){

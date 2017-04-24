@@ -31,28 +31,23 @@ export class AccountsPage {
   userLoggedIn: any;
 
   userhsabalance: any;
-  // userfsabalance: any;
-  // accountType: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals, public authService: AuthService) { 
   }
 
   ionViewDidLoad() {
-    // get HSA-FSA Data
-    // this.userApi.getUserHSAData().then(data => this.userhsas = data);
-    // this.userApi.getUserFSAData().then(data => this.userfsas = data);
     this.loggedInUser = this.userGlobals.getGlobalEmail();
     if(this.userGlobals.isLoggedIn()==true) {
       this.userLoggedIn = true;
       this.loadUserHsa();
       this.loadUserFsa();
-      this.userApi.getUserInfoData().then(data => this.userinfos = data);
-      console.log("userinfo = ", this.userinfos);
+      this.loadUserData();
     } else {
       this.userLoggedIn = false;
     }
 
   }
+
   loadUserHsa(){
     this.userApi.getUserHSAData().then(
       data => {
@@ -85,6 +80,13 @@ export class AccountsPage {
     );
   }
 
+  loadUserData(){
+      this.userApi.getUserInfoData().then(
+        data => {this.userinfos = data
+          console.log("userinfo = ", this.userinfos);
+      });
+  }
+
   // for debugging.
   loginTest() {
     this.navCtrl.push(LoginPage);
@@ -106,8 +108,10 @@ export class AccountsPage {
     this.navCtrl.push(AccountDetailPage, { accountType: accountType });
   }
 
-  loadUserSettingsDetails(){
-    this.navCtrl.push(UserSettingsPage);
+  // Navigation
+  loadUserSettingsDetails(event, userinfo){
+    this.navCtrl.push(UserSettingsPage, { userinfo: userinfo });
+    //console.log("Userinfo to pass: ", userinfo);
   }
   
   loadHelpPage(){

@@ -19,17 +19,23 @@
     </ion-card-header>
     <ion-item text-wrap>
       <div>
-        <p>First Name: Placeholder</p>
+        <p>First Name: {{userinfo.first_name}}</p>
       </div>
     </ion-item>
     <ion-item text-wrap>
       <div>
-        <p>Last Name: Placeholder</p>
+        <p>Last Name: {{userinfo.last_name}}</p>
       </div>
     </ion-item>
     <ion-item text-wrap>
       <div>
-        <p>Email: Placeholder</p>
+        <p>Email: {{userinfo.email}}</p>
+      </div>
+    </ion-item>
+    <ion-item text-wrap>
+      <div>
+        <p *ngIf="(userinfo?.is_enabled==1)">Account Status: Active</p>
+        <p *ngIf="(userinfo?.is_enabled==0)">Account Status: Inactive</p>
       </div>
     </ion-item>
   </ion-card>

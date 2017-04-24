@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import { NavController, NavParams } from 'ionic-angular';
+import { NgForm } from '@angular/forms/src/directives';
 
 @Component({
   selector: 'page-user-settings',
@@ -7,7 +9,12 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class UserSettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  userinfo: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http) {
+    this.userinfo = navParams.get('userinfo');
+    console.log("userinfo passed from accounts: ", this.userinfo)
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserSettingsPage');
