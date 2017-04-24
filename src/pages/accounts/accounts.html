@@ -48,7 +48,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No HSA Accounts Found
       </ion-card-header>
-      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadUserSettingsDetails($event, userinfo)">
+      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadAddHsa($event, userinfo)">
         <div>
           <h4 class="account-number">Tap here to add an HSA</h4>
         </div>
@@ -60,7 +60,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> Flexible Service Accounts
       </ion-card-header>
-      <button ion-item detail-push *ngFor="let userfsa of userfsas" (click)="loadFsaAccountDetails($event, accountType)">
+      <button ion-item detail-push *ngFor="let userfsa of userfsas" (click)="loadAddHsa($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Spending Account</h3>
           <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>
@@ -73,7 +73,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> No FSA Accounts Found
       </ion-card-header>
-      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadUserSettingsDetails($event, userinfo)">
+      <button ion-item detail-push *ngFor="let userinfo of userinfos" (click)="loadAddFsa($event, userinfo)">
         <div>
           <h4 class="account-number">Tap here to add an FSA</h4>
         </div>
@@ -107,13 +107,16 @@
         </div>
       </button>
     </ion-card>
-  
+
+    <div padding>
+     <button block ion-button (click)="logoutTest()">Logout</button>
+    </div>
   </div> 
 
   <!--Return to login page-->
   <!--
     <button ion-button (click)="loginTest()">Debug Login Back</button>
   -->
-  <button ion-button (click)="logoutTest()">Debug Logout</button>
+  <!--<button ion-button (click)="logoutTest()">Logout</button>-->
   <button ion-button (click)="receiptForm()">Debug Receipt From</button>
 </ion-content>

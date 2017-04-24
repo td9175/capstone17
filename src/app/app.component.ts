@@ -19,6 +19,8 @@ import { AccountsPage } from './../pages/accounts/accounts';
 import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
+import { AddFSAPage } from './../pages/add-fsa/add-fsa';
+import { AddHSAPage } from './../pages/add-hsa/add-hsa';
 
 // Page1 Dev
 import { Page1 } from '../pages/page1/page1';

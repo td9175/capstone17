@@ -12,7 +12,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <form #form="ngForm" (ngSubmit)="addHsaForm(form)">
     <ion-item>
       <ion-label>Account Number:</ion-label>
@@ -20,12 +20,11 @@
       #fname="ngModel" 
       required type="number" 
       class="form-container" 
-      name="hsaAccountNumber" 
-      [ngModel]="model.hsaAccountNumber" 
-      (ngModelChange)="model.hsaAccountNumber=$event">
+      name="account_number"
+      [ngModel]="model.account_number" 
+      (ngModelChange)="model.account_number=$event">
       </ion-input>
     </ion-item>
     <button ion-button type="submit" block>Add HSA Account</button>
   </form>
-
 </ion-content>

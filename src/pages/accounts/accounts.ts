@@ -98,7 +98,6 @@ export class AccountsPage {
     this.authService.appLogout();
     const root = this.app.getRootNav();
     root.popToRoot();
-    location.reload();
   }
   
   // Helpers for passing HSA or FSA type to account-detail page.
@@ -119,12 +118,12 @@ export class AccountsPage {
   }
 
   loadAddHsa(event, userinfo){
-    this.navCtrl.push(UserSettingsPage, { userinfo: userinfo });
+    this.navCtrl.push(AddHSAPage, { userinfo: userinfo });
     console.log("Userinfo to pass to Add-Hsa: ", userinfo);
   }
   
   loadAddFsa(event, userinfo){
-    this.navCtrl.push(UserSettingsPage, { userinfo: userinfo });
+    this.navCtrl.push(AddFSAPage, { userinfo: userinfo });
     console.log("Userinfo to pass to Add-Fsa: ", userinfo);
   }
 

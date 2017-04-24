@@ -30,6 +30,7 @@ import { Page1 } from '../pages/page1/page1';
 
 // APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
+import { HsaPoster } from './../pages/shared/hsa-post.service';
 import { User, UserApi, AuthService, UserGlobals } from './../pages/shared/user-api.service';
 //import { ReceiptPoster } from './../pages/shared/receipt-post.service';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
@@ -48,6 +49,8 @@ import { NgForm } from '@angular/forms/src/directives';
     RegisterPage,
     MyApp,
     AccountsPage,
+    AddHSAPage,
+    AddFSAPage,
     AboutPage,
     ReportsPage,
     HelpPage,
@@ -74,6 +77,8 @@ import { NgForm } from '@angular/forms/src/directives';
     HomePage,
     RegisterPage,
     AccountsPage,
+    AddHSAPage,
+    AddFSAPage,
     AboutPage,
     ReportsPage,
     HelpPage,
@@ -91,6 +96,6 @@ import { NgForm } from '@angular/forms/src/directives';
     AccountDetailPage,
     ReceiptFormPage
   ],
-  providers: [YelpPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
+  providers: [YelpPoster, HsaPoster, {provide: ErrorHandler, useClass: IonicErrorHandler}, Camera, ActionSheet, ActionSheetController, AuthService, User, UserApi, UserGlobals, NgForm]
 })
 export class AppModule {}

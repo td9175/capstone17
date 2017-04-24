@@ -19,4 +19,8 @@ export class AddFSAPage {
     console.log('ionViewDidLoad AddFSAPage');
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
+
 }
