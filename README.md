@@ -6,7 +6,7 @@
 Ionic setup: [ionic](http://www.ionicframework.com)
 **NOTE: Ionic current development using version ^2.2.1**
 - Clone git repository 
-git clone https://github.com/td9175/capstone17.git
+```git clone https://github.com/td9175/capstone17.git```
 
 - Navigate to the repo
 ```cd capstone17```
