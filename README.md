@@ -3,6 +3,10 @@
 
 ## Current Dev Readme
 
+This guide assumes you have a working MySQL database on localhost:3306 and are running the web server for the app on localhost as well.
+
+Add the DDL in the ```/ddl``` folder to populate tables
+
 Ionic setup: [ionic](http://www.ionicframework.com)
 **NOTE: Ionic current development using version ^2.2.1**
 - Clone git repository 
@@ -12,7 +16,7 @@ Ionic setup: [ionic](http://www.ionicframework.com)
 ```cd capstone17```
 - Install node.js 
   Download: https://nodejs.org/en/download/
-- Make sure to update your npm to the latest version
+- Update npm to the latest version
 ```sudo npm install npm@latest -g```
 - Install ionic
 ```sudo npm install -g ionic cordova``` 
