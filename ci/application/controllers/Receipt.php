@@ -124,24 +124,24 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			preg_match_all($regex, $wordString, $matches);
 				
 			
-			$qualifiedItems = $matches[1];
-			$qualifiedAmounts = $matches[2];
-			echo "\nQualified items1:" ;
-			var_dump($matches[1]);
-			echo "\nQualified items2:" ;
-			var_dump($matches[2]);
+			$qualifiedItems = $matches[1]; //item
+			$qualifiedAmounts = $matches[2]; //amount
+		
 			
 
-			//if (count($qualifiedItems) > 0) {
-			  //for ($i=0; $i < count($qualifiedItems); $i++) {
-			//	$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
-			  //}
+			if (count($qualifiedItems) > 0) {
+			  for ($i=0; $i < count($qualifiedItems); $i++) {
+				$response[$i] = array('item' => $qualifiedItems[$i], 'amount' => $qualifiedAmounts[$i]);
+			  }
 
-			//} else {
-			  //$response = "No reimbursement qualified items.";
+			} else {
+			  $response = "No reimbursement qualified items.";
 			
-			//return $response;
+			return $response;
 			// $this->response($response, 200);
+  			}
+  			return $response;
+			//$this->response($response, 200);
   		}
 
 		public function ocr_request() {
