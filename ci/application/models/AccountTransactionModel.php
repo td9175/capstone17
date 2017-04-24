@@ -10,7 +10,7 @@
 		function get_hsa_account_num($email) {
 			$this->load->database();
 
-			$query = "SELECT * FROM account_number WHERE email = ? AND account_type = 'HSA' LIMIT 1";
+			$query = "SELECT * FROM AccountTransaction JOIN HealthAccount USING (account_number) WHERE email = ? AND account_type = 'HSA' LIMIT 1";
 
 			$result = $this->db->query($query, $email);
 			if ($result->num_rows() > 0) {
@@ -26,7 +26,7 @@
 		function get_fsa_account_num($email) {
 			$this->load->database();
 
-			$query = "SELECT * FROM account_number WHERE email = ? AND account_type = 'FSA' LIMIT 1";
+			$query = "SELECT * FROM AccountTransaction JOIN HealthAccount USING (account_number) WHERE email = ? AND account_type = 'FSA' LIMIT 1";
 
 			$result = $this->db->query($query, $email);
 			if ($result->num_rows() > 0) {
