@@ -9,8 +9,6 @@ import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
 import { ActionSheetController } from 'ionic-angular';
 
 // Pages Import 
-// Page1 and Page2 are test and placeholder pages.
-
 import { HomePage } from './../pages/home/home';
 import { LoginPage } from './../pages/login/login';
 import { RegisterPage } from './../pages/register/register';
@@ -21,8 +19,10 @@ import { AccountsPage } from './../pages/accounts/accounts';
 import { AboutPage } from './../pages/about/about';
 import { ReportsPage } from './../pages/reports/reports';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
-// import { Page1 } from '../pages/page1/page1';
-// import { Page2 } from '../pages/page2/page2';
+
+// Page1 Dev
+import { Page1 } from '../pages/page2/page2';
+
 import { MyVaultPage } from './../pages/my-vault/my-vault';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 import { ReceiptFormPage } from './../pages/receipt-form/receipt-form';

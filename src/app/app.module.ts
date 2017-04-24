@@ -11,8 +11,6 @@ import { VaultPage } from './../pages/vault/vault';
 import { ServicesPage } from './../pages/services/services';
 import { ProductsPage } from './../pages/products/products';
 import { LoginPage } from './../pages/login/login';
-import { HSAPage } from './../pages/hsa/hsa';
-import { FSAPage } from './../pages/fsa/fsa';
 import { TaxInfoPage } from './../pages/tax-info/tax-info';
 import { HelpPage } from './../pages/help/help';
 import { ReportsPage } from './../pages/reports/reports';
@@ -24,6 +22,9 @@ import { AccountDetailPage } from './../pages/account-detail/account-detail';
 import { ProductDetail } from './../pages/product-detail/product-detail';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
+// Page 1 Dev Page
+import { Page1 } from '../pages/page2/page2';
+
 // APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';
 import { User, UserApi, AuthService, UserGlobals } from './../pages/shared/user-api.service';
@@ -32,9 +33,6 @@ import { YelpResultPage } from './../pages/yelp-result/yelp-result';
 
 
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
-
 import { Camera } from '@ionic-native/camera';
 
 import { ActionSheet, ActionSheetOptions } from '@ionic-native/action-sheet'
@@ -47,12 +45,9 @@ import { NgForm } from '@angular/forms/src/directives';
     RegisterPage,
     MyApp,
     AccountsPage,
-    Page1,
     AboutPage,
     ReportsPage,
     HelpPage,
-    FSAPage,
-    HSAPage,
     LoginPage,
     ProductsPage,
     ServicesPage,
@@ -60,7 +55,7 @@ import { NgForm } from '@angular/forms/src/directives';
     TaxInfoPage,
     VaultPage,
     UserSettingsPage,
-    Page2,
+    Page1,
     MyVaultPage,
     AddReceiptPage,
     ProductDetail,
@@ -76,12 +71,9 @@ import { NgForm } from '@angular/forms/src/directives';
     HomePage,
     RegisterPage,
     AccountsPage,
-    Page1,
     AboutPage,
     ReportsPage,
     HelpPage,
-    FSAPage,
-    HSAPage,
     LoginPage,
     ProductsPage,
     ServicesPage,
