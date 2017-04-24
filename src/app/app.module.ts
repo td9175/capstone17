@@ -23,7 +23,7 @@ import { ProductDetail } from './../pages/product-detail/product-detail';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
 // Page 1 Dev Page
-import { Page1 } from '../pages/page2/page2';
+import { Page1 } from '../pages/page1/page1';
 
 // APIs
 import { YelpPoster } from './../pages/shared/yelp-api-post.service';

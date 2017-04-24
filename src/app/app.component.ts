@@ -21,7 +21,7 @@ import { ReportsPage } from './../pages/reports/reports';
 import { AddReceiptPage } from './../pages/add-receipt/add-receipt';
 
 // Page1 Dev
-import { Page1 } from '../pages/page2/page2';
+import { Page1 } from '../pages/page1/page1';
 
 import { MyVaultPage } from './../pages/my-vault/my-vault';
 import { YelpResultPage } from './../pages/yelp-result/yelp-result';

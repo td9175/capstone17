@@ -1,4 +1,3 @@
-import { Page2 } from './../page2/page2';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
@@ -27,7 +26,7 @@ export class ReportsPage {
   }
 
   itemTapped($event, report){
-    this.navCtrl.push(Page2, report);
+    console.log("dont work anymore");
   }
 
   goHome(){
