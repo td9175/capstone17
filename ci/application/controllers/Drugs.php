@@ -6,7 +6,7 @@
 
 header("Access-Control-Allow-Origin: *");
 require('application/libraries/REST_Controller.php');
-header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Drugs extends REST_Controller {
