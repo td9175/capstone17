@@ -13,7 +13,7 @@ if(isset($_POST['jwtSubject'])) //if the form has been submitted
             echo $tokenPayload . "\n";
             echo $tokenSecret . "\n";
             echo $tokenForHash . "\n";
-            echo $token;
+            echo $token . "\n";
             echo $tokenFinal;
 		}
 ?>
