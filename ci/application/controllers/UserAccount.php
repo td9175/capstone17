@@ -95,6 +95,7 @@ use Lcobucci\JWT\Builder;
 		// Get all user info for an account
 		// Make a get request to https://capstone.td9175.com/ci/index.php/UserAccount/user
 		function user_get() {
+			verifyJWT($this->get('token'));
 			// Check if a user is logged in
 			// is_logged_in();
 			// Check for the email variable
