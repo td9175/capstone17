@@ -15,7 +15,7 @@ use Lcobucci\JWT\Builder;
             $tokenSecret = "superdupersecret2017";
             //$tokenForHash = base64_encode($tokenHeader) . "." . base64_encode($tokenPayload);
             $token = hash_hmac('sha256',$builttoken,$tokenSecret);
-            $tokenFinal = $tokenForHash . "." . $token;
+            $tokenFinal = $tokenForHash . $token;
 
             // echo $tokenHeader . "\n";
             // echo $tokenPayload . "\n";
