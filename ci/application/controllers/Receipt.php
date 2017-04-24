@@ -17,7 +17,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					$this->load->model('ReceiptModel');
 		}
 
-		
+
 		public function indent($json) {
 		//purpose: put response from OCR in format that the regex can go through
 
@@ -113,36 +113,36 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				foreach ($words as $word) {
 				  $wordString .= $word . " ";
 				}
-				
+
 			}
-			
-		
+
+
 			// Match for qualified items, capture the amount
 			$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/'; //bobby
 			//$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; sami
 			preg_match_all($regex, $wordString, $matches);
-			
-			
+
+
 			if (empty($matches[1])){
-				$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/'; 
+				$regex = '/(\d+\.\d+)\s?\d{12}H\s([^nxhdjt]\w+\s?\w)[^\d]/';
 				preg_match_all($regex, $wordString, $matches);
 				$qualifiedAmounts = $matches[2]; //amount
 				$qualifiedItems = $matches[1]; //item
-				
-			}	
-			
+
+			}
+
 			$qualifiedItems = $matches[1]; //item
 			$qualifiedAmounts = $matches[2]; //amount
-		
-			
+
+
 
 			if (count($qualifiedItems) > 0) {
 			  for ($i=0; $i < count($qualifiedItems); $i++) {
 				$response[$i] = array('item' => $qualifiedAmounts[$i], 'amount' => $qualifiedItems[$i]);
 			  }
 
-			} else { 
-			 
+			} else {
+
 			 $response = "No reimbursement qualified items.";
 
   			}
@@ -152,7 +152,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 
 
 		public function ocr_request() {
-		//purpose: take the image of the receipt and extract text 
+		//purpose: take the image of the receipt and extract text
 			$imagePath = $_SESSION['path'];
 			$request = new Http_Request2('https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr');
 			$url = $request->getUrl();
@@ -204,8 +204,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 		}
 
 		function upload_it_post() {
-		//purpose: upload a receipt 
-		
+		//purpose: upload a receipt
+
 			// Check if a user is logged in
 			// is_logged_in();
 
@@ -275,9 +275,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	}
 
 	function user_receipts_get() {
-	//purpose: retreive receipt information
-		// Check if a user is logged in
-		// is_logged_in();
+		// Check for a valid JSON web token
+		verifyJWT($this->get('token'));
+		
 		if ($this->get('email') == NULL) {
 			$this->response("Email is required.", 400);
     	} else {
@@ -291,8 +291,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	}
 
 	function user_last_receipt_get() {
-		// Check if a user is logged in
-		// is_logged_in();
+		// Check for a valid JSON web token
+		verifyJWT($this->get('token'));
+
 		if ($this->get('email') == NULL) {
 			$this->response("Email is required.", 400);
     	} else {
@@ -306,9 +307,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 	}
 
 	function receipt_post() {
-	//purpose: add new receipt info to DB 
-		// Check if a user is logged in
-		// is_logged_in();
+		// Check for a valid JSON web token
+		verifyJWT($this->get('token'));
+
 		if ($this->post('email') == NULL || $this->post('receipt_path') == NULL) {
 			$this->response("Email and receipt_path are required.", 200);
     		} else {

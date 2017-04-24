@@ -23,14 +23,8 @@ class Drugs extends CI_Controller {
 	}
 
 	public function search_for_drug($searchQuery){
-			// Check if a user is logged in
-			// is_logged_in();
-
-			// if ($this->post('searchQuery') == NULL) {
-			// 	echo "Search for something";
-			// }
-
-			// $searchQuery = $this->post('searchQuery');
+		// Check for a valid JSON web token
+		verifyJWT($this->get('token'));
 
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
@@ -47,7 +41,6 @@ class Drugs extends CI_Controller {
 
       // Build the query string
       $queryString = "query=" . urldecode($searchQuery) . "&api_key=" . $apiKey;
-			// echo "$queryString \n";
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
@@ -72,14 +65,8 @@ class Drugs extends CI_Controller {
 
 
     public function price_comparison($name){
-			// Check if a user is logged in
-			// is_logged_in();
-
-			// if ($this->post('name') == NULL) {
-			// 	echo "Name of drug required.";
-			// }
-
-			// $name = $this->post('name');
+			// Check for a valid JSON web token
+			verifyJWT($this->get('token'));
 
       // Load GoodRx API key and secret key
       $apiKey = $this->config->item('apiKey');
@@ -95,12 +82,7 @@ class Drugs extends CI_Controller {
       $url = "https://api.goodrx.com/compare-price?";
 
       // Build the query string
-			// $name = urldecode($name);
-			// $name = str_replace(" ", "", $name);
       $queryString = "name=" . $name . "&api_key=" . $apiKey;
-			// echo "$queryString \n";
-
-
 
       // Generate a keyed hash signature using HMAC / SHA256 on the query string and the GoodRx secret API key
       $sig = self::base64url_encode(hash_hmac('sha256', $queryString, $secretKey, true));
