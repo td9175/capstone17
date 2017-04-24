@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { ModalController, ViewController, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { VaultPage } from './../vault/vault';
 import { NgForm } from '@angular/forms/src/directives';
 import { UserApi, User, AuthService, UserGlobals } from './../shared/user-api.service';
@@ -20,9 +20,10 @@ export class ReceiptFormPage {
   model = new ReceiptModel(0);
 
   searchJson: any;
+  total: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController) {
-    /*this.searchJson = [
+    this.searchJson = [
       {
         item: 'Product something',
         amount: '4.99'
@@ -40,46 +41,37 @@ export class ReceiptFormPage {
         amount: '5.99'
       }
     ];
-    */
-    this.searchJson = this.userGlobals.getParsedPrices();
+    
+    //this.searchJson = this.userGlobals.getParsedPrices();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReceiptFormPage');
     console.log(this.searchJson);
+    console.log(this.CalculateTotal());
+    this.model.totalPrice = this.CalculateTotal();
   }
 
   receipt = {
-    totalPrice: 0
+    totalPrice: this.total
   };
 
   receiptForm(form: NgForm) {
+    this.total =this.CalculateTotal();
+    this.PostToHsaTransactions();
+  }
 
-    let loader = this.loadingController.create({
-      content: 'Loading your receipt information...',
-    });
-    loader.present();
-
-    function sleep (time) {
-      return new Promise((resolve) => setTimeout(resolve, time));
+  CalculateTotal(): number{
+    var total = 0;
+    for (let item of this.searchJson){
+      total += Number(item.amount);
     }
+    return total;
+  }
 
-    sleep(1600).then(() => {
-      if(this.userGlobals.getDidRegister()) {
-        loader.dismissAll();
-        console.log("user did register, yay");
-        //this.toast.show("Successfully logged in! Redirecting you now...", "1800", "bottom");
-        this.navCtrl.push(VaultPage);
-      }
-      else {
-        loader.dismissAll();
-        //this.toast.show("Invalid username or password.", "1800", "center");
-        console.log("Login error.");
-      }
-    }, err => {
-      loader.dismissAll();
-      //this.toast.show("Invalid username or password.", "1800", "center");
-      console.log("err: ", err);
-    });
+  PostToHsaTransactions(){
+    console.log("Yay you hit submit");
+    console.log("Total without changes: ", this.total);
+    console.log("Total after changes: ", this.model.totalPrice);
   }
 }

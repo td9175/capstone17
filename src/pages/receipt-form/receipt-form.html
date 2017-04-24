@@ -23,6 +23,13 @@
 
   <button ion-button (click)="totalUp()">Click Me to Total Up!</button>-->
 
+  <ion-list>
+    <ion-item *ngFor= "let product of searchJson">
+      <h2>Product Name: {{ product.item }}</h2>
+      <p>Product Price: {{ product.amount }}</p>
+    </ion-item>
+  </ion-list>
+
    <!--Receipt Confirm--> 
   <form #form="ngForm" (ngSubmit)="receiptForm(form)">
     <ion-item>
