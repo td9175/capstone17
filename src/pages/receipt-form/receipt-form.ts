@@ -26,7 +26,7 @@ export class ReceiptFormPage {
   results: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public elementRef: ElementRef, public authService: AuthService, public user: User, public userGlobals: UserGlobals, public loadingController: LoadingController, public hsaTransactionPoster: HsaTransactionPoster, public fsaTransactionPoster: FsaTransactionPoster) {
-    this.searchJson = [
+    /*this.searchJson = [
       {
         item: 'Product something',
         amount: '4.99'
@@ -43,9 +43,9 @@ export class ReceiptFormPage {
         item: 'Almost done with this shit!',
         amount: '5.99'
       }
-    ];
+    ];*/
     
-    //this.searchJson = this.userGlobals.getParsedPrices();
+    this.searchJson = this.userGlobals.getParsedPrices();
   }
 
   ionViewDidLoad() {
@@ -59,7 +59,7 @@ export class ReceiptFormPage {
     totalPrice: this.total
   };
 
-  inputcorrect: any;
+  imputcorrect: any;
 
   receiptForm(form: NgForm) {
     //this.model.totalPrice = this.CalculateTotal();
@@ -100,7 +100,7 @@ export class ReceiptFormPage {
       });
     }
     else{
-      this.inputcorrect = false;
+      this.imputcorrect = false;
     }
 
     
