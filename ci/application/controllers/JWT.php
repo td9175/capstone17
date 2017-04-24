@@ -1,10 +1,10 @@
 <?php
 require '/var/www/html/vendor/autoload.php';
 use Lcobucci\JWT\Builder;
-// if(isset($_POST['jwtSubject'])) //if the form has been submitted
-// 		{
+ if(isset($_POST['jwtSubject'])) //if the form has been submitted
+ 		{
 
-            $builttoken = (new Builder())->set('sub', 'test') // Configures a new claim, called "uid"
+            $builttoken = (new Builder())->set('sub', $_POST['jwtSubject']) // Configures a new claim, called "uid"
                         ->getToken(); // Retrieves the generated token
 
 
