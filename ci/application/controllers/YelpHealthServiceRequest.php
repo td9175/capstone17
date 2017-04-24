@@ -166,7 +166,7 @@ class YelpHealthServiceRequest extends CI_Controller {
   */
 	function auto_complete(){
 		// Check for a valid JSON web token
-		verifyJWT($this->post('token'));
+		verifyJWT($this->input-post('token'));
 
 		// Yelp Fusion API constants
 		$apiHost = $this->config->item('apiHost');
