@@ -284,7 +284,6 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			// Call the model
 			$response = $this->ReceiptModel->user_receipts_get($decodedEmail);
 			// Respond
-			echo "\nResponse: " . $response['date_time_stamp'];
 			$this->response($response, 200);
 		}
 	}
