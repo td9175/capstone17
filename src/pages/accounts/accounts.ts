@@ -14,6 +14,8 @@ import { HelpPage } from './../help/help';
 import { TaxInfoPage } from './../tax-info/tax-info';
 import { ReceiptFormPage } from './../receipt-form/receipt-form';
 
+import { App } from 'ionic-angular';
+
 @Component({
   selector: 'page-accounts',
   templateUrl: 'accounts.html'
@@ -32,7 +34,7 @@ export class AccountsPage {
 
   userhsabalance: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals, public authService: AuthService) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, private userApi: UserApi, public userGlobals: UserGlobals, public authService: AuthService, public app: App) { 
   }
 
   ionViewDidLoad() {
@@ -94,7 +96,9 @@ export class AccountsPage {
 
   logoutTest() {
     this.authService.appLogout();
-    this.navCtrl.popToRoot();
+    const root = this.app.getRootNav();
+    root.popToRoot();
+    location.reload();
   }
   
   // Helpers for passing HSA or FSA type to account-detail page.
