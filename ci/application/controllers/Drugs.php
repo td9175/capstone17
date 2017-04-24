@@ -3,8 +3,8 @@
 		@Author: Robert Fink
 		12bit - UMB Bank Health Spending App
 */
-$httporigin = $_SERVER['ORIGIN'];
-header("Access-Control-Allow-Origin: $httporigin");
+
+header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Credentials: true");
 require('application/libraries/REST_Controller.php');
 defined('BASEPATH') OR exit('No direct script access allowed');
