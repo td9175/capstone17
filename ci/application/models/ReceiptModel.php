@@ -30,8 +30,9 @@ class ReceiptModel extends CI_Model {
             'date_time_stamp' => $row['date_time_stamp']
           );
         }
+        
+        echo data['date_time_stamp'];
         $grabDate= $data['date_time_stamp'];
-        echo $grabDate;
          $data['date_time_stamp'] = date("F jS, Y", strtotime($grabDate));
          
         	echo $data['date_time_stamp'];
