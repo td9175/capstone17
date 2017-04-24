@@ -15,6 +15,7 @@ class HealthAccount extends REST_Controller {
   function hsa_get() {
     // Check for a valid JSON web token
     verifyJWT($this->get('token'));
+
     $this->load->model('HealthAccountModel');
 
     if(!$this->get('email')){
@@ -35,6 +36,7 @@ class HealthAccount extends REST_Controller {
   function hsa_post() {
     // Check for a valid JSON web token
     verifyJWT($this->post('token'));
+    
     $this->load->model('HealthAccountModel');
 
     if(!$this->post('account_number')){

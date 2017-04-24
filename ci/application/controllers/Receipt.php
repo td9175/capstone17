@@ -71,6 +71,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 			}
 
 
+		// @Author: Bobby Fink
   	public function qualified_receipt_regex_post($results) {
   	//purpose: take response from OCR and pull out qualifying HSA items and their amounts
 			// Check if a user is logged in
