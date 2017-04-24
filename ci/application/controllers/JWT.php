@@ -1,5 +1,6 @@
 <?php
 require '/var/www/html/vendor/autoload.php';
+require('application/libraries/REST_Controller.php');
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\ValidationData;
 
