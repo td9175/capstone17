@@ -20,13 +20,6 @@ class ReceiptModel extends CI_Model {
       
 
 
-
-$date=date_create("2013-03-15");
-echo date_format($date,"M/d/y H:i:s");
-
-</body>
-</html>
-
       $query = "SELECT * FROM Receipt WHERE email = ?";
       $result = $this->db->query($query, $email);
       if ($result->num_rows() > 0) {
