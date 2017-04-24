@@ -77,8 +77,7 @@ require('application/libraries/REST_Controller.php');
             'nbf'  => $notBefore,        // Not before
             'exp'  => $expire,           // Expire
             'data' => [                  // Data related to the logged user you can set your required data
-						 'id'  => $row[0]['id'], // id from the users table
-						'name' => $row[0]['name'], //  name
+						 'email'  => $email          // User's email
                       ]
 	        ];
         $secretKey = base64_decode($this->config->item("SECRET_KEY"));
