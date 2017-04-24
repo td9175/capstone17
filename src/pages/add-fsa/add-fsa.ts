@@ -14,6 +14,7 @@ export class AddFSAPage {
   
   userinfo: any;
   results: any;
+  successStatus: any;
   model = new addFsaModel(this.userGlobals.getGlobalEmail(), "", this.userGlobals.getGlobalSession());
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public loadingController: LoadingController, public fsaPoster: FsaPoster, public userGlobals: UserGlobals) {
@@ -35,12 +36,23 @@ export class AddFSAPage {
         console.log("this is the add", form.value);
         this.fsaPoster.postFsaAddForm(this.model)
         .subscribe(
-          data => this.results = data,
+          data => {this.results = data; console.dir(data);
+            if(data == `Error: could not add FSA account.`){
+              this.successStatus = false;
+              console.log("SuccessStatus: ", this.successStatus)
+            }else{
+              this.successStatus = true;
+              console.log("SuccessStatus: ", this.successStatus)
+            }
+          },
           //err => console.log('error: ', err),
           () => console.log('results: ', this.results),
+          
         );
         loader.dismiss();
-        this.goBack();
+        this.userGlobals.sleep(5000).then(() => {
+          this.goBack();
+        });
     });
   }
 

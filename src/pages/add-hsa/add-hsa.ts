@@ -17,6 +17,7 @@ export class AddHSAPage {
   
   userinfo: any;
   results: any;
+  successStatus: any;
   model = new addHsaModel(this.userGlobals.getGlobalEmail(), "", this.userGlobals.getGlobalSession());
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, public loadingController: LoadingController, public hsaPoster: HsaPoster, public userGlobals: UserGlobals) {
@@ -38,12 +39,23 @@ export class AddHSAPage {
         console.log("this is the add", form.value);
         this.hsaPoster.postHsaAddForm(this.model)
         .subscribe(
-          data => {this.results = data; console.dir(data);},
+          data => {this.results = data; console.dir(data);
+            if(data == `Error: could not add HSA account.`){
+              this.successStatus = false;
+              console.log("SuccessStatus: ", this.successStatus)
+            }else{
+              this.successStatus = true;
+              console.log("SuccessStatus: ", this.successStatus)
+            }
+          },
           //err => console.log('error: ', err),
           () => console.log('results: ', this.results),
+          
         );
         loader.dismiss();
-        this.goBack();
+        this.userGlobals.sleep(5000).then(() => {
+          this.goBack();
+        });
     });
   }
 

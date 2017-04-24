@@ -60,7 +60,7 @@
       <ion-card-header color="primary">
         <ion-icon item-left name="paper"></ion-icon> Flexible Service Accounts
       </ion-card-header>
-      <button ion-item detail-push *ngFor="let userfsa of userfsas" (click)="loadAddHsa($event, accountType)">
+      <button ion-item detail-push *ngFor="let userfsa of userfsas" (click)="loadFsaAccountDetails($event, accountType)">
         <div>
           <h3 class="account-header" *ngIf="(userfsa?.account_type=='FSA')">Flexible Spending Account</h3>
           <h4 class="account-number">Account#: {{userfsa.account_number}}</h4>

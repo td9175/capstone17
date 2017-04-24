@@ -27,4 +27,13 @@
     </ion-item>
     <button ion-button type="submit" block>Add HSA Account</button>
   </form>
+    
+    <ion-item text-wrap *ngIf="(successStatus == false)">
+      <p>Could not add HSA account, try a different account number.</p>
+    </ion-item>
+    
+    <ion-item text-wrap *ngIf="(successStatus == true)">
+      <p>Adding account, this may take a few minutes to update in your view.</p>
+    </ion-item>
+    
 </ion-content>
