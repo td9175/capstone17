@@ -1,5 +1,5 @@
 <?php
-//use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Builder;
 if(isset($_POST['jwtSubject'])) //if the form has been submitted
 		{
             $tokenHeader = "{\"alg\": \"HS256\",\"typ\": \"JWT\"}";
