@@ -111,9 +111,8 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				// Turn the array into a string
 				foreach ($words as $word) {
 				  $wordString .= $word . " ";
-				  echo "\nwordstring: $wordString";
-				  
 				}
+				echo "\nwordstring: $wordString";
 			}
 
 			// Match for qualified items, capture the amount
