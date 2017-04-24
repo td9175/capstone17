@@ -5,6 +5,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { YelpPoster } from './../shared/yelp-api-post.service';
 import { YelpSearchModel } from './../../models/yelpsearch.model';
 import { NgForm } from '@angular/forms/src/directives';
+import { UserGlobals } from './../shared/user-api.service';
 
 // Page import
 import { YelpResultPage } from './../yelp-result/yelp-result';
@@ -14,12 +15,12 @@ import { YelpResultPage } from './../yelp-result/yelp-result';
   templateUrl: 'services.html'
 })
 export class ServicesPage {
-  model = new YelpSearchModel('', '', '', '');
+  model = new YelpSearchModel('', '', '', '', this.userGlobals.getGlobalSession());
   
   results: any;
   private resultData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster, private loadingController: LoadingController) { 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, private yelpPoster: YelpPoster, private loadingController: LoadingController, private userGlobals: UserGlobals) { 
   }
   // form method
   submitForm(form: NgForm) {

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class YelpPoster {
 
-    constructor(private http: Http){
+    constructor(private http: Http) {
     }
 
     private extractData(res: Response) {
@@ -19,11 +19,14 @@ export class YelpPoster {
         console.error('post error: ', error);
         return Observable.throw(error.statusText);
     }
+
+
     
     postYelpSearchForm(yelpSearchModel: YelpSearchModel){ 
         let body = new URLSearchParams();
             body.set('term', yelpSearchModel.term);
             body.set('location', yelpSearchModel.location);
+            body.set('token', yelpSearchModel.token);
         //let body = JSON.stringify(yelpSearchModel);
         //body = body.replace(/\"([^(\")"]+)\":/g,"$1:");
         console.log('body: ', body);
