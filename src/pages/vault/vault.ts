@@ -50,7 +50,7 @@ export class VaultPage {
       fileName: filename,
       httpMode: "POST",
       chunkedMode: true,
-      params : {}
+      params : {token: `${this.userGlobals.getGlobalSession()}`, email: `${this.userGlobals.getGlobalEmail()}`}
     };
   
     const fileTransfer: TransferObject = new TransferObject();
