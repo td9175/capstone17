@@ -112,9 +112,9 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 				foreach ($words as $word) {
 				  $wordString .= $word . " ";
 				}
-				echo "\nwordstring: $wordString";
+				
 			}
-
+			echo "\nwordstring: $wordString";
 			// Match for qualified items, capture the amount
 			$regex = '/([^nxhdjt]\w+\s?\w+)\s?\d{12}H\s(\d+\.\d+)[^\d]/';
 			preg_match_all($regex, $wordString, $matches);
