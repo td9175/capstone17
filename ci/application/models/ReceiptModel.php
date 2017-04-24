@@ -33,8 +33,6 @@ class ReceiptModel extends CI_Model {
       } else {
         $data = "No user receipts exist";
       }
-      $formatDate = date_format($data['date_time_stamp',"M/d/y h:ia");
-      $data['date_time_stamp'] = $formatDate;
 
       return $data;
   }
