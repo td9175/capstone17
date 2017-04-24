@@ -244,7 +244,7 @@ require_once(APPPATH.'HTTP_Request2-2.3.0/HTTP/Request2.php');
 					$results = $this->qualified_receipt_regex_post($parsed);
 					//echo "Parsed results: " . $results;
 					// return $results;
-					$this->response($results, 200);
+					$this->response(json_encode($results), 200);
 				} else {
 					echo "No results\n";
 				}
