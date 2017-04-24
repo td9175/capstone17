@@ -22,7 +22,7 @@ class Drugs extends CI_Controller {
     	return strtr(base64_encode($data), '+/', '__');
 	}
 
-	public function search_for_drug_post($searchQuery){
+	public function search_for_drug($searchQuery){
 			// Check if a user is logged in
 			// is_logged_in();
 
@@ -71,7 +71,7 @@ class Drugs extends CI_Controller {
     }
 
 
-    public function price_comparison_post($name){
+    public function price_comparison($name){
 			// Check if a user is logged in
 			// is_logged_in();
 
